@@ -1,0 +1,74 @@
+
+#if !defined(PREVPOS_OUT)
+#define PREVPOS_OUT
+#endif
+
+#include "../../../mp.fxh/MREInputElements.fxh"
+#include "../../../mp.fxh/GetMergedID.fxh"
+
+StructuredBuffer<uint> SubsetTriangleCount;
+float GeomCount = 1;
+
+GSin VS(VSin input)
+{
+    GSin output;
+    output.cpoint = input.cpoint;
+	output.norm = input.norm;
+	#if defined(TEXCOORD_IN) && defined(TEXCOORD_OUT)
+		output.TexCd = input.TexCd;
+	#endif
+	#if defined(TANGENTS_IN) && defined(TANGENTS_OUT)
+		output.Tangent = input.Tangent;
+		output.Binormal = input.Binormal;
+	#endif
+	#if defined(BLENDWEIGHTS_IN) && defined(BLENDWEIGHTS_OUT)
+		output.BlendId = input.BlendId;
+		output.BlendWeight = input.BlendWeight;
+	#endif
+	//float gid = GetMergedGeomID(SubsetVertexCount, input.vid);
+	output.PrevPos = float4(output.cpoint.xyz,0);
+	
+    return output;
+}
+[maxvertexcount(3)]
+void GS(triangle GSin input[3], inout TriangleStream<GSin>GSOut, uint pid : SV_PrimitiveID)
+{
+	GSin v = (GSin)0;
+
+	float gid = GetMergedGeomID(SubsetTriangleCount, pid, GeomCount);
+	for(uint i=0;i<3;i++)
+	{
+		v=input[i];
+		v.PrevPos.w = gid;
+		GSOut.Append(v);
+	}
+}
+
+GeometryShader StreamOutGS = ConstructGSWithSO( CompileShader( gs_5_0, GS() ),
+	"SV_Position.xyz;"
+	"NORMAL.xyz"
+	#if defined(TEXCOORD_OUT)
+		";TEXCOORD0.xy"
+	#endif
+	#if defined(TANGENTS_OUT)
+		";TANGENT.xyz"
+		";BINORMAL.xyz"
+	#endif
+	#if defined(BLENDWEIGHTS_OUT)
+		";BLENDINDICES"
+		";BLENDWEIGHT"
+	#endif
+	";COLOR0"
+);
+
+technique11 Main
+{
+	pass P0
+	{
+		
+		SetVertexShader( CompileShader( vs_5_0, VS() ) );
+		//SetGeometryShader( CompileShader( gs_5_0, GS() ) );
+	    SetGeometryShader( StreamOutGS );
+
+	}
+}

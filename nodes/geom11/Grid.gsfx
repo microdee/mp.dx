@@ -1,0 +1,67 @@
+
+#define USUAL "POSITION.xyz;NORMAL.xyz;TEXCOORD0.xy"
+
+float LineCount = 100;
+
+struct VsInUsual
+{
+	uint vi : SV_VertexID;
+	uint ii : SV_InstanceID;
+};
+struct VsOutUsual
+{
+	float3 cpoint : POSITION;
+	float3 norm : NORMAL;
+	float2 TexCd : TEXCOORD0;
+};
+VsOutUsual VsUsual(VsInUsual input)
+{
+    VsOutUsual output;
+	
+	bool IsX = (floor(input.vi/2)%2)==0;
+	
+	float3 pos = 0;
+	
+	if(IsX)
+	{
+		pos.x = input.ii-LineCount/2;
+		pos.y = (input.vi%2-.5)*LineCount;
+	}
+	else
+	{
+		pos.y = input.ii-LineCount/2;
+		pos.x = (input.vi%2-.5)*LineCount;
+	}
+	
+    output.cpoint = pos;
+	output.norm = float3(0,0,-1);
+	output.TexCd = pos.xy/LineCount+.5;
+	
+    return output;
+}
+[maxvertexcount(2)]
+void GsUsual(line VsOutUsual input[2], inout LineStream<VsOutUsual>GSOut)
+{
+	VsOutUsual v;
+
+	for(uint i=0;i<2;i++)
+	{
+		v=input[i];
+		//v.position=v.position;
+        //v.TexCd=v.TexCd;
+		//v.normV=v.normV;
+		GSOut.Append(v);
+	}
+}
+GeometryShader StreamUsual = ConstructGSWithSO( CompileShader( gs_5_0, GsUsual() ), USUAL );
+technique11 UsualLayout
+{
+	pass P0
+	{
+		
+		SetVertexShader( CompileShader( vs_5_0, VsUsual() ) );
+		SetGeometryShader( CompileShader( gs_5_0, GsUsual() ) );
+	    SetGeometryShader( StreamUsual );
+
+	}
+}

@@ -1,0 +1,447 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
+   <PATCH nodename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\TextureRouter (Assimp Advanced).v4p" systemname="TextureRouter (Assimp Advanced)" filename="C:\vvvv\libs\mcropack\nodes\Modules\TextureRouter (Assimp Advanced).v4p" scrollx="1620" scrolly="2520">
+   <BOUNDS type="Window" left="17160" top="2190" width="9000" height="11430">
+   </BOUNDS>
+   <PACK Name="addonpack" Version="34.1.0">
+   </PACK>
+   <PACK Name="VVVV.Packs" Version="0.2.0">
+   </PACK>
+   <NODE systemname="Material (Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="Material (Assimp)" componentmode="Hidden" id="12">
+   <BOUNDS type="Node" left="2520" top="1245" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Scene" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Texture Path" visible="1">
+   </PIN>
+   <PIN pinname="Texture Type" visible="1">
+   </PIN>
+   <PIN pinname="Texture Count" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Add (String)" filename="" nodename="Add (String)" componentmode="Hidden" id="4">
+   <BOUNDS type="Node" left="4470" top="2775" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1" slicecount="1" values="text">
+   </PIN>
+   <PIN pinname="Input 2" visible="1" slicecount="1" values="text">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input Count" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Input 3" visible="1" slicecount="14" values="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\EuropeanWhiteBirchLeaf_1_Fall.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\EuropeanWhiteBirchLeaf_1_Spec.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\EuropeanWhiteBirchLeaf_1_Normal.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\EuropeanWhiteBirchLeaf_2_Fall.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\EuropeanWhiteBirchLeaf_2_Spec.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\EuropeanWhiteBirchLeaf_2_Normal.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\WhiteBirchBark_Detail.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\WhiteBirchBark_Detail_Normal.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\Branches_04.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\Branches_04_Normal.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\Branches_06.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\Branches_06_Normal.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\Cap_02.png,C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\Cap_02_Normal.png">
+   </PIN>
+   </NODE>
+   <NODE systemname="EQ (Value)" nodename="EQ (Value)" componentmode="Hidden" id="2">
+   <BOUNDS type="Node" left="3795" top="8865" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Switch (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Switch (DX11.Texture 2d)" componentmode="Hidden" id="1">
+   <BOUNDS type="Node" left="2910" top="11130" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Switch" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Output" dstnodeid="1" dstpinname="Switch">
+   </LINK>
+   <NODE systemname="DynamicTexture (DX11.Texture 2d Color)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="DynamicTexture (DX11.Texture 2d Color)" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="4935" top="9870" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Texture Out" visible="1">
+   </PIN>
+   <PIN pinname="Data" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Texture Out" dstnodeid="1" dstpinname="Input 2">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="13" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="1785" top="465" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1785" top="465" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Scene">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="13" srcpinname="Output Node" dstnodeid="12" dstpinname="Scene">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="14" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="6210" top="1035" width="2385" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6210" top="1035" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="..\assets\sponza.obj">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="|All Files (*.*)||*.*|">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="Filename">
+   </PIN>
+   <PIN pinname="Output String" visible="1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Scene File Path|">
+   </PIN>
+   </NODE>
+   <NODE systemname="FileName (File Split)" nodename="FileName (File Split)" componentmode="Hidden" id="15">
+   <BOUNDS type="Node" left="6210" top="1710" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Filename" visible="1" slicecount="1" values="file.foo">
+   </PIN>
+   <PIN pinname="Path" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="14" srcpinname="Output String" dstnodeid="15" dstpinname="Filename">
+   </LINK>
+   <LINK srcnodeid="15" srcpinname="Path" dstnodeid="4" dstpinname="Input 1">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="16" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="2925" top="11910" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2925" top="11910" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Output">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="1" srcpinname="Output" dstnodeid="16" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="19" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="4695" top="5655" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4695" top="5655" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Load In Background|">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="20" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="4890" top="6390" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4890" top="6390" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Reload">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="21" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="5205" top="11580" width="735" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5205" top="11580" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Filename">
+   </PIN>
+   <PIN pinname="Input String" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="38" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="5985" top="435" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5985" top="435" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="text">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Subfolder">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="38" srcpinname="Output String" dstnodeid="4" dstpinname="Input 2">
+   </LINK>
+   <NODE systemname="EQ (String)" nodename="EQ (String)" componentmode="Hidden" id="46">
+   <BOUNDS type="Node" left="2910" top="4095" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Enum2String (Enumerations)" nodename="Enum2String (Enumerations)" componentmode="Hidden" id="45">
+   <BOUNDS type="Node" left="2910" top="1935" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Enum" visible="1" slicecount="1" values="(nil)">
+   </PIN>
+   <PIN pinname="String Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="45" srcpinname="String Value" dstnodeid="46" dstpinname="Input 1">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="44" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="3135" top="540" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3135" top="540" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="Diffuse">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Type">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="44" srcpinname="Output String" dstnodeid="46" dstpinname="Input 2">
+   </LINK>
+   <NODE systemname="Select (String)" nodename="Select (String)" componentmode="Hidden" id="43">
+   <BOUNDS type="Node" left="4485" top="5070" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Select" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1" slicecount="14" values="C:\vvvv\release\EmesheTrees\assets\EuropeanWhiteBirchLeaf_1_Fall.tga,C:\vvvv\release\EmesheTrees\assets\EuropeanWhiteBirchLeaf_1_Spec.tga,C:\vvvv\release\EmesheTrees\assets\EuropeanWhiteBirchLeaf_1_Normal.tga,C:\vvvv\release\EmesheTrees\assets\EuropeanWhiteBirchLeaf_2_Fall.tga,C:\vvvv\release\EmesheTrees\assets\EuropeanWhiteBirchLeaf_2_Spec.tga,C:\vvvv\release\EmesheTrees\assets\EuropeanWhiteBirchLeaf_2_Normal.tga,C:\vvvv\release\EmesheTrees\assets\WhiteBirchBark_Detail.tga,C:\vvvv\release\EmesheTrees\assets\WhiteBirchBark_Detail_Normal.tga,C:\vvvv\release\EmesheTrees\assets\Branches_04.tga,C:\vvvv\release\EmesheTrees\assets\Branches_04_Normal.tga,C:\vvvv\release\EmesheTrees\assets\Branches_06.tga,C:\vvvv\release\EmesheTrees\assets\Branches_06_Normal.tga,C:\vvvv\release\EmesheTrees\assets\Cap_02.tga,C:\vvvv\release\EmesheTrees\assets\Cap_02_Normal.tga">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="46" srcpinname="Output" dstnodeid="43" dstpinname="Select">
+   </LINK>
+   <LINK srcnodeid="12" srcpinname="Texture Type" dstnodeid="45" dstpinname="Enum">
+   </LINK>
+   <NODE systemname="Add (Value Spectral)" nodename="Add (Value Spectral)" componentmode="Hidden" id="50">
+   <BOUNDS type="Node" left="3120" top="4560" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Bin Size" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="46" srcpinname="Output" dstnodeid="50" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="12" srcpinname="Texture Count" dstnodeid="50" dstpinname="Bin Size">
+   </LINK>
+   <NODE systemname="GetSlice (Node)" nodename="GetSlice (Node)" componentmode="Hidden" id="51">
+   <BOUNDS type="Node" left="4485" top="7875" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Index" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Input Node" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="12" srcpinname="Texture Count" dstnodeid="2" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Output Node" dstnodeid="1" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="Switch (String Input)" nodename="Switch (String Input)" componentmode="Hidden" id="52">
+   <BOUNDS type="Node" left="5205" top="10680" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Switch" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Output" dstnodeid="52" dstpinname="Switch">
+   </LINK>
+   <NODE systemname="GetSlice (String)" nodename="GetSlice (String)" componentmode="Hidden" id="53">
+   <BOUNDS type="Node" left="5685" top="7740" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Index" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Input Node" visible="1">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="43" srcpinname="Output" dstnodeid="53" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Output" dstnodeid="52" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="52" srcpinname="Output" dstnodeid="21" dstpinname="Input String">
+   </LINK>
+   <NODE systemname="FileTexture (DX11 2d)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="FileTexture (DX11 2d)" componentmode="Hidden" id="26">
+   <BOUNDS type="Node" left="4500" top="7125" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Filename" visible="1">
+   </PIN>
+   <PIN pinname="Texture Out" visible="1">
+   </PIN>
+   <PIN pinname="SizeXY" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="19" srcpinname="Y Output Value" dstnodeid="26" dstpinname="Load In Background">
+   </LINK>
+   <LINK srcnodeid="20" srcpinname="Y Output Value" dstnodeid="26" dstpinname="Reload">
+   </LINK>
+   <LINK srcnodeid="43" srcpinname="Output" dstnodeid="26" dstpinname="Filename">
+   </LINK>
+   <LINK srcnodeid="26" srcpinname="Texture Out" dstnodeid="51" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="54" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="4740" top="8415" width="795" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4740" top="8415" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="2" values=",">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="SizeXY">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="26" srcpinname="SizeXY" dstnodeid="54" dstpinname="Y Input Value">
+   </LINK>
+   <NODE id="49" systemname="SequentialAdd (Value)" filename="..\..\..\..\mp.essentials\nodes\modules\value\SequentialAdd (Value).v4p" nodename="SequentialAdd (Value)" componentmode="Hidden">
+   <BOUNDS type="Node" left="3105" top="6855" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1" slicecount="21" values="0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,0,0,1,0,1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="50" srcpinname="Output" dstnodeid="49" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="49" srcpinname="Output" dstnodeid="51" dstpinname="Index">
+   </LINK>
+   <LINK srcnodeid="49" srcpinname="Output" dstnodeid="53" dstpinname="Index">
+   </LINK>
+   <NODE systemname="FileName (File Split)" nodename="FileName (File Split)" componentmode="Hidden" id="55">
+   <BOUNDS type="Node" left="4200" top="3255" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Filename" visible="1" slicecount="14" values="EuropeanWhiteBirchLeaf_1_Fall.tga,EuropeanWhiteBirchLeaf_1_Spec.tga,EuropeanWhiteBirchLeaf_1_Normal.tga,EuropeanWhiteBirchLeaf_2_Fall.tga,EuropeanWhiteBirchLeaf_2_Spec.tga,EuropeanWhiteBirchLeaf_2_Normal.tga,WhiteBirchBark_Detail.tga,WhiteBirchBark_Detail_Normal.tga,Branches_04.tga,Branches_04_Normal.tga,Branches_06.tga,Branches_06_Normal.tga,Cap_02.tga,Cap_02_Normal.tga">
+   </PIN>
+   <PIN pinname="Path" visible="1">
+   </PIN>
+   <PIN pinname="Shortname" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (String)" nodename="IOBox (String)" componentmode="InABox" id="57">
+   <BOUNDS type="Node" left="9600" top="1425" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9600" top="1425" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Output String" visible="1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Extension Override|">
+   </PIN>
+   <PIN pinname="Input String" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE systemname="Add (String)" nodename="Add (String)" componentmode="Hidden" id="58">
+   <BOUNDS type="Node" left="4305" top="3795" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Input Count" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input 3" visible="1" slicecount="1" values=".png">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="55" srcpinname="Path" dstnodeid="58" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="55" srcpinname="Shortname" dstnodeid="58" dstpinname="Input 2">
+   </LINK>
+   <NODE systemname="EQ (String)" nodename="EQ (String)" componentmode="Hidden" id="59">
+   <BOUNDS type="Node" left="8940" top="2190" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1" slicecount="1" values=".">
+   </PIN>
+   <PIN pinname="Inverse Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Switch (String Input)" nodename="Switch (String Input)" componentmode="Hidden" id="60">
+   <BOUNDS type="Node" left="4500" top="4455" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Switch" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" visible="1" slicecount="14" values="EuropeanWhiteBirchLeaf_1_Fall.tga,EuropeanWhiteBirchLeaf_1_Spec.tga,EuropeanWhiteBirchLeaf_1_Normal.tga,EuropeanWhiteBirchLeaf_2_Fall.tga,EuropeanWhiteBirchLeaf_2_Spec.tga,EuropeanWhiteBirchLeaf_2_Normal.tga,WhiteBirchBark_Detail.tga,WhiteBirchBark_Detail_Normal.tga,Branches_04.tga,Branches_04_Normal.tga,Branches_06.tga,Branches_06_Normal.tga,Cap_02.tga,Cap_02_Normal.tga">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="59" srcpinname="Inverse Output" dstnodeid="60" dstpinname="Switch">
+   </LINK>
+   <LINK srcnodeid="58" srcpinname="Output" dstnodeid="60" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="57" srcpinname="Output String" dstnodeid="59" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="AbsolutePath (File)" nodename="AbsolutePath (File)" componentmode="Hidden" id="62">
+   <BOUNDS type="Node" left="4395" top="690" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Relative Path" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="12" srcpinname="Texture Path" dstnodeid="62" dstpinname="Relative Path">
+   </LINK>
+   <LINK srcnodeid="12" srcpinname="Texture Path" dstnodeid="4" dstpinname="Input 3">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="Output" dstnodeid="55" dstpinname="Filename">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="Output" dstnodeid="60" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="60" srcpinname="Output" dstnodeid="43" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="57" srcpinname="Output String" dstnodeid="58" dstpinname="Input 3">
+   </LINK>
+   </PATCH>

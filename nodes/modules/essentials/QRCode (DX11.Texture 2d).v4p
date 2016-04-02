@@ -1,0 +1,185 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha31.7.dtd" >
+   <PATCH nodename="G:\vvvv\app\nodes\Modules\QRCode (DX11.Texture 2d).v4p" systemname="QRCode (DX11.Texture 2d)" filename="G:\vvvv\app\nodes\Modules\QRCode (DX11.Texture 2d).v4p">
+   <BOUNDS type="Window" left="17865" top="5505" width="9000" height="6000">
+   </BOUNDS>
+   <PACK Name="testPack" Version="0.1.0">
+   </PACK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="6" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="3465" top="405" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3465" top="405" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Generate">
+   </PIN>
+   </NODE>
+   <NODE systemname="DynamicBufferBin (DX11.Buffer UInt)" filename="%VVVV%\packs\DX11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="DynamicBufferBin (DX11.Buffer UInt)" componentmode="Hidden" id="5">
+   <BOUNDS type="Node" left="2145" top="3390" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Data" visible="1">
+   </PIN>
+   <PIN pinname="Data Bin Size" visible="1">
+   </PIN>
+   <PIN pinname="Apply" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Buffer" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="QRCode (DX11.TextureFX)" filename="..\..\app\nodes\texture11\QRCode.tfx" nodename="QRCode (DX11.TextureFX)" componentmode="Hidden" id="4">
+   <BOUNDS type="Node" left="1635" top="4350" width="900" height="270">
+   </BOUNDS>
+   <PIN pinname="margin">
+   </PIN>
+   <PIN pinname="ModuleSize">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="5" srcpinname="Buffer" dstnodeid="4" dstpinname="QRCodeData">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="3" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="1980" top="3735" width="420" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1980" top="3735" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" values="5">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="margin">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="3" srcpinname="Y Output Value" dstnodeid="4" dstpinname="margin">
+   </LINK>
+   <NODE systemname="QRCode (Boolean)" filename="..\..\app\nodes\Plugins\BooleanQRCode\BooleanQRCode.csproj" nodename="QRCode (Boolean)" componentmode="Hidden" id="2">
+   <BOUNDS type="Node" left="2235" top="1920" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Type Number" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Input" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Error Correction" slicecount="1" values="M">
+   </PIN>
+   <PIN pinname="Output Bin Size" visible="1">
+   </PIN>
+   <PIN pinname="Generate" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Output" dstnodeid="5" dstpinname="Data">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Module Size" dstnodeid="4" dstpinname="ModuleSize">
+   </LINK>
+   <NODE systemname="Select (Value)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Select (Value)" componentmode="Hidden" id="1">
+   <BOUNDS type="Node" left="2550" top="2925" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Select" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="EQ (Value)" nodename="EQ (Value)" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="2655" top="2460" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Inverse Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Output Bin Size" dstnodeid="0" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="0" srcpinname="Inverse Output" dstnodeid="1" dstpinname="Select">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Output Bin Size" dstnodeid="1" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="1" srcpinname="Output" dstnodeid="5" dstpinname="Data Bin Size">
+   </LINK>
+   <NODE systemname="OnOpen (VVVV)" nodename="OnOpen (VVVV)" componentmode="Hidden" id="8">
+   <BOUNDS type="Node" left="3450" top="1170" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Simulate" visible="1">
+   </PIN>
+   <PIN pinname="Bang" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="6" srcpinname="Y Output Value" dstnodeid="8" dstpinname="Simulate">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Bang" dstnodeid="5" dstpinname="Apply">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Bang" dstnodeid="2" dstpinname="Generate">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="9" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="2805" top="570" width="285" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2805" top="570" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Type Number|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="9" srcpinname="Y Output Value" dstnodeid="2" dstpinname="Type Number">
+   </LINK>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="10" systemname="IOBox (Enumerations)">
+   <BOUNDS type="Box" left="2520" top="1140" width="585" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2520" top="1140" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" values="M">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Error Correction|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="10" srcpinname="Output Enum" dstnodeid="2" dstpinname="Error Correction">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="11" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="750" top="1725" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="750" top="1725" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Input">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="Output String" dstnodeid="2" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="12" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="1650" top="4965" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1650" top="4965" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Texture Out|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="4" srcpinname="Texture Out" dstnodeid="12" dstpinname="Input Node">
+   </LINK>
+   </PATCH>

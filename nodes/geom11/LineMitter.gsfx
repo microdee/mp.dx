@@ -1,0 +1,89 @@
+
+#define USUAL "SV_Position.xyz;NORMAL.xyz;TEXCOORD0.xy"
+#define PI 3.14159265358979
+
+float Width = 0.2;
+float Center = 0.5;
+float MaxExtend = 0.5;
+
+struct VsIn
+{
+	float4 cpoint : POSITION;
+	float p : PROGRESS;
+};
+struct VsOut
+{
+	float4 cpoint : SV_Position;
+	float3 norm : NORMAL;
+	float4 TexCd : TEXCOORD0;
+};
+VsIn Vs(VsIn input)
+{
+    VsIn output;
+	
+    output = input;
+	
+    return output;
+}
+
+float Angle(float2 a, float2 b)
+{
+	return atan2(b.y, b.x)-atan2(a.y, a.x);
+}
+
+[maxvertexcount(4)]
+void Gs(lineadj VsIn input[4], inout TriangleStream<VsOut>GSOut, uint pi : SV_PrimitiveID)
+{
+	float2 InAdjLead = input[0].cpoint.xy;
+	float2 InAdjTrail = input[3].cpoint.xy;
+	float3 InLead = input[1].cpoint.xyw;
+	float3 InTrail = input[2].cpoint.xyw;
+	float depth = (input[1].cpoint.z + input[2].cpoint.z) / 2;
+
+	float2 aLL = normalize(InLead.xy - InAdjLead);
+	float2 LT = normalize(InTrail.xy - InLead.xy);
+	float2 TaT = normalize(InAdjTrail - InTrail.xy);
+
+	float2 inv = float2(-1, 1);
+
+	float2 aLL_LT = normalize(lerp(aLL.yx * inv, LT.yx * inv, 0.5));
+	float2 LT_TaT = normalize(lerp(LT.yx * inv, TaT.yx * inv, 0.5));
+
+	float LeadMul = min(abs(1/cos(Angle(aLL, aLL_LT) - PI/2)), MaxExtend * InLead.z);
+	float TrailMul = min(abs(1/cos(Angle(LT, LT_TaT) - PI/2)), MaxExtend * InTrail.z);
+
+	float2 vert[4];
+	float invCenter = 1-Center;
+
+	vert[0] = InLead.xy + aLL_LT * Width * InLead.z * invCenter * LeadMul * -1;
+	vert[1] = InLead.xy + aLL_LT * Width * InLead.z * Center * LeadMul;
+	vert[2] = InTrail.xy + LT_TaT * Width * InTrail.z * invCenter * TrailMul * -1;
+	vert[3] = InTrail.xy + LT_TaT * Width * InTrail.z * Center * TrailMul;
+
+	float2 txcd[4] = {{0,1}, {0,0}, {1,1}, {1,0}};
+	txcd[0].x = input[1].p;
+	txcd[1].x = input[1].p;
+	txcd[2].x = input[2].p;
+	txcd[3].x = input[2].p;
+
+	for(uint i=0; i<4; i++)
+	{
+		VsOut v = (VsOut)0;
+		v.cpoint = float4(vert[i], depth, 1);
+		v.norm = float3(0,0,1);
+		v.TexCd = float4(txcd[i], 0, 1);
+		GSOut.Append(v);
+	}
+}
+GeometryShader Stream = ConstructGSWithSO( CompileShader( gs_5_0, Gs() ), USUAL );
+technique11 UsualLayout
+{
+	pass P0
+	{
+		
+		SetVertexShader( CompileShader( vs_5_0, Vs() ) );
+		SetGeometryShader( CompileShader( gs_5_0, Gs() ) );
+	    SetGeometryShader( Stream );
+
+	}
+}

@@ -1,0 +1,23 @@
+float2 R:TARGETSIZE;
+StructuredBuffer<uint> QRCodeData;
+int ModuleSize;
+float margin = 0;
+
+#define bld(op,c0,c1) float4(lerp((c0*c0.a+c1*c1.a*(1-c0.a))/saturate(c0.a+c1.a*(1-c0.a)),(op),c0.a*c1.a).rgb,saturate(c0.a+c1.a*(1-c0.a)))
+
+float4 pRender(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
+	float2 uv = x*(ModuleSize+margin)-margin*.5;
+	uint2 id = floor(uv);
+	uint i = id.y*ModuleSize+id.x;
+	float3 col = (QRCodeData[i] == 1) ? 0 : 1;
+	if(uv.x < 0 || uv.x > ModuleSize || uv.y < 0 || uv.y > ModuleSize)
+		col = 1;
+    return float4(col,1);
+}
+
+
+technique10 Render
+{
+	pass P1 <string format="R8G8B8A8_UNorm";>
+	{SetPixelShader(CompileShader(ps_4_0,pRender()));}
+}

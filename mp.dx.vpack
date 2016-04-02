@@ -1,0 +1,32 @@
+{
+	"Name": "mp.dx",
+    "Version": "1.0"
+	"Author": "microdee",
+	"VVVVersion": "32.0.1",
+	"AddonPack": "true",
+	"Dependencies": [
+		{
+			"Name": "md.essentials",
+			"Path": [
+				"../md.essentials/mp.vpack",
+				"http://someurl.com/packages/microdee/mp.essentials.vpack"
+			]
+		},
+		{
+			"Name": "md.fxh",
+			"Path": [
+				"../md.fxh/mp.vpack",
+				"http://someurl.com/packages/microdee/mp.fxh.vpack"
+			]
+		},
+		{
+			"Name": "vvvv-dx11",
+			"Path": [
+				"http://someurl.com/packages/vux/vvvv-dx11.vpack"
+			]
+		}
+	],
+	"Install": [
+		{"CopyThisPack": []}
+	]
+}

@@ -1,0 +1,381 @@
+
+#define USUAL "SV_Position.xyz;NORMAL.xyz;TEXCOORD0.xy"
+#define GEOMVEL "SV_Position.xyz;NORMAL.xyz;TEXCOORD0.xy;COLOR0"
+#define SKINNING "SV_Position.xyz;NORMAL.xyz;TEXCOORD0.xy;BLENDINDICES;BLENDWEIGHT;COLOR0"
+
+struct VsInUsual
+{
+	float4 pos : POSITION;
+	float3 norm : NORMAL;
+	float4 TexCd : TEXCOORD0;
+};
+struct VsOutUsual
+{
+	float4 pos : SV_Position;
+	float3 norm : NORMAL;
+	float4 TexCd : TEXCOORD0;
+};
+VsOutUsual VsUsual(VsInUsual input)
+{
+    VsOutUsual output;
+	
+    output.pos = input.pos;
+	output.norm = input.norm;
+	output.TexCd = input.TexCd;
+	
+    return output;
+}
+[maxvertexcount(6)]
+void GsUsual(triangle VsOutUsual input[3], inout LineStream<VsOutUsual>GSOut)
+{
+	VsOutUsual o;
+
+	float EPSILON = 0.01f;
+	
+	//Grab triangles positions
+	float3 t1 = input[0].pos.xyz;
+    float3 t2 = input[1].pos.xyz;
+	float3 t3 = input[2].pos.xyz;
+	
+	
+	//Compute lines
+	float3 l1 = t2 - t1;
+	float3 l2 = t3 - t2;
+	float3 l3 = t3 - t1;
+	
+	//Compute edge length
+	float dl1 = dot(l1,l1);
+	float dl2 = dot(l2,l2);
+	float dl3 = dot(l3,l3);
+	
+	//Get max length
+	float maxdistsqr = max(max(dl1,dl2),dl3);
+	
+	/*Append if lower than max length
+	please note that will not work with all goemetries,
+	but for grid/boxes/spheres type of topology this is a very simple
+	way. Also note this is not optimized, 
+	code is quite expanded for readability*/
+	
+	if (dl1 < maxdistsqr)
+	{
+		o.pos = float4(t1,1);
+		o.norm = input[0].norm;
+		o.TexCd = input[0].TexCd;
+		GSOut.Append(o);
+	
+		o.pos = float4(t2,1);
+		o.norm = input[1].norm;
+		o.TexCd = input[1].TexCd;
+		GSOut.Append(o);
+		
+		GSOut.RestartStrip();
+	}
+		
+	if (dl2 < maxdistsqr)
+	{
+		o.pos = float4(t3,1);
+		o.norm = input[2].norm;
+		o.TexCd = input[2].TexCd;
+		GSOut.Append(o);
+	
+		o.pos = float4(t2,1);
+		o.norm = input[1].norm;
+		o.TexCd = input[1].TexCd;
+		GSOut.Append(o);
+		
+		GSOut.RestartStrip();
+	}
+	
+	
+	if (dl3 < maxdistsqr)
+	{
+		o.pos = float4(t3,1);
+		o.norm = input[2].norm;
+		o.TexCd = input[2].TexCd;
+		GSOut.Append(o);
+	
+		o.pos = float4(t1,1);
+		o.norm = input[0].norm;
+		o.TexCd = input[0].TexCd;
+		GSOut.Append(o);
+		
+		GSOut.RestartStrip();
+	}
+}
+GeometryShader StreamUsual = ConstructGSWithSO( CompileShader( gs_5_0, GsUsual() ), USUAL );
+technique11 UsualLayout
+{
+	pass P0
+	{
+		
+		SetVertexShader( CompileShader( vs_5_0, VsUsual() ) );
+		SetGeometryShader( CompileShader( gs_5_0, GsUsual() ) );
+	    SetGeometryShader( StreamUsual );
+
+	}
+}
+
+////////////////////////////////////////////
+
+struct VsInGeomvel
+{
+	float4 pos : POSITION;
+	float3 norm : NORMAL;
+	float4 TexCd : TEXCOORD0;
+	float4 ppos : COLOR0;
+};
+struct VsOutGeomvel
+{
+	float4 pos : SV_Position;
+	float3 norm : NORMAL;
+	float4 TexCd : TEXCOORD0;
+	float4 ppos : COLOR0;
+};
+VsOutGeomvel VsGeomvel(VsInGeomvel input)
+{
+    VsOutGeomvel output;
+    output.pos = input.pos;
+	output.norm = input.norm;
+	output.TexCd = input.TexCd;
+	output.ppos = input.ppos;
+	
+    return output;
+}
+[maxvertexcount(6)]
+void GsGeomvel(triangle VsOutGeomvel input[3], inout LineStream<VsOutGeomvel>GSOut)
+{
+	VsOutGeomvel o;
+
+	float EPSILON = 0.01f;
+	
+	//Grab triangles positions
+	float3 t1 = input[0].pos.xyz;
+    float3 t2 = input[1].pos.xyz;
+	float3 t3 = input[2].pos.xyz;
+	
+	
+	//Compute lines
+	float3 l1 = t2 - t1;
+	float3 l2 = t3 - t2;
+	float3 l3 = t3 - t1;
+	
+	//Compute edge length
+	float dl1 = dot(l1,l1);
+	float dl2 = dot(l2,l2);
+	float dl3 = dot(l3,l3);
+	
+	//Get max length
+	float maxdistsqr = max(max(dl1,dl2),dl3);
+	
+	/*Append if lower than max length
+	please note that will not work with all goemetries,
+	but for grid/boxes/spheres type of topology this is a very simple
+	way. Also note this is not optimized, 
+	code is quite expanded for readability*/
+	
+	if (dl1 < maxdistsqr)
+	{
+		o.pos = float4(t1,1);
+		o.norm = input[0].norm;
+		o.TexCd = input[0].TexCd;
+		o.ppos = input[0].ppos;
+		GSOut.Append(o);
+	
+		o.pos = float4(t2,1);
+		o.norm = input[1].norm;
+		o.TexCd = input[1].TexCd;
+		o.ppos = input[1].ppos;
+		GSOut.Append(o);
+		
+		GSOut.RestartStrip();
+	}
+		
+	if (dl2 < maxdistsqr)
+	{
+		o.pos = float4(t3,1);
+		o.norm = input[2].norm;
+		o.TexCd = input[2].TexCd;
+		o.ppos = input[2].ppos;
+		GSOut.Append(o);
+	
+		o.pos = float4(t2,1);
+		o.norm = input[1].norm;
+		o.TexCd = input[1].TexCd;
+		o.ppos = input[1].ppos;
+		GSOut.Append(o);
+		
+		GSOut.RestartStrip();
+	}
+	
+	
+	if (dl3 < maxdistsqr)
+	{
+		o.pos = float4(t3,1);
+		o.norm = input[2].norm;
+		o.TexCd = input[2].TexCd;
+		o.ppos = input[2].ppos;
+		GSOut.Append(o);
+	
+		o.pos = float4(t1,1);
+		o.norm = input[0].norm;
+		o.TexCd = input[0].TexCd;
+		o.ppos = input[0].ppos;
+		GSOut.Append(o);
+		
+		GSOut.RestartStrip();
+	}
+}
+GeometryShader StreamGeomvel = ConstructGSWithSO( CompileShader( gs_5_0, GsGeomvel() ), GEOMVEL );
+technique11 GeomvelLayout
+{
+	pass P0
+	{
+		
+		SetVertexShader( CompileShader( vs_5_0, VsGeomvel() ) );
+		SetGeometryShader( CompileShader( gs_5_0, GsGeomvel() ) );
+	    SetGeometryShader( StreamGeomvel );
+
+	}
+}
+
+////////////////////////////////////////////
+
+struct VsInSkinning
+{
+	float4 pos : POSITION;
+	float3 norm : NORMAL;
+	float4 TexCd : TEXCOORD0;
+	float4 blendid : BLENDINDICES;
+	float4 blendw : BLENDWEIGHT;
+	float4 ppos : COLOR0;
+};
+struct VsOutSkinning
+{
+	float4 pos : SV_Position;
+	float3 norm : NORMAL;
+	float4 TexCd : TEXCOORD0;
+	float4 blendid : BLENDINDICES;
+	float4 blendw : BLENDWEIGHT;
+	float4 ppos : COLOR0;
+};
+VsOutSkinning VsSkinning(VsInSkinning input)
+{
+    VsOutSkinning output;
+    output.pos = input.pos;
+	output.norm = input.norm;
+	output.TexCd = input.TexCd;
+	output.blendid = input.blendid;
+	output.blendw = input.blendw;
+	output.ppos = input.ppos;
+	
+    return output;
+}
+[maxvertexcount(6)]
+void GsSkinning(triangle VsOutSkinning input[3], inout LineStream<VsOutSkinning>GSOut)
+{
+	VsOutSkinning o;
+
+	float EPSILON = 0.01f;
+	
+	//Grab triangles positions
+	float3 t1 = input[0].pos.xyz;
+    float3 t2 = input[1].pos.xyz;
+	float3 t3 = input[2].pos.xyz;
+	
+	
+	//Compute lines
+	float3 l1 = t2 - t1;
+	float3 l2 = t3 - t2;
+	float3 l3 = t3 - t1;
+	
+	//Compute edge length
+	float dl1 = dot(l1,l1);
+	float dl2 = dot(l2,l2);
+	float dl3 = dot(l3,l3);
+	
+	//Get max length
+	float maxdistsqr = max(max(dl1,dl2),dl3);
+	
+	/*Append if lower than max length
+	please note that will not work with all goemetries,
+	but for grid/boxes/spheres type of topology this is a very simple
+	way. Also note this is not optimized, 
+	code is quite expanded for readability*/
+	
+	if (dl1 < maxdistsqr)
+	{
+		o.pos = float4(t1,1);
+		o.norm = input[0].norm;
+		o.TexCd = input[0].TexCd;
+		o.blendid = input[0].blendid;
+		o.blendw = input[0].blendw;
+		o.ppos = input[0].ppos;
+		GSOut.Append(o);
+	
+		o.pos = float4(t2,1);
+		o.norm = input[1].norm;
+		o.TexCd = input[1].TexCd;
+		o.blendid = input[1].blendid;
+		o.blendw = input[1].blendw;
+		o.ppos = input[1].ppos;
+		GSOut.Append(o);
+		
+		GSOut.RestartStrip();
+	}
+		
+	if (dl2 < maxdistsqr)
+	{
+		o.pos = float4(t3,1);
+		o.norm = input[2].norm;
+		o.TexCd = input[2].TexCd;
+		o.blendid = input[2].blendid;
+		o.blendw = input[2].blendw;
+		o.ppos = input[2].ppos;
+		GSOut.Append(o);
+	
+		o.pos = float4(t2,1);
+		o.norm = input[1].norm;
+		o.TexCd = input[1].TexCd;
+		o.blendid = input[1].blendid;
+		o.blendw = input[1].blendw;
+		o.ppos = input[1].ppos;
+		GSOut.Append(o);
+		
+		GSOut.RestartStrip();
+	}
+	
+	
+	if (dl3 < maxdistsqr)
+	{
+		o.pos = float4(t3,1);
+		o.norm = input[2].norm;
+		o.TexCd = input[2].TexCd;
+		o.blendid = input[2].blendid;
+		o.blendw = input[2].blendw;
+		o.ppos = input[2].ppos;
+		GSOut.Append(o);
+	
+		o.pos = float4(t1,1);
+		o.norm = input[0].norm;
+		o.TexCd = input[0].TexCd;
+		o.blendid = input[0].blendid;
+		o.blendw = input[0].blendw;
+		o.ppos = input[0].ppos;
+		GSOut.Append(o);
+		
+		GSOut.RestartStrip();
+	}
+}
+GeometryShader StreamSkinning = ConstructGSWithSO( CompileShader( gs_5_0, GsSkinning() ), SKINNING );
+technique11 SkinningLayout
+{
+	pass P0
+	{
+		
+		SetVertexShader( CompileShader( vs_5_0, VsSkinning() ) );
+		SetGeometryShader( CompileShader( gs_5_0, GsSkinning() ) );
+	    SetGeometryShader( StreamSkinning );
+
+	}
+}

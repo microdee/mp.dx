@@ -1,0 +1,30 @@
+//@author: 
+//@help: 
+//@tags: mixer
+//@credits:
+
+Texture2D tex0: PREVIOUS;
+Texture2D tex1 <string uiname="Texture In 2";>;
+
+SamplerState s0 <bool visible=false;string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=MIRROR;AddressV=MIRROR;};
+float2 R:TARGETSIZE;
+
+cbuffer controls:register(b0){
+	float Fader = 0;
+	float2 Move = 0;
+	float Zoom = 2;
+};
+
+float4 pMIX(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
+    float4 c0=tex0.SampleLevel(s0,x,0);
+    float4 c1=tex1.SampleLevel(s0,x,0);
+    float2 x0=(x-.5)*pow(2,c1.z*Zoom)+.5+Move*2*normalize((c1.xy-.5))*pow(length((c1.xy-.5)),0.7);
+    float2 x1=(x-.5)/pow(2,c0.z*Zoom)+.5+Move*2*normalize((c0.xy-.5))*pow(length((c0.xy-.5)),0.7);
+    float4 a0=tex0.SampleLevel(s0,lerp(x,x0,Fader),0);
+    float4 a1=tex1.SampleLevel(s0,lerp(x1,x,Fader),0);
+    float4 c=lerp(a0,a1,Fader);
+    return c;
+}
+
+
+technique10 Mix{pass P1{SetPixelShader(CompileShader(ps_5_0,pMIX()));}}

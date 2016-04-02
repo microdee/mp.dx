@@ -1,0 +1,35 @@
+Texture2D tex0: PREVIOUS;
+
+SamplerState s0 <bool visible=false;string uiname="Sampler";> {Filter=MIN_MAG_MIP_POINT;AddressU=CLAMP;AddressV=CLAMP;};
+float2 R:TARGETSIZE;
+
+cbuffer controls:register(b0){
+	float Width = 3;
+	float KernelSize = 5;
+	float SkipThreshold = 0.5;
+};
+
+#define bld(op,c0,c1) float4(lerp((c0*c0.a+c1*c1.a*(1-c0.a))/saturate(c0.a+c1.a*(1-c0.a)),(op),c0.a*c1.a).rgb,saturate(c0.a+c1.a*(1-c0.a)))
+
+float4 pMIX(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET
+{
+	float4 c0=tex0.Sample(s0,x);
+	float skpthrs = SkipThreshold * KernelSize * KernelSize;
+	float hitcount = 0;
+	float4 c1 = 0;
+	for(float i=0; i<KernelSize; i++)
+	{
+		for(float j=0; j<KernelSize; j++)
+		{
+			float2 uvoffs = float2((j-KernelSize*.5)*Width,(i-KernelSize*.5)*Width)/R;
+			c1 = tex0.Sample(s0,x + uvoffs);
+			if(c1.z<0)
+				hitcount++;
+		}
+	}
+	if((hitcount > skpthrs) || (c0.z<0)) c0 = 0;
+    return c0;
+}
+
+
+technique10 Mix{pass P1{SetPixelShader(CompileShader(ps_4_0,pMIX()));}}

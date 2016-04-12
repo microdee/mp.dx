@@ -1,0 +1,245 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
+   <PATCH nodename="E:\vvvv\libs\mcropack\girlpower\SkeletalSingleMesh.v4p" scrollx="0" scrolly="90" systemname="SkeletalSingleMesh" filename="E:\vvvv\libs\mcropack\girlpower\SkeletalSingleMesh.v4p">
+   <BOUNDS type="Window" left="10995" top="2745" width="8670" height="9795">
+   </BOUNDS>
+   <PACK Name="VVVV.Packs" Version="0.2.0">
+   </PACK>
+   <PACK Name="addonpack" Version="34.1.0">
+   </PACK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="1" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="1245" top="600" width="1830" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1245" top="600" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="..\packs\mups\assets\runningwolf-lores.dae">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="|All Files (*.*)||*.*|">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="Filename">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="5" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="2220" top="1605" width="1485" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2220" top="1605" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="Scene">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Output String" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="SkeletonSimple (Assimp)" filename="..\packs\mp.dx\nodes\modules\assimp\SkeletonSimple (Assimp).v4p" nodename="SkeletonSimple (Assimp)" componentmode="Hidden" id="6" debug="0">
+   <BOUNDS type="Node" left="1965" top="2190" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Scene" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Root" visible="1">
+   </PIN>
+   <PIN pinname="Skeleton" visible="1">
+   </PIN>
+   <PIN pinname="Time" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="5" srcpinname="Output String" dstnodeid="6" dstpinname="Root">
+   </LINK>
+   <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="7">
+   <BOUNDS type="Node" left="525" top="6420" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="525" top="6420" width="6000" height="4500">
+   </BOUNDS>
+   <BOUNDS type="Window" left="675" top="6510" width="9300" height="7815">
+   </BOUNDS>
+   <PIN pinname="Layers" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Depth Buffer Mode" slicecount="1" values="Standard">
+   </PIN>
+   <PIN pinname="Depth Buffer Format" slicecount="1" values="D32_Float">
+   </PIN>
+   <PIN pinname="View" visible="1">
+   </PIN>
+   <PIN pinname="Projection" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="PhongDirectional (DX11.Effect)" filename="%VVVV%\packs\dx11\nodes\dx11\PhongDirectional.fx" nodename="PhongDirectional (DX11.Effect)" componentmode="Hidden" id="8">
+   <BOUNDS type="Node" left="810" top="4605" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Geometry" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Camera (Transform VOOCAM)" filename="..\packs\mp.voocam\nodes\modules\Camera (Transform VOOCAM).v4p" nodename="Camera (Transform VOOCAM)" componentmode="Hidden" id="9">
+   <BOUNDS type="Node" left="4185" top="4635" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="View" visible="1">
+   </PIN>
+   <PIN pinname="Projection" visible="1">
+   </PIN>
+   <PIN pinname="Camera Out" visible="1">
+   </PIN>
+   <PIN pinname="Near" slicecount="1" values="0.05">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="9" srcpinname="View" dstnodeid="7" dstpinname="View">
+   </LINK>
+   <LINK srcnodeid="9" srcpinname="Projection" dstnodeid="7" dstpinname="Projection">
+   </LINK>
+   <NODE systemname="AspectRatio (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="AspectRatio (DX11.Layer)" componentmode="Hidden" id="11">
+   <BOUNDS type="Node" left="705" top="5805" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Layer In" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="LFO (Animation)" nodename="LFO (Animation)" componentmode="Hidden" id="12">
+   <BOUNDS type="Node" left="3405" top="1965" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Period" slicecount="1" values="0.5">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="12" srcpinname="Output" dstnodeid="6" dstpinname="Time">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="15" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="3300" top="375" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3300" top="375" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE systemname="SpaceMouse (VOOCAM VJoy)" filename="..\packs\mp.voocam\nodes\modules\SpaceMouse (VOOCAM VJoy).v4p" nodename="SpaceMouse (VOOCAM VJoy)" componentmode="Hidden" id="10">
+   <BOUNDS type="Node" left="6000" top="4875" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Camera In" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="9" srcpinname="Camera Out" dstnodeid="10" dstpinname="Camera In">
+   </LINK>
+   <NODE systemname="SceneExplorer (Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="SceneExplorer (Assimp)" componentmode="InAWindow" id="17">
+   <BOUNDS type="Node" left="4290" top="1320" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Scene" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE systemname="Scale (Transform Vector)" nodename="Scale (Transform Vector)" componentmode="Hidden" id="19">
+   <BOUNDS type="Node" left="1275" top="4125" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="XYZ" slicecount="3" values="1,1,1">
+   </PIN>
+   </NODE>
+   <NODE systemname="AxisAndGrid (DX11)" filename="..\packs\mp.dx\nodes\modules\essentials\AxisAndGrid (DX11).v4p" nodename="AxisAndGrid (DX11)" componentmode="Hidden" id="21">
+   <BOUNDS type="Node" left="1350" top="5205" width="1350" height="270">
+   </BOUNDS>
+   <BOUNDS type="Window" left="19935" top="2250" width="15810" height="13725">
+   </BOUNDS>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Layer In" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Grid" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Long Axis" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="21" srcpinname="Layer" dstnodeid="11" dstpinname="Layer In">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Layer Out" dstnodeid="7" dstpinname="Layers">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Layer" dstnodeid="21" dstpinname="Layer In">
+   </LINK>
+   <LINK srcnodeid="19" srcpinname="Transform Out" dstnodeid="8" dstpinname="Transform In">
+   </LINK>
+   <NODE systemname="Mesh (Geometry Split Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="Mesh (Geometry Split Assimp)" componentmode="Hidden" id="18">
+   <BOUNDS type="Node" left="2595" top="2820" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Scene" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Indices Count" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Mesh (DX11.Geometry Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="Mesh (DX11.Geometry Assimp)" componentmode="Hidden" id="25">
+   <BOUNDS type="Node" left="975" top="2820" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Scene" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Bone Matrices" visible="1">
+   </PIN>
+   <PIN pinname="Bone Names" visible="1">
+   </PIN>
+   <PIN pinname="Bone Names Bin Size" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="SkinningSimple (DX11 Assimp)" filename="..\packs\mp.dx\nodes\modules\assimp\SkinningSimple (DX11 Assimp).v4p" nodename="SkinningSimple (DX11 Assimp)" componentmode="Hidden" id="27">
+   <BOUNDS type="Node" left="1125" top="3645" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Geometry Out" visible="1">
+   </PIN>
+   <BOUNDS type="Window" left="8925" top="1005" width="12255" height="9495">
+   </BOUNDS>
+   <PIN pinname="Texture Coordinates" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="18" srcpinname="Indices Count" dstnodeid="27" dstpinname="Max Elements">
+   </LINK>
+   <LINK srcnodeid="25" srcpinname="Bone Matrices" dstnodeid="27" dstpinname="Inverse Bind Pose">
+   </LINK>
+   <LINK srcnodeid="25" srcpinname="Bone Names" dstnodeid="27" dstpinname="Joint Name">
+   </LINK>
+   <LINK srcnodeid="25" srcpinname="Bone Names Bin Size" dstnodeid="27" dstpinname="BoneCount">
+   </LINK>
+   <LINK srcnodeid="25" srcpinname="Output" dstnodeid="27" dstpinname="Geometry In">
+   </LINK>
+   <LINK srcnodeid="6" srcpinname="Skeleton" dstnodeid="27" dstpinname="Skeleton">
+   </LINK>
+   <LINK srcnodeid="27" srcpinname="Geometry Out" dstnodeid="8" dstpinname="Geometry">
+   </LINK>
+   <NODE systemname="SceneFile (DX11.Geometry Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="SceneFile (DX11.Geometry Assimp)" componentmode="Hidden" id="28">
+   <BOUNDS type="Node" left="1260" top="1080" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="1" srcpinname="Output String" dstnodeid="28" dstpinname="Filename">
+   </LINK>
+   <LINK srcnodeid="28" srcpinname="Scene" dstnodeid="6" dstpinname="Scene">
+   </LINK>
+   <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="28" dstpinname="Reload">
+   </LINK>
+   <LINK srcnodeid="28" srcpinname="Scene" dstnodeid="17" dstpinname="Scene">
+   </LINK>
+   <LINK srcnodeid="28" srcpinname="Scene" dstnodeid="18" dstpinname="Scene">
+   </LINK>
+   <LINK srcnodeid="28" srcpinname="Scene" dstnodeid="25" dstpinname="Scene">
+   </LINK>
+   </PATCH>

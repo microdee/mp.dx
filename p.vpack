@@ -1,0 +1,30 @@
+<!DOCTYPE vpack SYSTEM "https://raw.githubusercontent.com/microdee/md.ecosystem/master/vpm/vpack-1.0.dtd" >
+<vpack>
+	<meta>
+		<name>mp.dx</name>
+		<source>https://github.com/microdee/mp.dx.git</source>
+		<author>microdee</author>
+		<dependencies>
+			<dependency>
+				<name>mp.essentials</name>
+				<source>https://github.com/microdee/mp.essentials.git</source>
+			</dependency>
+			<dependency>
+				<name>mp.fxh</name>
+				<source>https://github.com/microdee/mp.fxh.git</source>
+			</dependency>
+			<dependency>
+				<name>dx11-vvvv</name>
+				<source>https://raw.githubusercontent.com/microdee/md.ecosystem/master/vpdb/vux/dx11-vvvv/master.csx</source>
+				<aliases>dx11, vvvv-dx11</aliases>
+			</dependency>
+		</dependencies>
+	</meta>
+	<install>
+		CopyDir(
+			Pack.TempDir,
+			VVVV.Dir + "\\packs\\" + Pack.Name,
+			ignore: { "src" }
+		);
+	</install>
+</vpack>

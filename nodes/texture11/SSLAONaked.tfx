@@ -1,0 +1,151 @@
+
+#include "../../../mp.fxh/depthreconstruct.fxh"
+
+Texture2D<float> Depth: PREVIOUS;
+Texture2D Noise;
+
+SamplerState s0 <bool visible=false;string uiname="Sampler";>
+{
+	Filter=MIN_MAG_MIP_POINT;
+	AddressU=CLAMP;
+	AddressV=CLAMP;
+	//MipLODBias = -1;
+};
+
+cbuffer cb
+{
+	float4x4 CamProj;
+	float4x4 CamProjInv;
+	float2 screenSize : TARGETSIZE;
+	float2 screenResMul = 1;
+	float aoSize = 1;
+	float kernelSize = 32;
+	float strength = 1;
+	float Gamma = 1;
+	float NoiseAmount = 0;
+};
+
+StructuredBuffer<float2> kernel;
+
+float3 GetViewPos(SamplerState SS, float2 uv)
+{
+	float d = Depth.SampleLevel(SS, uv, 0);
+	return UVZtoVIEW(uv, d, CamProj, CamProjInv);
+}
+float3 getFaceNormal( float3 position , float2 uv)
+{	
+	// Get the face normal by using position buffer derivatives
+	// dFdx/dFdy may also be used
+	float2 pixelStep = 1.0 / ( screenResMul.x * screenSize.xy );
+	
+	float3 n1 = cross( ( GetViewPos(s0, uv - pixelStep * float2( 1, 0 ) ) - position ), 
+					 ( GetViewPos(s0, uv - pixelStep * float2( 0, 1 ) ) - position ) );
+						  
+	float3 n2 = cross( ( GetViewPos(s0, uv + pixelStep * float2( 1, 0 ) ) - position ), 
+					 ( GetViewPos(s0, uv + pixelStep * float2( 0, 1 ) ) - position ) );
+	  
+	return normalize( n1 + n2 );
+}
+
+float getRandom(in float2 uv)
+{	return ((frac(uv.x * (screenSize.x/2.0))*0.25)+(frac(uv.y*(screenSize.y/2.0))*0.5));	}
+
+float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
+{
+	// Get the current pixel's positiom
+	float3 currentPos = GetViewPos(s0, uv );
+	
+	// Get the current pixel's distance
+	// This is very much like the pixel's depth
+	float currentDistance = length( currentPos );
+
+	// Get either pixel normal or face normal
+	float3 currentNormal = getFaceNormal( currentPos, uv );
+
+	// Calculate an aspect-ratio variable. This is required because the output buffer is non-square
+	// The process will work without this, however, the result will look weird/incorrect
+	float2 aspectRatio = float2( min( 1.0, screenSize.y / screenSize.x ), min( 1.0, screenSize.x / screenSize.y ) );
+
+	// Grab a random vector from a 8x8 tiled random texture
+	float4 randomVec = Noise.SampleLevel(s0, uv, 0);
+	
+	// Transform randomVec from range 0 - 1 to range -1 - 1
+	randomVec *= 2.0;
+	randomVec -= 1.0;
+	
+	// Create a 2D rotation matrix
+	// For your own source, it is better to #define PI
+	float2x2 rotMat = float2x2( float2( cos( randomVec.x * 3.1415926 ), -sin( randomVec.x * 3.1415926 ) ),
+						float2( sin( randomVec.x * 3.1415926 ), cos( randomVec.x * 3.1415926 ) ) );
+	
+	float amount = 0.0;
+	
+	for ( int i = 0; i < int( kernelSize ); i++ )
+	{
+		// Retrieve the kernel vector and scale it with aspectRatio
+		float2 kernelVec = kernel[i];
+		kernelVec *= aspectRatio;
+	
+		float radius = aoSize * lerp(1,randomVec.y, NoiseAmount);
+		
+		kernelVec = lerp(kernelVec, mul(rotMat, kernelVec), NoiseAmount);
+	
+		// Divide by currentDistance to get the correct behaviour and scale with radius
+		kernelVec = ( kernelVec / currentDistance ) * radius;
+		
+		// Calculate a horizon vector
+		float3 pos = GetViewPos(s0, uv + kernelVec );
+		pos = pos - currentPos;
+		
+		// Calculate the horizon angle
+		float angle = dot( pos, currentNormal );
+		
+		// Use a normalized angle to ignore small angles
+		angle *= step( 0.3, angle / length( pos ) );
+
+		// Bias the angle depending on distance
+		angle -= currentDistance * 0.001;
+		angle = max( 0.0, angle );
+		// We diminish the angle if it is too close to the view
+		angle /= dot( pos, pos ) / min( currentDistance * 0.25, 1.0 ) + 0.00001;
+		
+		amount += angle;
+	}
+	
+	// Create the final amount value
+	amount *= strength / kernelSize;
+	amount = 1.0 - amount;
+	amount = max( 0.0, amount );
+	
+	float o = pow(saturate(amount),Gamma);
+
+	return float4(o,o,o,1);
+}
+float4 SSAOBlur(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
+{
+	float2 InvScreenSize = 1/screenSize;
+  float o = 1;
+  const float2 vec[3] = {
+   float2(1,1),
+   float2(1,0),
+   float2(0,1),
+   };
+
+  float ao = Depth.Sample(s0,uv);
+  int samples = 1;
+  for (int k=0;k<3;k++){
+     float2 tcoord = uv+float2(vec[k].x*InvScreenSize.x,vec[k].y*InvScreenSize.y);
+     ao+=Depth.Sample(s0,tcoord);
+     samples++;
+  }
+  ao/=samples;
+
+  return float4(o,o,o,1);
+}
+
+technique10 SSAOt{
+	pass P0 <string format="R16G16B16A16_Float";>
+	{SetPixelShader(CompileShader(ps_4_0,PS()));}
+	//pass P1
+	//{SetPixelShader(CompileShader(ps_4_0,SSAOBlur()));}
+}

@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
-   <PATCH nodename="E:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" systemname="SkeletalMesh (DX11 Assimp)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" scrollx="0" scrolly="2430">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
+   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" systemname="SkeletalMesh (DX11 Assimp)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" scrollx="0" scrolly="4080">
    <BOUNDS type="Window" left="9825" top="2070" width="17625" height="11085">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.1.0">
+   <PACK Name="addonpack" Version="34.101.0">
    </PACK>
    <NODE systemname="JoinGeometry (DX11.Geometry)" filename="..\geometry\JoinGeometry (DX11.Geometry).v4p" nodename="JoinGeometry (DX11.Geometry)" componentmode="Hidden" id="29" debug="0">
    <BOUNDS type="Node" left="2280" top="7785" width="100" height="100">
@@ -171,6 +171,8 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|No Caching|">
    </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="42" srcpinname="Y Output Value" dstnodeid="41" dstpinname="Input 2">
    </LINK>
@@ -213,7 +215,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="8295" top="2745" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -231,9 +233,9 @@
    <LINK srcnodeid="47" srcpinname="Y Output Value" dstnodeid="29" dstpinname="Texture Coordinates">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="48" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="5640" top="7935" width="480" height="480">
+   <BOUNDS type="Box" left="3540" top="6495" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="5640" top="7935" width="0" height="0">
+   <BOUNDS type="Node" left="3540" top="6495" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
@@ -576,30 +578,12 @@
    </LINK>
    <LINK srcnodeid="82" srcpinname="Geometry" dstnodeid="85" dstpinname="Input 2">
    </LINK>
-   <NODE systemname="AND (Boolean)" nodename="AND (Boolean)" componentmode="Hidden" id="88">
-   <BOUNDS type="Node" left="4545" top="7575" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input 2" visible="1">
-   </PIN>
-   <PIN pinname="Input 1" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="56" srcpinname="Output" dstnodeid="88" dstpinname="Input 2">
-   </LINK>
-   <LINK srcnodeid="87" srcpinname="Inverse Output" dstnodeid="88" dstpinname="Input 1">
-   </LINK>
-   <LINK srcnodeid="88" srcpinname="Output" dstnodeid="29" dstpinname="Enabled">
-   </LINK>
-   <LINK srcnodeid="88" srcpinname="Output" dstnodeid="29" dstpinname="Evaluate">
-   </LINK>
    <NODE systemname="SkinningSimple (DX11 Assimp)" filename="SkinningSimple (DX11 Assimp).v4p" nodename="SkinningSimple (DX11 Assimp)" componentmode="Hidden" id="89">
    <BOUNDS type="Node" left="2625" top="11490" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Window" left="2340" top="1500" width="12255" height="9495">
    </BOUNDS>
-   <PIN pinname="Geometry In" visible="1">
+   <PIN pinname="Geometry In" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="BoneCount" visible="1">
    </PIN>
@@ -629,11 +613,9 @@
    </PIN>
    <PIN pinname="PrevPosMul" visible="1">
    </PIN>
-   <PIN pinname="Enabled" slicecount="1" values="0" visible="1">
+   <PIN pinname="Enabled" slicecount="1" visible="1" values="0">
    </PIN>
    </NODE>
-   <LINK srcnodeid="29" srcpinname="Geometry Out" dstnodeid="89" dstpinname="Geometry In">
-   </LINK>
    <LINK srcnodeid="9" srcpinname="Output" dstnodeid="89" dstpinname="BoneCount">
    </LINK>
    <LINK srcnodeid="45" srcpinname="Output Node" dstnodeid="89" dstpinname="Skeleton">
@@ -695,5 +677,11 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="91" srcpinname="Y Output Value" dstnodeid="89" dstpinname="Enabled">
+   </LINK>
+   <LINK srcnodeid="56" srcpinname="Output" dstnodeid="29" dstpinname="Enabled">
+   </LINK>
+   <LINK srcnodeid="56" srcpinname="Output" dstnodeid="29" dstpinname="Evaluate">
+   </LINK>
+   <LINK srcnodeid="29" srcpinname="Geometry Out" dstnodeid="89" dstpinname="Geometry In">
    </LINK>
    </PATCH>

@@ -27,12 +27,14 @@ float4 pJoinL(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
 }
 float4 pJoinSpread(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
 	float4 c = float4(0,0,0,1);
+	[unroll]
 	for(uint i = 0; i<4; i++)
 		c[i] = length(TexArray[i].Sample(s0,x).rgb);
     return c;
 }
 float4 pJoinSpreadRaw(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
 	float4 c = float4(0,0,0,1);
+	[unroll]
 	for(uint i = 0; i<4; i++)
 		c[i] = TexArray[i].Sample(s0,x).r;
     return c;

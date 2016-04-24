@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
-   <PATCH nodename="E:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\geometry\JoinGeometry (DX11.Geometry).v4p" systemname="JoinGeometry (DX11.Geometry)" filename="C:\vvvv\libs\mcropack\nodes\Modules\JoinGeometry (DX11.Geometry).v4p" scrollx="45" scrolly="360">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
+   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\geometry\JoinGeometry (DX11.Geometry).v4p" systemname="JoinGeometry (DX11.Geometry)" filename="C:\vvvv\libs\mcropack\nodes\Modules\JoinGeometry (DX11.Geometry).v4p" scrollx="45" scrolly="360">
    <BOUNDS type="Window" left="8970" top="2490" width="10155" height="10020">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.1.0">
+   <PACK Name="addonpack" Version="34.101.0">
    </PACK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="2" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="1185" top="2040" width="795" height="240">
@@ -497,7 +497,7 @@
    <NODE systemname="GeomJoinThru (DX11.Effect)" filename="..\..\dx11\GeomJoinThru.fx" nodename="GeomJoinThru (DX11.Effect)" componentmode="Hidden" id="52">
    <BOUNDS type="Node" left="1950" top="5100" width="1290" height="270">
    </BOUNDS>
-   <PIN pinname="Enabled" slicecount="1" values="1" visible="1">
+   <PIN pinname="Enabled" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Geometry" visible="1" slicecount="1" values="||">
    </PIN>

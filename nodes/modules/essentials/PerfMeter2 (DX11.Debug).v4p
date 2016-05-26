@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PerfMeter2 (DX11.Debug).v4p" systemname="PerfMeter2 (DX11.Debug)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\PerfMeter2\PerfMeter2 (DX11.Debug).v4p" scrollx="0" scrolly="8040">
+   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PerfMeter2 (DX11.Debug).v4p" systemname="PerfMeter2 (DX11.Debug)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\PerfMeter2\PerfMeter2 (DX11.Debug).v4p" scrollx="0" scrolly="8265">
    <BOUNDS type="Window" left="2775" top="1725" width="13680" height="12180">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -1079,7 +1079,7 @@
    <NODE systemname="Text (DX11.Layer Advanced)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Text.dll" nodename="Text (DX11.Layer Advanced)" componentmode="Hidden" id="145">
    <BOUNDS type="Node" left="8655" top="14400" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Text Layout" visible="1">
+   <PIN pinname="Text Layout" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer" visible="1">
    </PIN>
@@ -1088,22 +1088,6 @@
    <PIN pinname="Color" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="TextLayout (DirectWrite)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.Nodes.DirectWrite.dll" nodename="TextLayout (DirectWrite)" componentmode="Hidden" id="144">
-   <BOUNDS type="Node" left="8820" top="13965" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   <PIN pinname="Text" visible="1" slicecount="1" values="284">
-   </PIN>
-   <PIN pinname="Format" visible="1">
-   </PIN>
-   <PIN pinname="Text Alignment" slicecount="1" values="Trailing">
-   </PIN>
-   <PIN pinname="Maximum Width" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="144" srcpinname="Output" dstnodeid="145" dstpinname="Text Layout">
-   </LINK>
    <NODE systemname="TextFormat (DirectWrite)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.Nodes.DirectWrite.dll" nodename="TextFormat (DirectWrite)" componentmode="Hidden" id="143">
    <BOUNDS type="Node" left="9015" top="13350" width="100" height="100">
    </BOUNDS>
@@ -1114,8 +1098,6 @@
    <PIN pinname="Font Size" slicecount="1" visible="1" values="15">
    </PIN>
    </NODE>
-   <LINK srcnodeid="143" srcpinname="Output" dstnodeid="144" dstpinname="Format">
-   </LINK>
    <NODE systemname="Translate (Transform)" nodename="Translate (Transform)" componentmode="Hidden" id="142">
    <BOUNDS type="Node" left="9120" top="12915" width="100" height="100">
    </BOUNDS>
@@ -1176,8 +1158,6 @@
    </NODE>
    <LINK srcnodeid="139" srcpinname="Output" dstnodeid="147" dstpinname="Input 1">
    </LINK>
-   <LINK srcnodeid="147" srcpinname="Output" dstnodeid="144" dstpinname="Text">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="148" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="10125" top="11715" width="795" height="240">
    </BOUNDS>
@@ -1194,8 +1174,6 @@
    <PIN pinname="Value Type" slicecount="1" values="Integer">
    </PIN>
    </NODE>
-   <LINK srcnodeid="148" srcpinname="Y Output Value" dstnodeid="144" dstpinname="Maximum Width">
-   </LINK>
    <NODE systemname="Subtract (Value)" nodename="Subtract (Value)" componentmode="Hidden" id="149">
    <BOUNDS type="Node" left="9105" top="12345" width="100" height="100">
    </BOUNDS>
@@ -1241,7 +1219,7 @@
    <NODE systemname="Text (DX11.Layer Advanced)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Text.dll" nodename="Text (DX11.Layer Advanced)" componentmode="Hidden" id="157">
    <BOUNDS type="Node" left="10380" top="14520" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Text Layout" visible="1">
+   <PIN pinname="Text Layout" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer" visible="1">
    </PIN>
@@ -1252,26 +1230,6 @@
    <PIN pinname="Enabled" slicecount="1" values="1">
    </PIN>
    </NODE>
-   <NODE systemname="TextLayout (DirectWrite)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.Nodes.DirectWrite.dll" nodename="TextLayout (DirectWrite)" componentmode="Hidden" id="156">
-   <BOUNDS type="Node" left="10560" top="13965" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   <PIN pinname="Text" visible="1" slicecount="1" values="214">
-   </PIN>
-   <PIN pinname="Format" visible="1">
-   </PIN>
-   <PIN pinname="Text Alignment" slicecount="1" values="Leading">
-   </PIN>
-   <PIN pinname="Paragraph Alignment" slicecount="1" values="Near">
-   </PIN>
-   <PIN pinname="Maximum Width" slicecount="1" values="200">
-   </PIN>
-   <PIN pinname="Maximum Height" slicecount="1" values="200">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="156" srcpinname="Output" dstnodeid="157" dstpinname="Text Layout">
-   </LINK>
    <NODE systemname="TextFormat (DirectWrite)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.Nodes.DirectWrite.dll" nodename="TextFormat (DirectWrite)" componentmode="Hidden" id="155">
    <BOUNDS type="Node" left="10740" top="13470" width="100" height="100">
    </BOUNDS>
@@ -1284,8 +1242,6 @@
    <PIN pinname="Word Wrapping" slicecount="1" values="NoWrap">
    </PIN>
    </NODE>
-   <LINK srcnodeid="155" srcpinname="Output" dstnodeid="156" dstpinname="Format">
-   </LINK>
    <NODE systemname="Translate (Transform)" nodename="Translate (Transform)" componentmode="Hidden" id="154">
    <BOUNDS type="Node" left="10845" top="13035" width="100" height="100">
    </BOUNDS>
@@ -1320,8 +1276,6 @@
    </LINK>
    <LINK srcnodeid="157" srcpinname="Layer" dstnodeid="123" dstpinname="Layer 4">
    </LINK>
-   <LINK srcnodeid="81" srcpinname="Output" dstnodeid="156" dstpinname="Text">
-   </LINK>
    <LINK srcnodeid="130" srcpinname="Y Output Value" dstnodeid="154" dstpinname="X">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="158" systemname="IOBox (Value Advanced)">
@@ -1353,7 +1307,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="10890" top="16830" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -1572,4 +1526,82 @@
    </LINK>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
    </PACK>
+   <NODE systemname="TextLayout (DirectWrite Advanced)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.Nodes.DirectWrite.dll" nodename="TextLayout (DirectWrite Advanced)" componentmode="Hidden" id="144">
+   <BOUNDS type="Node" left="8820" top="13965" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Text" visible="1" slicecount="1" values="284">
+   </PIN>
+   <PIN pinname="Format" visible="1">
+   </PIN>
+   <PIN pinname="Text Alignment" slicecount="1" values="Trailing">
+   </PIN>
+   <PIN pinname="Maximum Width" visible="1">
+   </PIN>
+   <PIN pinname="Apply" visible="1" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="144" srcpinname="Output" dstnodeid="145" dstpinname="Text Layout">
+   </LINK>
+   <LINK srcnodeid="143" srcpinname="Output" dstnodeid="144" dstpinname="Format">
+   </LINK>
+   <LINK srcnodeid="147" srcpinname="Output" dstnodeid="144" dstpinname="Text">
+   </LINK>
+   <LINK srcnodeid="148" srcpinname="Y Output Value" dstnodeid="144" dstpinname="Maximum Width">
+   </LINK>
+   <NODE systemname="Change (String)" nodename="Change (String)" componentmode="Hidden" id="175">
+   <BOUNDS type="Node" left="10080" top="12915" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Bang On Create" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="OnChange" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="175" srcpinname="OnChange" dstnodeid="144" dstpinname="Apply">
+   </LINK>
+   <LINK srcnodeid="147" srcpinname="Output" dstnodeid="175" dstpinname="Input">
+   </LINK>
+   <NODE systemname="TextLayout (DirectWrite Advanced)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.Nodes.DirectWrite.dll" nodename="TextLayout (DirectWrite Advanced)" componentmode="Hidden" id="156">
+   <BOUNDS type="Node" left="10560" top="13965" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Text" visible="1" slicecount="1" values="214">
+   </PIN>
+   <PIN pinname="Format" visible="1">
+   </PIN>
+   <PIN pinname="Text Alignment" slicecount="1" values="Leading">
+   </PIN>
+   <PIN pinname="Paragraph Alignment" slicecount="1" values="Near">
+   </PIN>
+   <PIN pinname="Maximum Width" slicecount="1" values="200">
+   </PIN>
+   <PIN pinname="Maximum Height" slicecount="1" values="200">
+   </PIN>
+   <PIN pinname="Apply" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="156" srcpinname="Output" dstnodeid="157" dstpinname="Text Layout">
+   </LINK>
+   <LINK srcnodeid="155" srcpinname="Output" dstnodeid="156" dstpinname="Format">
+   </LINK>
+   <LINK srcnodeid="81" srcpinname="Output" dstnodeid="156" dstpinname="Text">
+   </LINK>
+   <NODE systemname="Change (String)" nodename="Change (String)" componentmode="Hidden" id="176">
+   <BOUNDS type="Node" left="11835" top="12960" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Bang On Create" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="OnChange" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="81" srcpinname="Output" dstnodeid="176" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="176" srcpinname="OnChange" dstnodeid="156" dstpinname="Apply">
+   </LINK>
    </PATCH>

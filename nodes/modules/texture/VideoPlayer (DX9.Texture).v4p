@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="E:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\texture\VideoPlayer (DX9.Texture).v4p" systemname="VideoPlayer (DX9.Texture)" filename="E:\vvvv\mcropack\VVVV.Packs.mcro\nodes\Modules\VideoPlayer (DX9.Texture).v4p" scrollx="0" scrolly="5310">
-   <BOUNDS type="Window" left="3000" top="390" width="18840" height="14550">
+   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\texture\VideoPlayer (DX9.Texture).v4p" systemname="VideoPlayer (DX9.Texture)" filename="E:\vvvv\mcropack\VVVV.Packs.mcro\nodes\Modules\VideoPlayer (DX9.Texture).v4p" scrollx="4095" scrolly="1170">
+   <BOUNDS type="Window" left="8820" top="1050" width="18840" height="14550">
    </BOUNDS>
    <PACK Name="ImagePack" Version="0.1.0">
    </PACK>

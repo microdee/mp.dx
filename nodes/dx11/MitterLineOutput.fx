@@ -1,3 +1,6 @@
+
+#define ASP 1/(R/max(R.x,R.y));
+
 struct LineSegment
 {
 	float3 pos;
@@ -9,7 +12,7 @@ struct LineSegment
 StructuredBuffer<LineSegment> Inbuf;
 StructuredBuffer<uint> Address;
 
-Texture2D texture2d <string uiname="Texture";>;
+Texture2DArray texture2d <string uiname="Texture";>;
 
 SamplerState g_samLinear <string uiname="Sampler State";>
 {
@@ -22,6 +25,7 @@ SamplerState g_samLinear <string uiname="Sampler State";>
 cbuffer cbPerDraw : register( b0 )
 {
 	float4x4 tVP : VIEWPROJECTION;
+	float2 R : TARGETSIZE;
 };
 
 
@@ -42,7 +46,7 @@ struct GSIn
 {
 	float4 cpoint : POSITION;
 	float p : PROGRESS;
-	float id : BINID;
+	nointerpolation float id : BINID;
 };
 
 struct GsOut
@@ -50,7 +54,7 @@ struct GsOut
 	float4 cpoint : SV_Position;
 	float3 norm : NORMAL;
     float4 TexCd: TEXCOORD0;
-	float id : BINID;
+	nointerpolation float id : BINID;
 };
 
 GSIn Vs(uint vid : SV_VertexID)
@@ -61,6 +65,7 @@ GSIn Vs(uint vid : SV_VertexID)
 	float4 outpos = mul(float4(ins.pos, 1), mul(tW, tVP));
 	o.cpoint.xyz = outpos.xyz / outpos.w;
 	o.cpoint.w = ins.size / outpos.w;
+	o.cpoint.xy /= ASP;
 	o.p = ins.prog;
 	o.id = ins.id;
 	
@@ -73,6 +78,7 @@ float Angle(float2 a, float2 b)
 {
 	return atan2(b.y, b.x)-atan2(a.y, a.x);
 }
+
 [maxvertexcount(4)]
 void Gs(lineadj GSIn input[4], inout TriangleStream<GsOut>GSOut)
 {
@@ -136,11 +142,14 @@ void Gs(lineadj GSIn input[4], inout TriangleStream<GsOut>GSOut)
 		txcd[2].x = input[2].p;
 		txcd[3].x = input[2].p;
 	
+		GsOut v = (GsOut)0;
+		v.id = input[0].id;
+		
 		for(uint i=0; i<4; i++)
 		{
 			float idepth = (i < 2) ? input[1].cpoint.z : input[2].cpoint.z;
-			GsOut v = (GsOut)0;
 			v.cpoint = float4(vert[i], idepth, 1);
+			v.cpoint.xy *= ASP;
 			v.norm = float3(0,0,1);
 			v.TexCd = mul(float4(txcd[i], 0, 1), tTex);
 			GSOut.Append(v);
@@ -152,7 +161,7 @@ void Gs(lineadj GSIn input[4], inout TriangleStream<GsOut>GSOut)
 
 float4 PS(GsOut In): SV_Target
 {
-    float4 col = texture2d.Sample(g_samLinear,In.TexCd.xy) * cAmb;
+    float4 col = texture2d.SampleLevel(g_samLinear,float3(In.TexCd.xy, In.id),0) * cAmb;
 	col = mul(col, tColor);
 	col.a *= Alpha;
     return col;

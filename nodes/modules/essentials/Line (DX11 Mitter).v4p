@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
-   <PATCH nodename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" systemname="Line (DX11 Mitter)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" scrollx="0" scrolly="-360">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
+   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" systemname="Line (DX11 Mitter)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" scrollx="915" scrolly="8520">
    <BOUNDS type="Window" left="40320" top="2325" width="14385" height="11625">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.1.0">
+   <PACK Name="addonpack" Version="34.101.0">
    </PACK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="1" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="705" top="375" width="795" height="720">
@@ -495,7 +495,7 @@
    </PIN>
    <PIN pinname="Query" visible="1">
    </PIN>
-   <PIN pinname="Enabled" slicecount="1" values="1" visible="1">
+   <PIN pinname="Enabled" slicecount="1" visible="1" values="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="19" srcpinname="Layer" dstnodeid="52" dstpinname="Layer">
@@ -739,7 +739,9 @@
    </BOUNDS>
    <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
    </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Texture">
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Texture Array|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="67" srcpinname="Output Node" dstnodeid="55" dstpinname="Texture">
@@ -761,7 +763,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4140" top="12375" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.16">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.003">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -1033,7 +1035,7 @@
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
-   <PIN pinname="Execute" slicecount="1" values="0" visible="1">
+   <PIN pinname="Execute" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>

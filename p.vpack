@@ -1,4 +1,3 @@
-<!DOCTYPE vpack SYSTEM "https://raw.githubusercontent.com/microdee/md.ecosystem/master/vpm/vpack-1.0.dtd" >
 <vpack>
 	<meta>
 		<name>mp.dx</name>
@@ -15,7 +14,7 @@
 			</dependency>
 			<dependency>
 				<name>dx11-vvvv</name>
-				<source>https://raw.githubusercontent.com/microdee/md.ecosystem/master/vpm/vpdb/vux/dx11-vvvv/master.csx</source>
+				<source>https://raw.githubusercontent.com/microdee/vpm/master/vpdb/vux/dx11-vvvv/github.master.csx</source>
 				<aliases>dx11, vvvv-dx11</aliases>
 			</dependency>
 		</dependencies>

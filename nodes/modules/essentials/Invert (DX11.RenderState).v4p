@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="E:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Invert (DX11.RenderState).v4p" systemname="InverterRenderState" filename="C:\vvvv\CA-1-WXHM\InverterRenderState.v4p" scrollx="0" scrolly="0">
+   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\Invert (DX11.RenderState).v4p" systemname="InverterRenderState" filename="C:\vvvv\CA-1-WXHM\InverterRenderState.v4p" scrollx="0" scrolly="0">
    <BOUNDS type="Window" left="12990" top="3255" width="6810" height="6210">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -11,7 +11,7 @@
    </BOUNDS>
    <PIN pinname="Render State" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="Operation" slicecount="1" values="Subtract" visible="1">
+   <PIN pinname="Operation" slicecount="1" visible="1" values="Subtract">
    </PIN>
    <PIN pinname="Alpha Operation" slicecount="1" values="Maximum">
    </PIN>

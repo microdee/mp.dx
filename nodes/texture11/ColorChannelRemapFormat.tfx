@@ -1,4 +1,7 @@
 #include "../../../mp.fxh/ColorSpace.fxh"
+#if !defined(PASSFORMAT0)
+#define PASSFORMAT0 "R32G32B32A32_Float"
+#endif
 
 interface iChannel{
    float Channel(float4 c); 
@@ -90,7 +93,7 @@ float4 pCHANNELS(float4 PosWVP: SV_POSITION,float2 x: TEXCOORD0):SV_Target{
 }
 
 technique10 ChannelRemap{
-	pass P1 <string format="R32G32B32A32_Float";>
+	pass P1 <string format=PASSFORMAT0;>
 	{SetPixelShader(CompileShader(ps_5_0,pCHANNELS()));}
 }
 

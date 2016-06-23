@@ -3,6 +3,10 @@
 //@tags: texture
 //@credits: 
 
+#if !defined(PASSFORMAT0)
+#define PASSFORMAT0 "R32G32B32A32_Float"
+#endif
+
 Texture2D<uint4> texture2d : PREVIOUS;
 
 struct psInput
@@ -19,7 +23,7 @@ float4 PS_R(psInput input) : SV_Target
 	float stencilvalue = texture2d.Load(int3(input.p.xy,0)).r;	
 	
 	//Downscale since stencil value is 0->255
-	return stencilvalue *scale;
+	return float4((stencilvalue*scale).xxx,1);
 }
 float4 PS_G(psInput input) : SV_Target
 {
@@ -27,19 +31,19 @@ float4 PS_G(psInput input) : SV_Target
 	float stencilvalue = texture2d.Load(int3(input.p.xy,0)).g;	
 	
 	//Downscale since stencil value is 0->255
-	return stencilvalue *scale;
+	return float4((stencilvalue*scale).xxx,1);
 }
 
 technique10 G
 {
-	pass P0 <string format="R16G16B16A16_Float";>
+	pass P0 <string format=PASSFORMAT0;>
 	{
 		SetPixelShader(CompileShader(ps_4_0,PS_G()));
 	}
 }
 technique10 R
 {
-	pass P0 <string format="R16G16B16A16_Float";>
+	pass P0 <string format=PASSFORMAT0;>
 	{
 		SetPixelShader(CompileShader(ps_4_0,PS_R()));
 	}

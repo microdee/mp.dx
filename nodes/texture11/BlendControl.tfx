@@ -1,4 +1,5 @@
-Texture2D tex0: PREVIOUS;
+
+Texture2D tex0 <string uiname="Texture In 1";>;
 Texture2D tex1 <string uiname="Texture In 2";>;
 Texture2D tex2 <string uiname="Control";>;
 SamplerState s0 <bool visible=false;string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};

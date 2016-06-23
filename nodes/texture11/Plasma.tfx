@@ -20,7 +20,8 @@ float3 lungth(float2 x,float3 c){
 	
 float4 pPlasma(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
     float4 c=0;
-    x=mul(float4(x,0,1),Transform).xyz;
+    float4 x2 = mul(float4(x,0,1),Transform);
+	x=x2.xy / x2.w;
     x+=sin(x.yx*sqrt(float2(13,9)))/5;
     c.rgb=lungth(sin(x*sqrt(float2(33,43))),float3(5,6,7)*Saturation);
     x+=sin(x.yx*sqrt(float2(73,53)))/5;

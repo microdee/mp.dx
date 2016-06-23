@@ -1,5 +1,5 @@
 
-#define ASP 1/(R/max(R.x,R.y));
+#define ASP 1/(R/max(R.x,R.y))
 
 struct LineSegment
 {

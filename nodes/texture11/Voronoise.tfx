@@ -1,0 +1,60 @@
+//@author: 
+//@help: 
+//@tags: source
+//@credits:
+
+float2 R:TARGETSIZE;
+
+cbuffer controls:register(b0){
+	float4x4 Transform;
+	float4 ColorA <bool color=true; string uiname="Black";> ={0,0,0,1};
+	float4 ColorB <bool color=true; string uiname="White";> ={1,1,1,1};
+	float2 Size = 24;
+	float Voronoi = 0;
+	float Blur = 0;
+};
+
+float3 hash3( float2 p )
+{
+    float3 q = float3( dot(p,float2(127.1,311.7)), 
+				   dot(p,float2(269.5,183.3)), 
+				   dot(p,float2(419.2,371.9)) );
+	return frac(sin(q)*43758.5453);
+}
+
+float iqnoise( float2 x, float u, float v )
+{
+    float2 p = floor(x);
+    float2 f = frac(x);
+		
+	float k = 1.0+63.0*pow(1.0-v,4.0);
+	
+	float va = 0.0;
+	float wt = 0.0;
+    for( int j=-2; j<=2; j++ )
+    for( int i=-2; i<=2; i++ )
+    {
+        float2 g = float2( (float)i,(float)j );
+		float3 o = hash3( p + g )*float3(u,u,1.0);
+		float2 r = g - f + o.xy;
+		float d = dot(r,r);
+		float ww = pow( saturate(1.0-smoothstep(0.0,1.414,sqrt(d))), k );
+		va += o.z*ww;
+		wt += ww;
+    }
+	
+    return va/wt;
+}
+
+float4 pIqn(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0):SV_Target{
+
+	float4 uvr = mul(float4(uv,0,1),Transform);
+	uvr.xy /= uvr.w;
+	float f = iqnoise(Size*uvr.xy, Voronoi, Blur);
+	return lerp (ColorA, ColorB, f);
+}
+
+technique10 IQnoise{
+	pass P0
+	{SetPixelShader(CompileShader(ps_4_0,pIqn()));}
+}

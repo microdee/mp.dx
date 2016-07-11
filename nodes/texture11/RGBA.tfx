@@ -4,7 +4,7 @@ Texture2D Btex <string uiname="Blue";>;
 Texture2D Atex <string uiname="Alpha";>;
 Texture2D TexArray[4] <string uiname="Spread";>;
 
-#include "../../../mp.fxh/ColorSpace.fxh"
+#include <packs/mp.fxh/ColorSpace.fxh>
 
 SamplerState s0 <bool visible=false;string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
 float2 R:TARGETSIZE;

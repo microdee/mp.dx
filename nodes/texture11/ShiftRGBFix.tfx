@@ -3,7 +3,7 @@
 //@tags: filter
 //@credits:
 
-#include "../../../mp.fxh/ColorSpace.fxh"
+#include <packs/mp.fxh/ColorSpace.fxh>
 
 Texture2D tex0: PREVIOUS;
 Texture2D tex1 <string uiname="Control";>;

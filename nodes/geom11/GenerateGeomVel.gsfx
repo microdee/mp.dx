@@ -3,7 +3,7 @@
 #define PREVPOS_OUT 1
 #endif
 
-#include "../../../mp.fxh/MREInputElements.fxh"
+#include <packs/mp.fxh/MREInputElements.fxh>
 
 ByteAddressBuffer BuffA;
 ByteAddressBuffer BuffB;

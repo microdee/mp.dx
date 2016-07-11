@@ -3,8 +3,8 @@
 #define PREVPOS_OUT
 #endif
 
-#include "../../../mp.fxh/MREInputElements.fxh"
-#include "../../../mp.fxh/GetMergedID.fxh"
+#include <packs/mp.fxh/MREInputElements.fxh>
+#include <packs/mp.fxh/GetMergedID.fxh>
 
 StructuredBuffer<uint> SubsetTriangleCount;
 float GeomCount = 1;

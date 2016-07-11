@@ -1,6 +1,6 @@
 Texture2D tex0: PREVIOUS;
 float2 R:TARGETSIZE;
-#include "../../../mp.fxh/pows.fxh"
+#include <packs/mp.fxh/pows.fxh>
 
 cbuffer controls:register(b0){
 	float3 Add=0;

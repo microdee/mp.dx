@@ -1,4 +1,4 @@
-#include "../../../mp.fxh/ColorSpace.fxh"
+#include <packs/mp.fxh/ColorSpace.fxh>
 #if !defined(PASSFORMAT0)
 #define PASSFORMAT0 "R32G32B32A32_Float"
 #endif

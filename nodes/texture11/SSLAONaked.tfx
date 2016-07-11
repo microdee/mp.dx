@@ -1,5 +1,5 @@
 
-#include "../../../mp.fxh/depthreconstruct.fxh"
+#include <packs/mp.fxh/depthreconstruct.fxh>
 
 Texture2D<float> Depth: PREVIOUS;
 Texture2D Noise;

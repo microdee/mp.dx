@@ -9,7 +9,7 @@
 #define PREVPOS_OUT 1
 #endif
 
-#include "../../../mp.fxh/MREInputElements.fxh"
+#include <packs/mp.fxh/MREInputElements.fxh>
 
 StructuredBuffer<float2> TimeP;
 Texture2D<float4> Matrices;

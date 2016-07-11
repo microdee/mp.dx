@@ -1,6 +1,6 @@
 //Sprite size and color
-#include "../../../mp.fxh/ColorSpace.fxh"
-#include "../../../mp.fxh/pows.fxh"
+#include <packs/mp.fxh/ColorSpace.fxh>
+#include <packs/mp.fxh/pows.fxh>
 
 Texture2D tex <string uiname="Texture";>;
 float2 R = 256;

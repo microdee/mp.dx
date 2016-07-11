@@ -1,6 +1,6 @@
 //Sprite size and color
-#include "../../../mp.fxh/ColorSpace.fxh"
-#include "../../../mp.fxh/pows.fxh"
+#include <packs/mp.fxh/ColorSpace.fxh>
+#include <packs/mp.fxh/pows.fxh>
 float spritesize <string uiname="Sprite Size";> = 0.01f;
 float4 spritecolor <string uiname="Sprite Color"; bool color=true;> = 1;
 

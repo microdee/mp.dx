@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta33.7.dtd" >
-   <PATCH nodename="C:\vvvv\libs\mcropack\nodes\modules\ReadBackBoundingBox (DX11.Geometry).v4p" systemname="ReadBackBoundingBox (DX11.Geometry)" filename="C:\vvvv\libs\mcropack\nodes\Modules\ReadBackBoundingBox (DX11.Geometry).v4p" scrollx="0" scrolly="1425">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
+   <PATCH nodename="F:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\geometry\ReadBackBoundingBox (DX11.Geometry).v4p" systemname="ReadBackBoundingBox (DX11.Geometry)" filename="C:\vvvv\libs\mcropack\nodes\Modules\ReadBackBoundingBox (DX11.Geometry).v4p" scrollx="0" scrolly="1425">
    <BOUNDS type="Window" left="2385" top="2820" width="9000" height="6000">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="33.7.0">
+   <PACK Name="addonpack" Version="34.101.0">
    </PACK>
    <NODE systemname="ReadBack (DX11.Buffer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="ReadBack (DX11.Buffer)" componentmode="Hidden" id="10">
    <BOUNDS type="Node" left="2190" top="1620" width="810" height="270">
@@ -118,6 +118,8 @@
    <PIN pinname="Input" visible="1">
    </PIN>
    <PIN pinname="Width" visible="1">
+   </PIN>
+   <PIN pinname="Error Handling Style" slicecount="1" values="Ignore">
    </PIN>
    </NODE>
    <LINK srcnodeid="10" srcpinname="Output 1XYZ" dstnodeid="2" dstpinname="Input">
@@ -264,4 +266,6 @@
    </NODE>
    <LINK srcnodeid="17" srcpinname="Y Output Value" dstnodeid="3" dstpinname="Bin Size">
    </LINK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
    </PATCH>

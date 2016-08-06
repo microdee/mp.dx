@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\TextBlock (DX11).v4p" systemname="TextBlock (DX11)" filename="C:\vvvv\libs\VObjects\nodes\modules\GUI\TextBlock (DX11).v4p" scrollx="0" scrolly="1590">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
+   <PATCH nodename="F:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\essentials\TextBlock (DX11).v4p" systemname="TextBlock (DX11)" filename="C:\vvvv\libs\VObjects\nodes\modules\GUI\TextBlock (DX11).v4p" scrollx="0" scrolly="2685">
    <BOUNDS type="Window" left="5625" top="7140" width="14970" height="10140">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
@@ -20,7 +20,7 @@
    <PIN pinname="Color" slicecount="1" visible="1" values="|1.00000,1.00000,1.00000,1.00000|">
    </PIN>
    </NODE>
-   <NODE systemname="GUIPixelBillboard (Transform)" filename="..\..\..\..\mp.essentials\nodes\modules\transform\GUIPixelBillboard (Transform).v4p" nodename="GUIPixelBillboard (Transform)" componentmode="Hidden" id="25">
+   <NODE systemname="GUIPixelBillboard (Transform)" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\GUIPixelBillboard (Transform).v4p" nodename="GUIPixelBillboard (Transform)" componentmode="Hidden" id="25">
    <BOUNDS type="Node" left="4245" top="4200" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Receive String" slicecount="1" visible="1" values="Resolution">
@@ -370,7 +370,7 @@
    </LINK>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <NODE systemname="SuppressDiagonals (DX11.Effect)" filename="..\..\dx11\SuppressDiagonals.fx" nodename="SuppressDiagonals (DX11.Effect)" componentmode="Hidden" id="41">
+   <NODE systemname="SuppressDiagonals (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\SuppressDiagonals.fx" nodename="SuppressDiagonals (DX11.Effect)" componentmode="Hidden" id="41">
    <BOUNDS type="Node" left="4860" top="11445" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Geometry" visible="1">
@@ -824,7 +824,7 @@
    </NODE>
    <LINK srcnodeid="68" srcpinname="Output Node" dstnodeid="66" dstpinname="Transform In 3">
    </LINK>
-   <NODE systemname="Invert (DX11.RenderState)" filename="Invert (DX11.RenderState).v4p" nodename="Invert (DX11.RenderState)" componentmode="Hidden" id="69">
+   <NODE systemname="Invert (DX11.RenderState)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\Invert (DX11.RenderState).v4p" nodename="Invert (DX11.RenderState)" componentmode="Hidden" id="69">
    <BOUNDS type="Node" left="5010" top="10530" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Render State" visible="1" slicecount="1" values="||">
@@ -832,4 +832,6 @@
    </NODE>
    <LINK srcnodeid="69" srcpinname="Render State" dstnodeid="41" dstpinname="Render State">
    </LINK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
    </PATCH>

@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\Invert (DX11.RenderState).v4p" systemname="InverterRenderState" filename="C:\vvvv\CA-1-WXHM\InverterRenderState.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="12990" top="3255" width="6810" height="6210">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
+   <PATCH nodename="F:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\essentials\Invert (DX11.RenderState).v4p" systemname="InverterRenderState" filename="C:\vvvv\CA-1-WXHM\InverterRenderState.v4p" scrollx="0" scrolly="-360">
+   <BOUNDS type="Window" left="30855" top="2775" width="6810" height="6210">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
@@ -13,7 +13,7 @@
    </PIN>
    <PIN pinname="Operation" slicecount="1" visible="1" values="Subtract">
    </PIN>
-   <PIN pinname="Alpha Operation" slicecount="1" values="Maximum">
+   <PIN pinname="Alpha Operation" slicecount="1" values="Add" visible="1">
    </PIN>
    <PIN pinname="Enabled" slicecount="1" visible="1" values="1">
    </PIN>
@@ -29,11 +29,11 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="1" systemname="IOBox (Enumerations)">
-   <BOUNDS type="Box" left="1950" top="2505" width="1995" height="240">
+   <BOUNDS type="Box" left="2220" top="2505" width="1995" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="1950" top="2505" width="0" height="0">
+   <BOUNDS type="Node" left="2220" top="2505" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="1" visible="1" values="InverseSourceAlpha">
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="InverseDestinationColor">
    </PIN>
    </NODE>
    <LINK srcnodeid="1" srcpinname="Output Enum" dstnodeid="2" dstpinname="Destination Blend">
@@ -107,6 +107,8 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="Enabled">
    </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="6" srcpinname="Y Output Value" dstnodeid="2" dstpinname="Enabled">
    </LINK>
@@ -120,4 +122,16 @@
    </NODE>
    <LINK srcnodeid="7" srcpinname="Output Enum" dstnodeid="2" dstpinname="Operation">
    </LINK>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="8" systemname="IOBox (Enumerations)">
+   <BOUNDS type="Box" left="2685" top="915" width="1275" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2685" top="915" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="Maximum">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="8" srcpinname="Output Enum" dstnodeid="2" dstpinname="Alpha Operation">
+   </LINK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
    </PATCH>

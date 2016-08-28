@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PreviousMatrices (DX11).v4p" systemname="PreviousMatrices (DX11)" filename="E:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\PreviousMatrices (DX11).v4p" scrollx="555" scrolly="-360">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\essentials\PreviousMatrices (DX11).v4p" systemname="PreviousMatrices (DX11)" filename="E:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\PreviousMatrices (DX11).v4p" scrollx="555" scrolly="-360">
    <BOUNDS type="Window" left="6810" top="5550" width="5595" height="5340">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -88,7 +88,7 @@
    </NODE>
    <LINK srcnodeid="0" srcpinname="Layer Out" dstnodeid="16" dstpinname="Input Node">
    </LINK>
-   <NODE systemname="PreviousMatrices (DX11.Semantics)" filename="PreviousMatrices (DX11.Semantics).v4p" nodename="PreviousMatrices (DX11.Semantics)" componentmode="Hidden" id="17">
+   <NODE systemname="PreviousMatrices (DX11.Semantics)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\PreviousMatrices (DX11.Semantics).v4p" nodename="PreviousMatrices (DX11.Semantics)" componentmode="Hidden" id="17">
    <BOUNDS type="Node" left="2160" top="1635" width="100" height="100">
    </BOUNDS>
    <PIN pinname="View" visible="1">
@@ -110,4 +110,6 @@
    </LINK>
    <LINK srcnodeid="17" srcpinname="Output" dstnodeid="0" dstpinname="Custom Semantics">
    </LINK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
    </PATCH>

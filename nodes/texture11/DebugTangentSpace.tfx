@@ -1,0 +1,39 @@
+Texture2D tex0: PREVIOUS;
+Texture2D<uint4> Tangent;
+
+#include <packs/mp.fxh/bitwise.fxh>
+
+
+cbuffer controls:register(b0){
+	float2 R:TARGETSIZE;
+	uint vec = 0;
+};
+
+#define bld(op,c0,c1) float4(lerp((c0*c0.a+c1*c1.a*(1-c0.a))/saturate(c0.a+c1.a*(1-c0.a)),(op),c0.a*c1.a).rgb,saturate(c0.a+c1.a*(1-c0.a)))
+
+float4 pMIX(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
+	float2 puv = x*R;
+	uint4 c1=Tangent.Load(int3((int2)puv, 0));
+	
+	float2 d0 = Split(c1.x);
+	float2 d1 = Split(c1.y);
+	float2 d2 = Split(c1.z);
+	if(vec == 0)
+	{
+		return float4(d0, d1.x, 1)*0.5+0.5;
+	}
+	if(vec == 1)
+	{
+		return float4(d1.y, d2, 1)*0.5+0.5;
+	}
+	if(vec == 2)
+	{
+		float3 tang = float3(d0, d1.x);
+		float3 bing = float3(d1.y, d2);
+		return float4(cross(tang, bing), 1)*0.5+0.5;
+	}
+    return 0;
+}
+
+
+technique10 Mix{pass P1{SetPixelShader(CompileShader(ps_5_0,pMIX()));}}

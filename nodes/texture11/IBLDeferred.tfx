@@ -1,0 +1,119 @@
+//@author:
+//@help:
+//@tags: filter
+//@credits:
+
+#if !defined(PASSFORMAT0)
+#define PASSFORMAT0 "R16G16B16A16_Float"
+#endif
+
+#define DISCSAMPLES 4
+#define DIFFENVSRC Environment
+
+#include <packs/mp.fxh/depthreconstruct.fxh>
+#include <packs/mp.fxh/AnisotropicEnvSample.fxh>
+#include <packs/mp.fxh/DiscSample.fxh>
+#include <packs/mp.fxh/quaternion.fxh>
+
+Texture2D Albedo : PREVIOUS;
+//rgb: normal, a: matid
+Texture2D Normal : NORMAL;
+Texture2D Tang : TANGENT;
+Texture2D Bing : BITANGENT;
+Texture2D VelUV : VELUV;
+Texture2D<float> Depth : UDEPTH;
+Texture2D<uint4> stencil : USTENCIL;
+Texture2DArray RoughMetal; // == Params
+Texture2D Environment;
+
+StructuredBuffer<float4> Params; // xy: rough, z: tanrot w: metal
+StructuredBuffer<float> TexID;
+
+float2 R:TARGETSIZE;
+
+cbuffer controls:register(b0)
+{
+	float4x4 EnvTr;
+	float BckgEnv = 0;
+    float diffbluradd <string uiname="Non-metal Diffuse Blur Offset";> = 0.5;
+	
+};
+cbuffer semantics:register(b1)
+{
+    float4x4 tV : CVIEW;
+    float4x4 tVI : CVIEWINV;
+    float4x4 tP : CPROJ;
+    float4x4 tPI : CPROJINV;
+};
+
+SamplerState sT <bool visible=true;string uiname="Texture Sampler";>
+{
+    Filter=MIN_MAG_MIP_LINEAR;
+    AddressU=WRAP;
+    AddressV=WRAP;
+};
+SamplerState sE <bool visible=true;string uiname="Environment Sampler";>
+{
+    Filter=MIN_MAG_MIP_LINEAR;
+    AddressU=WRAP;
+    AddressV=WRAP;
+};
+
+float4 pIBL(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
+    int3 puv = int3((int2)(x*R), 0);
+    uint4 stcl = stencil.Load(puv);
+    float3 posV = UVZtoVIEW(x, Depth.Load(puv), tP, tPI);
+    if(any(stcl > 0))
+    {
+        float4 albedoin = Albedo.Load(puv);
+        float4 normid = Normal.Load(puv);
+        float2 uvin = VelUV.Load(puv).zw;
+        float3 tanin = Tang.Load(puv).xyz*2-1;
+        float3 binin = Bing.Load(puv).xyz*2-1;
+        float3 tnormin = normalize(cross(tanin, binin));
+        float ii = normid.w;
+        float ti = TexID[ii];
+
+        float4 roughmetal = RoughMetal.Sample(sT, float3(uvin, ti));
+        float2 rough = Params[ii].xy * roughmetal.rg;
+        float rot = Params[ii].z * roughmetal.b;
+        float metal = Params[ii].w * roughmetal.a;
+        float4 col = albedoin;
+    	float3 norm = normid.xyz*2-1;
+        float3 eye = normalize(posV);
+    	float4x4 dirm = mul(EnvTr, tVI);
+        float3 rdir = mul(float4(reflect(eye, norm), 0), dirm).xyz;
+
+    	float mipl, nope;
+    	Environment.GetDimensions(0, nope, nope, mipl);
+        mipl = max(0, mipl-1);
+
+    	float3 rtan = normalize(mul(float4(tanin, 0), qrot(aa2q(tnormin, rot*2))).xyz);
+    	float3 rbin = normalize(mul(float4(binin, 0), qrot(aa2q(tnormin, rot*2))).xyz);
+        rtan = mul(float4(rtan, 0), tVI).xyz;
+        rbin = mul(float4(rbin, 0), tVI).xyz;
+
+    	float3 EnvSharp = AnisotropicSample(Environment, sE, rdir, rtan, rbin, rough, 1, mipl).rgb;
+    	float3 EnvNm = 0;
+        if(metal < 1)
+    	{
+    		float nmrough = (rough.x+rough.y)/2;
+    		EnvNm = DiscSample(DIFFENVSRC, sE, rdir, (nmrough * 0.5) + diffbluradd, mipl).rgb;
+    		//EnvNm = AnisotropicSample(DIFFENVSRC, sE, rdir, rtan, rbin, (rough * 0.5) + diffbluradd, 0.25, mipl).rgb;
+    	}
+
+        col.rgb = lerp(max(col.rgb * EnvNm, (EnvSharp-EnvNm) * col.rgb), col.rgb * EnvSharp, metal);
+        float fresnel = pow(abs(dot(norm, eye)), 0.5 );
+        col.rgb = lerp(EnvSharp, col.rgb, fresnel);
+        return col;
+    }
+    else
+	{
+    	float4x4 dirm = mul(EnvTr, tVI);
+		float3 dir = mul(float4(normalize(posV), 0), dirm).xyz;
+		return Environment.SampleLevel(sE, DirToUV(dir), 0)*BckgEnv;
+	}
+}
+technique10 IBL{
+	pass P0{SetPixelShader(CompileShader(ps_4_0,pIBL()));}
+}

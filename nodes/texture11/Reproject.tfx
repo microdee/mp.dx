@@ -1,0 +1,33 @@
+Texture2D tex0: PREVIOUS;
+Texture2D<float> depth <string uiname="Depth";>;
+Texture2D<float> pdepth <string uiname="Previous Depth";>;
+Texture2D feed <string uiname="Feedback Texture";>;
+#include <packs/mp.fxh/depthreconstruct.fxh>
+
+SamplerState s0 <string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
+float2 R:TARGETSIZE;
+
+cbuffer controls:register(b0){
+    float4x4 tVI : CVIEWINV;
+    float4x4 tP : CPROJ;
+    float4x4 tPI : CPROJINV;
+    float4x4 ptVI : CPVIEWINV;
+    float4x4 ptP : CPPROJ;
+    float4x4 ptPI : CPPROJINV;
+	float Feedback = 0.9;
+};
+
+#define bld(op,c0,c1) float4(lerp((c0*c0.a+c1*c1.a*(1-c0.a))/saturate(c0.a+c1.a*(1-c0.a)),(op),c0.a*c1.a).rgb,saturate(c0.a+c1.a*(1-c0.a)))
+
+float4 pMIX(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
+	float cd=depth.SampleLevel(s0,x,0);
+	float pd=pdepth.SampleLevel(s0,x,0);
+	float3 cpos = UVZtoWORLD(x, cd, tVI, tP, tPI);
+	float3 ppos = UVZtoWORLD(x, pd, ptVI, ptP, ptPI);
+	float4 f=feed.SampleLevel(s0,x,0);
+	float4 c0=lerp(f, tex0.SampleLevel(s0,x,0), ((distance(cpos, ppos) > 0.0001) ? 1 : 0)*Feedback+(1-Feedback));
+    return float4(c0.rgb, 1);
+}
+
+
+technique10 Mix{pass P1{SetPixelShader(CompileShader(ps_4_0,pMIX()));}}

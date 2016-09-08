@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11).v4p" systemname="PBRIBL (DX11)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11).v4p" scrollx="900" scrolly="1305">
+   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11).v4p" systemname="PBRIBL (DX11)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11).v4p" scrollx="0" scrolly="1260">
    <BOUNDS type="Window" left="16140" top="2910" width="11865" height="12405">
    </BOUNDS>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
@@ -128,6 +128,8 @@
    <PIN pinname="EnvTr" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="BckgEnv" visible="1">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" values="1">
    </PIN>
    </NODE>
    <NODE systemname="IOBox (String)" nodename="IOBox (String)" componentmode="InABox" id="15">
@@ -288,6 +290,8 @@
    <PIN pinname="Reproject" visible="1">
    </PIN>
    <PIN pinname="Enabled" visible="1" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="High Frequency Pass" visible="1">
    </PIN>
    </NODE>
    <NODE systemname="GetSlice (Node)" nodename="GetSlice (Node)" componentmode="Hidden" id="6">
@@ -555,7 +559,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4485" top="13230" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.06">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.33">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -603,7 +607,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4980" top="15090" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="10">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="16">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -633,11 +637,11 @@
    <LINK srcnodeid="39" srcpinname="Y Output Value" dstnodeid="7" dstpinname="RandomSeed">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="40" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="5235" top="16305" width="480" height="480">
+   <BOUNDS type="Box" left="6870" top="16335" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="5235" top="16305" width="0" height="0">
+   <BOUNDS type="Node" left="6870" top="16335" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -935,7 +939,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="8100" top="5955" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -945,5 +949,47 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="66" srcpinname="Y Output Value" dstnodeid="16" dstpinname="BckgEnv">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="67" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="5880" top="16050" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5880" top="16050" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|High Frequency Pass|">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="67" srcpinname="Y Output Value" dstnodeid="7" dstpinname="High Frequency Pass">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="68" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="5895" top="17115" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5895" top="17115" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="68" srcpinname="Y Output Value" dstnodeid="7" dstpinname="Enabled">
    </LINK>
    </PATCH>

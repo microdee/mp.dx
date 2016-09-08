@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PerfMeter2 (DX11.Debug).v4p" systemname="PerfMeter2 (DX11.Debug)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\PerfMeter2\PerfMeter2 (DX11.Debug).v4p" scrollx="0" scrolly="8265">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\essentials\PerfMeter2 (DX11.Debug).v4p" systemname="PerfMeter2 (DX11.Debug)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\PerfMeter2\PerfMeter2 (DX11.Debug).v4p" scrollx="0" scrolly="8265">
    <BOUNDS type="Window" left="2775" top="1725" width="13680" height="12180">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -108,7 +108,7 @@
    <PIN pinname="Render State" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <NODE systemname="SequentialAdd (Value)" filename="..\..\..\..\mp.essentials\nodes\plugins\value\ValueSequentialAdd\ValueSequentialAdd.csproj" nodename="SequentialAdd (Value)" componentmode="Hidden" id="50">
+   <NODE systemname="SequentialAdd (Value)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\value\ValueSequentialAdd\ValueSequentialAdd.csproj" nodename="SequentialAdd (Value)" componentmode="Hidden" id="50">
    <BOUNDS type="Node" left="1800" top="2430" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
@@ -1392,6 +1392,8 @@
    <PIN pinname="Layer Out" visible="1">
    </PIN>
    <PIN pinname="Layer 1" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" values="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="90" srcpinname="Layer Out" dstnodeid="166" dstpinname="Layer 2">

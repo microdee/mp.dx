@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
-   <PATCH nodename="E:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\texture\SetSlice (DX11.Texture2DArray).v4p" systemname="SetSlice (DX11 Texture2DArray)" filename="C:\vvvv\libs\mcropack\nodes\Modules\SetSlice (DX11 Texture2DArray).v4p" scrollx="0" scrolly="360">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\texture\SetSlice (DX11.Texture2DArray).v4p" systemname="SetSlice (DX11 Texture2DArray)" filename="C:\vvvv\libs\mcropack\nodes\Modules\SetSlice (DX11 Texture2DArray).v4p" scrollx="615" scrolly="1950">
    <BOUNDS type="Window" left="14505" top="5865" width="9735" height="8820">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.1.0">
+   <PACK Name="addonpack" Version="34.101.0">
    </PACK>
    <NODE systemname="SetSlice (DX11.Effect)" filename="..\..\dx11\SetSlice.fx" nodename="SetSlice (DX11.Effect)" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="2595" top="6255" width="100" height="100">
@@ -57,7 +57,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="2205" top="1095" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="1" visible="1" values="R16_Float">
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="R16G16B16A16_Float">
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Target Format|">
    </PIN>
@@ -91,7 +91,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="3780" top="2055" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="2">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -388,32 +388,6 @@
    </NODE>
    <LINK srcnodeid="23" srcpinname="Y Output Value" dstnodeid="1" dstpinname="Bind Whole Target">
    </LINK>
-   <NODE systemname="Validator (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Validator (DX11.Layer)" componentmode="Hidden" id="24">
-   <BOUNDS type="Node" left="2565" top="7335" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Validators" visible="1">
-   </PIN>
-   <PIN pinname="Layer In" visible="1">
-   </PIN>
-   <PIN pinname="Layer Out" visible="1">
-   </PIN>
-   </NODE>
-   <NODE systemname="Select (DX11.Validator)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Select (DX11.Validator)" componentmode="Hidden" id="25">
-   <BOUNDS type="Node" left="2895" top="6825" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Enabled" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Enable Slice" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="19" srcpinname="Y Output Value" dstnodeid="25" dstpinname="Enable Slice">
-   </LINK>
-   <LINK srcnodeid="25" srcpinname="Output" dstnodeid="24" dstpinname="Validators">
-   </LINK>
-   <LINK srcnodeid="0" srcpinname="Layer" dstnodeid="24" dstpinname="Layer In">
-   </LINK>
    <LINK srcnodeid="18" srcpinname="Output" dstnodeid="1" dstpinname="Enabled">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="26" systemname="IOBox (Node)">
@@ -436,6 +410,8 @@
    </NODE>
    <LINK srcnodeid="1" srcpinname="Texture Slices Out" dstnodeid="27" dstpinname="Input Node">
    </LINK>
-   <LINK srcnodeid="24" srcpinname="Layer Out" dstnodeid="1" dstpinname="Layer">
+   <LINK srcnodeid="0" srcpinname="Layer" dstnodeid="1" dstpinname="Layer">
    </LINK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
    </PATCH>

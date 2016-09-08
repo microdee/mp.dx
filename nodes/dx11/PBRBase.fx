@@ -55,9 +55,11 @@ struct PSout
 {
     float4 Lit : SV_Target0;
     float4 Norm : SV_Target1;
-    float4 Tan : SV_Target2;
-    float4 Bin : SV_Target3;
-    float4 VelUV : SV_Target4;
+    float4 VelUV : SV_Target2;
+	#if defined(TANTARGETS)
+    float4 Tan : SV_Target3;
+    float4 Bin : SV_Target4;
+	#endif
 };
 
 SamplerState sT <string uiname="Textures Sampler";>
@@ -149,8 +151,10 @@ PSout PS(PSin input)
 
     o.Lit = col;
     o.Norm = float4(norm*0.5+0.5, ii);
+	#if defined(TANTARGETS)
 	o.Tan.rgb = input.Tan*0.5+0.5;
 	o.Bin.rgb = input.Bin*0.5+0.5;
+	#endif
     o.VelUV = float4((input.pspos.xy / input.pspos.w) - (input.ppos.xy / input.ppos.w)+0.5, 0, 0);
     //o.VelUV = float4(0.5, 0.5, input.UV);
 

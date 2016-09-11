@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="C:\SMA-4-RIB\libraries\vvvv_50alpha34.103.1_x64\packs\mp.dx\nodes\modules\essentials\Picture (DX11).v4p" systemname="Picture (DX11)" filename="C:\SMA-4-RIB\libraries\vvvv_50alpha34.103.1_x64\packs\mp.dx\nodes\modules\essentials\Picture (DX11).v4p" scrollx="0" scrolly="7125">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\essentials\Picture (DX11).v4p" systemname="Picture (DX11)" filename="C:\SMA-4-RIB\libraries\vvvv_50alpha34.103.1_x64\packs\mp.dx\nodes\modules\essentials\Picture (DX11).v4p" scrollx="0" scrolly="255">
    <BOUNDS type="Window" left="9390" top="4440" width="9000" height="6000">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -139,7 +139,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="720" top="1080" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.42">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>

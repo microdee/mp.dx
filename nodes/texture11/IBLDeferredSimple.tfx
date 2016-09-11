@@ -68,7 +68,7 @@ float4 pIBL(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
         float ii = normid.w;
         float ti = TexID[ii];
 
-        float2 roughmetal = RoughMetal.Sample(sT, float3(uvin, ti)).xy;
+        float2 roughmetal = RoughMetal.SampleLevel(sT, float3(uvin, ti), 0).xy;
         float rough = Params[ii].x * roughmetal.r;
         float metal = Params[ii].y * roughmetal.g;
         float4 col = albedoin;

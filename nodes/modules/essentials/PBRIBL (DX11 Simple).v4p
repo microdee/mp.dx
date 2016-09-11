@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" systemname="PBRIBL (DX11 Simple)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" scrollx="1620" scrolly="9180">
+   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" systemname="PBRIBL (DX11 Simple)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" scrollx="960" scrolly="11415">
    <BOUNDS type="Window" left="11235" top="2865" width="9000" height="11655">
    </BOUNDS>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
@@ -54,6 +54,8 @@
    <PIN pinname="Background Color" slicecount="1" values="|0.00000,0.00000,0.00000,0.00000|">
    </PIN>
    <PIN pinname="Depth Buffer" visible="1">
+   </PIN>
+   <PIN pinname="AA Samples per Pixel" visible="1">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="61" systemname="IOBox (Value Advanced)">
@@ -217,7 +219,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="2565" top="17205" width="4800" height="3600">
    </BOUNDS>
-   <BOUNDS type="Window" left="13590" top="5160" width="14235" height="10140">
+   <BOUNDS type="Window" left="3165" top="4125" width="14235" height="10140">
    </BOUNDS>
    <PIN pinname="Normals" visible="1">
    </PIN>
@@ -281,7 +283,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4695" top="12915" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="2">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="4">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -781,15 +783,15 @@
    <LINK srcnodeid="13" srcpinname="Output Node" dstnodeid="7" dstpinname="Input Node">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="6" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="2580" top="18075" width="795" height="240">
+   <BOUNDS type="Box" left="2550" top="19470" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="2580" top="18075" width="0" height="0">
+   <BOUNDS type="Node" left="2550" top="19470" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Texture Out|">
    </PIN>
+   <PIN pinname="Input Node" visible="1" slicecount="1" values="||">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="49" srcpinname="Texture Out" dstnodeid="6" dstpinname="Input Node">
-   </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="5" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="13980" top="11460" width="795" height="240">
    </BOUNDS>
@@ -953,5 +955,17 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="66" srcpinname="Y Output Value" dstnodeid="49" dstpinname="Noise">
+   </LINK>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="67" systemname="IOBox (Enumerations)">
+   <BOUNDS type="Box" left="4770" top="3120" width="1590" height="270">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4770" top="3120" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="67" srcpinname="Output Enum" dstnodeid="62" dstpinname="AA Samples per Pixel">
+   </LINK>
+   <LINK srcnodeid="49" srcpinname="Texture Out" dstnodeid="6" dstpinname="Input Node">
    </LINK>
    </PATCH>

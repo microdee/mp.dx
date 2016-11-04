@@ -27,8 +27,10 @@ struct VSin
     float3 Pos : POSITION;
     float3 Norm : NORMAL;
     float2 UV : TEXCOORD0;
+    #if defined(HAS_TANGENT)
     float3 Tan : TANGENT;
     float3 Bin : BINORMAL;
+    #endif
     #if defined(HAS_PREVPOS)
     float3 ppos : PREVPOS;
     #endif
@@ -45,8 +47,10 @@ struct PSin
     float3 posw : POSWORLD;
     float3 Norm : NORMAL;
     float2 UV : TEXCOORD0;
+    #if defined(HAS_TANGENT)
     float3 Tan : TANGENT;
     float3 Bin : BINORMAL;
+    #endif
     float4 ppos : PREVPOS;
     nointerpolation float sid : SUBSETID;
 };
@@ -87,7 +91,6 @@ cbuffer cbPerObj : register( b1 )
     float ndepth <string uiname="Normal Depth";> = 0;
 	float2 Displace = 0;
 };
-
 PSin VS(VSin input)
 {
 	PSin output;
@@ -114,8 +117,10 @@ PSin VS(VSin input)
 	output.svpos = mul(output.svpos, tP);
 	output.pspos = output.svpos;
 
+    #if defined(HAS_TANGENT)
     output.Tan = normalize(mul(float4(input.Tan,0), tWV).xyz);
     output.Bin = normalize(mul(float4(input.Bin,0), tWV).xyz);
+	#endif
 
     float3 pp = input.Pos;
     #if defined(HAS_PREVPOS)
@@ -126,12 +131,35 @@ PSin VS(VSin input)
     float4x4 pw = mul(pTr[ii], ptW);
 	output.ppos = mul(float4(pp,1), pw);
 	output.ppos = mul(output.ppos, ptV);
+    #if defined(HAS_TANGENT)
     output.ppos.xyz += output.Tan * (output.UV.x-puv.x);
     output.ppos.xyz += output.Bin * (output.UV.y-puv.y);
+	#endif
 	output.ppos = mul(output.ppos, ptP);
 
 	return output;
 }
+
+#if defined(FLATNORMALS)
+[maxvertexcount(3)]
+void GS(triangle PSin input[3], inout TriangleStream<PSin> gsout)
+{
+	float3 f1 = input[1].posw.xyz - input[0].posw.xyz;
+    float3 f2 = input[2].posw.xyz - input[0].posw.xyz;
+    
+	//Compute flat normal
+	float3 norm = normalize(cross(f1, f2));
+	norm = mul(float4(norm, 0), tV).xyz;
+	PSin o = (PSin)0;
+	for(uint i=0; i<3; i++)
+	{
+		o = input[i];
+		o.Norm = norm;
+		gsout.Append(o);
+	}
+	gsout.RestartStrip();
+}
+#endif
 
 PSout PS(PSin input)
 {
@@ -139,6 +167,7 @@ PSout PS(PSin input)
     float ii = input.sid;
 	float ti = TexID[ii];
     float4 col = AlbedoCol[ii] * Albedo.Sample(sT, float3(input.UV, ti));
+    #if defined(HAS_TANGENT)
 	float3 normmap = NormBump.Sample(sT, float3(input.UV, ti)).xyz*2-1;
     normmap = lerp(float3(0,0,1), normmap, ndepth);
 	float3 norm = normalize(normmap.x * input.Tan + normmap.y * input.Bin + normmap.z * input.Norm);
@@ -148,6 +177,9 @@ PSout PS(PSin input)
         input.Norm
     );
 	tanspace = transpose(tanspace);
+	#else
+	float3 norm = input.Norm;
+	#endif
 
     o.Lit = col;
     o.Norm = float4(norm*0.5+0.5, ii);
@@ -155,7 +187,7 @@ PSout PS(PSin input)
 	o.Tan.rgb = input.Tan*0.5+0.5;
 	o.Bin.rgb = input.Bin*0.5+0.5;
 	#endif
-    o.VelUV = float4((input.pspos.xy / input.pspos.w) - (input.ppos.xy / input.ppos.w)+0.5, 0, 0);
+    o.VelUV = float4((input.pspos.xy / input.pspos.w) - (input.ppos.xy / input.ppos.w)+0.5, input.UV);
     //o.VelUV = float4(0.5, 0.5, input.UV);
 
     return o;
@@ -166,6 +198,9 @@ technique11 AnisotropicIBL
 	pass P0
 	{
 		SetVertexShader( CompileShader( vs_5_0, VS() ) );
+#if defined(FLATNORMALS)
+		SetGeometryShader( CompileShader( gs_5_0, GS() ) );
+#endif
 		SetPixelShader( CompileShader( ps_5_0, PS() ) );
 	}
 }

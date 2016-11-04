@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\AxisAndGrid (DX11).v4p" systemname="AxisAndGrid (DX11)" filename="D:\vvvv\KIBU.ECTK\prealpha\nodes\modules\AxisAndGrid (DX11).v4p" scrollx="15" scrolly="0">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\essentials\AxisAndGrid (DX11).v4p" systemname="AxisAndGrid (DX11)" filename="D:\vvvv\KIBU.ECTK\prealpha\nodes\modules\AxisAndGrid (DX11).v4p" scrollx="0" scrolly="2580">
    <BOUNDS type="Window" left="4905" top="720" width="15810" height="13725">
    </BOUNDS>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="2">
@@ -559,7 +559,7 @@
    </BOUNDS>
    <PIN pinname="Render State" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="Enable Depth" slicecount="1" values="1" visible="1">
+   <PIN pinname="Enable Depth" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Depth Write Mask" slicecount="1" values="All">
    </PIN>
@@ -692,4 +692,6 @@
    </NODE>
    <LINK srcnodeid="113" srcpinname="Y Output Value" dstnodeid="105" dstpinname="Enable Depth">
    </LINK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
    </PATCH>

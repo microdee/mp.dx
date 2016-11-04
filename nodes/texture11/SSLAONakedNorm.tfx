@@ -26,9 +26,25 @@ cbuffer cb
 	float strength = 1;
 	float Gamma = 1;
 	float NoiseAmount = 0;
+	float RandomSeed = 0;
 };
 
 StructuredBuffer<float2> kernel;
+
+float _dnoise1(float3 u){
+	u=dot(u+.2,float3(1,57,21));
+	return (u.x*(.1+sin(u.x)));
+}
+float4 _dnoise4(float2 x,float RandomSeed){
+	RandomSeed+=.00001;
+	float4 c={
+	_dnoise1(float3((x+RandomSeed*13+41)+11,length(sin((x-59)/151+RandomSeed*float2(11,7))))+.5),
+	_dnoise1(float3((x+RandomSeed*7+293)+5,length(sin((x+127)/163+RandomSeed*float2(13,5))))+.5),
+	_dnoise1(float3((x+RandomSeed*5+113)+7,length(sin((x+191)/173+RandomSeed*float2(7,17))))+.5),
+	_dnoise1(float3((x+RandomSeed*11+97)+13,length(sin((x-37)/181+RandomSeed*float2(5,23))))+.5)
+	};
+	return frac(c+x.x*2+RandomSeed+dot(c,1));
+}
 
 float3 GetViewPos(SamplerState SS, float2 uv)
 {
@@ -49,7 +65,7 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 	
     int3 puv = int3((int2)(uv*oR), 0);
     uint4 stcl = Stencil.Load(puv);
-    if(any(stcl > 0))
+    if(any(stcl > 0) && any(stcl < 129))
     {
 		// Get the current pixel's positiom
     	float d;
@@ -67,21 +83,19 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 		float2 aspectRatio = float2( min( 1.0, screenSize.y / screenSize.x ), min( 1.0, screenSize.x / screenSize.y ) );
 	
 		// Grab a random vector from a 8x8 tiled random texture
-		float4 randomVec = Noise.SampleLevel(s0, uv, 0);
 		
 		// Transform randomVec from range 0 - 1 to range -1 - 1
-		randomVec *= 2.0;
-		randomVec -= 1.0;
 		
 		// Create a 2D rotation matrix
 		// For your own source, it is better to #define PI
-		float2x2 rotMat = float2x2( float2( cos( randomVec.x * 3.1415926 ), -sin( randomVec.x * 3.1415926 ) ),
-							float2( sin( randomVec.x * 3.1415926 ), cos( randomVec.x * 3.1415926 ) ) );
 		
 		float amount = 0.0;
 		
-		for ( int i = 0; i < int( kernelSize ); i++ )
+		for ( uint i = 0; i < uint( kernelSize ); i++ )
 		{
+			float4 randomVec = _dnoise4(uv*100, RandomSeed + (float)i);
+			float2x2 rotMat = float2x2( float2( cos( randomVec.x * 3.1415926 ), -sin( randomVec.x * 3.1415926 ) ),
+								float2( sin( randomVec.x * 3.1415926 ), cos( randomVec.x * 3.1415926 ) ) );
 			// Retrieve the kernel vector and scale it with aspectRatio
 			float2 kernelVec = kernel[i];
 			kernelVec *= aspectRatio;
@@ -119,7 +133,7 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 		
 		float o = pow(saturate(amount),Gamma);
     	float dm = lerp(1, saturate(currentPos.z*0.5), 1-saturate(o*5-4));
-    	o = saturate(o*lerp(0.3,1,dm));
+    	//o = saturate(o*lerp(0.3,1,dm));
 	
 		return float4(o,o,o,1);
     }

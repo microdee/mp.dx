@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" systemname="SSLAO (DX11.Texture2D DepthNorm)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" scrollx="0" scrolly="2490">
-   <BOUNDS type="Window" left="3165" top="4125" width="14235" height="10140">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" systemname="SSLAO (DX11.Texture2D DepthNorm)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" scrollx="0" scrolly="3645">
+   <BOUNDS type="Window" left="2835" top="3285" width="14235" height="10140">
    </BOUNDS>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
    </PACK>
@@ -82,28 +82,6 @@
    <PIN pinname="Descriptive Name" slicecount="1" values="|Texture Out|">
    </PIN>
    <PIN pinname="Input Node" visible="1" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <NODE systemname="Noise (DX11.TextureFX)" filename="%VVVV%\packs\dx11\nodes\texture11\Source\Noise.tfx" nodename="Noise (DX11.TextureFX)" componentmode="Hidden" id="22">
-   <BOUNDS type="Node" left="6210" top="6720" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Texture Out" visible="1">
-   </PIN>
-   <PIN pinname="Texture In" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Grey" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Phase" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="RandomSeed" slicecount="1" visible="1" values="8.14429768326214">
-   </PIN>
-   <PIN pinname="Color1" slicecount="1" values="|0.00000,0.00000,0.00000,1.00000|">
-   </PIN>
-   <PIN pinname="Color2" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
-   </PIN>
-   <PIN pinname="Enabled" visible="1">
-   </PIN>
-   <PIN pinname="Default SizeXY" visible="1" pintype="Input" slicecount="2" values="756,840">
    </PIN>
    </NODE>
    <NODE systemname="BlendBasic (DX11.TextureFX)" filename="%VVVV%\packs\dx11\nodes\texture11\Mixer\BlendBasic.tfx" nodename="BlendBasic (DX11.TextureFX)" componentmode="Hidden" id="21">
@@ -220,8 +198,6 @@
    </NODE>
    <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="21" dstpinname="Enabled">
    </LINK>
-   <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="22" dstpinname="Enabled">
-   </LINK>
    <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="11">
    <BOUNDS type="Node" left="2505" top="1950" width="100" height="100">
    </BOUNDS>
@@ -313,6 +289,8 @@
    </PIN>
    <PIN pinname="Sampler" visible="1" pintype="Input" slicecount="1" values="||">
    </PIN>
+   <PIN pinname="RandomSeed" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="19" srcpinname="Y Output Value" dstnodeid="0" dstpinname="aoSize">
    </LINK>
@@ -383,8 +361,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="33" srcpinname="Output Node" dstnodeid="0" dstpinname="Stencil">
-   </LINK>
-   <LINK srcnodeid="22" srcpinname="Texture Out" dstnodeid="0" dstpinname="Noise">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="41" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="3165" top="2490" width="795" height="240">
@@ -574,8 +550,6 @@
    </LINK>
    <LINK srcnodeid="43" srcpinname="Texture Out" dstnodeid="21" dstpinname="Texture In 2">
    </LINK>
-   <LINK srcnodeid="30" srcpinname="Output" dstnodeid="22" dstpinname="Default SizeXY">
-   </LINK>
    <NODE systemname="FXAA11 (DX11.TextureFX)" filename="%VVVV%\packs\dx11\nodes\texture11\Filter\FXAA11.tfx" nodename="FXAA11 (DX11.TextureFX)" componentmode="Hidden" id="75">
    <BOUNDS type="Node" left="4275" top="8685" width="100" height="100">
    </BOUNDS>
@@ -585,7 +559,7 @@
    </PIN>
    <PIN pinname="Enabled" slicecount="1" values="1">
    </PIN>
-   <PIN pinname="Technique" slicecount="1" values="fxaa3">
+   <PIN pinname="Technique" slicecount="1" visible="1" values="x1">
    </PIN>
    </NODE>
    <LINK srcnodeid="0" srcpinname="Texture Out" dstnodeid="75" dstpinname="Texture In">
@@ -610,6 +584,16 @@
    </LINK>
    <LINK srcnodeid="11" srcpinname="Output Node" dstnodeid="0" dstpinname="Texture In">
    </LINK>
-   <LINK srcnodeid="2" srcpinname="Y Output Value" dstnodeid="22" dstpinname="RandomSeed">
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="77" systemname="IOBox (Enumerations)">
+   <BOUNDS type="Box" left="4815" top="8010" width="735" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4815" top="8010" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="RenderTextured">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="77" srcpinname="Output Enum" dstnodeid="75" dstpinname="Technique">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Y Output Value" dstnodeid="0" dstpinname="RandomSeed">
    </LINK>
    </PATCH>

@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="F:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\essentials\TextBlock (DX11).v4p" systemname="TextBlock (DX11)" filename="C:\vvvv\libs\VObjects\nodes\modules\GUI\TextBlock (DX11).v4p" scrollx="0" scrolly="2685">
+   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\essentials\TextBlock (DX11).v4p" systemname="TextBlock (DX11)" filename="C:\vvvv\libs\VObjects\nodes\modules\GUI\TextBlock (DX11).v4p" scrollx="0" scrolly="2685">
    <BOUNDS type="Window" left="5625" top="7140" width="14970" height="10140">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
@@ -187,7 +187,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5820" top="2655" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="1" visible="1" values="Near">
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="Center">
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Paragraph Alignment|">
    </PIN>
@@ -715,7 +715,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="7365" top="6525" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="3,3">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="-1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>

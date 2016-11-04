@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
-   <PATCH nodename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\JointTransform (Kinect2 Bones).v4p" systemname="JointTransform (Kinect2 Bones)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\JointTransform (Kinect2 Bones).v4p" scrollx="285" scrolly="1155">
-   <BOUNDS type="Window" left="44880" top="1755" width="13605" height="12900">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
+   <PATCH nodename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\Kinect2\JointTransform (Kinect2 Bones).v4p" systemname="JointTransform (Kinect2 Bones)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\JointTransform (Kinect2 Bones).v4p" scrollx="0" scrolly="1650">
+   <BOUNDS type="Window" left="1335" top="1140" width="13605" height="12900">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.1.0">
+   <PACK Name="addonpack" Version="34.101.0">
    </PACK>
    <NODE systemname="Skeleton (Kinect2 Microsoft)" filename="%VVVV%\packs\dx11\nodes\plugins\kinect2\VVVV.DX11.Nodes.Kinect2.dll" nodename="Skeleton (Kinect2 Microsoft)" componentmode="Hidden" id="4">
    <BOUNDS type="Node" left="1275" top="4185" width="100" height="100">
@@ -255,17 +255,15 @@
    <NODE systemname="Face (Kinect2 Microsoft)" filename="%VVVV%\packs\dx11\nodes\plugins\kinect2\VVVV.DX11.Nodes.Kinect2.dll" nodename="Face (Kinect2 Microsoft)" componentmode="Hidden" id="17">
    <BOUNDS type="Node" left="6645" top="3090" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Kinect Runtime" visible="1">
+   <PIN pinname="Kinect Runtime" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="OrientationXYZW" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="3" srcpinname="Output Node" dstnodeid="17" dstpinname="Kinect Runtime">
-   </LINK>
    <NODE systemname="EQ (Value)" nodename="EQ (Value)" componentmode="Hidden" id="18">
    <BOUNDS type="Node" left="7875" top="4845" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Input 1" visible="1" slicecount="4" values="0,0,0,0">
+   <PIN pinname="Input 1" visible="1">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -481,9 +479,9 @@
    <LINK srcnodeid="27" srcpinname="Output" dstnodeid="44" dstpinname="Input Bin Size">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="46" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="8550" top="6825" width="480" height="480">
+   <BOUNDS type="Box" left="11355" top="6240" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="8550" top="6825" width="0" height="0">
+   <BOUNDS type="Node" left="11355" top="6240" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
@@ -559,11 +557,9 @@
    </PIN>
    <PIN pinname="Quaternion XYZW" visible="1">
    </PIN>
-   <PIN pinname="Quaternion 2 XYZW" visible="1" slicecount="4" values="0,1,-0,-4.37113882867379E-008">
+   <PIN pinname="Quaternion 2 XYZW" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="17" srcpinname="OrientationXYZW" dstnodeid="18" dstpinname="Input 1">
-   </LINK>
    <NODE systemname="Euler (Quaternion Set)" nodename="Euler (Quaternion Set)" componentmode="Hidden" id="54">
    <BOUNDS type="Node" left="7185" top="3690" width="100" height="100">
    </BOUNDS>
@@ -573,8 +569,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="53" srcpinname="Quaternion XYZW" dstnodeid="25" dstpinname="Quaternion XYZW">
-   </LINK>
-   <LINK srcnodeid="17" srcpinname="OrientationXYZW" dstnodeid="53" dstpinname="Quaternion 2 XYZW">
    </LINK>
    <LINK srcnodeid="54" srcpinname="Quaternion XYZW" dstnodeid="53" dstpinname="Quaternion 1 XYZW">
    </LINK>
@@ -745,5 +739,131 @@
    <LINK srcnodeid="21" srcpinname="Output" dstnodeid="68" dstpinname="Input">
    </LINK>
    <LINK srcnodeid="68" srcpinname="Output" dstnodeid="44" dstpinname="Default">
+   </LINK>
+   <NODE systemname="Switch (Node Input)" nodename="Switch (Node Input)" componentmode="Hidden" id="69">
+   <BOUNDS type="Node" left="6600" top="2535" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Switch" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="3" srcpinname="Output Node" dstnodeid="69" dstpinname="Input 2">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="70" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="6495" top="1650" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6495" top="1650" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Use Face For Head (CAUTION BUGGY AS FUCK)|">
+   </PIN>
+   <PIN pinname="Pin Visibility" slicecount="1" values="OnlyInspector">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="70" srcpinname="Y Output Value" dstnodeid="69" dstpinname="Switch">
+   </LINK>
+   <LINK srcnodeid="69" srcpinname="Output" dstnodeid="17" dstpinname="Kinect Runtime">
+   </LINK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
+   <NODE systemname="HDFaceBuffer (Kinect2 Microsoft)" filename="%VVVV%\packs\dx11\nodes\plugins\kinect2\VVVV.DX11.Nodes.Kinect2.dll" nodename="HDFaceBuffer (Kinect2 Microsoft)" componentmode="Hidden" id="71">
+   <BOUNDS type="Node" left="9915" top="3915" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="RotationXYZW" visible="1">
+   </PIN>
+   <PIN pinname="Kinect Runtime" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Rotation Check" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Is Paused" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Tracking Id" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Switch (Node Input)" nodename="Switch (Node Input)" componentmode="Hidden" id="73">
+   <BOUNDS type="Node" left="9960" top="2760" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Switch" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="74">
+   <BOUNDS type="Node" left="9975" top="1680" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9975" top="1680" width="480" height="480">
+   </BOUNDS>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Use HDFace For Head|">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   <PIN pinname="Pin Visibility" slicecount="1" values="OnlyInspector">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="74" srcpinname="Y Output Value" dstnodeid="73" dstpinname="Switch">
+   </LINK>
+   <LINK srcnodeid="3" srcpinname="Output Node" dstnodeid="73" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="73" srcpinname="Output" dstnodeid="71" dstpinname="Kinect Runtime">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="75" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="10305" top="3315" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10305" top="3315" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="75" srcpinname="Y Output Value" dstnodeid="71" dstpinname="Rotation Check">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="User Index" dstnodeid="71" dstpinname="Tracking Id">
+   </LINK>
+   <NODE systemname="Switch (Value Input)" nodename="Switch (Value Input)" componentmode="Hidden" id="76">
+   <BOUNDS type="Node" left="7905" top="4155" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Switch" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="71" srcpinname="RotationXYZW" dstnodeid="76" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="17" srcpinname="OrientationXYZW" dstnodeid="76" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="74" srcpinname="Y Output Value" dstnodeid="76" dstpinname="Switch">
+   </LINK>
+   <LINK srcnodeid="76" srcpinname="Output" dstnodeid="18" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="76" srcpinname="Output" dstnodeid="53" dstpinname="Quaternion 2 XYZW">
    </LINK>
    </PATCH>

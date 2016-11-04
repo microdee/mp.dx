@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\texture\DX9ToDX11 (DX11.Texture2D OffscreenWindow).v4p" systemname="DX9ToDX11 (DX11.Texture2D OffscreenWindow)" filename="C:\vvvv\libs\mcropack\nodes\Modules\DX9ToDX11 (DX11.Texture2D OffscreenWindow).v4p" scrollx="6540" scrolly="300">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\texture\DX9ToDX11 (DX11.Texture2D OffscreenWindow).v4p" systemname="DX9ToDX11 (DX11.Texture2D OffscreenWindow)" filename="C:\vvvv\libs\mcropack\nodes\Modules\DX9ToDX11 (DX11.Texture2D OffscreenWindow).v4p" scrollx="6540" scrolly="300">
    <BOUNDS type="Window" left="8745" top="2760" width="9000" height="10290">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">

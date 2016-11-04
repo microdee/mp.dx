@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\essentials\PerfMeter2 (DX11.Debug).v4p" systemname="PerfMeter2 (DX11.Debug)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\PerfMeter2\PerfMeter2 (DX11.Debug).v4p" scrollx="0" scrolly="8265">
+   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\essentials\PerfMeter2 (DX11.Debug).v4p" systemname="PerfMeter2 (DX11.Debug)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\PerfMeter2\PerfMeter2 (DX11.Debug).v4p" scrollx="0" scrolly="3450">
    <BOUNDS type="Window" left="2775" top="1725" width="13680" height="12180">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -851,11 +851,13 @@
    </PIN>
    <PIN pinname="Format" visible="1">
    </PIN>
+   <PIN pinname="Maximum Width" slicecount="1" values="200">
+   </PIN>
    </NODE>
    <LINK srcnodeid="115" srcpinname="Output" dstnodeid="114" dstpinname="Text Layout">
    </LINK>
    <NODE systemname="FormatValue (String)" nodename="FormatValue (String)" componentmode="Hidden" id="116">
-   <BOUNDS type="Node" left="7785" top="11280" width="100" height="100">
+   <BOUNDS type="Node" left="7095" top="9330" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1" slicecount="1" values="66.5">
    </PIN>
@@ -863,15 +865,13 @@
    </PIN>
    </NODE>
    <NODE systemname="FormatValue (String)" nodename="FormatValue (String)" componentmode="Hidden" id="117">
-   <BOUNDS type="Node" left="6690" top="11295" width="100" height="100">
+   <BOUNDS type="Node" left="5310" top="5550" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Input" visible="1" slicecount="1" values="0">
+   <PIN pinname="Input" visible="1" slicecount="1" values="120">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="2" srcpinname="frames per second" dstnodeid="117" dstpinname="Input">
-   </LINK>
    <NODE systemname="TextFormat (DirectWrite)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.Nodes.DirectWrite.dll" nodename="TextFormat (DirectWrite)" componentmode="Hidden" id="118">
    <BOUNDS type="Node" left="5250" top="13455" width="100" height="100">
    </BOUNDS>
@@ -887,7 +887,7 @@
    <NODE systemname="Add (String)" nodename="Add (String)" componentmode="Hidden" id="120">
    <BOUNDS type="Node" left="6705" top="11805" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Input 1" visible="1" slicecount="1" values="29">
+   <PIN pinname="Input 1" visible="1" slicecount="1" values="4">
    </PIN>
    <PIN pinname="Input 2" slicecount="1" values="FPS">
    </PIN>
@@ -961,7 +961,7 @@
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
-   <PIN pinname="Text" visible="1" slicecount="1" values="26">
+   <PIN pinname="Text" visible="1" slicecount="1" values="87">
    </PIN>
    <PIN pinname="Format" visible="1">
    </PIN>
@@ -1323,7 +1323,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Mean (Spectral)" nodename="Mean (Spectral)" componentmode="Hidden" id="161">
-   <BOUNDS type="Node" left="6255" top="4890" width="100" height="100">
+   <BOUNDS type="Node" left="7320" top="5055" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -1522,10 +1522,6 @@
    </LINK>
    <LINK srcnodeid="120" srcpinname="Output" dstnodeid="115" dstpinname="Text">
    </LINK>
-   <LINK srcnodeid="117" srcpinname="Output" dstnodeid="120" dstpinname="Input 1">
-   </LINK>
-   <LINK srcnodeid="116" srcpinname="Output" dstnodeid="126" dstpinname="Text">
-   </LINK>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
    </PACK>
    <NODE systemname="TextLayout (DirectWrite Advanced)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.Nodes.DirectWrite.dll" nodename="TextLayout (DirectWrite Advanced)" componentmode="Hidden" id="144">
@@ -1605,5 +1601,103 @@
    <LINK srcnodeid="81" srcpinname="Output" dstnodeid="176" dstpinname="Input">
    </LINK>
    <LINK srcnodeid="176" srcpinname="OnChange" dstnodeid="156" dstpinname="Apply">
+   </LINK>
+   <NODE systemname="Divide (Value)" nodename="Divide (Value)" componentmode="Hidden" id="177">
+   <BOUNDS type="Node" left="8835" top="7890" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="161" srcpinname="Output" dstnodeid="177" dstpinname="Input 2">
+   </LINK>
+   <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="178">
+   <BOUNDS type="Node" left="8820" top="8370" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" slicecount="1" values="1000">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="177" srcpinname="Output" dstnodeid="178" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="FormatValue (String)" nodename="FormatValue (String)" componentmode="Hidden" id="179">
+   <BOUNDS type="Node" left="8205" top="9225" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1" slicecount="1" values="83.8933333333333">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Characters after Comma" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="178" srcpinname="Output" dstnodeid="179" dstpinname="Input">
+   </LINK>
+   <NODE systemname="Add (String)" nodename="Add (String)" componentmode="Hidden" id="180">
+   <BOUNDS type="Node" left="7560" top="10185" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input Count" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Input 2" slicecount="1" values="| fps / |">
+   </PIN>
+   <PIN pinname="Input 4" slicecount="1" visible="1" pintype="Input" values="| ms|">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 3" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="116" srcpinname="Output" dstnodeid="180" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="179" srcpinname="Output" dstnodeid="180" dstpinname="Input 3">
+   </LINK>
+   <LINK srcnodeid="180" srcpinname="Output" dstnodeid="126" dstpinname="Text">
+   </LINK>
+   <NODE systemname="Bounds (Spectral)" nodename="Bounds (Spectral)" componentmode="Hidden" id="181">
+   <BOUNDS type="Node" left="6240" top="4905" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Minimum" visible="1">
+   </PIN>
+   <PIN pinname="Maximum" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="102" srcpinname="Output" dstnodeid="181" dstpinname="Input">
+   </LINK>
+   <NODE systemname="FormatValue (String)" nodename="FormatValue (String)" componentmode="Hidden" id="182">
+   <BOUNDS type="Node" left="6450" top="5550" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="181" srcpinname="Minimum" dstnodeid="117" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="181" srcpinname="Maximum" dstnodeid="182" dstpinname="Input">
+   </LINK>
+   <NODE systemname="Add (String)" nodename="Add (String)" componentmode="Hidden" id="183">
+   <BOUNDS type="Node" left="5910" top="6150" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Intersperse String" slicecount="1" values="| / |">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="117" srcpinname="Output" dstnodeid="183" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="182" srcpinname="Output" dstnodeid="183" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="183" srcpinname="Output" dstnodeid="120" dstpinname="Input 1">
    </LINK>
    </PATCH>

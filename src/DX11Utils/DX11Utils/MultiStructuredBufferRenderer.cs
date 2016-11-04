@@ -157,10 +157,7 @@ namespace VVVV.DX11.Nodes
 
                 settings.ViewportIndex = 0;
                 settings.ViewportCount = 1;
-                settings.View = this.FInView[0];
-                settings.Projection = this.FInProjection[0];
-                settings.ViewProjection = settings.View * settings.Projection;
-                settings.BackBuffer = null;
+                settings.BackBuffer = FOutBuffers[0][context];
                 settings.CustomSemantics = rsemantics;
 
                 for (int i = 0; i < FSemantic.SliceCount; i++)

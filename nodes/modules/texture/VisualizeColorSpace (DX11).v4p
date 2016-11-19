@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\texture\VisualizeColorSpace (DX11).v4p" systemname="VisualizeColorSpace (DX11)" filename="E:\vvvv\mcropack\VVVV.Packs.mcro\nodes\Modules\VisualizeColorSpace (DX11).v4p" scrollx="225" scrolly="2340">
+<!DOCTYPE PATCH  SYSTEM "https://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\texture\VisualizeColorSpace (DX11).v4p" systemname="VisualizeColorSpace (DX11)" filename="E:\vvvv\mcropack\VVVV.Packs.mcro\nodes\Modules\VisualizeColorSpace (DX11).v4p" scrollx="3705" scrolly="0">
    <BOUNDS type="Window" left="15000" top="2595" width="9000" height="6000">
    </BOUNDS>
    <PACK Name="ImagePack" Version="0.1.0">
@@ -153,7 +153,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4365" top="1950" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="0.01">
+   <PIN pinname="Y Input Value" slicecount="1" values="0.006">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -169,7 +169,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4560" top="2460" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Color Input" slicecount="1" values="|1.00000,0.00000,0.00000,1.00000|">
+   <PIN pinname="Color Input" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Sprite Color|">
    </PIN>
@@ -360,4 +360,8 @@
    </NODE>
    <LINK srcnodeid="31" srcpinname="Y Output Value" dstnodeid="3" dstpinname="alphatest">
    </LINK>
+   <PACK Name="vvvv-Message" Version="2.7">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
    </PATCH>

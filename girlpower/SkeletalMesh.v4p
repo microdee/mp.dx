@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
-   <PATCH nodename="E:\vvvv\libs\mcropack\girlpower\SkeletalMesh.v4p" scrollx="0" scrolly="0" systemname="SkeletalMesh" filename="C:\vvvv\libs\mcropack\girlpower\SkeletalMesh.v4p">
-   <BOUNDS type="Window" left="10995" top="7395" width="8160" height="6330">
+<!DOCTYPE PATCH  SYSTEM "https://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+   <PATCH nodename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\girlpower\SkeletalMesh.v4p" scrollx="270" scrolly="0" systemname="SkeletalMesh" filename="C:\vvvv\libs\mcropack\girlpower\SkeletalMesh.v4p">
+   <BOUNDS type="Window" left="14610" top="7230" width="8160" height="6330">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.1.0">
+   <PACK Name="addonpack" Version="34.101.0">
    </PACK>
    <NODE systemname="SceneFile (DX11.Geometry Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="SceneFile (DX11.Geometry Assimp)" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="1260" top="1080" width="100" height="100">
@@ -25,7 +25,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="1245" top="600" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" visible="1" values="|..\packs\mups\assets\FBX 2013\runningwolf.fbx|">
+   <PIN pinname="Input String" slicecount="1" visible="1" values="D:\vvvv\assets\RobotAlator\robotalator.fbx">
    </PIN>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -39,13 +39,13 @@
    <LINK srcnodeid="1" srcpinname="Output String" dstnodeid="0" dstpinname="Filename">
    </LINK>
    <NODE systemname="SkeletalMesh (DX11 Assimp)" filename="..\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" nodename="SkeletalMesh (DX11 Assimp)" componentmode="Hidden" id="2" debug="0">
-   <BOUNDS type="Node" left="1260" top="2925" width="100" height="100">
+   <BOUNDS type="Node" left="1260" top="4290" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Skeleton" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Scene" visible="1">
    </PIN>
-   <PIN pinname="No Caching" slicecount="1" values="0" visible="1">
+   <PIN pinname="No Caching" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Geometry Out" visible="1">
    </PIN>
@@ -59,6 +59,10 @@
    </PIN>
    <BOUNDS type="Window" left="10260" top="3570" width="17625" height="11085">
    </BOUNDS>
+   <PIN pinname="Skinning" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Reset" slicecount="1" values="0">
+   </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="5" systemname="IOBox (String)">
    <BOUNDS type="Box" left="2220" top="1605" width="1485" height="240">
@@ -87,21 +91,23 @@
    </PIN>
    <PIN pinname="Skeleton" visible="1">
    </PIN>
-   <PIN pinname="Time" visible="1">
+   <PIN pinname="Time" visible="1" slicecount="1" values="0.27">
+   </PIN>
+   <PIN pinname="AnimStack" slicecount="1" values="AnimStack::Attack4">
+   </PIN>
+   <PIN pinname="Absolute Time" slicecount="1" values="0">
    </PIN>
    </NODE>
    <LINK srcnodeid="0" srcpinname="Scene" dstnodeid="6" dstpinname="Scene">
    </LINK>
    <LINK srcnodeid="5" srcpinname="Output String" dstnodeid="6" dstpinname="Root">
    </LINK>
-   <LINK srcnodeid="6" srcpinname="Skeleton" dstnodeid="2" dstpinname="Skeleton">
-   </LINK>
    <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="7">
-   <BOUNDS type="Node" left="660" top="5610" width="100" height="100">
+   <BOUNDS type="Node" left="660" top="7845" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="660" top="5610" width="6000" height="4500">
+   <BOUNDS type="Box" left="660" top="7845" width="6000" height="4500">
    </BOUNDS>
-   <BOUNDS type="Window" left="675" top="6510" width="9300" height="7815">
+   <BOUNDS type="Window" left="675" top="6510" width="11985" height="7815">
    </BOUNDS>
    <PIN pinname="Layers" visible="1" slicecount="1" values="||">
    </PIN>
@@ -109,13 +115,13 @@
    </PIN>
    <PIN pinname="Depth Buffer Format" slicecount="1" values="D32_Float">
    </PIN>
-   <PIN pinname="View" visible="1">
+   <PIN pinname="View" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="Projection" visible="1">
+   <PIN pinname="Projection" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
    <NODE systemname="PhongDirectional (DX11.Effect)" filename="%VVVV%\packs\dx11\nodes\dx11\PhongDirectional.fx" nodename="PhongDirectional (DX11.Effect)" componentmode="Hidden" id="8">
-   <BOUNDS type="Node" left="945" top="3795" width="100" height="100">
+   <BOUNDS type="Node" left="945" top="6030" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Geometry" visible="1" slicecount="1" values="||">
    </PIN>
@@ -124,24 +130,8 @@
    <PIN pinname="Transform In" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="Camera (Transform VOOCAM)" filename="..\packs\mp.voocam\nodes\modules\Camera (Transform VOOCAM).v4p" nodename="Camera (Transform VOOCAM)" componentmode="Hidden" id="9">
-   <BOUNDS type="Node" left="4695" top="3630" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="View" visible="1">
-   </PIN>
-   <PIN pinname="Projection" visible="1">
-   </PIN>
-   <PIN pinname="Camera Out" visible="1">
-   </PIN>
-   <PIN pinname="Near" slicecount="1" values="0.05">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="9" srcpinname="View" dstnodeid="7" dstpinname="View">
-   </LINK>
-   <LINK srcnodeid="9" srcpinname="Projection" dstnodeid="7" dstpinname="Projection">
-   </LINK>
    <NODE systemname="AspectRatio (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="AspectRatio (DX11.Layer)" componentmode="Hidden" id="11">
-   <BOUNDS type="Node" left="840" top="4995" width="100" height="100">
+   <BOUNDS type="Node" left="840" top="7230" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Layer In" visible="1" slicecount="1" values="||">
    </PIN>
@@ -149,15 +139,13 @@
    </PIN>
    </NODE>
    <NODE systemname="LFO (Animation)" nodename="LFO (Animation)" componentmode="Hidden" id="12">
-   <BOUNDS type="Node" left="3330" top="2010" width="100" height="100">
+   <BOUNDS type="Node" left="3840" top="1830" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
    <PIN pinname="Period" slicecount="1" values="0.5">
    </PIN>
    </NODE>
-   <LINK srcnodeid="12" srcpinname="Output" dstnodeid="6" dstpinname="Time">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="13" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="4005" top="1305" width="795" height="240">
    </BOUNDS>
@@ -175,9 +163,9 @@
    <LINK srcnodeid="0" srcpinname="Mesh Count" dstnodeid="13" dstpinname="Y Input Value">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="14" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="3630" top="3135" width="795" height="960">
+   <BOUNDS type="Box" left="5850" top="3120" width="795" height="960">
    </BOUNDS>
-   <BOUNDS type="Node" left="3630" top="3135" width="0" height="0">
+   <BOUNDS type="Node" left="5850" top="3120" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -216,20 +204,12 @@
    </NODE>
    <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Reload">
    </LINK>
-   <NODE systemname="SpaceMouse (VOOCAM VJoy)" filename="..\packs\mp.voocam\nodes\modules\SpaceMouse (VOOCAM VJoy).v4p" nodename="SpaceMouse (VOOCAM VJoy)" componentmode="Hidden" id="10">
-   <BOUNDS type="Node" left="6510" top="3870" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Camera In" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="9" srcpinname="Camera Out" dstnodeid="10" dstpinname="Camera In">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="16" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="4875" top="2055" width="480" height="480">
    </BOUNDS>
    <BOUNDS type="Node" left="4875" top="2055" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -239,13 +219,13 @@
    </PIN>
    <PIN pinname="Behavior" slicecount="1" values="Toggle">
    </PIN>
-   <PIN pinname="X Input Value" slicecount="1" values="0">
+   <PIN pinname="X Input Value" slicecount="1" values="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="16" srcpinname="Y Output Value" dstnodeid="2" dstpinname="No Caching">
    </LINK>
    <NODE systemname="SceneExplorer (Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="SceneExplorer (Assimp)" componentmode="InAWindow" id="17">
-   <BOUNDS type="Node" left="540" top="1695" width="100" height="100">
+   <BOUNDS type="Node" left="525" top="2265" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Scene" visible="1">
    </PIN>
@@ -263,15 +243,23 @@
    <LINK srcnodeid="0" srcpinname="Scene" dstnodeid="18" dstpinname="Scene">
    </LINK>
    <NODE systemname="Scale (Transform Vector)" nodename="Scale (Transform Vector)" componentmode="Hidden" id="19">
-   <BOUNDS type="Node" left="1635" top="3345" width="100" height="100">
+   <BOUNDS type="Node" left="1635" top="5580" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
    <PIN pinname="XYZ" slicecount="3" values="0.01,0.01,0.01">
    </PIN>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
    </NODE>
-   <NODE systemname="AxisAndGrid (DX11)" filename="..\packs\mp.dx\nodes\modules\essentials\AxisAndGrid (DX11).v4p" nodename="AxisAndGrid (DX11)" componentmode="Hidden" id="21">
-   <BOUNDS type="Node" left="1485" top="4395" width="1350" height="270">
+   <LINK srcnodeid="11" srcpinname="Layer Out" dstnodeid="7" dstpinname="Layers">
+   </LINK>
+   <LINK srcnodeid="19" srcpinname="Transform Out" dstnodeid="8" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Geometry Out" dstnodeid="8" dstpinname="Geometry">
+   </LINK>
+   <NODE systemname="AxisAndGrid (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\AxisAndGrid (DX11).v4p" nodename="AxisAndGrid (DX11)" componentmode="Hidden" id="21">
+   <BOUNDS type="Node" left="1485" top="6630" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Window" left="19935" top="2250" width="15810" height="13725">
    </BOUNDS>
@@ -288,12 +276,108 @@
    </NODE>
    <LINK srcnodeid="21" srcpinname="Layer" dstnodeid="11" dstpinname="Layer In">
    </LINK>
-   <LINK srcnodeid="11" srcpinname="Layer Out" dstnodeid="7" dstpinname="Layers">
-   </LINK>
    <LINK srcnodeid="8" srcpinname="Layer" dstnodeid="21" dstpinname="Layer In">
    </LINK>
-   <LINK srcnodeid="19" srcpinname="Transform Out" dstnodeid="8" dstpinname="Transform In">
+   <NODE systemname="Camera (Transform Modular)" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\ModularCamera\Camera (Transform Modular).v4p" nodename="Camera (Transform Modular)" componentmode="Hidden" id="22">
+   <BOUNDS type="Node" left="2640" top="7215" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="View" visible="1">
+   </PIN>
+   <PIN pinname="Projection" visible="1">
+   </PIN>
+   <PIN pinname="PivotDistance" slicecount="1" values="0.47">
+   </PIN>
+   <PIN pinname="Behavior In" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="22" srcpinname="View" dstnodeid="7" dstpinname="View">
    </LINK>
-   <LINK srcnodeid="2" srcpinname="Geometry Out" dstnodeid="8" dstpinname="Geometry">
+   <LINK srcnodeid="22" srcpinname="Projection" dstnodeid="7" dstpinname="Projection">
    </LINK>
+   <NODE systemname="SpaceMouse (ModularCam Behavior)" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\ModularCamera\SpaceMouse (ModularCam Behavior).v4p" nodename="SpaceMouse (ModularCam Behavior)" componentmode="Hidden" id="10">
+   <BOUNDS type="Node" left="6510" top="3870" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Camera In" visible="1">
+   </PIN>
+   <PIN pinname="Behavior Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="10" srcpinname="Behavior Out" dstnodeid="22" dstpinname="Behavior In">
+   </LINK>
+   <NODE systemname="Transform (Transform 3d)" nodename="Transform (Transform 3d)" componentmode="Hidden" id="23">
+   <BOUNDS type="Node" left="1695" top="5250" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Pitch" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="TranslateX" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="23" srcpinname="Transform Out" dstnodeid="19" dstpinname="Transform In">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="26" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="2805" top="2670" width="1485" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2805" top="2670" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="RootNode">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Output String" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="SkeletonSimple (Assimp)" filename="..\packs\mp.dx\nodes\modules\assimp\SkeletonSimple (Assimp).v4p" nodename="SkeletonSimple (Assimp)" componentmode="Hidden" id="25" debug="0">
+   <BOUNDS type="Node" left="2475" top="3300" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Scene" visible="1">
+   </PIN>
+   <PIN pinname="Root" visible="1">
+   </PIN>
+   <PIN pinname="Skeleton" visible="1">
+   </PIN>
+   <PIN pinname="Time" visible="1" slicecount="1" values="0.27">
+   </PIN>
+   <PIN pinname="AnimStack" slicecount="1" values="AnimStack::WalkForward">
+   </PIN>
+   <PIN pinname="Absolute Time" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Scene" dstnodeid="25" dstpinname="Scene">
+   </LINK>
+   <LINK srcnodeid="26" srcpinname="Output String" dstnodeid="25" dstpinname="Root">
+   </LINK>
+   <LINK srcnodeid="12" srcpinname="Output" dstnodeid="6" dstpinname="Time">
+   </LINK>
+   <LINK srcnodeid="12" srcpinname="Output" dstnodeid="25" dstpinname="Time">
+   </LINK>
+   <LINK srcnodeid="6" srcpinname="Skeleton" dstnodeid="2" dstpinname="Skeleton">
+   </LINK>
+   <NODE systemname="Material (Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="Material (Assimp)" componentmode="Hidden" id="29">
+   <BOUNDS type="Node" left="6015" top="1305" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Scene" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Scene" dstnodeid="29" dstpinname="Scene">
+   </LINK>
+   <NODE systemname="I (Spreads)" nodename="I (Spreads)" componentmode="Hidden" id="30">
+   <BOUNDS type="Node" left="1800" top="4860" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname=".. To [" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="30" srcpinname="Output" dstnodeid="23" dstpinname="TranslateX">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.7">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
    </PATCH>

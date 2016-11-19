@@ -1,0 +1,55 @@
+//@author: 
+//@help: 
+//@tags: filter
+//@credits:
+
+Texture2D texi: INITIAL;
+Texture2D tex0: PREVIOUS;
+Texture2D<float> tex1 <string uiname="Control";>;
+
+float2 R:TARGETSIZE;
+
+cbuffer controls:register(b0){
+	float holevalue = 6;
+	float Width =3;
+};
+
+SamplerState s0 <bool visible=true;string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
+
+float2 uvoff[9] : IMMUTABLE = 
+{
+	{0,0}, {1,1}, {1,-1}, {-1,-1}, {-1,1},
+	{0,1}, {0,-1}, {-1,0}, {1,0}
+};
+float offmul : IMMUTABLE = 1.86;
+
+float4 pBLUR(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
+	float mask=texi.SampleLevel(s0,x,0).y;
+	if(mask < 0.001) return holevalue;
+	float lod=log2(max(R.x,R.y));
+	float map=tex1.SampleLevel(s0,x,0);
+	lod=map.x*(Width)*log2(max(R.x,R.y));
+	float4 c=0;
+	float2 off=.5/R*pow(2,lod)*saturate(lod);
+	float samps = 0;
+	for(int i=0;i<9;i++){
+		if(i==4) off *= offmul;
+		float4 cc=tex0.SampleLevel(s0,x+uvoff[i]*off,lod);
+		if(cc.x>0)
+		{
+			c+=cc;
+			samps++;
+		}
+	}
+	c/=samps;
+	return c;
+}
+float4 pMIPS(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
+	return max(tex0.SampleLevel(s0,x,0),0);
+}
+technique10 FastBlur{
+	pass P0 <bool mips=true; string format="R16G16B16A16_Float";>
+	{SetPixelShader(CompileShader(ps_4_0,pMIPS()));}
+	pass P1 <string format="R16G16B16A16_Float";>
+	{SetPixelShader(CompileShader(ps_4_0,pBLUR()));}
+}

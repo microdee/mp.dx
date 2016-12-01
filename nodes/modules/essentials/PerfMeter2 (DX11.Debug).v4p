@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\essentials\PerfMeter2 (DX11.Debug).v4p" systemname="PerfMeter2 (DX11.Debug)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\PerfMeter2\PerfMeter2 (DX11.Debug).v4p" scrollx="0" scrolly="3450">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\PerfMeter2 (DX11.Debug).v4p" systemname="PerfMeter2 (DX11.Debug)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\PerfMeter2\PerfMeter2 (DX11.Debug).v4p" scrollx="0" scrolly="5910">
    <BOUNDS type="Window" left="2775" top="1725" width="13680" height="12180">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -101,7 +101,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Blend (DX11.RenderState)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Blend (DX11.RenderState)" componentmode="Hidden" id="35">
-   <BOUNDS type="Node" left="765" top="11730" width="100" height="100">
+   <BOUNDS type="Node" left="945" top="13350" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Mode" slicecount="1" values="Blend">
    </PIN>
@@ -315,6 +315,8 @@
    </PIN>
    <PIN pinname="Geometry Out" visible="1">
    </PIN>
+   <PIN pinname="Loop" slicecount="1" values="0">
+   </PIN>
    </NODE>
    <LINK srcnodeid="59" srcpinname="XYZ" dstnodeid="58" dstpinname="VerticesXYZ">
    </LINK>
@@ -335,7 +337,7 @@
    </PIN>
    <PIN pinname="Geometry" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="Color" visible="1">
+   <PIN pinname="Color" visible="1" slicecount="1" values="|1.00000,0.25278,0.00000,1.00000|">
    </PIN>
    <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
    </PIN>
@@ -391,8 +393,6 @@
    </PIN>
    </NODE>
    <LINK dstnodeid="71" dstpinname="Index" srcnodeid="70" srcpinname="Output">
-   </LINK>
-   <LINK srcnodeid="71" srcpinname="Output" dstnodeid="32" dstpinname="Color">
    </LINK>
    <NODE componentmode="InABox" id="72" nodename="IOBox (String)" systemname="IOBox (String)">
    <BOUNDS height="750" left="9630" top="3495" type="Node" width="2430">
@@ -703,7 +703,7 @@
    <LINK srcnodeid="103" srcpinname="Layer Out" dstnodeid="90" dstpinname="Layer In">
    </LINK>
    <NODE systemname="Quad (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Quad (DX11.Layer)" componentmode="Hidden" id="104">
-   <BOUNDS type="Node" left="2085" top="12795" width="100" height="100">
+   <BOUNDS type="Node" left="2265" top="14415" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Layer" visible="1">
    </PIN>
@@ -716,8 +716,6 @@
    <PIN pinname="Enabled" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="32" srcpinname="Layer" dstnodeid="103" dstpinname="Layer 2">
-   </LINK>
    <LINK srcnodeid="104" srcpinname="Layer" dstnodeid="103" dstpinname="Layer 1">
    </LINK>
    <LINK srcnodeid="35" srcpinname="Render State" dstnodeid="104" dstpinname="Render State">
@@ -787,7 +785,7 @@
    <LINK srcnodeid="108" srcpinname="Output" dstnodeid="105" dstpinname="ScaleY">
    </LINK>
    <NODE systemname="Translate (Transform)" nodename="Translate (Transform)" componentmode="Hidden" id="109">
-   <BOUNDS type="Node" left="3840" top="12480" width="100" height="100">
+   <BOUNDS type="Node" left="4020" top="14100" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform In" visible="1">
    </PIN>
@@ -803,9 +801,9 @@
    <LINK srcnodeid="109" srcpinname="Transform Out" dstnodeid="104" dstpinname="Transform">
    </LINK>
    <NODE nodename="IOBox (Color)" componentmode="InABox" id="112" systemname="IOBox (Color)">
-   <BOUNDS type="Box" left="1440" top="12075" width="2250" height="480">
+   <BOUNDS type="Box" left="1620" top="13695" width="2250" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="1440" top="12075" width="0" height="0">
+   <BOUNDS type="Node" left="1620" top="13695" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Color Input" slicecount="1" visible="1" values="|0.25119,0.25119,0.25119,0.49766|">
    </PIN>
@@ -1699,5 +1697,11 @@
    <LINK srcnodeid="182" srcpinname="Output" dstnodeid="183" dstpinname="Input 2">
    </LINK>
    <LINK srcnodeid="183" srcpinname="Output" dstnodeid="120" dstpinname="Input 1">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.7">
+   </PACK>
+   <LINK srcnodeid="71" srcpinname="Output" dstnodeid="32" dstpinname="Color">
+   </LINK>
+   <LINK srcnodeid="32" srcpinname="Layer" dstnodeid="103" dstpinname="Layer 2">
    </LINK>
    </PATCH>

@@ -1,4 +1,4 @@
-<!DOCTYPE PATCH  SYSTEM "https://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50debug34.100.dtd" >
    <PATCH nodename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\girlpower\SkeletalMesh.v4p" scrollx="270" scrolly="0" systemname="SkeletalMesh" filename="C:\vvvv\libs\mcropack\girlpower\SkeletalMesh.v4p">
    <BOUNDS type="Window" left="14610" top="7230" width="8160" height="6330">
    </BOUNDS>

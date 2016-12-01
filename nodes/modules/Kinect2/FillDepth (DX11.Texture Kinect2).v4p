@@ -1,4 +1,4 @@
-<!DOCTYPE PATCH  SYSTEM "https://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50debug34.100.dtd" >
    <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\Kinect2\FillDepth (DX11.Texture Kinect2).v4p" systemname="FillDepth (DX11.Texture Kinect2)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\Kinect2\FillDepth (DX11.Texture Kinect2).v4p" scrollx="0" scrolly="5400">
    <BOUNDS type="Window" left="18390" top="7575" width="9000" height="6000">
    </BOUNDS>

@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\texture\SetSlice (DX11.Texture2DArray).v4p" systemname="SetSlice (DX11 Texture2DArray)" filename="C:\vvvv\libs\mcropack\nodes\Modules\SetSlice (DX11 Texture2DArray).v4p" scrollx="615" scrolly="1950">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\texture\SetSlice (DX11.Texture2DArray).v4p" systemname="SetSlice (DX11 Texture2DArray)" filename="C:\vvvv\libs\mcropack\nodes\Modules\SetSlice (DX11 Texture2DArray).v4p" scrollx="615" scrolly="1275">
    <BOUNDS type="Window" left="14505" top="5865" width="9735" height="8820">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -91,7 +91,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="3780" top="2055" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="2">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -413,5 +413,7 @@
    <LINK srcnodeid="0" srcpinname="Layer" dstnodeid="1" dstpinname="Layer">
    </LINK>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.7">
    </PACK>
    </PATCH>

@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\essentials\TextBlock (DX11).v4p" systemname="TextBlock (DX11)" filename="C:\vvvv\libs\VObjects\nodes\modules\GUI\TextBlock (DX11).v4p" scrollx="0" scrolly="2685">
-   <BOUNDS type="Window" left="5625" top="7140" width="14970" height="10140">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\TextBlock (DX11).v4p" systemname="TextBlock (DX11)" filename="C:\vvvv\libs\VObjects\nodes\modules\GUI\TextBlock (DX11).v4p" scrollx="0" scrolly="3405">
+   <BOUNDS type="Window" left="7335" top="1725" width="14970" height="10140">
    </BOUNDS>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
@@ -67,7 +67,7 @@
    <LINK srcnodeid="20" srcpinname="TranslateXYZ" dstnodeid="19" dstpinname="XYZ">
    </LINK>
    <NODE systemname="Vector (3d Split)" nodename="Vector (3d Split)" componentmode="Hidden" id="18">
-   <BOUNDS type="Node" left="3330" top="7080" width="100" height="100">
+   <BOUNDS type="Node" left="3735" top="6705" width="100" height="100">
    </BOUNDS>
    <PIN pinname="XYZ" visible="1" slicecount="3" values="450,432.000017166138,0">
    </PIN>
@@ -177,7 +177,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5415" top="2145" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="1" visible="1" values="Leading">
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="Center">
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Text Alignment|">
    </PIN>
@@ -833,5 +833,41 @@
    <LINK srcnodeid="69" srcpinname="Render State" dstnodeid="41" dstpinname="Render State">
    </LINK>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
+   <NODE systemname="Vector (2d Join)" nodename="Vector (2d Join)" componentmode="Hidden" id="70">
+   <BOUNDS type="Node" left="4035" top="11145" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="X" visible="1">
+   </PIN>
+   <PIN pinname="Y" visible="1">
+   </PIN>
+   <PIN pinname="XY" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="18" srcpinname="X" dstnodeid="70" dstpinname="X">
+   </LINK>
+   <LINK srcnodeid="18" srcpinname="Y" dstnodeid="70" dstpinname="Y">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="71">
+   <BOUNDS type="Box" left="3885" top="11820" width="795" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3885" top="11820" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Pixel Box|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="70" srcpinname="XY" dstnodeid="71" dstpinname="Y Input Value">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.7">
    </PACK>
    </PATCH>

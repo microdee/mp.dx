@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\geometry\JoinGeometry (DX11.Geometry).v4p" systemname="JoinGeometry (DX11.Geometry)" filename="C:\vvvv\libs\mcropack\nodes\Modules\JoinGeometry (DX11.Geometry).v4p" scrollx="45" scrolly="360">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\geometry\JoinGeometry (DX11.Geometry).v4p" systemname="JoinGeometry (DX11.Geometry)" filename="C:\vvvv\libs\mcropack\nodes\Modules\JoinGeometry (DX11.Geometry).v4p" scrollx="45" scrolly="360">
    <BOUNDS type="Window" left="8970" top="2490" width="10155" height="10020">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -31,7 +31,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4440" top="1485" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -53,7 +53,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5130" top="1875" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -109,9 +109,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="20" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="3195" top="7410" width="690" height="240">
+   <BOUNDS type="Box" left="1560" top="7620" width="690" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="3195" top="7410" width="0" height="0">
+   <BOUNDS type="Node" left="1560" top="7620" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Geometry Out|">
    </PIN>
@@ -119,9 +119,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="21" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="2505" top="5610" width="795" height="240">
+   <BOUNDS type="Box" left="3195" top="7500" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="2505" top="5610" width="0" height="0">
+   <BOUNDS type="Node" left="3195" top="7500" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -130,6 +130,8 @@
    <PIN pinname="Maximum Characters" slicecount="1" values="-1">
    </PIN>
    <PIN pinname="Input String" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Layout Message|">
    </PIN>
    </NODE>
    <NODE systemname="GetMaxElement (DX11.Geometry GeomFX)" filename="GetMaxElement (DX11.Geometry GeomFX).v4p" nodename="GetMaxElement (DX11.Geometry GeomFX)" componentmode="Hidden" id="24">
@@ -540,4 +542,8 @@
    </LINK>
    <LINK srcnodeid="33" srcpinname="Y Output Value" dstnodeid="40" dstpinname="Enabled">
    </LINK>
+   <PACK Name="vvvv-Message" Version="2.7">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
    </PATCH>

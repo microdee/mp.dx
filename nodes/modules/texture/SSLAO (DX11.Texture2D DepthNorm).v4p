@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" systemname="SSLAO (DX11.Texture2D DepthNorm)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" scrollx="0" scrolly="3645">
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" systemname="SSLAO (DX11.Texture2D DepthNorm)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" scrollx="0" scrolly="4665">
    <BOUNDS type="Window" left="2835" top="3285" width="14235" height="10140">
    </BOUNDS>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
@@ -376,36 +376,6 @@
    </NODE>
    <LINK srcnodeid="41" srcpinname="Output Node" dstnodeid="0" dstpinname="Custom Semantics">
    </LINK>
-   <NODE systemname="FrameDelay (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="FrameDelay (DX11.Texture 2d)" componentmode="Hidden" id="42">
-   <BOUNDS type="Node" left="5355" top="8715" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Texture In" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Texture Out" visible="1">
-   </PIN>
-   </NODE>
-   <NODE systemname="Reproject (DX11.TextureFX)" filename="..\..\texture11\Reproject.tfx" nodename="Reproject (DX11.TextureFX)" componentmode="Hidden" id="43">
-   <BOUNDS type="Node" left="4560" top="10215" width="1350" height="270">
-   </BOUNDS>
-   <PIN pinname="Depth" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Previous Depth" visible="1">
-   </PIN>
-   <PIN pinname="Feedback" slicecount="1" visible="1" values="0.9">
-   </PIN>
-   <PIN pinname="Enabled" visible="1" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Texture In" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Texture Out" visible="1">
-   </PIN>
-   <PIN pinname="Feedback Texture" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="41" srcpinname="Output Node" dstnodeid="43" dstpinname="Custom Semantics">
-   </LINK>
-   <LINK srcnodeid="42" srcpinname="Texture Out" dstnodeid="43" dstpinname="Previous Depth">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="44" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="9330" top="4935" width="480" height="480">
    </BOUNDS>
@@ -440,8 +410,6 @@
    </LINK>
    <LINK srcnodeid="44" srcpinname="Y Output Value" dstnodeid="45" dstpinname="Input 1">
    </LINK>
-   <LINK srcnodeid="45" srcpinname="Output" dstnodeid="43" dstpinname="Enabled">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="51" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="9090" top="4020" width="795" height="240">
    </BOUNDS>
@@ -472,8 +440,6 @@
    <PIN pinname="Precision" slicecount="1" values="4">
    </PIN>
    </NODE>
-   <LINK srcnodeid="60" srcpinname="Y Output Value" dstnodeid="43" dstpinname="Feedback">
-   </LINK>
    <NODE systemname="OnOpen (VVVV)" nodename="OnOpen (VVVV)" componentmode="Hidden" id="66">
    <BOUNDS type="Node" left="6435" top="5295" width="100" height="100">
    </BOUNDS>
@@ -536,20 +502,6 @@
    </NODE>
    <LINK srcnodeid="70" srcpinname="Y Output Value" dstnodeid="66" dstpinname="Simulate">
    </LINK>
-   <NODE id="40" systemname="FrameDelay (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="FrameDelay (DX11.Texture 2d)" componentmode="Hidden">
-   <BOUNDS type="Node" left="5340" top="10755" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Texture In" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Texture Out" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="40" srcpinname="Texture Out" dstnodeid="43" dstpinname="Feedback Texture">
-   </LINK>
-   <LINK srcnodeid="43" srcpinname="Texture Out" dstnodeid="40" dstpinname="Texture In">
-   </LINK>
-   <LINK srcnodeid="43" srcpinname="Texture Out" dstnodeid="21" dstpinname="Texture In 2">
-   </LINK>
    <NODE systemname="FXAA11 (DX11.TextureFX)" filename="%VVVV%\packs\dx11\nodes\texture11\Filter\FXAA11.tfx" nodename="FXAA11 (DX11.TextureFX)" componentmode="Hidden" id="75">
    <BOUNDS type="Node" left="4275" top="8685" width="100" height="100">
    </BOUNDS>
@@ -564,8 +516,6 @@
    </NODE>
    <LINK srcnodeid="0" srcpinname="Texture Out" dstnodeid="75" dstpinname="Texture In">
    </LINK>
-   <LINK srcnodeid="75" srcpinname="Texture Out" dstnodeid="43" dstpinname="Texture In">
-   </LINK>
    <NODE systemname="Sampler (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Sampler (DX11)" componentmode="Hidden" id="76">
    <BOUNDS type="Node" left="8460" top="7455" width="100" height="100">
    </BOUNDS>
@@ -578,14 +528,10 @@
    </LINK>
    <LINK srcnodeid="30" srcpinname="Output" dstnodeid="0" dstpinname="Default SizeXY">
    </LINK>
-   <LINK srcnodeid="11" srcpinname="Output Node" dstnodeid="43" dstpinname="Depth">
-   </LINK>
-   <LINK srcnodeid="11" srcpinname="Output Node" dstnodeid="42" dstpinname="Texture In">
-   </LINK>
    <LINK srcnodeid="11" srcpinname="Output Node" dstnodeid="0" dstpinname="Texture In">
    </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="77" systemname="IOBox (Enumerations)">
-   <BOUNDS type="Box" left="4815" top="8010" width="735" height="240">
+   <BOUNDS type="Box" left="4815" top="8010" width="1500" height="240">
    </BOUNDS>
    <BOUNDS type="Node" left="4815" top="8010" width="0" height="0">
    </BOUNDS>
@@ -596,4 +542,40 @@
    </LINK>
    <LINK srcnodeid="2" srcpinname="Y Output Value" dstnodeid="0" dstpinname="RandomSeed">
    </LINK>
+   <NODE systemname="Reproject (DX11.TextureFX)" filename="..\..\texture11\Reproject.tfx" nodename="Reproject (DX11.TextureFX)" componentmode="Hidden" id="78">
+   <BOUNDS type="Node" left="4560" top="10215" width="1350" height="270">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="41" srcpinname="Output Node" dstnodeid="78" dstpinname="Custom Semantics">
+   </LINK>
+   <LINK srcnodeid="45" srcpinname="Output" dstnodeid="78" dstpinname="Enabled">
+   </LINK>
+   <LINK srcnodeid="60" srcpinname="Y Output Value" dstnodeid="78" dstpinname="Feedback">
+   </LINK>
+   <LINK srcnodeid="78" srcpinname="Texture Out" dstnodeid="21" dstpinname="Texture In 2">
+   </LINK>
+   <LINK srcnodeid="75" srcpinname="Texture Out" dstnodeid="78" dstpinname="Texture In">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Output Node" dstnodeid="78" dstpinname="Depth">
+   </LINK>
+   <NODE id="79" systemname="FrameDelay (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="FrameDelay (DX11.Texture 2d)" componentmode="Hidden">
+   <BOUNDS type="Node" left="5550" top="10770" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="79" srcpinname="Texture Out" dstnodeid="78" dstpinname="Feedback Texture">
+   </LINK>
+   <LINK srcnodeid="78" srcpinname="Texture Out" dstnodeid="79" dstpinname="Texture In">
+   </LINK>
+   <NODE systemname="FrameDelay (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="FrameDelay (DX11.Texture 2d)" componentmode="Hidden" id="81">
+   <BOUNDS type="Node" left="5355" top="8715" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Texture Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="Output Node" dstnodeid="81" dstpinname="Texture In">
+   </LINK>
+   <LINK srcnodeid="81" srcpinname="Texture Out" dstnodeid="78" dstpinname="Previous Depth">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.7">
+   </PACK>
    </PATCH>

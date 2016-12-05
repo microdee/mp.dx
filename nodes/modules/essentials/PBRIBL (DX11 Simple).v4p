@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" systemname="PBRIBL (DX11 Simple)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" scrollx="735" scrolly="-330">
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" systemname="PBRIBL (DX11 Simple)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" scrollx="2520" scrolly="5505">
    <BOUNDS type="Window" left="-12375" top="-12450" width="9000" height="11655">
    </BOUNDS>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
@@ -272,8 +272,6 @@
    </NODE>
    <LINK srcnodeid="62" srcpinname="Buffers" dstnodeid="48" dstpinname="Input Node">
    </LINK>
-   <LINK srcnodeid="62" srcpinname="Depth Buffer" dstnodeid="49" dstpinname="Depth">
-   </LINK>
    <LINK srcnodeid="53" srcpinname="Texture Out" dstnodeid="49" dstpinname="Stencil">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="47" systemname="IOBox (Value Advanced)">
@@ -521,7 +519,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4770" top="13575" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.36">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.8">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -539,7 +537,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4980" top="14220" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.14">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.25">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -557,7 +555,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5160" top="14850" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.52">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -609,7 +607,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="7155" top="16680" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -833,7 +831,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="3960" top="15840" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -984,8 +982,6 @@
    <PIN pinname="Noise" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="62" srcpinname="Depth Buffer" dstnodeid="73" dstpinname="Depth">
-   </LINK>
    <LINK srcnodeid="53" srcpinname="Texture Out" dstnodeid="73" dstpinname="Stencil">
    </LINK>
    <LINK srcnodeid="47" srcpinname="Y Output Value" dstnodeid="73" dstpinname="LOD">
@@ -1025,7 +1021,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4575" top="16305" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -1122,4 +1118,24 @@
    </LINK>
    <PACK Name="vvvv-Message" Version="2.7">
    </PACK>
+   <NODE systemname="Resize (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\modules\Resize (DX11.Texture 2d).v4p" nodename="Resize (DX11.Texture 2d)" componentmode="Hidden" id="81">
+   <BOUNDS type="Node" left="7605" top="11295" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Texture In" visible="1">
+   </PIN>
+   <PIN pinname="Texture SizeXY" visible="1">
+   </PIN>
+   <PIN pinname="Texture Out" visible="1">
+   </PIN>
+   <PIN pinname="Target Format" slicecount="1" values="R32_Float">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="62" srcpinname="Depth Buffer" dstnodeid="81" dstpinname="Texture In">
+   </LINK>
+   <LINK srcnodeid="24" srcpinname="Y Output Value" dstnodeid="81" dstpinname="Texture SizeXY">
+   </LINK>
+   <LINK srcnodeid="81" srcpinname="Texture Out" dstnodeid="49" dstpinname="Depth">
+   </LINK>
+   <LINK srcnodeid="81" srcpinname="Texture Out" dstnodeid="73" dstpinname="Depth">
+   </LINK>
    </PATCH>

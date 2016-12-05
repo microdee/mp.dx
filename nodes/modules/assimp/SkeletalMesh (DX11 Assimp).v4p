@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" systemname="SkeletalMesh (DX11 Assimp)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" scrollx="0" scrolly="3285">
-   <BOUNDS type="Window" left="9825" top="2070" width="17625" height="11085">
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" systemname="SkeletalMesh (DX11 Assimp)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" scrollx="0" scrolly="1485">
+   <BOUNDS type="Window" left="10260" top="3570" width="17625" height="11085">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
@@ -31,6 +31,8 @@
    </PIN>
    <BOUNDS type="Window" left="8970" top="2490" width="10155" height="10020">
    </BOUNDS>
+   <PIN pinname="Layout Message" visible="1">
+   </PIN>
    </NODE>
    <NODE systemname="Mesh (Geometry Split Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="Mesh (Geometry Split Assimp)" componentmode="Hidden" id="27">
    <BOUNDS type="Node" left="630" top="4200" width="100" height="100">
@@ -193,7 +195,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="9270" top="3135" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -285,9 +287,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="52" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="3900" top="13635" width="795" height="240">
+   <BOUNDS type="Box" left="2385" top="13560" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="3900" top="13635" width="0" height="0">
+   <BOUNDS type="Node" left="2385" top="13560" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Buffer Out|">
    </PIN>
@@ -295,9 +297,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="53" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="4440" top="12765" width="480" height="480">
+   <BOUNDS type="Box" left="4575" top="13455" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="4440" top="12765" width="0" height="0">
+   <BOUNDS type="Node" left="4575" top="13455" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -307,7 +309,7 @@
    </PIN>
    <PIN pinname="Behavior" slicecount="1" values="Toggle">
    </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="|Technique Valid|">
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Skinning Technique Valid|">
    </PIN>
    <PIN pinname="Y Input Value" visible="1" slicecount="1" values="1">
    </PIN>
@@ -317,7 +319,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5970" top="13380" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Query">
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Skinning Query|">
    </PIN>
    <PIN pinname="Input Node" visible="1" slicecount="1" values="||">
    </PIN>
@@ -536,18 +538,6 @@
    </LINK>
    <LINK srcnodeid="84" srcpinname="Output" dstnodeid="6" dstpinname="Input">
    </LINK>
-   <NODE systemname="Switch (Node Input)" filename="" nodename="Switch (Node Input)" componentmode="Hidden" id="85">
-   <BOUNDS type="Node" left="1065" top="8835" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input 1" visible="1">
-   </PIN>
-   <PIN pinname="Switch" visible="1">
-   </PIN>
-   <PIN pinname="Input 2" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
    <NODE systemname="Count (Node)" nodename="Count (Node)" componentmode="Hidden" id="86">
    <BOUNDS type="Node" left="5445" top="4665" width="100" height="100">
    </BOUNDS>
@@ -571,12 +561,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="86" srcpinname="Count" dstnodeid="87" dstpinname="Input 1">
-   </LINK>
-   <LINK srcnodeid="29" srcpinname="Geometry Out" dstnodeid="85" dstpinname="Input 1">
-   </LINK>
-   <LINK srcnodeid="87" srcpinname="Output" dstnodeid="85" dstpinname="Switch">
-   </LINK>
-   <LINK srcnodeid="82" srcpinname="Geometry" dstnodeid="85" dstpinname="Input 2">
    </LINK>
    <NODE systemname="SkinningSimple (DX11 Assimp)" filename="SkinningSimple (DX11 Assimp).v4p" nodename="SkinningSimple (DX11 Assimp)" componentmode="Hidden" id="89">
    <BOUNDS type="Node" left="2625" top="11490" width="100" height="100">
@@ -663,7 +647,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="10455" top="8550" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -687,5 +671,23 @@
    <LINK srcnodeid="29" srcpinname="Geometry Out" dstnodeid="89" dstpinname="Geometry In">
    </LINK>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="92">
+   <BOUNDS type="Box" left="3630" top="14100" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3630" top="14100" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Joining Layout Message|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="29" srcpinname="Layout Message" dstnodeid="92" dstpinname="Input String">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.7">
    </PACK>
    </PATCH>

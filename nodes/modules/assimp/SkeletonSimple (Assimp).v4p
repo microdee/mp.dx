@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\assimp\SkeletonSimple (Assimp).v4p" systemname="SkeletonSimple (Assimp)" filename="C:\vvvv\libs\mcropack\nodes\Modules\SkeletonSimple (Assimp).v4p" scrollx="1950" scrolly="1635">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\assimp\SkeletonSimple (Assimp).v4p" systemname="SkeletonSimple (Assimp)" filename="C:\vvvv\libs\mcropack\nodes\Modules\SkeletonSimple (Assimp).v4p" scrollx="75" scrolly="450">
    <BOUNDS type="Window" left="16935" top="4110" width="9000" height="6000">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -94,22 +94,6 @@
    <PIN pinname="Base Transform" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="5" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="2625" top="3195" width="1275" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="2625" top="3195" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" values="unnamed">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Root">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="4" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="8430" top="2190" width="795" height="240">
    </BOUNDS>
@@ -195,10 +179,10 @@
    </BOUNDS>
    <PIN pinname="Skeleton" visible="1">
    </PIN>
+   <PIN pinname="Root" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="14" srcpinname="Skeleton" dstnodeid="6" dstpinname="Skeleton" linkstyle="PolyLine">
-   </LINK>
-   <LINK srcnodeid="5" srcpinname="Output String" dstnodeid="14" dstpinname="Root">
    </LINK>
    <LINK srcnodeid="12" srcpinname="Output Node" dstnodeid="14" dstpinname="Scene">
    </LINK>
@@ -605,7 +589,7 @@
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
-   <PIN pinname="Input 2" slicecount="1" values="||" visible="1">
+   <PIN pinname="Input 2" slicecount="1" visible="1" values="||">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -635,7 +619,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="6870" top="1950" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="1" visible="1" values="AnimStack::SE_Dancing">
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="combinedAnim_0">
    </PIN>
    <PIN pinname="Output Enum" visible="1">
    </PIN>
@@ -730,4 +714,28 @@
    </LINK>
    <LINK srcnodeid="63" srcpinname="Output" dstnodeid="10" dstpinname="Time">
    </LINK>
+   <NODE systemname="Node (Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="Node (Assimp)" componentmode="Hidden" id="64">
+   <BOUNDS type="Node" left="1335" top="2670" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Scene" visible="1">
+   </PIN>
+   <PIN pinname="Name" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="12" srcpinname="Output Node" dstnodeid="64" dstpinname="Scene">
+   </LINK>
+   <NODE systemname="GetSlice (String)" nodename="GetSlice (String)" componentmode="Hidden" id="65">
+   <BOUNDS type="Node" left="1785" top="3210" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="64" srcpinname="Name" dstnodeid="65" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="65" srcpinname="Output" dstnodeid="14" dstpinname="Root">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.7">
+   </PACK>
    </PATCH>

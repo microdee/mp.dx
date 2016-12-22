@@ -172,6 +172,7 @@
     <Compile Include="CopyBuffer.cs" />
     <Compile Include="CopyCounter.cs" />
     <Compile Include="DispatchIndirectOnBindedResource.cs" />
+    <Compile Include="DynamicRawBuffer.cs" />
     <Compile Include="MultiStructuredBufferRenderer.cs" />
     <Compile Include="MultiRawBufferRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

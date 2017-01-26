@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha29.5.dtd" >
-   <PATCH nodename="D:\vvvv\md.bot\nodes\modules\Z-sort (EX9.Mesh).v4p" systemname="Z-sort (EX9.Mesh)" filename="D:\vvvv\projects\cloth - emilien grézes\cloth-lightweight-error\Z-sort (EX9.Mesh).v4p">
-   <BOUNDS type="Window" left="1860" top="5010" width="15675" height="9600">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.1.dtd" >
+   <PATCH nodename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\geometry\Z-sort (EX9.Mesh).v4p" systemname="Z-sort (EX9.Mesh)" filename="D:\vvvv\projects\cloth - emilien grézes\cloth-lightweight-error\Z-sort (EX9.Mesh).v4p" scrollx="0" scrolly="720">
+   <BOUNDS type="Window" left="36690" top="-12795" width="15675" height="9600">
    </BOUNDS>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="0">
    <BOUNDS type="Node" left="3225" top="645" width="100" height="100">
@@ -414,18 +414,6 @@
    </LINK>
    <LINK srcnodeid="45" srcpinname="Output" dstnodeid="26" dstpinname="Texture CoordinateXY">
    </LINK>
-   <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="47">
-   <BOUNDS type="Node" left="6795" top="7680" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input 2" slicecount="1" values="3">
-   </PIN>
-   <PIN pinname="Input 1" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="37" srcpinname="Former Slice Bin Size" dstnodeid="47" dstpinname="Input 1">
-   </LINK>
    <LINK srcnodeid="37" srcpinname="Former Slice Bin Size" dstnodeid="26" dstpinname="Indices Bin Size">
    </LINK>
    <LINK srcnodeid="5" srcpinname="Indices" dstnodeid="18" dstpinname="Input">
@@ -442,4 +430,12 @@
    </LINK>
    <LINK srcnodeid="49" srcpinname="Output" dstnodeid="17" dstpinname="Input">
    </LINK>
+   <PACK Name="vvvv-Message" Version="2.9.0">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.3">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
+   <PACK Name="addonpack" Version="35.0.0">
+   </PACK>
    </PATCH>

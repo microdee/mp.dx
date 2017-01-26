@@ -1,12 +1,12 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
-   <PATCH nodename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\ShaderFactory (VVVV).v4p" systemname="ShaderFactory (VVVV)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\ShaderFactory (VVVV).v4p" scrollx="1365" scrolly="90">
-   <BOUNDS type="Window" left="6315" top="2505" width="11175" height="10725">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.1.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\ShaderFactory (VVVV).v4p" systemname="ShaderFactory (VVVV)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\ShaderFactory (VVVV).v4p" scrollx="8670" scrolly="7635">
+   <BOUNDS type="Window" left="16620" top="-12120" width="11175" height="10725">
    </BOUNDS>
-   <PACK Name="vvvv-Message" Version="2.7">
+   <PACK Name="vvvv-Message" Version="2.9.0">
    </PACK>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.101.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE systemname="PatchAlias (VVVV)" nodename="PatchAlias (VVVV)" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="450" top="1725" width="100" height="100">
@@ -191,9 +191,11 @@
    </BOUNDS>
    <PIN pinname="Output String" visible="1">
    </PIN>
-   <PIN pinname="Input String" slicecount="1" values="Result">
+   <PIN pinname="Input String" slicecount="1" values="FBX">
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="Name">
+   </PIN>
+   <PIN pinname="Changed" visible="1" pintype="Output">
    </PIN>
    </NODE>
    <NODE systemname="Add (String)" filename="" nodename="Add (String)" componentmode="Hidden" id="18">
@@ -321,11 +323,13 @@
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
-   <PIN pinname="Input Count" slicecount="1" values="4">
+   <PIN pinname="Input Count" slicecount="1" values="5">
    </PIN>
    <PIN pinname="Input 3" visible="1">
    </PIN>
    <PIN pinname="Input 4" visible="1">
+   </PIN>
+   <PIN pinname="Input 5" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="25" srcpinname="Up Edge" dstnodeid="26" dstpinname="Input 1">
@@ -733,9 +737,9 @@
    </PIN>
    <PIN pinname="Input" visible="1">
    </PIN>
-   <PIN pinname="Destination Minimum" slicecount="1" values="-5">
+   <PIN pinname="Destination Minimum" slicecount="1" values="-15">
    </PIN>
-   <PIN pinname="Destination Maximum" slicecount="1" values="5">
+   <PIN pinname="Destination Maximum" slicecount="1" values="15">
    </PIN>
    <PIN pinname="Mapping" slicecount="1" values="Clamp">
    </PIN>
@@ -1007,7 +1011,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="7890" top="735" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="1" visible="1" values="fx">
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="gsfx">
    </PIN>
    <PIN pinname="Output Enum" visible="1">
    </PIN>
@@ -1195,5 +1199,9 @@
    <LINK srcnodeid="124" srcpinname="Output" dstnodeid="126" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="102" srcpinname="Changed" dstnodeid="26" dstpinname="Input 4">
+   </LINK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.3">
+   </PACK>
+   <LINK srcnodeid="17" srcpinname="Changed" dstnodeid="26" dstpinname="Input 5">
    </LINK>
    </PATCH>

@@ -550,7 +550,7 @@
    </NODE>
    <LINK srcnodeid="11" srcpinname="Output Node" dstnodeid="81" dstpinname="Texture In">
    </LINK>
-   <PACK Name="vvvv-Message" Version="2.7">
+   <PACK Name="vvvv-Message" Version="2.9.0">
    </PACK>
    <NODE id="82" systemname="FrameDelay (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="FrameDelay (DX11.Texture 2d)" componentmode="Hidden">
    <BOUNDS type="Node" left="5550" top="10770" width="100" height="100">
@@ -584,4 +584,6 @@
    </LINK>
    <LINK srcnodeid="83" srcpinname="Texture Out" dstnodeid="82" dstpinname="Texture In">
    </LINK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.3">
+   </PACK>
    </PATCH>

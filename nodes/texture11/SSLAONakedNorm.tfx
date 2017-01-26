@@ -133,7 +133,7 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 		
 		float o = pow(saturate(amount),Gamma);
     	float dm = lerp(1, saturate(currentPos.z*0.5), 1-saturate(o*5-4));
-    	//o = saturate(o*lerp(0.3,1,dm));
+    	o = saturate(o*lerp(0.3,1,dm));
 	
 		return float4(o,o,o,1);
     }

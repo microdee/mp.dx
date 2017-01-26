@@ -1,13 +1,13 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" systemname="PBRIBL (DX11 Simple)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" scrollx="2520" scrolly="5505">
-   <BOUNDS type="Window" left="-12375" top="-12450" width="9000" height="11655">
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" systemname="PBRIBL (DX11 Simple)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="6720" top="-13440" width="9000" height="11655">
    </BOUNDS>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
    </PACK>
    <PACK Name="addonpack" Version="34.101.0">
    </PACK>
    <NODE systemname="Inverse (Transform)" nodename="Inverse (Transform)" componentmode="Hidden" id="64">
-   <BOUNDS type="Node" left="6885" top="3915" width="100" height="100">
+   <BOUNDS type="Node" left="8895" top="3990" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Source" visible="1" slicecount="1" values="||">
    </PIN>
@@ -15,7 +15,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Multiply (Transform)" nodename="Multiply (Transform)" componentmode="Hidden" id="63">
-   <BOUNDS type="Node" left="6435" top="4155" width="100" height="100">
+   <BOUNDS type="Node" left="8445" top="4230" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform In 1" visible="1" slicecount="1" values="||">
    </PIN>
@@ -75,7 +75,7 @@
    <LINK srcnodeid="61" srcpinname="Y Output Value" dstnodeid="62" dstpinname="Target Count">
    </LINK>
    <NODE systemname="PreviousMatrices (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\PreviousMatrices (DX11).v4p" nodename="PreviousMatrices (DX11)" componentmode="Hidden" id="60">
-   <BOUNDS type="Node" left="3105" top="2505" width="100" height="100">
+   <BOUNDS type="Node" left="3300" top="2565" width="100" height="100">
    </BOUNDS>
    <PIN pinname="View" visible="1" slicecount="1" values="||">
    </PIN>
@@ -189,17 +189,17 @@
    </PIN>
    </NODE>
    <NODE systemname="PackCamera (Transform)" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\PackCamera (Transform).v4p" nodename="PackCamera (Transform)" componentmode="Hidden" id="51">
-   <BOUNDS type="Node" left="5970" top="5685" width="100" height="100">
+   <BOUNDS type="Node" left="6510" top="4950" width="100" height="100">
    </BOUNDS>
    <PIN pinname="View" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="Projection" visible="1">
+   <PIN pinname="Projection" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
+   <PIN pinname="Aspect Ratio" visible="1">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="63" srcpinname="Transform Out" dstnodeid="51" dstpinname="Projection">
-   </LINK>
    <NODE systemname="RenderSemantic (DX11.Layer Transform)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="RenderSemantic (DX11.Layer Transform)" componentmode="Hidden" id="50">
    <BOUNDS type="Node" left="2775" top="8595" width="1185" height="270">
    </BOUNDS>
@@ -291,7 +291,7 @@
    <LINK srcnodeid="47" srcpinname="Y Output Value" dstnodeid="49" dstpinname="LOD">
    </LINK>
    <NODE systemname="FrameDelay (Transform)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="FrameDelay (Transform)" componentmode="Hidden" id="46">
-   <BOUNDS type="Node" left="4740" top="6330" width="100" height="100">
+   <BOUNDS type="Node" left="6615" top="6075" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -519,7 +519,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4770" top="13575" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.8">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.2">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -537,7 +537,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4980" top="14220" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.25">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.34">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -607,7 +607,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="7155" top="16680" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -1053,7 +1053,7 @@
    <LINK srcnodeid="76" srcpinname="Output" dstnodeid="73" dstpinname="Sample Count">
    </LINK>
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="77">
-   <BOUNDS type="Node" left="3945" top="18840" width="100" height="100">
+   <BOUNDS type="Node" left="3840" top="18825" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1" slicecount="1" values="1">
    </PIN>
@@ -1116,7 +1116,7 @@
    </LINK>
    <LINK srcnodeid="73" srcpinname="Texture Out" dstnodeid="6" dstpinname="Input Node">
    </LINK>
-   <PACK Name="vvvv-Message" Version="2.7">
+   <PACK Name="vvvv-Message" Version="2.9.0">
    </PACK>
    <NODE systemname="Resize (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\modules\Resize (DX11.Texture 2d).v4p" nodename="Resize (DX11.Texture 2d)" componentmode="Hidden" id="81">
    <BOUNDS type="Node" left="7605" top="11295" width="100" height="100">
@@ -1137,5 +1137,11 @@
    <LINK srcnodeid="81" srcpinname="Texture Out" dstnodeid="49" dstpinname="Depth">
    </LINK>
    <LINK srcnodeid="81" srcpinname="Texture Out" dstnodeid="73" dstpinname="Depth">
+   </LINK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.3">
+   </PACK>
+   <LINK srcnodeid="41" srcpinname="Output Node" dstnodeid="51" dstpinname="Projection">
+   </LINK>
+   <LINK srcnodeid="40" srcpinname="Output Node" dstnodeid="51" dstpinname="Aspect Ratio">
    </LINK>
    </PATCH>

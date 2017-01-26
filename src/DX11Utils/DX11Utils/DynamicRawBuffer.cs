@@ -106,7 +106,7 @@ namespace DX11Utils
                         else
                         {
                             FValid[i] = false;
-                            return;
+                            continue;
                         }
                     }
 
@@ -118,6 +118,7 @@ namespace DX11Utils
                         db.Data.Position = 0;
                         FInData[i].Position = 0;
                         FInData[i].CopyTo(db.Data);
+                        db.Data.Position = 0;
                         context.CurrentDeviceContext.UnmapSubresource(b.Buffer, 0);
                     }
                     catch

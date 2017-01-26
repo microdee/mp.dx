@@ -10,6 +10,9 @@
 #include <packs/mp.fxh/AnisotropicEnvSample.fxh>
 #include <packs/mp.fxh/DiscSample.fxh>
 #include <packs/mp.fxh/bitwise.fxh>
+#if !defined(UVLAYER)
+#define UVLAYER TEXCOORD0
+#endif
 
 //#define DO_VELOCITY 1
 
@@ -26,7 +29,7 @@ struct VSin
 {
     float3 Pos : POSITION;
     float3 Norm : NORMAL;
-    float2 UV : TEXCOORD0;
+    float2 UV : UVLAYER;
     #if defined(HAS_TANGENT)
     float3 Tan : TANGENT;
     float3 Bin : BINORMAL;
@@ -112,8 +115,6 @@ PSin VS(VSin input)
 	output.svpos = mul(float4(posi,1), w);
     output.posw = output.svpos.xyz;
 	output.svpos = mul(output.svpos, tV);
-	//if(dot(normalize(output.svpos.xyz), output.Norm) > 0)
-	//	output.Norm = -output.Norm;
 	output.svpos = mul(output.svpos, tP);
 	output.pspos = output.svpos;
 
@@ -180,6 +181,7 @@ PSout PS(PSin input)
 	#else
 	float3 norm = input.Norm;
 	#endif
+	if(dot(norm, float3(0,0,1)) > 0) norm = -norm;
 
     o.Lit = col;
     o.Norm = float4(norm*0.5+0.5, ii);

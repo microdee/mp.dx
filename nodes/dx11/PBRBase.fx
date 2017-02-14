@@ -19,8 +19,10 @@
 StructuredBuffer<float4x4> Tr <string uiname="Transforms";>;
 StructuredBuffer<float4x4> pTr <string uiname="Previous Transforms";>;
 StructuredBuffer<float4> AlbedoCol;
+StructuredBuffer<float2> RoughMetalParam;
 StructuredBuffer<float> TexID;
 Texture2DArray Albedo;
+Texture2DArray RoughMetalMap;
 Texture2DArray NormBump;
 Texture2D DispMap;
 //Texture2D DiffEnv;
@@ -63,9 +65,10 @@ struct PSout
     float4 Lit : SV_Target0;
     float4 Norm : SV_Target1;
     float4 VelUV : SV_Target2;
+    float2 RoughMetal : SV_Target3;
 	#if defined(TANTARGETS)
-    float4 Tan : SV_Target3;
-    float4 Bin : SV_Target4;
+    float4 Tan : SV_Target4;
+    float4 Bin : SV_Target5;
 	#endif
 };
 
@@ -185,6 +188,7 @@ PSout PS(PSin input)
 
     o.Lit = col;
     o.Norm = float4(norm*0.5+0.5, ii);
+	o.RoughMetal = RoughMetalParam[ii] * RoughMetalMap.Sample(sT, float3(input.UV, ti)).xy;
 	#if defined(TANTARGETS)
 	o.Tan.rgb = input.Tan*0.5+0.5;
 	o.Bin.rgb = input.Bin*0.5+0.5;

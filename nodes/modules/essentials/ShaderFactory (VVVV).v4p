@@ -746,8 +746,6 @@
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="68" srcpinname="Output" dstnodeid="73" dstpinname="Input 1">
-   </LINK>
    <LINK srcnodeid="68" srcpinname="Output" dstnodeid="73" dstpinname="Input">
    </LINK>
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="74">

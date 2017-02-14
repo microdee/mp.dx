@@ -18,14 +18,11 @@ Texture2D Albedo : PREVIOUS;
 //rgb: normal, a: matid
 Texture2D Normal : NORMAL;
 Texture2D VelUV : VELUV;
+Texture2D<float2> RoughMetal : ROUGHMETAL;
 Texture2D Bckg;
 Texture2D<float> Depth : UDEPTH;
 Texture2D<uint4> stencil : USTENCIL;
-Texture2DArray RoughMetal; // == Params
 Texture2D Environment;
-
-StructuredBuffer<float2> Params; // x: rough, y: metal
-StructuredBuffer<float> TexID;
 
 float2 R:TARGETSIZE;
 
@@ -69,25 +66,21 @@ float4 pIBL(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
     	
         float4 normid = Normal.Load(puv);
         float2 uvin = VelUV.Load(puv).zw;
-    	uint ps, ts, nope;
-    	TexID.GetDimensions(ts, nope);
-    	Params.GetDimensions(ps, nope);
-        float ii = normid.w;
-        float ti = TexID[ii%ts];
     	
 	    float3 posV = UVZtoVIEW(x, Depth.Load(puv), tP, tPI);
 		float4x4 dirm = mul(tVI, EnvTr);
 		float3 dir = mul(float4(normalize(posV), 0), dirm).xyz;
 
-        float2 roughmetal = RoughMetal.SampleLevel(sT, float3(uvin, ti), 0).xy;
-        float rough = Params[ii%ps].x * roughmetal.r;
-        float metal = Params[ii%ps].y * roughmetal.g;
+        float2 roughmetal = RoughMetal.Load(puv);
+        float rough = roughmetal.r;
+        float metal = roughmetal.g;
         float4 col = albedoin;
     	float3 norm = normid.xyz*2-1;
         float3 eye = normalize(posV);
         float3 rdir = mul(float4(reflect(eye, norm), 0), dirm).xyz;
 
     	float mipl;
+    	uint nope;
     	Environment.GetDimensions(0, nope, nope, mipl);
         mipl = max(0, mipl-1);
 

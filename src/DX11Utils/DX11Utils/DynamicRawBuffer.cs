@@ -20,7 +20,7 @@ namespace DX11Utils
         Author = "microdee",
         AutoEvaluate = false
         )]
-    public class DynamicRawBuffer : IPluginEvaluate, IDisposable, IDX11ResourceProvider
+    public class DynamicRawBuffer : IPluginEvaluate, IDisposable, IDX11ResourceHost
     {
         [Input("Data", DefaultValue = 0, AutoValidate = false, Order = 5)]
         protected ISpread<Stream> FInData;
@@ -80,7 +80,7 @@ namespace DX11Utils
             }
         }
 
-        public void Update(IPluginIO pin, DX11RenderContext context)
+        public void Update(DX11RenderContext context)
         {
             if (FInData.SliceCount == 0) { return; }
             for (int i = 0; i < FOutput.SliceCount; i++)
@@ -100,7 +100,7 @@ namespace DX11Utils
                     {
                         if (FInData[i].Length > 0)
                         {
-                            FOutput[i][context] = new DX11DynamicRawBuffer(context.Device, bablength);
+                            FOutput[i][context] = new DX11DynamicRawBuffer(context, bablength);
                             FValid[i] = true;
                         }
                         else
@@ -129,7 +129,7 @@ namespace DX11Utils
             }
         }
 
-        public void Destroy(IPluginIO pin, DX11RenderContext context, bool force)
+        public void Destroy(DX11RenderContext context, bool force)
         {
             if (force || !FKeep[0])
             {

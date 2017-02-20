@@ -31,7 +31,9 @@ struct VSin
 {
     float3 Pos : POSITION;
     float3 Norm : NORMAL;
+	#if defined(HAS_TEXCOORD0)
     float2 UV : UVLAYER;
+	#endif
     #if defined(HAS_TANGENT)
     float3 Tan : TANGENT;
     float3 Bin : BINORMAL;
@@ -40,7 +42,7 @@ struct VSin
     float3 ppos : PREVPOS;
     #endif
     #if defined(HAS_SUBSETID)
-    float sid : SUBSETID;
+    uint sid : SUBSETID;
     #endif
     uint iid : SV_InstanceID;
 };
@@ -100,14 +102,20 @@ cbuffer cbPerObj : register( b1 )
 PSin VS(VSin input)
 {
 	PSin output;
-    uint ii = input.iid;
     #if defined(HAS_SUBSETID)
-    ii = input.sid;
+    uint ii = input.sid;
+	#else
+    uint ii = input.iid;
     #endif
     output.sid = ii;
 	
+	#if defined(HAS_TEXCOORD0)
     output.UV = mul(float4(input.UV, 0, 1), tTex).xy;
     float2 puv = mul(float4(input.UV, 0, 1), ptTex).xy;
+	#else
+    output.UV = 0;
+    float2 puv = 0;
+	#endif
 
     float4x4 w = mul(Tr[ii], tW);
 	

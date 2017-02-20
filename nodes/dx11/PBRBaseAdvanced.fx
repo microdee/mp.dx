@@ -43,7 +43,9 @@ struct VSin
 {
     float3 Pos : POSITION;
     float3 Norm : NORMAL;
+	#if defined(HAS_TEXCOORD0)
     float2 UV : UVLAYER;
+	#endif
     #if defined(HAS_TANGENT)
     float4 Tan : TANGENT;
     float4 Bin : BINORMAL;
@@ -139,7 +141,11 @@ PSin VS(VSin input)
 	output.mid = mid;
 	output.iid = iid;
 	
+	#if defined(HAS_TEXCOORD0)
 	float2 uv = input.UV;
+	#else
+	float2 uv = 0;
+	#endif
 	
     output.UV = mul(float4(uv, 0, 1), tTex).xy;
     float2 puv = mul(float4(uv, 0, 1), ptTex).xy;

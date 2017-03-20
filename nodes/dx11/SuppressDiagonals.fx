@@ -114,15 +114,6 @@ float4 PS(psIn input): SV_Target
     return col;
 }
 
-technique10 Render
-{
-	pass P0
-	{
-		SetVertexShader( CompileShader( vs_4_0, VS() ) );
-		SetPixelShader( CompileShader( ps_4_0, PS() ) );
-	}
-}
-
 technique10 RenderNoDiagonals
 {
 	pass P0

@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
-   <PATCH nodename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\Human (Skeleton Hierarchy).v4p" systemname="Human (Skeleton Hierarchy)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\Human (Skeleton Hierarchy).v4p" scrollx="0" scrolly="150">
-   <BOUNDS type="Window" left="42525" top="5295" width="13845" height="9915">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.1.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\Kinect2\Human (Skeleton Hierarchy).v4p" systemname="Human (Skeleton Hierarchy)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\Human (Skeleton Hierarchy).v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="1050" top="1470" width="13845" height="9915">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.1.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE componentmode="InABox" id="81" nodename="IOBox (Node)" systemname="IOBox (Node)">
    <BOUNDS height="0" left="5970" top="11850" type="Node" width="0">
@@ -39,7 +39,7 @@
    </PIN>
    </NODE>
    <NODE componentmode="Hidden" id="79" nodename=":PLUGINS:\SkeletonNodes.dll|VVVV.Nodes.NewJoint" systemname="Joint (Skeleton Join)" filename="%VVVV%\addonpack\lib\nodes\plugins\SkeletonNodes.dll">
-   <BOUNDS height="270" left="6555" top="3720" type="Node" width="1065">
+   <BOUNDS height="270" left="6555" top="3720" type="Node" width="900">
    </BOUNDS>
    <BOUNDS height="0" left="6555" top="3720" type="Box" width="0">
    </BOUNDS>
@@ -958,4 +958,10 @@
    </LINK>
    <LINK srcnodeid="30" srcpinname="Output String" dstnodeid="0" dstpinname="Joint Name">
    </LINK>
+   <PACK Name="vvvv-Message" Version="2.9.0">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.3">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
    </PATCH>

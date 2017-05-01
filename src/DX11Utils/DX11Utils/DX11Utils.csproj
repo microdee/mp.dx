@@ -193,6 +193,7 @@
     <Compile Include="MultiStructuredBufferRenderer.cs" />
     <Compile Include="MultiRawBufferRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringShaderNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

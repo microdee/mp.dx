@@ -30,6 +30,7 @@ cbuffer controls:register(b0)
 {
 	float4x4 EnvTr;
 	float BckgEnv = 0;
+	float EnvBright = 1;
     float diffbluradd <string uiname="Non-metal Diffuse Blur Offset";> = 0.5;
 	
 };
@@ -73,7 +74,7 @@ float4 pIBL(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
 
         float2 roughmetal = RoughMetal.Load(puv);
         float rough = roughmetal.r;
-        float metal = roughmetal.g;
+        float metal = lerp(0, 1, roughmetal.g);
         float4 col = albedoin;
     	float3 norm = normid.xyz*2-1;
         float3 eye = normalize(posV);
@@ -84,17 +85,17 @@ float4 pIBL(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
     	Environment.GetDimensions(0, nope, nope, mipl);
         mipl = max(0, mipl-1);
 
-    	float3 EnvSharp = DiscSample(Environment, sE, rdir, rough, mipl).rgb;
+    	float3 EnvSharp = DiscSample(Environment, sE, rdir, rough, mipl).rgb * EnvBright;
     	float3 EnvNm = 0;
         if(metal < 1)
     	{
-    		EnvNm = DiscSample(DIFFENVSRC, sE, rdir, (rough * 0.5) + diffbluradd, mipl).rgb;
+    		EnvNm = DiscSample(DIFFENVSRC, sE, rdir, (rough * 0.5) + diffbluradd, mipl).rgb * EnvBright;
     		//EnvNm = AnisotropicSample(DIFFENVSRC, sE, rdir, rtan, rbin, (rough * 0.5) + diffbluradd, 0.25, mipl).rgb;
     	}
 
-        col.rgb = lerp(max(col.rgb * EnvNm, (EnvSharp-EnvNm) * col.rgb), col.rgb * EnvSharp, metal);
-        float fresnel = pow(abs(dot(norm, eye)), 0.5 );
-        col.rgb = lerp(EnvSharp, col.rgb, fresnel);
+        col.rgb = lerp(col.rgb * EnvNm + 0.03*EnvSharp, col.rgb * EnvSharp, metal);
+        float fresnel = pow(abs(dot(norm, eye)), 0.21 );
+        //col.rgb = lerp(EnvSharp, col.rgb, fresnel);
     	col.rgb = lerp(bckg.rgb, col.rgb, col.a);
         return col;
     }

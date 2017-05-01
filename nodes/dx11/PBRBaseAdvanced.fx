@@ -13,6 +13,7 @@
 #endif
 #if !defined(INST_SIZE)
 #define INST_SIZE 0
+#define INST_MAT_SIZE 0
 #define INST_ALBEDOOFFS 0x0000FFFF
 #define INST_ROUGHMETALOFFS 0x0000FFFF
 #endif
@@ -27,6 +28,9 @@
 #if !defined(RMCOMBINEOP)
 #define RMCOMBINEOP(O) *= O
 #endif
+
+#include <packs/mp.fxh/ManualUVAddress.fxh>
+#include <packs/mp.fxh/VRotate.fxh>
 
 //#define DO_VELOCITY 1
 
@@ -155,7 +159,7 @@ PSin VS(VSin input)
 	w = mul(w, Tr[ssid]);
 	#endif
 	#if defined(HAS_INSTANCEID) || defined(USE_SVINSTANCEID)
-	w = mul(w, iTr[ssid]);
+	w = mul(w, iTr[iid]);
 	#endif
 	w = mul(w, tW);
 	
@@ -172,8 +176,15 @@ PSin VS(VSin input)
 	output.pspos = output.svpos;
 
     #if defined(HAS_TANGENT)
-    output.Tan = -normalize(mul(float4(input.Tan.xyz,0), tWV).xyz) * input.Tan.w;
-    output.Bin = -normalize(mul(float4(input.Bin.xyz,0), tWV).xyz) * input.Bin.w;
+	float4 intan = input.Tan;
+	float4 inbin = input.Bin;
+	if(length(intan.xyz) <= 0.0001 || length(inbin.xyz) <= 0.0001)
+	{
+		intan = float4(1,0,0,1);
+		inbin = float4(0,1,0,1);
+	}
+    output.Tan = -normalize(mul(float4(intan.xyz,0), tWV).xyz) * intan.w;
+    output.Bin = -normalize(mul(float4(inbin.xyz,0), tWV).xyz) * inbin.w;
 	#endif
 
     float3 pp = input.Pos;
@@ -187,7 +198,7 @@ PSin VS(VSin input)
 	pw = mul(pw, pTr[ssid]);
 	#endif
 	#if defined(HAS_INSTANCEID) || defined(USE_SVINSTANCEID)
-	pw = mul(pw, ipTr[ssid]);
+	pw = mul(pw, ipTr[iid]);
 	#endif
 	pw = mul(pw, ptW);
 	
@@ -225,7 +236,8 @@ void GS(triangle PSin input[3], inout TriangleStream<PSin> gsout)
 
 float3 NewUV(uint id, uint size, uint offs, float2 inuv, out bool empty)
 {
-	float2 uv = inuv;
+	float2 uv = AddressUV(inuv);
+	float2 inuva = AddressUV(inuv);
 	float4 uvpos = asfloat(MaterialData.Load4(id * size + offs));
 	uint rotated = MaterialData.Load(id * size + offs + 16);
 	uint layer = MaterialData.Load(id * size + offs + 20);
@@ -237,14 +249,10 @@ float3 NewUV(uint id, uint size, uint offs, float2 inuv, out bool empty)
 	}
 	if(rotated > 0)
 	{
-		uv.x = lerp(uvpos.y, uvpos.w, inuv.x);
-		uv.y = lerp(uvpos.x, uvpos.z, inuv.y);
+		inuva = VRotate(inuva-0.5, -0.25)+0.5;
 	}
-	else
-	{
-		uv.x = lerp(uvpos.x, uvpos.z, inuv.x);
-		uv.y = lerp(uvpos.y, uvpos.w, inuv.y);
-	}
+	uv.x = lerp(uvpos.x, uvpos.z, inuva.x);
+	uv.y = lerp(uvpos.y, uvpos.w, inuva.y);
 	return float3(uv, (float)layer);
 }
 
@@ -271,7 +279,7 @@ PSout PS(PSin input)
 	col *= asfloat(MaterialData.Load4(mid * MAT_SIZE + MAT_ALBEDOOFFS));
 	#endif
 	#if INST_ALBEDOOFFS < 0x0000FFFF
-	float4 incol = asfloat(InstanceData.Load4(iid * INST_SIZE + INST_ALBEDOOFFS));
+	float4 incol = asfloat(InstanceData.Load4(iid * INST_SIZE + mid * INST_MAT_SIZE + INST_ALBEDOOFFS));
 	col *= incol;
 	#if defined(ALPHATEST)
 	clip(col.a-athrs-(1-incol.a));
@@ -298,7 +306,7 @@ PSout PS(PSin input)
 	roughmetal *= rmin;
 	#endif
 	#if INST_ROUGHMETALOFFS < 0x0000FFFF
-	roughmetal RMCOMBINEOP(asfloat(InstanceData.Load2(iid * INST_SIZE + INST_ROUGHMETALOFFS)));
+	roughmetal RMCOMBINEOP(asfloat(InstanceData.Load2(iid * INST_SIZE + mid * INST_MAT_SIZE + INST_ROUGHMETALOFFS)));
 	#endif
 	
     #if defined(HAS_TANGENT)

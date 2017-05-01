@@ -96,6 +96,8 @@ cbuffer cbPerObj : register( b1 )
     float4x4 ptW <string uiname="Previous World";>;
     float4x4 tTex <string uiname="Texture Transforms";>;
     float4x4 ptTex <string uiname="Previous Texture Transforms";>;
+    float4 gAlbedoCol <string uiname="Albedo Color"; bool color=true;> = 1;
+    float4 gMaterial <string uiname="Material";> = 1;
     float ndepth <string uiname="Normal Depth";> = 0;
 	float2 Displace = 0;
 };
@@ -116,11 +118,17 @@ PSin VS(VSin input)
     output.UV = 0;
     float2 puv = 0;
 	#endif
-
+	#if defined(IGNORE_BUFFERS)
+	float4x4 w = tW;
+	#else
     float4x4 w = mul(Tr[ii], tW);
+	#endif
 	
     float4x4 tWV = mul(w, tV);
-    output.Norm = normalize(mul(float4(input.Norm,0), tWV).xyz);
+	output.Norm = normalize(mul(float4(input.Norm,0), tWV).xyz);
+	#if defined(INV_NORMALS)
+	output.Norm *= -1;
+	#endif
 	
 	float3 posi = input.Pos + DispMap.SampleLevel(sT, output.UV, 0).r * input.Norm * Displace.x;
 	output.svpos = mul(float4(posi,1), w);
@@ -140,7 +148,11 @@ PSin VS(VSin input)
     #endif
 	pp += DispMap.SampleLevel(sT, output.UV, 0).g * input.Norm * Displace.y;
 
+	#if defined(IGNORE_BUFFERS)
+	float4x4 pw = ptW;
+	#else
     float4x4 pw = mul(pTr[ii], ptW);
+	#endif
 	output.ppos = mul(float4(pp,1), pw);
 	output.ppos = mul(output.ppos, ptV);
     #if defined(HAS_TANGENT)
@@ -178,7 +190,13 @@ PSout PS(PSin input)
     PSout o = (PSout)0;
     float ii = input.sid;
 	float ti = TexID[ii];
-    float4 col = AlbedoCol[ii] * Albedo.Sample(sT, float3(input.UV, ti));
+	#if defined(IGNORE_BUFFERS)
+    float4 col = gAlbedoCol * Albedo.Sample(sT, float3(input.UV, ti));
+	#else
+	float4 acolb = AlbedoCol[ii];
+	acolb = all(acolb > 0) ? acolb : 1;
+    float4 col = gAlbedoCol * acolb * Albedo.Sample(sT, float3(input.UV, ti));
+	#endif
     #if defined(HAS_TANGENT)
 	float3 normmap = NormBump.Sample(sT, float3(input.UV, ti)).xyz*2-1;
     normmap = lerp(float3(0,0,1), normmap, ndepth);
@@ -192,11 +210,15 @@ PSout PS(PSin input)
 	#else
 	float3 norm = input.Norm;
 	#endif
-	if(dot(norm, float3(0,0,1)) > 0) norm = -norm;
+	//if(dot(norm, float3(0,0,1)) > 0) norm = -norm;
 
     o.Lit = col;
     o.Norm = float4(norm*0.5+0.5, ii);
-	o.RoughMetal = RoughMetalParam[ii] * RoughMetalMap.Sample(sT, float3(input.UV, ti)).xy;
+	#if defined(IGNORE_BUFFERS)
+	o.RoughMetal = gMaterial * RoughMetalMap.Sample(sT, float3(input.UV, ti)).xy;
+	#else
+	o.RoughMetal = gMaterial * RoughMetalParam[ii] * RoughMetalMap.Sample(sT, float3(input.UV, ti)).xy;
+	#endif
 	#if defined(TANTARGETS)
 	o.Tan.rgb = input.Tan*0.5+0.5;
 	o.Bin.rgb = input.Bin*0.5+0.5;

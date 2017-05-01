@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\essentials\AxisAndGrid (DX11).v4p" systemname="AxisAndGrid (DX11)" filename="D:\vvvv\KIBU.ECTK\prealpha\nodes\modules\AxisAndGrid (DX11).v4p" scrollx="0" scrolly="2580">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.4.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\AxisAndGrid (DX11).v4p" systemname="AxisAndGrid (DX11)" filename="D:\vvvv\KIBU.ECTK\prealpha\nodes\modules\AxisAndGrid (DX11).v4p" scrollx="0" scrolly="2580">
    <BOUNDS type="Window" left="4905" top="720" width="15810" height="13725">
    </BOUNDS>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="2">
@@ -472,7 +472,7 @@
    </LINK>
    <PACK Name="ImagePack" Version="0.1.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.101.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE systemname="HSV (Color Join)" nodename="HSV (Color Join)" componentmode="Hidden" id="99">
    <BOUNDS type="Node" left="7095" top="8280" width="100" height="100">
@@ -594,24 +594,6 @@
    </LINK>
    <LINK srcnodeid="105" srcpinname="Render State" dstnodeid="36" dstpinname="Render State">
    </LINK>
-   <NODE systemname="Grid (DX11.GeomFX)" filename="..\..\geom11\Grid.gsfx" nodename="Grid (DX11.GeomFX)" componentmode="Hidden" id="109">
-   <BOUNDS type="Node" left="810" top="4560" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="As Auto" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Enabled" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Geometry Out" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="75" srcpinname="Geometry Out" dstnodeid="109" dstpinname="Geometry In">
-   </LINK>
-   <LINK srcnodeid="78" srcpinname="Output" dstnodeid="109" dstpinname="Max Elements">
-   </LINK>
-   <LINK srcnodeid="84" srcpinname="Output" dstnodeid="109" dstpinname="Output Layout">
-   </LINK>
-   <LINK srcnodeid="2" srcpinname="Y Output Value" dstnodeid="109" dstpinname="LineCount">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="110" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="1800" top="4110" width="285" height="240">
    </BOUNDS>
@@ -628,12 +610,10 @@
    <PIN pinname="Behavior" slicecount="1" values="Toggle">
    </PIN>
    </NODE>
-   <LINK srcnodeid="110" srcpinname="Y Output Value" dstnodeid="109" dstpinname="As Auto">
-   </LINK>
    <NODE systemname="Topology (DX11.Geometry)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Topology (DX11.Geometry)" componentmode="Hidden" id="111">
    <BOUNDS type="Node" left="795" top="5325" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Geometry In" visible="1">
+   <PIN pinname="Geometry In" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Geometry Out" visible="1">
    </PIN>
@@ -642,8 +622,6 @@
    <PIN pinname="Enabled" slicecount="1" visible="1" values="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="109" srcpinname="Geometry Out" dstnodeid="111" dstpinname="Geometry In">
-   </LINK>
    <LINK srcnodeid="111" srcpinname="Geometry Out" dstnodeid="97" dstpinname="Geometry">
    </LINK>
    <LINK srcnodeid="76" srcpinname="Output Enum" dstnodeid="111" dstpinname="Topology">
@@ -693,5 +671,23 @@
    <LINK srcnodeid="113" srcpinname="Y Output Value" dstnodeid="105" dstpinname="Enable Depth">
    </LINK>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
+   <NODE systemname="Grid (DX11.GeomFX)" filename="..\..\geom11\Grid.gsfx" nodename="Grid (DX11.GeomFX)" componentmode="Hidden" id="114">
+   <BOUNDS type="Node" left="810" top="4560" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="75" srcpinname="Geometry Out" dstnodeid="114" dstpinname="Geometry In">
+   </LINK>
+   <LINK srcnodeid="78" srcpinname="Output" dstnodeid="114" dstpinname="Max Elements">
+   </LINK>
+   <LINK srcnodeid="84" srcpinname="Output" dstnodeid="114" dstpinname="Output Layout">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Y Output Value" dstnodeid="114" dstpinname="LineCount">
+   </LINK>
+   <LINK srcnodeid="110" srcpinname="Y Output Value" dstnodeid="114" dstpinname="As Auto">
+   </LINK>
+   <LINK srcnodeid="114" srcpinname="Geometry Out" dstnodeid="111" dstpinname="Geometry In">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.9.6">
    </PACK>
    </PATCH>

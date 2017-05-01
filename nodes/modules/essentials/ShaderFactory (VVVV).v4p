@@ -1,8 +1,8 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.1.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\ShaderFactory (VVVV).v4p" systemname="ShaderFactory (VVVV)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\ShaderFactory (VVVV).v4p" scrollx="8670" scrolly="7635">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.4.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\ShaderFactory (VVVV).v4p" systemname="ShaderFactory (VVVV)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\ShaderFactory (VVVV).v4p" scrollx="3285" scrolly="9510">
    <BOUNDS type="Window" left="16620" top="-12120" width="11175" height="10725">
    </BOUNDS>
-   <PACK Name="vvvv-Message" Version="2.9.0">
+   <PACK Name="vvvv-Message" Version="2.9.6">
    </PACK>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
    </PACK>

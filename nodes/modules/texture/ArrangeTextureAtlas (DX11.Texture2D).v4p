@@ -1,8 +1,8 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.1.dtd" >
-   <PATCH nodename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\texture\ArrangeTextureAtlas (DX11.Texture2D).v4p" systemname="ArrangeTextureAtlas (DX11.Texture2D)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\texture\ArrangeTextureAtlas (DX11.Texture2D).v4p" scrollx="210" scrolly="0">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.4.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\texture\ArrangeTextureAtlas (DX11.Texture2D).v4p" systemname="ArrangeTextureAtlas (DX11.Texture2D)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\texture\ArrangeTextureAtlas (DX11.Texture2D).v4p" scrollx="2340" scrolly="2865">
    <BOUNDS type="Window" left="2325" top="630" width="9000" height="10875">
    </BOUNDS>
-   <PACK Name="vvvv-Message" Version="2.9.0">
+   <PACK Name="vvvv-Message" Version="2.9.6">
    </PACK>
    <PACK Name="vvvv-ZeroMQ" Version="0.5.3">
    </PACK>
@@ -11,7 +11,7 @@
    <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE systemname="Tuple (Node Join)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Tuple (Node Join)" componentmode="Hidden" id="4">
-   <BOUNDS type="Node" left="2400" top="5415" width="100" height="100">
+   <BOUNDS type="Node" left="2775" top="8595" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Signature" slicecount="1" values="|VVVV.Utils.VMath.Vector4D, VVVV.Utils, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\System.Int32\System.Boolean\System.Int32|">
    </PIN>
@@ -27,7 +27,7 @@
    </PIN>
    </NODE>
    <NODE systemname="I (Spreads)" nodename="I (Spreads)" componentmode="Hidden" id="9">
-   <BOUNDS type="Node" left="3225" top="4440" width="100" height="100">
+   <BOUNDS type="Node" left="3600" top="7620" width="100" height="100">
    </BOUNDS>
    <PIN pinname=".. To [" visible="1">
    </PIN>
@@ -35,7 +35,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Select (Value)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Select (Value)" componentmode="Hidden" id="10">
-   <BOUNDS type="Node" left="3225" top="4890" width="100" height="100">
+   <BOUNDS type="Node" left="3600" top="8070" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -45,7 +45,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Count (Value)" nodename="Count (Value)" componentmode="Hidden" id="11">
-   <BOUNDS type="Node" left="3405" top="3960" width="100" height="100">
+   <BOUNDS type="Node" left="3780" top="5790" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1" slicecount="1" values="1">
    </PIN>
@@ -59,9 +59,9 @@
    <LINK srcnodeid="10" srcpinname="Output" dstnodeid="4" dstpinname="Item4">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="12" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="2415" top="6090" width="795" height="240">
+   <BOUNDS type="Box" left="2745" top="10680" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="2415" top="6090" width="0" height="0">
+   <BOUNDS type="Node" left="2745" top="10680" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Pixel Position|">
    </PIN>
@@ -69,9 +69,9 @@
    <LINK srcnodeid="4" srcpinname="Output" dstnodeid="12" dstpinname="Input Node">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="13" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="4005" top="855" width="795" height="240">
+   <BOUNDS type="Box" left="3675" top="3570" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="4005" top="855" width="0" height="0">
+   <BOUNDS type="Node" left="3675" top="3570" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="16383">
    </PIN>
@@ -87,9 +87,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="14" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="4290" top="1815" width="795" height="240">
+   <BOUNDS type="Box" left="4665" top="3645" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="4290" top="1815" width="0" height="0">
+   <BOUNDS type="Node" left="4665" top="3645" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="64">
    </PIN>
@@ -103,9 +103,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="15" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="4710" top="2310" width="795" height="240">
+   <BOUNDS type="Box" left="5085" top="4140" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="4710" top="2310" width="0" height="0">
+   <BOUNDS type="Node" left="5085" top="4140" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="128">
    </PIN>
@@ -119,9 +119,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="18">
-   <BOUNDS type="Box" left="4095" top="5610" width="795" height="480">
+   <BOUNDS type="Box" left="4470" top="8790" width="795" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="4095" top="5610" width="0" height="0">
+   <BOUNDS type="Node" left="4470" top="8790" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -137,7 +137,7 @@
    </PIN>
    </NODE>
    <NODE systemname="RectPack (2d Czachurski)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="RectPack (2d Czachurski)" componentmode="Hidden" id="20">
-   <BOUNDS type="Node" left="2895" top="2655" width="100" height="100">
+   <BOUNDS type="Node" left="3270" top="4485" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Rectangle  WH" visible="1">
    </PIN>
@@ -171,9 +171,9 @@
    <LINK srcnodeid="20" srcpinname="Dimensions  WH" dstnodeid="18" dstpinname="Y Input Value">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="21">
-   <BOUNDS type="Box" left="2445" top="945" width="795" height="480">
+   <BOUNDS type="Box" left="2835" top="645" width="795" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="2445" top="945" width="0" height="0">
+   <BOUNDS type="Node" left="2835" top="645" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="2" visible="1" values="100,100">
    </PIN>
@@ -193,7 +193,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Divide (Value)" nodename="Divide (Value)" componentmode="Hidden" id="22">
-   <BOUNDS type="Node" left="4905" top="4035" width="100" height="100">
+   <BOUNDS type="Node" left="6240" top="7395" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 2" visible="1">
    </PIN>
@@ -203,7 +203,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Select (Value Vector)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Select (Value Vector)" componentmode="Hidden" id="23">
-   <BOUNDS type="Node" left="5085" top="3480" width="100" height="100">
+   <BOUNDS type="Node" left="5460" top="5310" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Vector Size" slicecount="1" values="2">
    </PIN>
@@ -217,7 +217,7 @@
    <LINK srcnodeid="20" srcpinname="Dimensions  WH" dstnodeid="23" dstpinname="Input">
    </LINK>
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="24">
-   <BOUNDS type="Node" left="5625" top="2865" width="100" height="100">
+   <BOUNDS type="Node" left="6000" top="4695" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -233,7 +233,7 @@
    <LINK srcnodeid="23" srcpinname="Output" dstnodeid="22" dstpinname="Input 2">
    </LINK>
    <NODE systemname="Unzip (2d)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Unzip (2d)" componentmode="Hidden" id="25">
-   <BOUNDS type="Node" left="5925" top="4695" width="100" height="100">
+   <BOUNDS type="Node" left="6300" top="7875" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Output 1XY" visible="1">
    </PIN>
@@ -243,7 +243,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="26">
-   <BOUNDS type="Node" left="6330" top="5325" width="100" height="100">
+   <BOUNDS type="Node" left="6705" top="8505" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -259,7 +259,7 @@
    <LINK srcnodeid="22" srcpinname="Output" dstnodeid="25" dstpinname="InputXY">
    </LINK>
    <NODE systemname="Zip (2d)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Zip (2d)" componentmode="Hidden" id="27">
-   <BOUNDS type="Node" left="5925" top="5775" width="100" height="100">
+   <BOUNDS type="Node" left="6300" top="8955" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1XY" visible="1">
    </PIN>
@@ -271,7 +271,7 @@
    <LINK srcnodeid="25" srcpinname="Output 1XY" dstnodeid="27" dstpinname="Input 1XY">
    </LINK>
    <NODE systemname="I (Spreads)" nodename="I (Spreads)" componentmode="Hidden" id="33">
-   <BOUNDS type="Node" left="4110" top="7800" width="100" height="100">
+   <BOUNDS type="Node" left="4485" top="10980" width="100" height="100">
    </BOUNDS>
    <PIN pinname=".. To [" visible="1">
    </PIN>
@@ -279,7 +279,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Add (Value Spectral)" nodename="Add (Value Spectral)" componentmode="Hidden" id="34">
-   <BOUNDS type="Node" left="4320" top="6945" width="100" height="100">
+   <BOUNDS type="Node" left="4695" top="10125" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -291,7 +291,7 @@
    <LINK srcnodeid="34" srcpinname="Output" dstnodeid="33" dstpinname=".. To [">
    </LINK>
    <NODE systemname="SetSlice (Spreads)" nodename="SetSlice (Spreads)" componentmode="Hidden" id="35">
-   <BOUNDS type="Node" left="3930" top="8355" width="100" height="100">
+   <BOUNDS type="Node" left="4305" top="11535" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -309,19 +309,17 @@
    <LINK srcnodeid="20" srcpinname="Former Index" dstnodeid="35" dstpinname="Index">
    </LINK>
    <NODE systemname="Max (Value)" nodename="Max (Value)" componentmode="Hidden" id="38">
-   <BOUNDS type="Node" left="2445" top="1860" width="100" height="100">
+   <BOUNDS type="Node" left="2820" top="3690" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="21" srcpinname="Y Output Value" dstnodeid="38" dstpinname="Input 1">
-   </LINK>
    <LINK srcnodeid="38" srcpinname="Output" dstnodeid="20" dstpinname="Rectangle  WH">
    </LINK>
    <NODE systemname="EQ (Value)" nodename="EQ (Value)" componentmode="Hidden" id="39">
-   <BOUNDS type="Node" left="825" top="1815" width="100" height="100">
+   <BOUNDS type="Node" left="1200" top="3645" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -333,7 +331,7 @@
    <LINK srcnodeid="21" srcpinname="Y Output Value" dstnodeid="39" dstpinname="Input 1">
    </LINK>
    <NODE systemname="GetSlice (Spreads)" nodename="GetSlice (Spreads)" componentmode="Hidden" id="41">
-   <BOUNDS type="Node" left="825" top="2310" width="100" height="100">
+   <BOUNDS type="Node" left="1200" top="4140" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -349,7 +347,7 @@
    <LINK srcnodeid="39" srcpinname="Output" dstnodeid="41" dstpinname="Input">
    </LINK>
    <NODE systemname="Switch (Value Input)" nodename="Switch (Value Input)" componentmode="Hidden" id="43">
-   <BOUNDS type="Node" left="1665" top="3390" width="100" height="100">
+   <BOUNDS type="Node" left="2040" top="5220" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -363,7 +361,7 @@
    <LINK srcnodeid="41" srcpinname="Output" dstnodeid="43" dstpinname="Switch">
    </LINK>
    <NODE systemname="Unzip (2d)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Unzip (2d)" componentmode="Hidden" id="44">
-   <BOUNDS type="Node" left="1935" top="2865" width="100" height="100">
+   <BOUNDS type="Node" left="2310" top="4695" width="100" height="100">
    </BOUNDS>
    <PIN pinname="InputXY" visible="1">
    </PIN>
@@ -377,7 +375,7 @@
    <LINK srcnodeid="44" srcpinname="Output 1XY" dstnodeid="43" dstpinname="Input 1">
    </LINK>
    <NODE systemname="Zip (2d)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Zip (2d)" componentmode="Hidden" id="45">
-   <BOUNDS type="Node" left="1875" top="3930" width="100" height="100">
+   <BOUNDS type="Node" left="2250" top="5760" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1XY" visible="1">
    </PIN>
@@ -392,12 +390,10 @@
    </LINK>
    <LINK srcnodeid="45" srcpinname="OutputXY" dstnodeid="4" dstpinname="Item1XYZW">
    </LINK>
-   <LINK srcnodeid="45" srcpinname="OutputXY" dstnodeid="22" dstpinname="Input">
-   </LINK>
    <LINK srcnodeid="26" srcpinname="Output" dstnodeid="27" dstpinname="Input 2XY">
    </LINK>
    <NODE systemname="Subtract (Value)" nodename="Subtract (Value)" componentmode="Hidden" id="46">
-   <BOUNDS type="Node" left="4125" top="3180" width="100" height="100">
+   <BOUNDS type="Node" left="4500" top="5010" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 2" slicecount="1" values="1">
    </PIN>
@@ -411,9 +407,9 @@
    <LINK srcnodeid="46" srcpinname="Output" dstnodeid="43" dstpinname="Input 2">
    </LINK>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="50">
-   <BOUNDS type="Node" left="7860" top="2715" width="100" height="100">
+   <BOUNDS type="Node" left="8235" top="4545" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="7860" top="2715" width="795" height="960">
+   <BOUNDS type="Box" left="8235" top="4545" width="795" height="960">
    </BOUNDS>
    <PIN pinname="Rows" slicecount="1" values="4">
    </PIN>
@@ -433,7 +429,7 @@
    </PIN>
    </NODE>
    <NODE systemname="I (Spreads)" nodename="I (Spreads)" componentmode="Hidden" id="51">
-   <BOUNDS type="Node" left="6630" top="4110" width="100" height="100">
+   <BOUNDS type="Node" left="7005" top="5940" width="100" height="100">
    </BOUNDS>
    <PIN pinname=".. To [" visible="1">
    </PIN>
@@ -441,7 +437,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Count (2d)" nodename="Count (2d)" componentmode="Hidden" id="52" filename="%VVVV%\lib\nodes\modules\2D\Count (2D).v4p">
-   <BOUNDS type="Node" left="6405" top="3600" width="100" height="100">
+   <BOUNDS type="Node" left="6780" top="5430" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1" slicecount="1" values="1">
    </PIN>
@@ -453,7 +449,7 @@
    <LINK srcnodeid="52" srcpinname="Count" dstnodeid="51" dstpinname=".. To [">
    </LINK>
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="53">
-   <BOUNDS type="Node" left="7560" top="5205" width="100" height="100">
+   <BOUNDS type="Node" left="7935" top="7035" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 2" slicecount="1" visible="1" values="4">
    </PIN>
@@ -463,7 +459,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Select (Value)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Select (Value)" componentmode="Hidden" id="54">
-   <BOUNDS type="Node" left="7665" top="5670" width="100" height="100">
+   <BOUNDS type="Node" left="8040" top="7500" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Select" slicecount="1" visible="1" values="4">
    </PIN>
@@ -473,9 +469,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="55">
-   <BOUNDS type="Box" left="8295" top="4635" width="435" height="240">
+   <BOUNDS type="Box" left="8670" top="6465" width="435" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="8295" top="4635" width="0" height="0">
+   <BOUNDS type="Node" left="8670" top="6465" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="4">
    </PIN>
@@ -497,7 +493,7 @@
    <LINK srcnodeid="53" srcpinname="Output" dstnodeid="54" dstpinname="Input">
    </LINK>
    <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="56">
-   <BOUNDS type="Node" left="7800" top="6330" width="100" height="100">
+   <BOUNDS type="Node" left="8175" top="8160" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -511,7 +507,7 @@
    <LINK srcnodeid="50" srcpinname="Y Output Value" dstnodeid="56" dstpinname="Input 2">
    </LINK>
    <NODE systemname="GetSlice (Spreads)" nodename="GetSlice (Spreads)" componentmode="Hidden" id="57">
-   <BOUNDS type="Node" left="5820" top="6375" width="100" height="100">
+   <BOUNDS type="Node" left="6195" top="9555" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Index" visible="1">
    </PIN>
@@ -525,7 +521,7 @@
    <LINK srcnodeid="27" srcpinname="OutputXY" dstnodeid="57" dstpinname="Input">
    </LINK>
    <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="58">
-   <BOUNDS type="Node" left="5025" top="5160" width="100" height="100">
+   <BOUNDS type="Node" left="5400" top="8340" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -537,7 +533,7 @@
    <LINK srcnodeid="20" srcpinname="Rotated" dstnodeid="58" dstpinname="Input 1">
    </LINK>
    <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="59">
-   <BOUNDS type="Node" left="5265" top="4680" width="100" height="100">
+   <BOUNDS type="Node" left="5640" top="7860" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 2" slicecount="1" values="2">
    </PIN>
@@ -549,7 +545,7 @@
    <LINK srcnodeid="59" srcpinname="Output" dstnodeid="58" dstpinname="Input 2">
    </LINK>
    <NODE systemname="GetSlice (Node)" nodename="GetSlice (Node)" componentmode="Hidden" id="63">
-   <BOUNDS type="Node" left="5910" top="8685" width="100" height="100">
+   <BOUNDS type="Node" left="6285" top="11865" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input Node" visible="1" slicecount="1" values="||">
    </PIN>
@@ -561,7 +557,7 @@
    <LINK srcnodeid="35" srcpinname="Output" dstnodeid="63" dstpinname="Index">
    </LINK>
    <NODE systemname="Tuple (Node Join)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Tuple (Node Join)" componentmode="Hidden" id="29">
-   <BOUNDS type="Node" left="5940" top="7470" width="100" height="100">
+   <BOUNDS type="Node" left="6315" top="10650" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Signature" slicecount="1" values="|VVVV.Utils.VMath.Vector4D, VVVV.Utils, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\System.Int32\System.Int32|">
    </PIN>
@@ -583,9 +579,9 @@
    <LINK srcnodeid="58" srcpinname="Output" dstnodeid="29" dstpinname="Item2">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="64">
-   <BOUNDS type="Box" left="6030" top="9450" width="795" height="240">
+   <BOUNDS type="Box" left="6300" top="13620" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="6030" top="9450" width="0" height="0">
+   <BOUNDS type="Node" left="6300" top="13620" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Output Node|">
    </PIN>
@@ -593,7 +589,7 @@
    <LINK srcnodeid="63" srcpinname="Output Node" dstnodeid="64" dstpinname="Input Node">
    </LINK>
    <NODE systemname="AND (Boolean Spectral)" nodename="AND (Boolean Spectral)" componentmode="Hidden" id="65">
-   <BOUNDS type="Node" left="810" top="2910" width="100" height="100">
+   <BOUNDS type="Node" left="1185" top="4740" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -607,5 +603,139 @@
    <LINK srcnodeid="65" srcpinname="Output" dstnodeid="59" dstpinname="Input 1">
    </LINK>
    <LINK srcnodeid="29" srcpinname="Output" dstnodeid="63" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="66">
+   <BOUNDS type="Node" left="1695" top="9030" width="2265" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1695" top="9030" width="2265" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|position, TexID, Rotated, slice|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="67">
+   <BOUNDS type="Node" left="5955" top="10980" width="1845" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5955" top="10980" width="1845" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|uv, rotated/empty, slice|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="68">
+   <BOUNDS type="Node" left="3135" top="2280" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" id="69">
+   <BOUNDS type="Node" left="4200" top="1800" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="70">
+   <BOUNDS type="Box" left="4875" top="675" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4875" top="675" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="px">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Padding">
+   </PIN>
+   <PIN pinname="Minimum" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="70" srcpinname="Y Output Value" dstnodeid="69" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="69" srcpinname="Output" dstnodeid="68" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="21" srcpinname="Y Output Value" dstnodeid="68" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="68" srcpinname="Output" dstnodeid="38" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="72">
+   <BOUNDS type="Node" left="6075" top="6855" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Zip (2d)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Zip (2d)" componentmode="Hidden" id="73">
+   <BOUNDS type="Node" left="6375" top="6165" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1XY" visible="1">
+   </PIN>
+   <PIN pinname="Input 2XY" visible="1">
+   </PIN>
+   <PIN pinname="OutputXY" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="70" srcpinname="Y Output Value" dstnodeid="73" dstpinname="Input 1XY">
+   </LINK>
+   <NODE systemname="Subtract (Value)" nodename="Subtract (Value)" componentmode="Hidden" id="74">
+   <BOUNDS type="Node" left="6705" top="4650" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="69" srcpinname="Output" dstnodeid="74" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="74" srcpinname="Output" dstnodeid="73" dstpinname="Input 2XY">
+   </LINK>
+   <LINK srcnodeid="73" srcpinname="OutputXY" dstnodeid="72" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="45" srcpinname="OutputXY" dstnodeid="72" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="72" srcpinname="Output" dstnodeid="22" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="75">
+   <BOUNDS type="Box" left="6870" top="3060" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6870" top="3060" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="75" srcpinname="Y Output Value" dstnodeid="74" dstpinname="Input 1">
    </LINK>
    </PATCH>

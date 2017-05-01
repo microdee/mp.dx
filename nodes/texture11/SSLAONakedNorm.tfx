@@ -2,9 +2,9 @@
 #include <packs/mp.fxh/depthreconstruct.fxh>
 
 Texture2D<float> Depth: PREVIOUS;
+Texture2D<float> DepthI: INITIAL;
 Texture2D<uint4> Stencil;
 Texture2D Normals;
-Texture2D Noise;
 
 SamplerState s0 <bool visible=false;string uiname="Sampler";>
 {
@@ -43,7 +43,7 @@ float4 _dnoise4(float2 x,float RandomSeed){
 	_dnoise1(float3((x+RandomSeed*5+113)+7,length(sin((x+191)/173+RandomSeed*float2(7,17))))+.5),
 	_dnoise1(float3((x+RandomSeed*11+97)+13,length(sin((x-37)/181+RandomSeed*float2(5,23))))+.5)
 	};
-	return frac(c+x.x*2+RandomSeed+dot(c,1));
+	return frac(c+x.x*2+RandomSeed+dot(c,1))-.5;
 }
 
 float3 GetViewPos(SamplerState SS, float2 uv)
@@ -93,7 +93,7 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 		
 		for ( uint i = 0; i < uint( kernelSize ); i++ )
 		{
-			float4 randomVec = _dnoise4(uv*100, RandomSeed + (float)i);
+			float4 randomVec = _dnoise4(uv*100, RandomSeed + ((float)i)*0.247);
 			float2x2 rotMat = float2x2( float2( cos( randomVec.x * 3.1415926 ), -sin( randomVec.x * 3.1415926 ) ),
 								float2( sin( randomVec.x * 3.1415926 ), cos( randomVec.x * 3.1415926 ) ) );
 			// Retrieve the kernel vector and scale it with aspectRatio
@@ -135,33 +135,49 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
     	float dm = lerp(1, saturate(currentPos.z*0.5), 1-saturate(o*5-4));
     	o = saturate(o*lerp(0.3,1,dm));
 	
-		return float4(o,o,o,1);
+		return o;
     }
 	else return 1;
 }
 float4 SSAOBlur(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 {
-	float2 InvScreenSize = 1/screenSize;
-  float o = 1;
-  const float2 vec[3] = {
-   float2(1,1),
-   float2(1,0),
-   float2(0,1),
-   };
-
-  float ao = Depth.Sample(s0,uv);
-  int samples = 1;
-  for (int k=0;k<3;k++){
-     float2 tcoord = uv+float2(vec[k].x*InvScreenSize.x,vec[k].y*InvScreenSize.y);
-     ao+=Depth.Sample(s0,tcoord);
-     samples++;
-  }
-  ao/=samples;
-
-  return float4(o,o,o,1);
+    int3 puv = int3((int2)(uv*oR), 0);
+    uint4 stcl = Stencil.Load(puv);
+    if(any(stcl > 0) && any(stcl < 129))
+    {
+		float2 InvScreenSize = 3/screenSize;
+		float o = 1;
+		const float2 vec[8] = {
+			float2( 1, 1),
+			float2(-1,-1),
+			float2( 1,-1),
+			float2(-1, 1),
+			float2( 1, 0),
+			float2(-1, 0),
+			float2( 0, 1),
+			float2( 0,-1),
+		};
+		
+		float ao = Depth.Load(puv);
+		int samples = 1;
+    	float dd = DepthI.Load(puv);
+		[unroll]
+		for (int k=0;k<8;k++)
+    	{
+			float2 tcoord = uv+float2(vec[k].x*InvScreenSize.x,vec[k].y*InvScreenSize.y);
+    		if(abs(dd-DepthI.SampleLevel(s0,tcoord,0)) > 0.0002) continue;
+			ao+=Depth.SampleLevel(s0,tcoord,0);
+			samples++;
+    	}
+		ao/=samples;
+    	return float4(ao.xxx,1);
+    }
+	else return 1;
 }
 
 technique10 SSAOt{
 	pass P0 <string format="R16G16B16A16_Float";>
 	{SetPixelShader(CompileShader(ps_4_0,PS()));}
+	pass P1 <string format="R16G16B16A16_Float"; int iterations=3;>
+	{SetPixelShader(CompileShader(ps_4_0,SSAOBlur()));}
 }

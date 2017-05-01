@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" systemname="SSLAO (DX11.Texture2D DepthNorm)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="2835" top="3285" width="14235" height="10140">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.1.dtd" >
+   <PATCH nodename="C:\vvvv\app\vvvv-vpm-old\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" systemname="SSLAO (DX11.Texture2D DepthNorm)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" scrollx="2400" scrolly="3990">
+   <BOUNDS type="Window" left="13620" top="4185" width="14235" height="10140">
    </BOUNDS>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.101.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="28" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="1335" top="1950" width="795" height="240">
@@ -235,7 +235,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="8160" top="3540" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.01">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="532.36">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -247,7 +247,7 @@
    </PIN>
    </NODE>
    <NODE systemname="SSLAONakedNorm (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\SSLAONakedNorm.tfx" nodename="SSLAONakedNorm (DX11.TextureFX)" componentmode="Hidden" id="0">
-   <BOUNDS type="Node" left="4500" top="7380" width="2250" height="270">
+   <BOUNDS type="Node" left="4500" top="7380" width="2550" height="270">
    </BOUNDS>
    <PIN pinname="Technique" slicecount="1" values="SSAOt">
    </PIN>
@@ -290,6 +290,8 @@
    <PIN pinname="Sampler" visible="1" pintype="Input" slicecount="1" values="||">
    </PIN>
    <PIN pinname="RandomSeed" visible="1">
+   </PIN>
+   <PIN pinname="Query" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="19" srcpinname="Y Output Value" dstnodeid="0" dstpinname="aoSize">
@@ -415,7 +417,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="9090" top="4020" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.33">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.5">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -502,20 +504,6 @@
    </NODE>
    <LINK srcnodeid="70" srcpinname="Y Output Value" dstnodeid="66" dstpinname="Simulate">
    </LINK>
-   <NODE systemname="FXAA11 (DX11.TextureFX)" filename="%VVVV%\packs\dx11\nodes\texture11\Filter\FXAA11.tfx" nodename="FXAA11 (DX11.TextureFX)" componentmode="Hidden" id="75">
-   <BOUNDS type="Node" left="4275" top="8685" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Texture In" visible="1">
-   </PIN>
-   <PIN pinname="Texture Out" visible="1">
-   </PIN>
-   <PIN pinname="Enabled" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Technique" slicecount="1" visible="1" values="x1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="0" srcpinname="Texture Out" dstnodeid="75" dstpinname="Texture In">
-   </LINK>
    <NODE systemname="Sampler (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Sampler (DX11)" componentmode="Hidden" id="76">
    <BOUNDS type="Node" left="8460" top="7455" width="100" height="100">
    </BOUNDS>
@@ -529,16 +517,6 @@
    <LINK srcnodeid="30" srcpinname="Output" dstnodeid="0" dstpinname="Default SizeXY">
    </LINK>
    <LINK srcnodeid="11" srcpinname="Output Node" dstnodeid="0" dstpinname="Texture In">
-   </LINK>
-   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="77" systemname="IOBox (Enumerations)">
-   <BOUNDS type="Box" left="4815" top="8010" width="1500" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="4815" top="8010" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="1" visible="1" values="RenderTextured">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="77" srcpinname="Output Enum" dstnodeid="75" dstpinname="Technique">
    </LINK>
    <LINK srcnodeid="2" srcpinname="Y Output Value" dstnodeid="0" dstpinname="RandomSeed">
    </LINK>
@@ -565,6 +543,8 @@
    </BOUNDS>
    <PIN pinname="Texture Out" visible="1">
    </PIN>
+   <PIN pinname="Texture In" visible="1" slicecount="1" values="||">
+   </PIN>
    </NODE>
    <LINK srcnodeid="41" srcpinname="Output Node" dstnodeid="83" dstpinname="Custom Semantics">
    </LINK>
@@ -573,8 +553,6 @@
    <LINK srcnodeid="60" srcpinname="Y Output Value" dstnodeid="83" dstpinname="Feedback">
    </LINK>
    <LINK srcnodeid="83" srcpinname="Texture Out" dstnodeid="21" dstpinname="Texture In 2">
-   </LINK>
-   <LINK srcnodeid="75" srcpinname="Texture Out" dstnodeid="83" dstpinname="Texture In">
    </LINK>
    <LINK srcnodeid="11" srcpinname="Output Node" dstnodeid="83" dstpinname="Depth">
    </LINK>
@@ -586,4 +564,6 @@
    </LINK>
    <PACK Name="vvvv-ZeroMQ" Version="0.5.3">
    </PACK>
+   <LINK srcnodeid="0" srcpinname="Texture Out" dstnodeid="83" dstpinname="Texture In">
+   </LINK>
    </PATCH>

@@ -1,4 +1,30 @@
-#pragma once
+
+/*<vvvv>
+    <defines>
+        <def
+            type="bool"
+            desc="1 If depth is reversed"
+            >
+            RESHADE_DEPTH_INPUT_IS_REVERSED
+        </def>
+        <def
+            type="bool"
+            desc="1 If depth is logarithmic"
+            >
+            RESHADE_DEPTH_INPUT_IS_LOGARITHMIC
+        </def>
+        <def
+            type="enum:sampler.address"
+            >
+            DEFAULT_SAMPLER_ADDRESS
+        </def>
+        <def
+            type="enum:sampler.filter"
+            >
+            DEFAULT_SAMPLER_FILTER
+        </def>
+    </defines>
+</vvvv>*/
 
 #ifndef DEPTH_REVERSED
 	#define RESHADE_DEPTH_INPUT_IS_REVERSED 0
@@ -13,51 +39,58 @@
 	#define DEFAULT_SAMPLER_FILTER MIN_MAG_MIP_LINEAR
 #endif 
 
-#define BUFFER_WIDTH ScreenSize.x
-#define BUFFER_RCP_WIDTH 1/ScreenSize.x
-#define BUFFER_HEIGHT ScreenSize.y
-#define BUFFER_RCP_HEIGHT 1/ScreenSize.y
+#define BUFFER_WIDTH ReShade_ScreenSize.x
+#define BUFFER_RCP_WIDTH 1/ReShade_ScreenSize.x
+#define BUFFER_HEIGHT ReShade_ScreenSize.y
+#define BUFFER_RCP_HEIGHT 1/ReShade_ScreenSize.y
 #define ASPECTRATIO BUFFER_WIDTH*BUFFER_RCP_HEIGHT
 #define PIXELSIZE float2(BUFFER_RCP_WIDTH, BUFFER_RCP_HEIGHT)
 
 
-
 cbuffer glob : register(b3)
 {
-    float2 ScreenSize : TARGETSIZE;
-    float4x4 tPI : INVERSEPROJECTION;
+    float2 ReShade_ScreenSize : TARGETSIZE;
+    float4x4 ReShade_tPI : CPROJINV;
 }
 
-namespace ReShade
-{
-	// Global textures and samplers
-	Texture2D BackBuffer : INITIAL;
-	Texture2D<float> DepthBuffer : DEPTHTEXTURE;
-    
-    SamplerState sL <string uiname="Sampler";>
-    {
-        Filter = DEFAULT_SAMPLER_FILTER;
-        AddressU = DEFAULT_SAMPLER_ADDRESS;
-        AddressV = DEFAULT_SAMPLER_ADDRESS;
-        MipLODBias = 0;
-    };
 
-	// Helper functions
-	float GetLinearizedDepth(float2 texcoord)
-	{
-		float depth = DepthBuffer.SampleLevel(sL, texcoord, 0);
+// Global textures and samplers
+Texture2D ReShade_Initial : INITIAL;
+Texture2D ReShade_BackBuffer : PREVIOUS;
+Texture2D<float> ReShade_DepthBuffer : DEPTHTEXTURE;
+//<string uiname="Depth";>;
+    
+SamplerState ReShade_sL <string uiname="Sampler";>
+{
+    Filter = DEFAULT_SAMPLER_FILTER;
+    AddressU = DEFAULT_SAMPLER_ADDRESS;
+    AddressV = DEFAULT_SAMPLER_ADDRESS;
+    MipLODBias = 0;
+};
+
+// Helper functions
+float ReShade_GetLinearizedDepth(float2 texcoord, out float farplaneout)
+{
+    float depth = ReShade_DepthBuffer.SampleLevel(ReShade_sL, texcoord, 0);
 
 #if DEPTH_LOGARITHMIC
-		const float C = 0.01;
-		depth = (exp(depth * log(C + 1.0)) - 1.0) / C;
+	const float C = 0.01;
+	depth = (exp(depth * log(C + 1.0)) - 1.0) / C;
 #endif
 #if DEPTH_REVERSED
-		depth = 1.0 - depth;
+	depth = 1.0 - depth;
 #endif
-		const float N = 1.0;
-        float2 farplane = mul(float4(0, 0, 1, 1), tPI).zw;
-        depth /= farplane.x / farplane.y - depth * (farplane.x / farplane.y - N);
+	const float N = 1.0;
+    float2 farplanew = mul(float4(0, 0, 1, 1), ReShade_tPI).zw;
+    float farplane = farplanew.x / farplanew.y;
+	farplane *= 1;
+    depth /= farplane - depth * (farplane - N);
+    farplaneout = farplane;
 
-		return depth;
-	}
+	return depth;
+}
+float ReShade_GetLinearizedDepth(float2 texcoord)
+{
+    float dummy;
+    return ReShade_GetLinearizedDepth(texcoord, dummy);
 }

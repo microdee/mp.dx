@@ -27,6 +27,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
+/*<vvvv quoteEscape="¤">
+    <defines>
+        <def
+            type="int"
+            default="2"
+            desc="0 warm, 1 cold, 2 light dependent"
+            >
+            ADAPTMODE
+        </def>
+        <def
+            type="enum:texformat"
+            default="¤R16G16B16A16_Float¤"
+            >
+            OUTFORMAT
+        </def>
+    </defines>
+</vvvv>*/
+
 #define ADAPTMODE_WARM 0
 #define ADAPTMODE_COLD 1
 #define ADAPTMODE_LIGHTDEPENDENT 2

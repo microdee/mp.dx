@@ -25,6 +25,17 @@
 // Adaptive sharpen - version 2016-09-24 - (requires ps >= 3.0)
 // Tuned for use post resize, EXPECTS FULL RANGE GAMMA LIGHT
 
+/*<vvvv quoteEscape="¤">
+    <defines>
+        <def
+            type="enum:texformat"
+            default="¤R8G8B8A8_UNorm¤"
+            >
+            OUTFORMAT
+        </def>
+    </defines>
+</vvvv>*/
+
 #if defined(__INTELLISENSE__)
 #include <../../../../mp.fxh/pows.fxh>
 #else
@@ -60,8 +71,8 @@ cbuffer cbuf : register(b0)
 Texture2D<float2> Pass0Tex : PASSRESULT0;
 
 // Get destination pixel values
-#define get1(x,y)      ( saturate(ReShade::BackBuffer.SampleLevel(ReShade::sL, texcoord + (PIXELSIZE * float2(x, y)), 0).rgb) )
-#define get2(x,y)      ( Pass0Tex.SampleLevel(ReShade::sL, texcoord + (PIXELSIZE * float2(x, y)), 0) )
+#define get1(x,y)      ( saturate(ReShade_BackBuffer.SampleLevel(ReShade_sL, texcoord + (PIXELSIZE * float2(x, y)), 0).rgb) )
+#define get2(x,y)      ( Pass0Tex.SampleLevel(ReShade_sL, texcoord + (PIXELSIZE * float2(x, y)), 0) )
 
 // Saturation loss reduction
 #define minim_satloss  ( (satorig*min((d[0].y + sharpdiff)/d[0].y, 1e+5) + (satorig + sharpdiff))/2 )
@@ -129,7 +140,7 @@ float2 AdaptiveSharpenP0(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) 
 
 float3 AdaptiveSharpenP1(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
 {
-    float4 origa = ReShade::BackBuffer.SampleLevel(ReShade::sL, texcoord, 0);
+    float4 origa = ReShade_BackBuffer.SampleLevel(ReShade_sL, texcoord, 0);
 	float3 orig    = origa.rgb;
 	float3 satorig = saturate(orig);
 

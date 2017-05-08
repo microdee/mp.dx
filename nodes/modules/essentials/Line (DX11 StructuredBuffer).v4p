@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.4.dtd" >
-   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\Line (DX11 StructuredBuffer).v4p" systemname="Line (DX11 StructuredBuffer)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 StructuredBuffer).v4p" scrollx="0" scrolly="360">
-   <BOUNDS type="Window" left="11625" top="3645" width="12465" height="11370">
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\Line (DX11 StructuredBuffer).v4p" systemname="Line (DX11 StructuredBuffer)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 StructuredBuffer).v4p" scrollx="0" scrolly="10215">
+   <BOUNDS type="Window" left="7245" top="-13815" width="14385" height="11625">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
@@ -34,8 +34,6 @@
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="57" srcpinname="Y Output Value" dstnodeid="54" dstpinname="Input 1">
-   </LINK>
    <NODE systemname="SequentialAdd (Value)" filename="..\..\..\..\mp.essentials\nodes\modules\value\SequentialAdd (Value).v4p" nodename="SequentialAdd (Value)" componentmode="Hidden" id="53">
    <BOUNDS type="Node" left="3810" top="1800" width="100" height="100">
    </BOUNDS>
@@ -966,4 +964,6 @@
    </LINK>
    <PACK Name="vvvv-Message" Version="2.9.6">
    </PACK>
+   <LINK srcnodeid="60" srcpinname="Output" dstnodeid="54" dstpinname="Input 1">
+   </LINK>
    </PATCH>

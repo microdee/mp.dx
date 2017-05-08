@@ -10,8 +10,13 @@ RWStructuredBuffer<LineSegment> Outbuf : BACKBUFFER;
 
 ByteAddressBuffer RawBuffer;
 StructuredBuffer<float4> AddrInOutIDProg;
-float PositionOffset = 0;
-float WidthOffset = -1;
+
+cbuffer cbuf : register( b0 )
+{
+	float WidthOffset = -1;
+	uint PositionOffset = 0;
+	uint SegmentSize = 16;
+}
 
 struct csin
 {
@@ -29,8 +34,8 @@ void CS(csin input)
 	float progr = AddrInOutIDProg[input.DTID.x].w;
 	LineSegment o = (LineSegment)0;
 	
-	o.pos = asfloat(RawBuffer.Load3(inid * 4 + (uint)PositionOffset));
-	o.size = (WidthOffset < 0) ? 1.0 : asfloat(RawBuffer.Load(inid * 4 + (uint)WidthOffset));
+	o.pos = asfloat(RawBuffer.Load3(inid * SegmentSize + PositionOffset));
+	o.size = (WidthOffset < 0) ? 1.0 : asfloat(RawBuffer.Load(inid * SegmentSize + (uint)WidthOffset));
 	o.prog = progr;
 	o.id = binid;
 	Outbuf[outid] = o;

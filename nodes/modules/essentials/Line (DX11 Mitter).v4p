@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" systemname="Line (DX11 Mitter)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" scrollx="375" scrolly="6330">
-   <BOUNDS type="Window" left="9750" top="3975" width="14385" height="11625">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.4.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" systemname="Line (DX11 Mitter)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" scrollx="0" scrolly="9255">
+   <BOUNDS type="Window" left="7245" top="-13815" width="14385" height="11625">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.101.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="1" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="705" top="375" width="795" height="720">
@@ -531,7 +531,7 @@
    <LINK srcnodeid="20" srcpinname="Output" dstnodeid="54" dstpinname="Input">
    </LINK>
    <NODE systemname="MitterLineOutput (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\MitterLineOutput.fx" nodename="MitterLineOutput (DX11.Effect)" componentmode="Hidden" id="55">
-   <BOUNDS type="Node" left="4410" top="17145" width="2550" height="270">
+   <BOUNDS type="Node" left="4410" top="17145" width="2700" height="270">
    </BOUNDS>
    <PIN pinname="Geometry" visible="1">
    </PIN>
@@ -572,6 +572,8 @@
    <PIN pinname="Query" visible="1">
    </PIN>
    <PIN pinname="Enabled" visible="1">
+   </PIN>
+   <PIN pinname="CullThr" slicecount="1" values="2">
    </PIN>
    </NODE>
    <NODE systemname="NullGeometry (DX11.Drawer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="NullGeometry (DX11.Drawer)" componentmode="Hidden" id="56">
@@ -763,7 +765,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4140" top="12375" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.1">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.05">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -893,9 +895,9 @@
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="Query">
    </PIN>
+   <PIN pinname="Input Node" visible="1">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="55" srcpinname="Query" dstnodeid="77" dstpinname="Input Node">
-   </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="80" systemname="IOBox (Enumerations)">
    <BOUNDS type="Box" left="6045" top="10935" width="1845" height="240">
    </BOUNDS>
@@ -911,7 +913,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="9750" top="7125" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -1062,4 +1064,8 @@
    </LINK>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
    </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.6">
+   </PACK>
+   <LINK srcnodeid="55" srcpinname="Query" dstnodeid="77" dstpinname="Input Node">
+   </LINK>
    </PATCH>

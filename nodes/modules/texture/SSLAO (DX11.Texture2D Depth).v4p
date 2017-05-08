@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.104.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_50alpha34.104_x64\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D Depth).v4p" systemname="SSLAO (DX11.Texture2D Depth)" filename="E:\vvvv\libs\mcropack\packs\mcps\nodes\Modules\SSLAO (DX11.Texture2D Depth).v4p" scrollx="2070" scrolly="4620">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.4.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D Depth).v4p" systemname="SSLAO (DX11.Texture2D Depth)" filename="E:\vvvv\libs\mcropack\packs\mcps\nodes\Modules\SSLAO (DX11.Texture2D Depth).v4p" scrollx="0" scrolly="4125">
    <BOUNDS type="Window" left="15315" top="3030" width="9000" height="6000">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.101.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="24" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="615" top="945" width="795" height="240">
@@ -130,28 +130,12 @@
    </LINK>
    <LINK srcnodeid="20" srcpinname="Output Y" dstnodeid="22" dstpinname="Y">
    </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="12" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="8235" top="3675" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="8235" top="3675" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Blur">
-   </PIN>
-   <PIN pinname="Y Output Value" visible="1">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="10" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="3585" top="1830" width="795" height="240">
    </BOUNDS>
    <BOUNDS type="Node" left="3585" top="1830" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.012">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.29">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -167,7 +151,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4755" top="1950" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.17">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1.38">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -183,7 +167,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5505" top="1425" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.64">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1.77">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -238,50 +222,6 @@
    </LINK>
    <LINK srcnodeid="5" srcpinname="Y Output Value" dstnodeid="15" dstpinname="Enabled">
    </LINK>
-   <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="4">
-   <BOUNDS type="Node" left="8820" top="5940" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input 2" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Input 1" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="2" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="9390" top="3735" width="480" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="9390" top="3735" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Toggle">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="|2 Pass Blur|">
-   </PIN>
-   <PIN pinname="X Input Value" slicecount="1" values="0">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="2" srcpinname="Y Output Value" dstnodeid="4" dstpinname="Input 1">
-   </LINK>
-   <NODE systemname="AND (Boolean)" nodename="AND (Boolean)" componentmode="Hidden" id="0">
-   <BOUNDS type="Node" left="7965" top="6225" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input 1" visible="1" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Input 2" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="5" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Input 2">
-   </LINK>
    <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="30">
    <BOUNDS type="Node" left="1785" top="945" width="100" height="100">
    </BOUNDS>
@@ -304,78 +244,6 @@
    <PIN pinname="Output Node" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="DepthBlur (DX11.TextureFX)" filename="%VVVV%\packs\Emeshe\nodes\texture11\DepthBlur.tfx" nodename="DepthBlur (DX11.TextureFX)" componentmode="Hidden" id="40">
-   <BOUNDS type="Node" left="3840" top="6945" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Technique" slicecount="1" visible="1" values="FastBlur">
-   </PIN>
-   <PIN pinname="texD" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Enabled" slicecount="1" visible="1" values="0">
-   </PIN>
-   <PIN pinname="Limit" visible="1">
-   </PIN>
-   <PIN pinname="Texture Out" visible="1">
-   </PIN>
-   <PIN pinname="Seed" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="tPI" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Texture In" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="31" srcpinname="Output Node" dstnodeid="40" dstpinname="tP">
-   </LINK>
-   <LINK srcnodeid="12" srcpinname="Y Output Value" dstnodeid="40" dstpinname="Radius">
-   </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="41" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="6360" top="6630" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="6360" top="6630" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.015">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="41" srcpinname="Y Output Value" dstnodeid="40" dstpinname="Limit">
-   </LINK>
-   <LINK srcnodeid="40" srcpinname="Texture Out" dstnodeid="14" dstpinname="Texture In 2">
-   </LINK>
-   <LINK srcnodeid="0" srcpinname="Output" dstnodeid="40" dstpinname="Enabled">
-   </LINK>
-   <NODE systemname="Ord2Enum (Enumerations)" nodename="Ord2Enum (Enumerations)" componentmode="Hidden" id="43">
-   <BOUNDS type="Node" left="8820" top="6615" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Ord Value" visible="1">
-   </PIN>
-   <PIN pinname="Enum" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="4" srcpinname="Output" dstnodeid="43" dstpinname="Ord Value">
-   </LINK>
-   <LINK srcnodeid="43" srcpinname="Enum" dstnodeid="40" dstpinname="Technique">
-   </LINK>
-   <NODE systemname="GT (Value)" nodename="GT (Value)" componentmode="Hidden" id="1">
-   <BOUNDS type="Node" left="7875" top="5670" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input 1" visible="1">
-   </PIN>
-   <PIN pinname="Input 2" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Epsilon" slicecount="1" values="0.0001">
-   </PIN>
-   <PIN pinname="Inverse Output" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="12" srcpinname="Y Output Value" dstnodeid="1" dstpinname="Input 1">
-   </LINK>
-   <LINK srcnodeid="1" srcpinname="Output" dstnodeid="0" dstpinname="Input 1">
-   </LINK>
    <NODE systemname="Resize (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\modules\Resize (DX11.Texture 2d).v4p" nodename="Resize (DX11.Texture 2d)" componentmode="Hidden" id="45">
    <BOUNDS type="Node" left="2760" top="5520" width="100" height="100">
    </BOUNDS>
@@ -401,8 +269,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="46" srcpinname="Output Enum" dstnodeid="45" dstpinname="Target Format">
-   </LINK>
-   <LINK srcnodeid="45" srcpinname="Texture Out" dstnodeid="40" dstpinname="texD">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="51" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="1650" top="2400" width="795" height="480">
@@ -431,7 +297,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="7395" top="2610" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.23">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -451,8 +317,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="31" srcpinname="Output Node" dstnodeid="53" dstpinname="Source">
-   </LINK>
-   <LINK srcnodeid="53" srcpinname="Transform Out" dstnodeid="40" dstpinname="tPI">
    </LINK>
    <NODE systemname="SSLAONaked (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\SSLAONaked.tfx" nodename="SSLAONaked (DX11.TextureFX)" componentmode="Hidden" id="29">
    <BOUNDS type="Node" left="3780" top="6375" width="1950" height="270">
@@ -504,12 +368,14 @@
    </LINK>
    <LINK srcnodeid="5" srcpinname="Y Output Value" dstnodeid="29" dstpinname="Enabled">
    </LINK>
-   <LINK srcnodeid="29" srcpinname="Texture Out" dstnodeid="40" dstpinname="Texture In">
-   </LINK>
    <LINK srcnodeid="45" srcpinname="Texture Out" dstnodeid="29" dstpinname="Texture In">
    </LINK>
    <LINK srcnodeid="53" srcpinname="Transform Out" dstnodeid="29" dstpinname="CamProjInv">
    </LINK>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
+   <LINK srcnodeid="29" srcpinname="Texture Out" dstnodeid="14" dstpinname="Texture In 2">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.9.6">
    </PACK>
    </PATCH>

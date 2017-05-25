@@ -33,7 +33,7 @@ namespace DX11Utils
         protected ISpread<DX11Resource<DX11DynamicRawBuffer>> FOutput;
         [Output("Is Valid")]
         protected ISpread<bool> FValid;
-
+        
         private bool FInvalidate;
         private bool FFirst = true;
 
@@ -95,8 +95,7 @@ namespace DX11Utils
                             FOutput[i].Dispose(context);
                         }
                     }
-
-                    if (!FOutput[i].Contains(context))
+                    else
                     {
                         if (FInData[i].Length > 0)
                         {

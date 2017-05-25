@@ -7,9 +7,12 @@
 #define DISCSAMPLES 4
 #define DIFFENVSRC Environment
 
-#include <packs/mp.fxh/AnisotropicEnvSample.fxh>
-#include <packs/mp.fxh/DiscSample.fxh>
+
+#if defined(__INTELLISENSE__)
+#include <../../../mp.fxh/bitwise.fxh>
+#else
 #include <packs/mp.fxh/bitwise.fxh>
+#endif
 #if !defined(UVLAYER)
 #define UVLAYER TEXCOORD0
 #endif
@@ -94,8 +97,8 @@ cbuffer cbPerObj : register( b1 )
 {
 	float4x4 tW : WORLD;
     float4x4 ptW <string uiname="Previous World";>;
-    float4x4 tTex <string uiname="Texture Transforms";>;
-    float4x4 ptTex <string uiname="Previous Texture Transforms";>;
+    float4x4 tTex <string uiname="Texture Transform";>;
+    float4x4 ptTex <string uiname="Previous Texture Transform";>;
     float4 gAlbedoCol <string uiname="Albedo Color"; bool color=true;> = 1;
     float4 gMaterial <string uiname="Material";> = 1;
     float ndepth <string uiname="Normal Depth";> = 0;

@@ -18,9 +18,16 @@
 #define INST_ROUGHMETALOFFS 0x0000FFFF
 #endif
 
-#include <packs/mp.fxh/AnisotropicEnvSample.fxh>
-#include <packs/mp.fxh/DiscSample.fxh>
+#if defined(__INTELLISENSE__)
+#include <../../../mp.fxh/bitwise.fxh>
+#include <../../../mp.fxh/ManualUVAddress.fxh>
+#include <../../../mp.fxh/VRotate.fxh>
+#else
 #include <packs/mp.fxh/bitwise.fxh>
+#include <packs/mp.fxh/ManualUVAddress.fxh>
+#include <packs/mp.fxh/VRotate.fxh>
+#endif
+
 #if !defined(UVLAYER)
 #define UVLAYER TEXCOORD0
 #endif
@@ -28,9 +35,6 @@
 #if !defined(RMCOMBINEOP)
 #define RMCOMBINEOP(O) *= O
 #endif
-
-#include <packs/mp.fxh/ManualUVAddress.fxh>
-#include <packs/mp.fxh/VRotate.fxh>
 
 //#define DO_VELOCITY 1
 
@@ -315,12 +319,6 @@ PSout PS(PSin input)
 	normmap = normmap*2-1;
     normmap = normalize(lerp(float3(0,0,1), normmap, ndepth));
 	float3 norm = normalize(normmap.x * input.Tan + normmap.y * input.Bin + normmap.z * input.Norm);
-    float3x3 tanspace = float3x3(
-        input.Tan,
-        input.Bin,
-        input.Norm
-    );
-	//tanspace = transpose(tanspace);
 	#else
 	float3 norm = input.Norm;
 	#endif

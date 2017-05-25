@@ -7,9 +7,16 @@
 #define DISCSAMPLES 4
 #define DIFFENVSRC Environment
 
+
+#if defined(__INTELLISENSE__)
+#include <../../../mp.fxh/AnisotropicEnvSample.fxh>
+#include <../../../mp.fxh/DiscSample.fxh>
+#include <../../../mp.fxh/quaternion.fxh>
+#else
 #include <packs/mp.fxh/AnisotropicEnvSample.fxh>
 #include <packs/mp.fxh/DiscSample.fxh>
 #include <packs/mp.fxh/quaternion.fxh>
+#endif
 
 //#define DO_VELOCITY 1
 

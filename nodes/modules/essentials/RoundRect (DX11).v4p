@@ -1,8 +1,8 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta33.7.dtd" >
-   <PATCH nodename="C:\vvvv\libs\mcropack\nodes\modules\RoundRect (DX11).v4p" systemname="RoundRect (DX11)" filename="C:\vvvv\libs\mcropack\nodes\Modules\RoundRect (DX11).v4p" scrollx="1905" scrolly="1245">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.6.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\RoundRect (DX11).v4p" systemname="RoundRect (DX11)" filename="C:\vvvv\libs\mcropack\nodes\Modules\RoundRect (DX11).v4p" scrollx="0" scrolly="1605">
    <BOUNDS type="Window" left="12555" top="5880" width="14955" height="9510">
    </BOUNDS>
-   <PACK Name="addonpack" Version="33.7.0">
+   <PACK Name="addonpack" Version="35.0.0">
    </PACK>
    <NODE systemname="RoundRect (DX11.Geometry)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="RoundRect (DX11.Geometry)" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="3060" top="7020" width="100" height="100">
@@ -177,16 +177,16 @@
    <LINK srcnodeid="16" srcpinname="Output" dstnodeid="15" dstpinname="Input 2">
    </LINK>
    <NODE systemname="Translate (Transform Vector)" nodename="Translate (Transform Vector)" componentmode="Hidden" id="17">
-   <BOUNDS type="Node" left="4680" top="3750" width="100" height="100">
+   <BOUNDS type="Node" left="4665" top="3030" width="100" height="100">
    </BOUNDS>
    <PIN pinname="XYZ" visible="1">
    </PIN>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
+   </PIN>
    </NODE>
    <LINK srcnodeid="7" srcpinname="TranslateXYZ" dstnodeid="17" dstpinname="XYZ">
-   </LINK>
-   <LINK srcnodeid="17" srcpinname="Transform Out" dstnodeid="5" dstpinname="Transform In">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="18" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="1245" top="5985" width="795" height="240">
@@ -361,5 +361,35 @@
    <LINK srcnodeid="30" srcpinname="Y Output Value" dstnodeid="5" dstpinname="Resolution">
    </LINK>
    <LINK srcnodeid="30" srcpinname="Y Output Value" dstnodeid="13" dstpinname="Input 2">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.9.6">
+   </PACK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="31">
+   <BOUNDS type="Box" left="5805" top="3075" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5805" top="3075" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Post Transform|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Multiply (Transform)" nodename="Multiply (Transform)" componentmode="Hidden" id="32">
+   <BOUNDS type="Node" left="5340" top="3645" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform In 2" visible="1">
+   </PIN>
+   <PIN pinname="Transform In 1" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="17" srcpinname="Transform Out" dstnodeid="32" dstpinname="Transform In 2">
+   </LINK>
+   <LINK srcnodeid="31" srcpinname="Output Node" dstnodeid="32" dstpinname="Transform In 1">
+   </LINK>
+   <LINK srcnodeid="32" srcpinname="Transform Out" dstnodeid="5" dstpinname="Transform In">
    </LINK>
    </PATCH>

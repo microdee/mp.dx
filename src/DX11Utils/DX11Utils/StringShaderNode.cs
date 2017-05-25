@@ -25,7 +25,14 @@ using VVVV.Core.Logging;
 namespace VVVV.DX11.Nodes
 {
     #region PluginInfo
-    [PluginInfo(Name = "Shader", Category = "DX11.Effect", Version = "String", Help = "Build a shader with a string input", Author = "tmp", Tags = "SA")]
+    [PluginInfo(
+        Name = "Shader",
+        Category = "DX11.Effect",
+        Version = "String",
+        Help = "Build a shader with a string input",
+        Author = "tmp",
+        Tags = "SA"
+        )]
     #endregion PluginInfo
     public unsafe class DX11StringShaderNode : IPluginEvaluate, IDX11LayerHost, IPartImportsSatisfiedNotification, IDisposable
     {

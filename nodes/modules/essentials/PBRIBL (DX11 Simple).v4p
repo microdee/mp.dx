@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.4.dtd" >
-   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" systemname="PBRIBL (DX11 Simple)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" scrollx="0" scrolly="13125">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.6.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" systemname="PBRIBL (DX11 Simple)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" scrollx="0" scrolly="10770">
    <BOUNDS type="Window" left="10575" top="-12510" width="17415" height="11655">
    </BOUNDS>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
@@ -977,7 +977,7 @@
    </PIN>
    <PIN pinname="Dither Size" slicecount="1" values="3">
    </PIN>
-   <PIN pinname="Sample Count" slicecount="1" values="16">
+   <PIN pinname="Sample Count" slicecount="1" values="16" visible="1">
    </PIN>
    <PIN pinname="Enable Debug View" slicecount="1" values="0">
    </PIN>
@@ -987,12 +987,12 @@
    </PIN>
    <PIN pinname="texExtNormals" visible="1">
    </PIN>
+   <PIN pinname="Depth Texture" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="50" srcpinname="Output" dstnodeid="94" dstpinname="Custom Semantics">
    </LINK>
    <LINK srcnodeid="81" srcpinname="Texture Out" dstnodeid="94" dstpinname="Depth">
-   </LINK>
-   <LINK srcnodeid="62" srcpinname="Depth Buffer" dstnodeid="94" dstpinname="Depth In">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="95">
    <BOUNDS type="Box" left="5835" top="17400" width="795" height="240">
@@ -1159,5 +1159,23 @@
    <LINK srcnodeid="62" srcpinname="Buffers" dstnodeid="55" dstpinname="Input Node">
    </LINK>
    <LINK srcnodeid="62" srcpinname="Buffers" dstnodeid="59" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="114">
+   <BOUNDS type="Box" left="4935" top="18705" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4935" top="18705" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="16">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="114" srcpinname="Y Output Value" dstnodeid="94" dstpinname="Sample Count">
+   </LINK>
+   <LINK srcnodeid="62" srcpinname="Depth Buffer" dstnodeid="94" dstpinname="Depth Texture">
    </LINK>
    </PATCH>

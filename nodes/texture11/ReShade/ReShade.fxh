@@ -57,7 +57,7 @@ cbuffer glob : register(b3)
 // Global textures and samplers
 Texture2D ReShade_Initial : INITIAL;
 Texture2D ReShade_BackBuffer : PREVIOUS;
-Texture2D<float> ReShade_DepthBuffer : DEPTHTEXTURE;
+Texture2D<float> ReShade_DepthBuffer <string uiname="Depth Texture";> /* : DEPTHTEXTURE*/;
 //<string uiname="Depth";>;
     
 SamplerState ReShade_sL <string uiname="Sampler";>

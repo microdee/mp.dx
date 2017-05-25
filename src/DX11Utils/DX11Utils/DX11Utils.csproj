@@ -189,6 +189,7 @@
     <Compile Include="CopyCounter.cs" />
     <Compile Include="DispatchIndirectOnBindedResource.cs" />
     <Compile Include="DX11MessageTypes.cs" />
+    <Compile Include="CustomDynamicStructuredBuffer.cs" />
     <Compile Include="DynamicRawBuffer.cs" />
     <Compile Include="MultiStructuredBufferRenderer.cs" />
     <Compile Include="MultiRawBufferRenderer.cs" />

@@ -132,7 +132,16 @@ namespace DX11Utils
                     var b = FOutput[i][context];
                     try
                     {
-                        if (!FImmut[i])
+                        if (FImmut[i])
+                        {
+                            if (FOutput[i][context] != null) FOutput[i][context].Dispose();
+                            FInData[i].Position = 0;
+                            FInData[i].Read(immutbuf, 0, (int)FInData[i].Length);
+                            var ds = new DataStream(immutbuf, true, true);
+                            ds.Position = 0;
+                            FOutput[i][context] = new DX11ImmutableStructuredBuffer(context.Device, FElCount[i], FElStrides[i], ds);
+                        }
+                        else
                         {
                             var db = context.CurrentDeviceContext.MapSubresource(b.Buffer, MapMode.WriteDiscard,
                                 MapFlags.None);
@@ -141,15 +150,6 @@ namespace DX11Utils
                             FInData[i].CopyTo(db.Data);
                             db.Data.Position = 0;
                             context.CurrentDeviceContext.UnmapSubresource(b.Buffer, 0);
-                        }
-                        else if (FInData.IsChanged)
-                        {
-                            if (FOutput[i][context] != null) FOutput[i][context].Dispose();
-                            FInData[i].Position = 0;
-                            FInData[i].Read(immutbuf, 0, (int)FInData[i].Length);
-                            var ds = new DataStream(immutbuf, true, true);
-                            ds.Position = 0;
-                            FOutput[i][context] = new DX11ImmutableStructuredBuffer(context.Device, FElCount[i], FElStrides[i], ds);
                         }
                     }
                     catch

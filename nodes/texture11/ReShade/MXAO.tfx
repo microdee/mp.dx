@@ -11,65 +11,63 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 /*<vvvv quoteEscape="¤">
-    <defines>
-        <def
-            type="switch"
-            desc="Attempt to avoid polygonal look"
-            >
-            MXAO_SMOOTHNORMALS
-        </def>
-        <def
-            type="int"
-            default="0"
-            desc="Miplevel of AO texture"
-            >
-            MXAO_MIPLEVEL_AO
-        </def>
-        <def
-            type="int"
-            default="2"
-            desc="Miplevel of IL texture"
-            >
-            MXAO_MIPLEVEL_IL
-        </def>
-        <def
-            type="float"
-            default="2.0"
-            >
-            MXAO_BLUR_GAMMA
-        </def>
-        <def
-            type="switch"
-            desc="Enables color bleeding"
-            >
-            MXAO_IL
-        </def>
-        <def
-            type="switch"
-            desc="Enables back face check so surfaces facing away from the source position don't cast light"
-            >
-            MXAO_BACKFACE
-        </def>
-        <def
-            type="switch"
-            desc="Debug view"
-            >
-            MXAO_DEBUG
-        </def>
-        <def
-            type="enum:'¤R16G16B16A16_Float¤','¤R32G32B32A32_Float¤'"
-            default="¤R16G16B16A16_Float¤"
-            desc="Precision of calculated normals"
-            >
-            MXAO_NORMALS_FORMAT
-        </def>
-        <def
-            type="enum:texformat"
-            default="¤R16G16B16A16_Float¤"
-            >
-            OUTFORMAT
-        </def>
-    </defines>
+    <def
+        type="switch"
+        desc="Attempt to avoid polygonal look"
+        >
+        MXAO_SMOOTHNORMALS
+    </def>
+    <def
+        type="int"
+        default="0"
+        desc="Miplevel of AO texture"
+        >
+        MXAO_MIPLEVEL_AO
+    </def>
+    <def
+        type="int"
+        default="2"
+        desc="Miplevel of IL texture"
+        >
+        MXAO_MIPLEVEL_IL
+    </def>
+    <def
+        type="float"
+        default="2.0"
+        >
+        MXAO_BLUR_GAMMA
+    </def>
+    <def
+        type="switch"
+        desc="Enables color bleeding"
+        >
+        MXAO_IL
+    </def>
+    <def
+        type="switch"
+        desc="Enables back face check so surfaces facing away from the source position don't cast light"
+        >
+        MXAO_BACKFACE
+    </def>
+    <def
+        type="switch"
+        desc="Debug view"
+        >
+        MXAO_DEBUG
+    </def>
+    <def
+        type="enum:'¤R16G16B16A16_Float¤','¤R32G32B32A32_Float¤'"
+        default="¤R16G16B16A16_Float¤"
+        desc="Precision of calculated normals"
+        >
+        MXAO_NORMALS_FORMAT
+    </def>
+    <def
+        type="enum:texformat"
+        default="¤R16G16B16A16_Float¤"
+        >
+        OUTFORMAT
+    </def>
 </vvvv>*/
 
 #include "ReShade.fxh"

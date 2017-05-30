@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.6.dtd" >
-   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" systemname="PBRIBL (DX11 Simple)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" scrollx="0" scrolly="10770">
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" systemname="PBRIBL (DX11 Simple)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRIBL (DX11 Simple).v4p" scrollx="0" scrolly="11490">
    <BOUNDS type="Window" left="10575" top="-12510" width="17415" height="11655">
    </BOUNDS>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
@@ -977,7 +977,7 @@
    </PIN>
    <PIN pinname="Dither Size" slicecount="1" values="3">
    </PIN>
-   <PIN pinname="Sample Count" slicecount="1" values="16" visible="1">
+   <PIN pinname="Sample Count" slicecount="1" visible="1" values="16">
    </PIN>
    <PIN pinname="Enable Debug View" slicecount="1" values="0">
    </PIN>

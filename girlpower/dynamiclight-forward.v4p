@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.6.dtd" >
-   <PATCH nodename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\girlpower\dynamiclight-forward.v4p" scrollx="5625" scrolly="1215" systemname="dynamiclight-forward" filename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\girlpower\dynamiclight-forward.v4p">
+   <PATCH nodename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\girlpower\dynamiclight-forward.v4p" scrollx="1860" scrolly="1335" systemname="dynamiclight-forward" filename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\girlpower\dynamiclight-forward.v4p">
    <BOUNDS type="Window" left="11550" top="5220" width="15870" height="9300">
    </BOUNDS>
    <NODE systemname="GeometryFile (DX11.Geometry Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="GeometryFile (DX11.Geometry Assimp)" componentmode="Hidden" id="1">
@@ -91,7 +91,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="6360" top="13965" width="6000" height="4500">
    </BOUNDS>
-   <BOUNDS type="Window" left="675" top="-16200" width="28800" height="16200">
+   <BOUNDS type="Window" left="675" top="-16200" width="28800" height="16305">
    </BOUNDS>
    <PIN pinname="Layers" visible="1">
    </PIN>
@@ -139,7 +139,7 @@
    <LINK srcnodeid="9" srcpinname="Texture Out" dstnodeid="10" dstpinname="Texture In">
    </LINK>
    <NODE systemname="PBRSwitches (DX11 Defines)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\PBRSwitches (DX11 Defines).v4p" nodename="PBRSwitches (DX11 Defines)" componentmode="Hidden" id="13">
-   <BOUNDS type="Node" left="9600" top="5355" width="100" height="100">
+   <BOUNDS type="Node" left="9585" top="5460" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Defines Out" visible="1">
    </PIN>
@@ -201,7 +201,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="8595" top="4590" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="3" visible="1" values="0.98,3.35,0.73">
+   <PIN pinname="Y Input Value" slicecount="3" visible="1" values="-0.55,3.35,0.73">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -365,58 +365,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="37" srcpinname="Output String" dstnodeid="27" dstpinname="Semantic">
-   </LINK>
-   <NODE systemname="DisneyForwardSimpleNaive (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive.fx" nodename="DisneyForwardSimpleNaive (DX11.Effect)" componentmode="Hidden" id="38">
-   <BOUNDS type="Node" left="4560" top="6795" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Default Rough" slicecount="1" visible="1" values="0.34">
-   </PIN>
-   <PIN pinname="Default Metal" slicecount="1" visible="1" values="0.35">
-   </PIN>
-   <PIN pinname="Default Anisotropic" slicecount="1" values="0.86">
-   </PIN>
-   <PIN pinname="Default Rotate" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Default SpecularAndTintXY" slicecount="2" values="1,0">
-   </PIN>
-   <PIN pinname="Default SheenAndTintXY" slicecount="2" values="0,0">
-   </PIN>
-   <PIN pinname="Default ClearcoatAndGlossXY" slicecount="2" values="0,1">
-   </PIN>
-   <PIN pinname="Default SSS" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Albedo Color" slicecount="1" visible="1" values="|1.00000,1.00000,1.00000,1.00000|">
-   </PIN>
-   <PIN pinname="SunColor" slicecount="1" visible="1" values="|1.00000,1.00000,1.00000,0.00000|">
-   </PIN>
-   <PIN pinname="Default Anisotropic Rotation" slicecount="1" values="0.125">
-   </PIN>
-   <PIN pinname="Albedo" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Geometry" visible="1">
-   </PIN>
-   <PIN pinname="Transform In" visible="1">
-   </PIN>
-   <PIN pinname="Previous World" visible="1">
-   </PIN>
-   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="RoughMetalAnisoRotMap" visible="1">
-   </PIN>
-   <PIN pinname="Texture Transform" visible="1">
-   </PIN>
-   <PIN pinname="Previous Texture Transform" visible="1">
-   </PIN>
-   <PIN pinname="Textures Sampler" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="38" srcpinname="Layer" dstnodeid="3" dstpinname="Layers">
-   </LINK>
-   <LINK srcnodeid="13" srcpinname="Defines Out" dstnodeid="38" dstpinname="Defines">
-   </LINK>
-   <LINK srcnodeid="24" srcpinname="Y Output Value" dstnodeid="38" dstpinname="SunDirXYZ">
-   </LINK>
-   <LINK srcnodeid="38" srcpinname="Layer" dstnodeid="26" dstpinname="Layer In">
    </LINK>
    <NODE systemname="RenderSemantic (DX11.Layer Value)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="RenderSemantic (DX11.Layer Value)" componentmode="Hidden" id="29">
    <BOUNDS type="Node" left="13170" top="7110" width="100" height="100">
@@ -587,8 +535,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="18" srcpinname="Output" dstnodeid="56" dstpinname="Input Node">
-   </LINK>
-   <LINK srcnodeid="56" srcpinname="Output Node" dstnodeid="38" dstpinname="Geometry">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="57">
    <BOUNDS type="Box" left="6345" top="4080" width="285" height="390">
@@ -768,8 +714,6 @@
    </LINK>
    <LINK srcnodeid="60" srcpinname="Output" dstnodeid="64" dstpinname="Input">
    </LINK>
-   <LINK srcnodeid="64" srcpinname="Output" dstnodeid="38" dstpinname="Default Rough">
-   </LINK>
    <NODE systemname="Map (Value)" nodename="Map (Value)" componentmode="Hidden" id="69">
    <BOUNDS type="Node" left="2580" top="3885" width="900" height="270">
    </BOUNDS>
@@ -794,8 +738,6 @@
    </LINK>
    <LINK srcnodeid="69" srcpinname="Output" dstnodeid="65" dstpinname="Input">
    </LINK>
-   <LINK srcnodeid="65" srcpinname="Output" dstnodeid="38" dstpinname="Default Metal">
-   </LINK>
    <NODE systemname="IOBox (Color)" nodename="IOBox (Color)" componentmode="InABox" id="70">
    <BOUNDS type="Node" left="7020" top="4095" width="100" height="100">
    </BOUNDS>
@@ -805,13 +747,11 @@
    </PIN>
    <PIN pinname="SliceCount Mode" slicecount="1" values="ColsRowsPages">
    </PIN>
-   <PIN pinname="Color Input" slicecount="2" values="|1.00000,1.00000,1.00000,1.00000|,|1.00000,0.37624,0.75239,1.00000|">
+   <PIN pinname="Color Input" slicecount="2" values="|1.00000,1.00000,1.00000,1.00000|,|1.00000,0.37619,0.86201,1.00000|">
    </PIN>
    <PIN pinname="Color Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="70" srcpinname="Color Output" dstnodeid="38" dstpinname="Albedo Color">
-   </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="71">
    <BOUNDS type="Box" left="7410" top="10965" width="900" height="240">
    </BOUNDS>
@@ -1018,10 +958,6 @@
    </NODE>
    <LINK srcnodeid="94" srcpinname="Y Output Value" dstnodeid="92" dstpinname="XYZ">
    </LINK>
-   <LINK srcnodeid="92" srcpinname="Transform Out" dstnodeid="38" dstpinname="Transform In">
-   </LINK>
-   <LINK srcnodeid="92" srcpinname="Transform Out" dstnodeid="38" dstpinname="Previous World">
-   </LINK>
    <NODE systemname="Transform (Transform 2d)" nodename="Transform (Transform 2d)" componentmode="Hidden" id="95">
    <BOUNDS type="Node" left="4740" top="4710" width="100" height="100">
    </BOUNDS>
@@ -1030,10 +966,6 @@
    <PIN pinname="TranslateX" slicecount="1" values="-0.209">
    </PIN>
    </NODE>
-   <LINK srcnodeid="95" srcpinname="Transform Out" dstnodeid="38" dstpinname="Texture Transform">
-   </LINK>
-   <LINK srcnodeid="95" srcpinname="Transform Out" dstnodeid="38" dstpinname="Previous Texture Transform">
-   </LINK>
    <NODE nodename="IOBox (Color)" componentmode="InABox" id="96">
    <BOUNDS type="Box" left="6435" top="5550" width="2190" height="240">
    </BOUNDS>
@@ -1042,10 +974,6 @@
    <PIN pinname="Color Input" slicecount="1" visible="1" values="|1.00000,1.00000,1.00000,0.98979|">
    </PIN>
    </NODE>
-   <LINK srcnodeid="96" srcpinname="Color Output" dstnodeid="38" dstpinname="SunColor">
-   </LINK>
-   <LINK srcnodeid="80" srcpinname="Output" dstnodeid="38" dstpinname="RoughMetalAnisoRotMap">
-   </LINK>
    <NODE systemname="PerfMeter2 (DX11.Debug)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\PerfMeter2 (DX11.Debug).v4p" nodename="PerfMeter2 (DX11.Debug)" componentmode="Hidden" id="97">
    <BOUNDS type="Node" left="5055" top="13665" width="100" height="100">
    </BOUNDS>
@@ -1057,16 +985,6 @@
    <LINK srcnodeid="8" srcpinname="Layer" dstnodeid="97" dstpinname="Layer In">
    </LINK>
    <LINK srcnodeid="97" srcpinname="Layer Out" dstnodeid="7" dstpinname="Layers">
-   </LINK>
-   <NODE systemname="Sampler (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Sampler (DX11)" componentmode="Hidden" id="98">
-   <BOUNDS type="Node" left="6210" top="6060" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Sampler" visible="1">
-   </PIN>
-   <PIN pinname="Mode" slicecount="1" values="LinearWrap">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="98" srcpinname="Sampler" dstnodeid="38" dstpinname="Textures Sampler">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="99">
    <BOUNDS type="Box" left="9855" top="630" width="795" height="480">
@@ -1185,5 +1103,65 @@
    <LINK srcnodeid="100" srcpinname="Buffer" dstnodeid="27" dstpinname="Input">
    </LINK>
    <LINK srcnodeid="31" srcpinname="Y Output Value" dstnodeid="100" dstpinname="Element Count">
+   </LINK>
+   <NODE systemname="MXAO (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\ReShade\MXAO.tfx" nodename="MXAO (DX11.TextureFX)" componentmode="Hidden" id="105">
+   <BOUNDS type="Node" left="11640" top="8355" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Sampler (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Sampler (DX11)" componentmode="Hidden" id="106">
+   <BOUNDS type="Node" left="6210" top="6060" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="DisneyForwardSimpleNaive (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive.fx" nodename="DisneyForwardSimpleNaive (DX11.Effect)" componentmode="Hidden" id="107">
+   <BOUNDS type="Node" left="4560" top="6795" width="5250" height="270">
+   </BOUNDS>
+   <PIN pinname="Default Anisotropic" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Default Anisotropic Rotation" slicecount="1" values="0.125">
+   </PIN>
+   <PIN pinname="Default Specular" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Default Specular Tint" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Default Sheen" slicecount="1" values="15">
+   </PIN>
+   <PIN pinname="Default Sheen Tint" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Default Clearcoat" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Default Clearcoat Gloss" slicecount="1" values="0.51">
+   </PIN>
+   <PIN pinname="Default SSS" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="107" srcpinname="Layer" dstnodeid="3" dstpinname="Layers">
+   </LINK>
+   <LINK srcnodeid="13" srcpinname="Defines Out" dstnodeid="107" dstpinname="Defines">
+   </LINK>
+   <LINK srcnodeid="24" srcpinname="Y Output Value" dstnodeid="107" dstpinname="SunDirXYZ">
+   </LINK>
+   <LINK srcnodeid="107" srcpinname="Layer" dstnodeid="26" dstpinname="Layer In">
+   </LINK>
+   <LINK srcnodeid="56" srcpinname="Output Node" dstnodeid="107" dstpinname="Geometry">
+   </LINK>
+   <LINK srcnodeid="64" srcpinname="Output" dstnodeid="107" dstpinname="Default Rough">
+   </LINK>
+   <LINK srcnodeid="65" srcpinname="Output" dstnodeid="107" dstpinname="Default Metal">
+   </LINK>
+   <LINK srcnodeid="70" srcpinname="Color Output" dstnodeid="107" dstpinname="Albedo Color">
+   </LINK>
+   <LINK srcnodeid="92" srcpinname="Transform Out" dstnodeid="107" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="92" srcpinname="Transform Out" dstnodeid="107" dstpinname="Previous World">
+   </LINK>
+   <LINK srcnodeid="95" srcpinname="Transform Out" dstnodeid="107" dstpinname="Texture Transform">
+   </LINK>
+   <LINK srcnodeid="95" srcpinname="Transform Out" dstnodeid="107" dstpinname="Previous Texture Transform">
+   </LINK>
+   <LINK srcnodeid="96" srcpinname="Color Output" dstnodeid="107" dstpinname="SunColor">
+   </LINK>
+   <LINK srcnodeid="80" srcpinname="Output" dstnodeid="107" dstpinname="RoughMetalAnisoRotMap">
+   </LINK>
+   <LINK srcnodeid="106" srcpinname="Sampler" dstnodeid="107" dstpinname="Textures Sampler">
    </LINK>
    </PATCH>

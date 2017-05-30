@@ -3,23 +3,41 @@
 //@tags: PBR BRDF
 //@credits:
 
-#define BRDF_ARGSDEF , float3 bC, float rough, float metal, float Aniso, float SSS, float2 pspec, float2 psheen, float2 pcc
-#define BRDF_ARGSPASS , bC, rough, metal, Aniso, SSS, pspec, psheen, pcc
+/*<vvvv>
+	<struct name="MatData" strides="60" />
+	<struct name="PointLight" strides="32" />
+</vvvv>*/
 
-#define BRDF_PARAM_Disney_baseColor bC
-#define BRDF_PARAM_Disney_metallic metal
-#define BRDF_PARAM_Disney_subsurface SSS
-#define BRDF_PARAM_Disney_specular pspec.x
-#define BRDF_PARAM_Disney_roughness rough
-#define BRDF_PARAM_Disney_specularTint pspec.y
-#define BRDF_PARAM_Disney_anisotropic Aniso
-#define BRDF_PARAM_Disney_sheen psheen.x
-#define BRDF_PARAM_Disney_sheenTint psheen.y
-#define BRDF_PARAM_Disney_clearcoat pcc.x
-#define BRDF_PARAM_Disney_clearcoatGloss pcc.y
+struct MatData
+{
+	float4 AlbedoAlpha;
+	float Rough;
+	float Metal;
+	float Anisotropic;
+	float Rotate;
+	float SSS;
+	float Specular;
+	float SpecTint;
+	float Sheen;
+	float SheenTint;
+	float Clearcoat;
+	float CCGloss;
+};
 
-#define MATDATASIZE 60
-#define MATDATACOMPS 15
+#define BRDF_ARGSDEF , MatData mat
+#define BRDF_ARGSPASS , mat
+
+#define BRDF_PARAM_Disney_baseColor mat.AlbedoAlpha.rgb
+#define BRDF_PARAM_Disney_metallic mat.Metal
+#define BRDF_PARAM_Disney_subsurface mat.SSS
+#define BRDF_PARAM_Disney_specular mat.Specular
+#define BRDF_PARAM_Disney_roughness mat.Rough
+#define BRDF_PARAM_Disney_specularTint mat.SpecTint
+#define BRDF_PARAM_Disney_anisotropic mat.Anisotropic
+#define BRDF_PARAM_Disney_sheen mat.Sheen
+#define BRDF_PARAM_Disney_sheenTint mat.SheenTint
+#define BRDF_PARAM_Disney_clearcoat mat.Clearcoat
+#define BRDF_PARAM_Disney_clearcoatGloss mat.CCGloss
 
 #include <packs/mp.fxh/brdf.fxh>
 #include <packs/mp.fxh/quaternion.fxh>
@@ -30,21 +48,6 @@
 #endif
 
 //#define DO_VELOCITY 1
-
-StructuredBuffer<float4x4> Tr <string uiname="Subset Transforms";>;
-StructuredBuffer<float4x4> pTr <string uiname="Previous Subset Transforms";>;
-ByteAddressBuffer MaterialData;
-/* strides: 60
-float4 AlbedoAlpha
-float Rough
-float Metal
-float Anisotropic
-float Rotate
-float SSS
-float2 SpecularAndTint
-float2 SheenAndTint
-float2 ClearcoatAndGloss
-*/
 struct PointLight
 {
     float3 Position;
@@ -52,6 +55,10 @@ struct PointLight
     float3 Color;
     float AttenuationEnd;
 };
+
+StructuredBuffer<float4x4> Tr <string uiname="Subset Transforms";>;
+StructuredBuffer<float4x4> pTr <string uiname="Previous Subset Transforms";>;
+StructuredBuffer<MatData> MaterialData;
 StructuredBuffer<PointLight> PointLights : POINTLIGHTS;
 float PointCount : POINTLIGHTCOUNT;
 Texture2DArray Albedo;
@@ -129,15 +136,17 @@ cbuffer cbPerObj : register( b1 )
     float4x4 tTex <string uiname="Texture Transform";>;
     float4x4 ptTex <string uiname="Previous Texture Transform";>;
     float4 gAlbedoCol <string uiname="Albedo Color"; bool color=true;> = 1;
-	float gRough <string uiname="Default Rough";> = 1;
-	float gMetal <string uiname="Default Metal";> = 1;
-	float gAnisotropic <string uiname="Default Anisotropic";> = 1;
-	float gRotate <string uiname="Default Rotate";> = 1;
-	float2 gSpecularAndTint <string uiname="Default SpecularAndTint";> = 1;
-	float2 gSheenAndTint <string uiname="Default SheenAndTint";> = 1;
-	float2 gClearcoatAndGloss <string uiname="Default ClearcoatAndGloss";> = 1;
-	float gSSS <string uiname="Default SSS";> = 1;
+	float gRough <string uiname="Default Rough";> = 0.25;
+	float gMetal <string uiname="Default Metal";> = 0;
+	float gAnisotropic <string uiname="Default Anisotropic";> = 0;
 	float ggRotate <string uiname="Default Anisotropic Rotation";> = 0;
+	float gSpecular <string uiname="Default Specular";> = 0;
+	float gSpecTint <string uiname="Default Specular Tint";> = 0;
+	float gSheen <string uiname="Default Sheen";> = 0;
+	float gSheenTint <string uiname="Default Sheen Tint";> = 0;
+	float gClearcoat <string uiname="Default Clearcoat";> = 0;
+	float gClearcoatGloss <string uiname="Default Clearcoat Gloss";> = 0;
+	float gSSS <string uiname="Default SSS";> = 0;
 	float3 SunDir = float3(1,1,0);
 	float4 SunColor <bool color=true;> = 1;
     float ndepth <string uiname="Normal Depth";> = 0;
@@ -237,13 +246,17 @@ PSout PS(PSin input)
     PSout o = (PSout)0;
     uint ii = input.sid;
     uint mid = input.mid;
+	
 	#if defined(IGNORE_BUFFERS)
+	MatData matdat = (MatData)1;
     float4 col = gAlbedoCol * Albedo.Sample(sT, float3(input.UV, mid));
 	#else
-	float4 acolb = BABLoad4(MaterialData, mid * MATDATACOMPS);
-	acolb = all(acolb > 0) ? acolb : 1;
+	MatData matdat = MaterialData[mid];
+	float4 acolb = matdat.AlbedoAlpha;
     float4 col = gAlbedoCol * acolb * Albedo.Sample(sT, float3(input.UV, mid));
 	#endif
+	matdat.AlbedoAlpha = col;
+	
     #if defined(HAS_TANGENT)
 	float3 normmap = NormBump.Sample(sT, float3(input.UV, mid)).xyz*2-1;
     normmap = lerp(float3(0,0,1), normmap, ndepth);
@@ -255,8 +268,9 @@ PSout PS(PSin input)
 	#if defined(IGNORE_BUFFERS)
 	float rot = ggRotate + rmar.a;
 	#else
-	float rot = ggRotate + rmar.a + BABLoad(MaterialData, mid * MATDATACOMPS + 7);
+	float rot = ggRotate + rmar.a + matdat.Rotate;
 	#endif
+	matdat.Rotate = rot;
 
     #if defined(HAS_TANGENT)
 	float3 rtan = normalize(mul(float4(input.Tan, 0), qrot(aa2q(input.Norm, rot*2))).xyz);
@@ -266,23 +280,16 @@ PSout PS(PSin input)
 	float3 rbin = float3(0,1,0);
 	#endif
 
-	#if defined(IGNORE_BUFFERS)
-	float cRough = gRough * rmar.r;
-	float cMetal = gMetal * rmar.g;
-	float cAnisotropic = gAnisotropic * rmar.b;
-	float2 cSpecularAndTint = gSpecularAndTint;
-	float2 cSheenAndTint = gSheenAndTint;
-	float2 cClearcoatAndGloss = gClearcoatAndGloss;
-	float cSSS = gSSS;
-	#else
-	float cRough = gRough * rmar.r * BABLoad(MaterialData, mid * MATDATACOMPS + 4);
-	float cMetal = gMetal * rmar.g * BABLoad(MaterialData, mid * MATDATACOMPS + 5);
-	float cAnisotropic = gAnisotropic * rmar.b * BABLoad(MaterialData, mid * MATDATACOMPS + 6);
-	float2 cSpecularAndTint = gSpecularAndTint * BABLoad2(MaterialData, mid * MATDATACOMPS + 9);
-	float2 cSheenAndTint = gSheenAndTint * BABLoad2(MaterialData, mid * MATDATACOMPS + 11);
-	float2 cClearcoatAndGloss = gClearcoatAndGloss * BABLoad2(MaterialData, mid * MATDATACOMPS + 13);
-	float cSSS = gSSS * BABLoad(MaterialData, mid * MATDATACOMPS + 8);
-	#endif
+	matdat.Rough = gRough * rmar.r * matdat.Rough;
+	matdat.Metal = gMetal * rmar.g * matdat.Metal;
+	matdat.Anisotropic = gAnisotropic * rmar.b * matdat.Anisotropic;
+	matdat.Specular = gSpecular * matdat.Specular;
+	matdat.SpecTint = gSpecTint * matdat.SpecTint;
+	matdat.Sheen = gSheen * matdat.Sheen;
+	matdat.SheenTint = gSheenTint * matdat.SheenTint;
+	matdat.Clearcoat = gClearcoat * matdat.Clearcoat;
+	matdat.CCGloss = gClearcoatGloss * matdat.CCGloss;
+	matdat.SSS = gSSS * matdat.SSS;
 
 	float3 outcol = 0;
 	float3 wnorm = mul(float4(norm,0), tVI).xyz;
@@ -291,9 +298,7 @@ PSout PS(PSin input)
 	float3 wvdir = -mul(float4(0,0,1,0), tVI).xyz;
 	if(SunColor.a > 0.0001)
 	{
-		float3 light = Disney.brdf(
-			normalize(SunDir), wvdir, wnorm, wtan, wbin,
-			col.rgb, cRough, cMetal, cAnisotropic, cSSS, cSpecularAndTint, cSheenAndTint, cClearcoatAndGloss);
+		float3 light = Disney.brdf(normalize(SunDir), wvdir, wnorm, wtan, wbin, matdat);
 		outcol += light * SunColor.rgb * SunColor.a;
 	}
 
@@ -305,9 +310,7 @@ PSout PS(PSin input)
 		float d = length(ld);
 		if(d < pl.AttenuationEnd)
 		{
-			float3 light = Disney.brdf(
-				normalize(ld), wvdir, wnorm, wtan, wbin,
-				col.rgb, cRough, cMetal, cAnisotropic, cSSS, cSpecularAndTint, cSheenAndTint, cClearcoatAndGloss);
+			float3 light = Disney.brdf(normalize(ld), wvdir, wnorm, wtan, wbin, matdat);
 			float attend = pl.AttenuationEnd - pl.AttenuationStart;
 			outcol += light * pl.Color * smoothstep(1, 0, saturate(d/attend-pl.AttenuationStart/attend));
 		}

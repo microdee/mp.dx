@@ -93,7 +93,7 @@ float4 pIBL(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
     		//EnvNm = AnisotropicSample(DIFFENVSRC, sE, rdir, rtan, rbin, (rough * 0.5) + diffbluradd, 0.25, mipl).rgb;
     	}
 
-        col.rgb = lerp(col.rgb * EnvNm + 0.03*EnvSharp, col.rgb * EnvSharp, metal);
+        col.rgb = lerp(col.rgb * EnvNm + 0.03*EnvSharp * lerp(1, albedoin.rgb, rough), col.rgb * EnvSharp, metal);
         float fresnel = pow(abs(dot(norm, eye)), 0.21 );
         //col.rgb = lerp(EnvSharp, col.rgb, fresnel);
     	col.rgb = lerp(bckg.rgb, col.rgb, col.a);

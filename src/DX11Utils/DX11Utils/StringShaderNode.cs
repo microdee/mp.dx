@@ -34,7 +34,7 @@ namespace VVVV.DX11.Nodes
         Tags = "SA"
         )]
     #endregion PluginInfo
-    public unsafe class DX11StringShaderNode : IPluginEvaluate, IDX11LayerHost, IPartImportsSatisfiedNotification, IDisposable
+    public unsafe class DX11StringShaderNode : IPluginEvaluate, IDX11LayerHost, IPartImportsSatisfiedNotification, IDisposable, IDX11Queryable
     {
 
         #region fields & pins
@@ -89,6 +89,9 @@ namespace VVVV.DX11.Nodes
         [Output("Current Effect", Visibility = PinVisibility.OnlyInspector)]
         protected ISpread<DX11Effect> currentEffectOut;
 
+        [Output("Query", Order = 200, IsSingle = true)]
+        protected ISpread<IDX11Queryable> FOutQueryable;
+
         /*[Output("Shader Signature", Visibility = PinVisibility.OnlyInspector)]
         protected ISpread<DX11Resource<DX11Shader>> FOutShader;*/
 
@@ -139,18 +142,12 @@ namespace VVVV.DX11.Nodes
 
         protected void OnBeginQuery(DX11RenderContext context)
         {
-            if (this.BeginQuery != null)
-            {
-                this.BeginQuery(context);
-            }
+            BeginQuery?.Invoke(context);
         }
 
         protected void OnEndQuery(DX11RenderContext context)
         {
-            if (this.EndQuery != null)
-            {
-                this.EndQuery(context);
-            }
+            EndQuery?.Invoke(context);
         }
 
         #region Set the shader instance
@@ -225,7 +222,7 @@ namespace VVVV.DX11.Nodes
 
         public bool HasDynamicPins(DX11Effect shader)
         {
-
+            if (shader?.DefaultEffect == null) return false;
             for (int i = 0; i < shader.DefaultEffect.Description.GlobalVariableCount; i++)
             {
                 EffectVariable var = shader.DefaultEffect.GetVariableByIndex(i);
@@ -270,7 +267,6 @@ namespace VVVV.DX11.Nodes
 
                 DX11ShaderInclude FIncludeHandler = new DX11ShaderInclude();
                 FIncludeHandler.ParentPath = Path.GetDirectoryName(FFileName[0]);
-
                 FShader = DX11Effect.FromString(FShaderCode[0], FIncludeHandler, sms.ToArray());
                 if (init && !ShaderCreatedByConfig)
                 {
@@ -343,6 +339,7 @@ namespace VVVV.DX11.Nodes
                 }
                 this.FInvalidate = false;
             }
+            if (this.FOutQueryable[0] == null) { this.FOutQueryable[0] = this; }
 
         }
         #endregion
@@ -512,7 +509,6 @@ namespace VVVV.DX11.Nodes
 
             if (this.FInEnabled[0])
             {
-                //In that case we do not care about geometry, but only apply pass for globals
                 if (settings.RenderHint == eRenderHint.ApplyOnly)
                 {
                     this.ApplyOnly(context, settings);
@@ -736,7 +732,6 @@ namespace VVVV.DX11.Nodes
 
                     this.OnEndQuery(context);
                 }
-                //this.query.End();
             }
 
             if (popstate)

@@ -19,8 +19,7 @@ cbuffer cb
 	float4x4 CamProj : CPROJ;
 	float4x4 CamProjInv : CPROJINV;
 	float2 oR = float2(256, 256);
-	float2 screenSize : TARGETSIZE;
-	float2 screenResMul = 1;
+	float2 R : TARGETSIZE;
 	float aoSize = 1;
 	float kernelSize = 32;
 	float strength = 1;
@@ -58,11 +57,10 @@ float3 GetViewPos(SamplerState SS, float2 uv, out float d)
 }
 
 float getRandom(in float2 uv)
-{	return ((frac(uv.x * (screenSize.x/2.0))*0.25)+(frac(uv.y*(screenSize.y/2.0))*0.5));	}
+{	return ((frac(uv.x * (R.x/2.0))*0.25)+(frac(uv.y*(R.y/2.0))*0.5));	}
 
 float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 {
-	
     int3 puv = int3((int2)(uv*oR), 0);
     uint4 stcl = Stencil.Load(puv);
     if(any(stcl > 0) && any(stcl < 129))
@@ -80,7 +78,7 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 	
 		// Calculate an aspect-ratio variable. This is required because the output buffer is non-square
 		// The process will work without this, however, the result will look weird/incorrect
-		float2 aspectRatio = float2( min( 1.0, screenSize.y / screenSize.x ), min( 1.0, screenSize.x / screenSize.y ) );
+		float2 aspectRatio = float2( min( 1.0, R.y / R.x ), min( 1.0, R.x / R.y ) );
 	
 		// Grab a random vector from a 8x8 tiled random texture
 		
@@ -145,7 +143,7 @@ float4 SSAOBlur(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
     uint4 stcl = Stencil.Load(puv);
     if(any(stcl > 0) && any(stcl < 129))
     {
-		float2 InvScreenSize = 3/screenSize;
+		float2 InvScreenSize = 5/oR;
 		float o = 1;
 		const float2 vec[8] = {
 			float2( 1, 1),
@@ -158,14 +156,14 @@ float4 SSAOBlur(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 			float2( 0,-1),
 		};
 		
-		float ao = Depth.Load(puv);
+		float ao = Depth.SampleLevel(s0, uv, 0);
 		int samples = 1;
-    	float dd = DepthI.Load(puv);
+    	float dd = DepthI.SampleLevel(s0, uv, 0);
 		[unroll]
 		for (int k=0;k<8;k++)
     	{
 			float2 tcoord = uv+float2(vec[k].x*InvScreenSize.x,vec[k].y*InvScreenSize.y);
-    		if(abs(dd-DepthI.SampleLevel(s0,tcoord,0)) > 0.0002) continue;
+    		if(abs(dd-DepthI.SampleLevel(s0,tcoord,0)) > 0.0005) continue;
 			ao+=Depth.SampleLevel(s0,tcoord,0);
 			samples++;
     	}

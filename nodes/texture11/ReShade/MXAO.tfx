@@ -532,31 +532,17 @@ float4 PS_AO_Blur2(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) : SV_T
 	#endif
 
 	float scenedepth = GetLinearDepth(texcoord.xy);
-	float4 color = max(0.0,ReShade_Initial.SampleLevel(ReShade_sL, texcoord.xy, 0));
-	float colorgray = saturate(dot(color.xyz,float3(0.299,0.587,0.114))*0.5+0.5)*2-1;
 
 	MXAO.xyz  = lerp(dot(MXAO.xyz,float3(0.299,0.587,0.114)),MXAO.xyz,fMXAOIndirectLightingSaturation) * fMXAOIndirectLightingAmount * 4;
 	MXAO.w    = 1.0-pow(1.0-MXAO.w, fMXAOAmbientOcclusionAmount*4.0);
-#if !defined(MXAO_DEBUG)
-	MXAO    = lerp(MXAO, 0.0, pow(colorgray,2.0));
-#endif
 
 	MXAO.w    = lerp(MXAO.w, 0.0,smoothstep(fMXAOFadeoutStart, fMXAOFadeoutEnd, scenedepth));
 	MXAO.xyz  = lerp(MXAO.xyz,0.0,smoothstep(fMXAOFadeoutStart, fMXAOFadeoutEnd, scenedepth));
 
 	float3 GI = MXAO.w - MXAO.xyz;
 	GI = max(0.0,1-GI);
-	color.xyz *= GI;
 
-#if defined(MXAO_DEBUG)
-#if defined(MXAO_IL)
-    color.xyz = GI*0.5;
-#else
-    color.xyz = GI;
-#endif
-#endif
-
-	return color;
+	return float4(GI,1);
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -569,19 +555,19 @@ technique11 MXAO
     {
         SetPixelShader(CompileShader(ps_4_0, PS_AO_PreN()));
     }
-    pass P1 <string format="R32_Float"; bool mips=true;>
+	pass P1 <string format="R32_Float"; bool mips=true;>
     {
         SetPixelShader(CompileShader(ps_4_0, PS_AO_PreD()));
     }
-    pass P2 <string format=OUTFORMAT;>
+	pass P2 <string format=OUTFORMAT;>
     {
         SetPixelShader(CompileShader(ps_4_0, PS_AO_Gen()));
     }
-    pass P3 <string format=OUTFORMAT;>
+	pass P3 <string format=OUTFORMAT;>
     {
         SetPixelShader(CompileShader(ps_4_0, PS_AO_Blur1()));
     }
-    pass P4 <string format=OUTFORMAT;>
+	pass P4 <string format=OUTFORMAT;>
     {
         SetPixelShader(CompileShader(ps_4_0, PS_AO_Blur2()));
     }

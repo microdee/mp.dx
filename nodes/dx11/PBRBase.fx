@@ -201,15 +201,19 @@ PSout PS(PSin input)
     float4 col = gAlbedoCol * acolb * Albedo.Sample(sT, float3(input.UV, ti));
 	#endif
     #if defined(HAS_TANGENT)
-	float3 normmap = NormBump.Sample(sT, float3(input.UV, ti)).xyz*2-1;
-    normmap = lerp(float3(0,0,1), normmap, ndepth);
-	float3 norm = normalize(normmap.x * input.Tan + normmap.y * input.Bin + normmap.z * input.Norm);
-    float3x3 tanspace = float3x3(
-        input.Tan,
-        input.Bin,
-        input.Norm
-    );
-	tanspace = transpose(tanspace);
+	float3 norm = input.Norm;
+	if(ndepth > 0.0001)
+	{
+		float3 normmap = NormBump.Sample(sT, float3(input.UV, ti)).xyz*2-1;
+	    normmap = lerp(float3(0,0,1), normmap, ndepth);
+		float3 norm = normalize(normmap.x * input.Tan + normmap.y * input.Bin + normmap.z * input.Norm);
+	    /*float3x3 tanspace = float3x3(
+	        input.Tan,
+	        input.Bin,
+	        input.Norm
+	    );*/
+	}
+	//tanspace = transpose(tanspace);
 	#else
 	float3 norm = input.Norm;
 	#endif

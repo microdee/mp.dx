@@ -202,11 +202,11 @@ PSout PS(PSin input)
 	#endif
     #if defined(HAS_TANGENT)
 	float3 norm = input.Norm;
-	if(ndepth > 0.0001)
+	if(abs(ndepth) > 0.0001)
 	{
 		float3 normmap = NormBump.Sample(sT, float3(input.UV, ti)).xyz*2-1;
 	    normmap = lerp(float3(0,0,1), normmap, ndepth);
-		float3 norm = normalize(normmap.x * input.Tan + normmap.y * input.Bin + normmap.z * input.Norm);
+		norm = normalize(normmap.x * input.Tan + normmap.y * input.Bin + normmap.z * input.Norm);
 	    /*float3x3 tanspace = float3x3(
 	        input.Tan,
 	        input.Bin,

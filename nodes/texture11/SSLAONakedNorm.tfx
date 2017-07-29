@@ -26,6 +26,7 @@ cbuffer cb
 	float Gamma = 1;
 	float NoiseAmount = 0;
 	float RandomSeed = 0;
+	bool IgnoreStencil = false;
 };
 
 StructuredBuffer<float2> kernel;
@@ -59,11 +60,26 @@ float3 GetViewPos(SamplerState SS, float2 uv, out float d)
 float getRandom(in float2 uv)
 {	return ((frac(uv.x * (R.x/2.0))*0.25)+(frac(uv.y*(R.y/2.0))*0.5));	}
 
+float3 getFaceNormal( float3 position , float2 uv)
+{	
+	// Get the face normal by using position buffer derivatives
+	// dFdx/dFdy may also be used
+	float2 pixelStep = 1.0 / R ;
+	
+	float3 n1 = cross( ( GetViewPos(s0, uv - pixelStep * float2( 1, 0 ) ) - position ), 
+					 ( GetViewPos(s0, uv - pixelStep * float2( 0, 1 ) ) - position ) );
+						  
+	float3 n2 = cross( ( GetViewPos(s0, uv + pixelStep * float2( 1, 0 ) ) - position ), 
+					 ( GetViewPos(s0, uv + pixelStep * float2( 0, 1 ) ) - position ) );
+	  
+	return normalize( n1 + n2 );
+}
+
 float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 {
     int3 puv = int3((int2)(uv*oR), 0);
     uint4 stcl = Stencil.Load(puv);
-    if(any(stcl > 0) && any(stcl < 129))
+    if((any(stcl > 0) && any(stcl < 129)) || IgnoreStencil)
     {
 		// Get the current pixel's positiom
     	float d;
@@ -74,7 +90,11 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 		float currentDistance = length( currentPos );
 	
 		// Get either pixel normal or face normal
+    	#if defined(ONLYDEPTH)
+		float3 currentNormal = getFaceNormal(currentPos, uv);
+    	#else
 		float3 currentNormal = Normals.SampleLevel(s0, uv, 0).rgb*2-1;
+    	#endif
 	
 		// Calculate an aspect-ratio variable. This is required because the output buffer is non-square
 		// The process will work without this, however, the result will look weird/incorrect
@@ -137,13 +157,48 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
     }
 	else return 1;
 }
-float4 SSAOBlur(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
+float4 SSAOBlurB(float4 PosWVP:SV_POSITION, float2 uv:TEXCOORD0): SV_Target
 {
     int3 puv = int3((int2)(uv*oR), 0);
     uint4 stcl = Stencil.Load(puv);
-    if(any(stcl > 0) && any(stcl < 129))
+    if((any(stcl > 0) && any(stcl < 129)) || IgnoreStencil)
     {
-		float2 InvScreenSize = 5/oR;
+		float2 InvScreenSize = 3/R;
+		float o = 1;
+		const float2 vec[8] = {
+			float2( 1, 1),
+			float2(-1,-1),
+			float2( 1,-1),
+			float2(-1, 1),
+			float2( 1, 0),
+			float2(-1, 0),
+			float2( 0, 1),
+			float2( 0,-1),
+		};
+		
+		float ao = Depth.SampleLevel(s0, uv, 0);
+		int samples = 1;
+    	float dd = DepthI.SampleLevel(s0, uv, 0);
+		[unroll]
+		for (int k=0;k<8;k++)
+    	{
+			float2 tcoord = uv+float2(vec[k].x*InvScreenSize.x,vec[k].y*InvScreenSize.y);
+    		if(abs(dd-DepthI.SampleLevel(s0,tcoord,0)) > 0.0005) continue;
+			ao+=Depth.SampleLevel(s0,tcoord,0);
+			samples++;
+    	}
+		ao/=samples;
+    	return float4(ao.xxx,1);
+    }
+	else return 1;
+}
+float4 SSAOBlurF(float4 PosWVP:SV_POSITION, float2 uv:TEXCOORD0): SV_Target
+{
+    int3 puv = int3((int2)(uv*oR), 0);
+    uint4 stcl = Stencil.Load(puv);
+    if((any(stcl > 0) && any(stcl < 129)) || IgnoreStencil)
+    {
+		float2 InvScreenSize = 1/R;
 		float o = 1;
 		const float2 vec[8] = {
 			float2( 1, 1),
@@ -177,5 +232,7 @@ technique10 SSAOt{
 	pass P0 <string format="R16G16B16A16_Float";>
 	{SetPixelShader(CompileShader(ps_4_0,PS()));}
 	pass P1 <string format="R16G16B16A16_Float"; int iterations=3;>
-	{SetPixelShader(CompileShader(ps_4_0,SSAOBlur()));}
+	{SetPixelShader(CompileShader(ps_4_0,SSAOBlurB()));}
+	pass P2 <string format="R16G16B16A16_Float";>
+	{SetPixelShader(CompileShader(ps_4_0,SSAOBlurF()));}
 }

@@ -3,7 +3,7 @@
 //@tags: filter
 //@credits:
 
-#if !defined(PASSFORMAT0)
+#if !defined(PASSFORMAT0) /// Type string
 #define PASSFORMAT0 "R16G16B16A16_Float"
 #endif
 
@@ -115,5 +115,6 @@ float4 pIBL(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
 	}
 }
 technique10 IBL{
-	pass P0{SetPixelShader(CompileShader(ps_4_0,pIBL()));}
+	pass P0 <string format=PASSFORMAT0;>
+    {SetPixelShader(CompileShader(ps_4_0,pIBL()));}
 }

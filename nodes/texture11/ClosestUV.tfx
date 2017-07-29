@@ -1,7 +1,7 @@
-#if !defined(FORMAT)
-#define FORMAT <string format="R16G16B16A16_Float";>
+#if !defined(PASSFORMAT) /// Type string
+#define PASSFORMAT "R16G16B16A16_Float"
 #endif
-#if !defined(STEPS)
+#if !defined(STEPS) /// Type int
 #define STEPS 1
 #endif/*
 #if !defined(POSTSTEPS)
@@ -61,64 +61,64 @@ float4 pDist(float4 PosWVP: SV_POSITION,float2 x: TEXCOORD0):SV_Target{
 }
 
 technique10 Scalar{
-	pass P0 FORMAT
+	pass P0 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pPP()));}
-	pass P1 FORMAT
+	pass P1 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#if STEPS > 1
-	pass P2 FORMAT
+	pass P2 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	#if STEPS > 2
-	pass P3 FORMAT
+	pass P3 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	#if STEPS > 3
-	pass P4 FORMAT
+	pass P4 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	#if STEPS > 4
-	pass P5 FORMAT
+	pass P5 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	#if STEPS > 5
-	pass P6 FORMAT
+	pass P6 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	#if STEPS > 6
-	pass P7 FORMAT
+	pass P7 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	#if STEPS > 7
-	pass P8 FORMAT
+	pass P8 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	
-	pass P9 FORMAT
+	pass P9 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pDist()));}
 	
 	#if STEPS > 2
-	pass P10 FORMAT
+	pass P10 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	#if STEPS > 3
-	pass P11 FORMAT
+	pass P11 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	#if STEPS > 4
-	pass P12 FORMAT
+	pass P12 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	#if STEPS > 5
-	pass P13 FORMAT
+	pass P13 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	#if STEPS > 6
-	pass P14 FORMAT
+	pass P14 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 	#if STEPS > 7
-	pass P15 FORMAT
+	pass P15 <string format=PASSFORMAT;>
 	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
 	#endif
 }

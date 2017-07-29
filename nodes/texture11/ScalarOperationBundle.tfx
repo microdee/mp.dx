@@ -25,7 +25,7 @@ float4 pADD(float4 PosWVP: SV_POSITION,float2 x: TEXCOORD0):SV_Target{
 
 technique10 Scalar{
 	pass P1
-	#if defined(PASSFORMAT0)
+	#if defined(PASSFORMAT0) /// type string
 	<string format=PASSFORMAT0;>
 	#endif
 	{SetPixelShader(CompileShader(ps_4_0,pADD()));}

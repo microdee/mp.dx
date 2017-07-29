@@ -3,7 +3,7 @@
 //@tags: filter
 //@credits:
 
-#if !defined(PASSFORMAT0)
+#if !defined(PASSFORMAT0) /// Type string
 #define PASSFORMAT0 "R16G16B16A16_Float"
 #endif
 
@@ -95,7 +95,7 @@ float4 pIBL(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
 
         col.rgb = lerp(col.rgb * EnvNm + 0.03*EnvSharp * lerp(1, albedoin.rgb, rough), col.rgb * EnvSharp, metal);
         float fresnel = pow(abs(dot(norm, eye)), 0.21 );
-        //col.rgb = lerp(EnvSharp, col.rgb, fresnel);
+        col.rgb = lerp(EnvSharp, col.rgb, fresnel);
     	col.rgb = lerp(bckg.rgb, col.rgb, col.a);
         return col;
     }
@@ -105,5 +105,6 @@ float4 pIBL(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
 	}
 }
 technique10 IBL{
-	pass P0{SetPixelShader(CompileShader(ps_5_0,pIBL()));}
+	pass P0 <string format=PASSFORMAT0;>
+    {SetPixelShader(CompileShader(ps_5_0,pIBL()));}
 }

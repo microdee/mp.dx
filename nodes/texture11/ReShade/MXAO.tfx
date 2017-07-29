@@ -10,66 +10,6 @@
 // Preprocessor Settings
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-/*<vvvv quoteEscape="¤">
-    <def
-        type="switch"
-        desc="Attempt to avoid polygonal look"
-        >
-        MXAO_SMOOTHNORMALS
-    </def>
-    <def
-        type="int"
-        default="0"
-        desc="Miplevel of AO texture"
-        >
-        MXAO_MIPLEVEL_AO
-    </def>
-    <def
-        type="int"
-        default="2"
-        desc="Miplevel of IL texture"
-        >
-        MXAO_MIPLEVEL_IL
-    </def>
-    <def
-        type="float"
-        default="2.0"
-        >
-        MXAO_BLUR_GAMMA
-    </def>
-    <def
-        type="switch"
-        desc="Enables color bleeding"
-        >
-        MXAO_IL
-    </def>
-    <def
-        type="switch"
-        desc="Enables back face check so surfaces facing away from the source position don't cast light"
-        >
-        MXAO_BACKFACE
-    </def>
-    <def
-        type="switch"
-        desc="Debug view"
-        >
-        MXAO_DEBUG
-    </def>
-    <def
-        type="enum:'¤R16G16B16A16_Float¤','¤R32G32B32A32_Float¤'"
-        default="¤R16G16B16A16_Float¤"
-        desc="Precision of calculated normals"
-        >
-        MXAO_NORMALS_FORMAT
-    </def>
-    <def
-        type="enum:texformat"
-        default="¤R16G16B16A16_Float¤"
-        >
-        OUTFORMAT
-    </def>
-</vvvv>*/
-
 #include "ReShade.fxh"
 #include <packs/mp.fxh/VRotate.fxh>
 
@@ -79,27 +19,27 @@
 #define MXAO_BACKFACE
 #endif
 
-#ifndef SHADERMODEL
+#if !defined(SHADERMODEL)
 #define SHADERMODEL 4
 #endif
 
-#ifndef MXAO_NORMALS_FORMAT
+#if !defined(MXAO_NORMALS_FORMAT) /// type string
 #define MXAO_NORMALS_FORMAT "R16G16B16A16_Float"
 #endif
 
-#ifndef OUTFORMAT
+#if !defined(OUTFORMAT) /// type string
 #define OUTFORMAT "R16G16B16A16_Float"
 #endif
 
-#ifndef MXAO_BLUR_GAMMA
+#if !defined(MXAO_BLUR_GAMMA) /// type float
 #define MXAO_BLUR_GAMMA 2.0
 #endif
 
-#ifndef MXAO_MIPLEVEL_AO
+#if !defined(MXAO_MIPLEVEL_AO) /// type int
 #define MXAO_MIPLEVEL_AO 0
 #endif
 
-#ifndef MXAO_MIPLEVEL_IL
+#if !defined(MXAO_MIPLEVEL_IL) /// type int
 #define MXAO_MIPLEVEL_IL 2
 #endif
 
@@ -162,12 +102,12 @@ cbuffer cbuf : register(b0)
     uniform float fMXAOFadeoutStart <
 	    string uiname = "Fade Out Start";
 	    float uimin = 0.00; float uimax = 1.00;
-    > = 0.2;
+    > = 0.98;
 
     uniform float fMXAOFadeoutEnd <
 	    string uiname = "Fade Out End";
 	    float uimin = 0.00; float uimax = 1.00;
-    > = 0.4;
+    > = 0.99;
     uniform float fMXAOSmoothNormWidth <
 	    string uiname = "Smooth Normals Width";
 	    float uimin = 3.5; float uimax = 11.5;
@@ -421,9 +361,9 @@ float4 GetMXAO(float2 texcoord, float3 normal, float3 position, float nSamples, 
 
 		float fAO = saturate(1.0 + fNegInvR2/occlDistanceRcp)  * saturate(occlAngle - fMXAONormalBias);
 
-		#if defined(MXAO_IL)
+		#if defined(MXAO_IL) /// type switch
 			float3 fIL = ReShade_Initial.SampleLevel(ReShade_sL, currentOffset ,mipLevel + MXAO_MIPLEVEL_IL).xyz;
-			#if defined(MXAO_BACKFACE)
+			#if defined(MXAO_BACKFACE) /// type switch
 				float3 offsetNormals = normalize(texNormBayer.SampleLevel(ReShade_sL, currentOffset, mipLevel + MXAO_MIPLEVEL_IL).xyz * 2.0 - 1.0);
 				float facingtoSource = dot(occlVec,offsetNormals)*occlDistanceRcp;
 				fIL = fIL - fIL*saturate(facingtoSource*2.0);
@@ -468,7 +408,7 @@ float4 PS_AO_Gen(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) : SV_Tar
 	float3 ScreenSpaceNormals = normalSample.xyz * 2.0 - 1.0;
 	float3 ScreenSpacePosition = GetPositionLOD(texcoord.xy, 0);
 
-#if defined(MXAO_SMOOTHNORMALS)
+#if defined(MXAO_SMOOTHNORMALS) /// type switch
 	ScreenSpaceNormals = GetSmoothedNormals(texcoord, ScreenSpaceNormals, ScreenSpacePosition);
 #endif
     float2 farplanew = mul(float4(0, 0, 1, 1), ReShade_tPI).zw;

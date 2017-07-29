@@ -1,41 +1,15 @@
 
-/*<vvvv>
-    <defines>
-        <def
-            type="bool"
-            desc="1 If depth is reversed"
-            >
-            RESHADE_DEPTH_INPUT_IS_REVERSED
-        </def>
-        <def
-            type="bool"
-            desc="1 If depth is logarithmic"
-            >
-            RESHADE_DEPTH_INPUT_IS_LOGARITHMIC
-        </def>
-        <def
-            type="enum:sampler.address"
-            >
-            DEFAULT_SAMPLER_ADDRESS
-        </def>
-        <def
-            type="enum:sampler.filter"
-            >
-            DEFAULT_SAMPLER_FILTER
-        </def>
-    </defines>
-</vvvv>*/
 
-#ifndef DEPTH_REVERSED
+#if !defined(DEPTH_REVERSED) /// type bool.digit
 	#define RESHADE_DEPTH_INPUT_IS_REVERSED 0
 #endif
-#ifndef DEPTH_LOGARITHMIC
+#if !defined(DEPTH_LOGARITHMIC) /// type bool.digit
 	#define RESHADE_DEPTH_INPUT_IS_LOGARITHMIC 0
 #endif 
-#ifndef DEFAULT_SAMPLER_ADDRESS
+#if !defined(DEFAULT_SAMPLER_ADDRESS) /// type token
 	#define DEFAULT_SAMPLER_ADDRESS CLAMP
 #endif 
-#ifndef DEFAULT_SAMPLER_FILTER
+#if !defined(DEFAULT_SAMPLER_FILTER) /// type token
 	#define DEFAULT_SAMPLER_FILTER MIN_MAG_MIP_LINEAR
 #endif 
 

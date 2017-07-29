@@ -4,6 +4,10 @@ Texture2D Btex <string uiname="Blue";>;
 Texture2D Atex <string uiname="Alpha";>;
 Texture2D TexArray[4] <string uiname="Spread";>;
 
+#if !defined(PASSFORMAT0) /// type string
+#define PASSFORMAT0 "R16G16B16A16_Float"
+#endif
+
 #include <packs/mp.fxh/ColorSpace.fxh>
 
 SamplerState s0 <bool visible=false;string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
@@ -41,18 +45,18 @@ float4 pJoinSpreadRaw(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
 }
 
 technique10 Join{
-	pass P1 <string format="R32G32B32A32_Float";>
+	pass P1 <string format=PASSFORMAT0;>
 	{SetPixelShader(CompileShader(ps_4_0,pJoin()));}
 }
 technique10 JoinLength{
-	pass P1 <string format="R32G32B32A32_Float";>
+	pass P1 <string format=PASSFORMAT0;>
 	{SetPixelShader(CompileShader(ps_4_0,pJoinL()));}
 }
 technique10 JoinSpread{
-	pass P1 <string format="R32G32B32A32_Float";>
+	pass P1 <string format=PASSFORMAT0;>
 	{SetPixelShader(CompileShader(ps_4_0,pJoinSpread()));}
 }
 technique10 JoinSpreadRaw{
-	pass P1 <string format="R32G32B32A32_Float";>
+	pass P1 <string format=PASSFORMAT0;>
 	{SetPixelShader(CompileShader(ps_4_0,pJoinSpreadRaw()));}
 }

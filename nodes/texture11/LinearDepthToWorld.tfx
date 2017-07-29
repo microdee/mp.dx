@@ -3,7 +3,7 @@
 //@tags: filter
 //@credits:
 
-#if !defined(PASSFORMAT0)
+#if !defined(PASSFORMAT0) /// Type string
 #define PASSFORMAT0 "R16G16B16A16_Float"
 #endif
 

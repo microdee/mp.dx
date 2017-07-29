@@ -1,8 +1,8 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.4.dtd" >
-   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\PBRSwitches (DX11 Defines).v4p" systemname="PBRSwitches (DX11 Defines)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRSwitches (DX11 Defines).v4p" scrollx="0" scrolly="4845" bgcolor="15329769">
-   <BOUNDS type="Window" left="2430" top="6720" width="25905" height="6000">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.8.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\PBRSwitches (DX11 Defines).v4p" systemname="PBRSwitches (DX11 Defines)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\PBRSwitches (DX11 Defines).v4p" scrollx="2550" scrolly="1590" bgcolor="15329769">
+   <BOUNDS type="Window" left="1095" top="3180" width="25905" height="10470">
    </BOUNDS>
-   <PACK Name="vvvv-Message" Version="2.9.6">
+   <PACK Name="vvvv-Message" Version="2.9.9">
    </PACK>
    <PACK Name="vvvv-ZeroMQ" Version="0.5.3">
    </PACK>
@@ -149,7 +149,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="11220" top="690" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="16">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -173,7 +173,7 @@
    </PIN>
    <PIN pinname="Y Output Value" visible="1">
    </PIN>
-   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" values="65535">
    </PIN>
    </NODE>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="9">
@@ -377,7 +377,7 @@
    <NODE systemname="Zip (Value)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Zip (Value)" componentmode="Hidden" id="28">
    <BOUNDS type="Node" left="16425" top="2115" width="11100" height="270">
    </BOUNDS>
-   <PIN pinname="Input Count" slicecount="1" values="9">
+   <PIN pinname="Input Count" slicecount="1" values="10">
    </PIN>
    <PIN pinname="Input 1" visible="1" slicecount="1" values="0">
    </PIN>
@@ -399,6 +399,8 @@
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
+   <PIN pinname="Input 10" visible="1" slicecount="1" values="0">
+   </PIN>
    </NODE>
    <LINK srcnodeid="22" srcpinname="Y Output Value" dstnodeid="28" dstpinname="Input 1">
    </LINK>
@@ -417,7 +419,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="15840" top="2520" width="2220" height="2145">
    </BOUNDS>
-   <PIN pinname="Input String" visible="0" slicecount="1" values="|USE_SVINSTANCEID&cr;&lf;USE_SUBSETTRANSFORMS&cr;&lf;FLATNORMALS&cr;&lf;TEXTUREATLAS&cr;&lf;INV_ROUGH&cr;&lf;INV_METAL&cr;&lf;ALPHATEST&cr;&lf;IGNORE_BUFFERS&cr;&lf;INV_NORMALS|">
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|USE_SVINSTANCEID&cr;&lf;USE_SUBSETTRANSFORMS&cr;&lf;FLATNORMALS&cr;&lf;TEXTUREATLAS&cr;&lf;INV_ROUGH&cr;&lf;INV_METAL&cr;&lf;ALPHATEST&cr;&lf;IGNORE_BUFFERS&cr;&lf;INV_NORMALS&cr;&lf;TESSELLATE|">
    </PIN>
    <PIN pinname="Output String" visible="1">
    </PIN>
@@ -549,7 +551,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="12210" top="675" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="16">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -573,7 +575,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="26040" top="1080" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -639,5 +641,25 @@
    <LINK srcnodeid="44" srcpinname="Inverse Output" dstnodeid="45" dstpinname="Select">
    </LINK>
    <LINK srcnodeid="45" srcpinname="Output" dstnodeid="33" dstpinname="Input 1">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="47">
+   <BOUNDS type="Box" left="28665" top="1410" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="28665" top="1410" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="TESSELLATE">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="47" srcpinname="Y Output Value" dstnodeid="28" dstpinname="Input 10">
    </LINK>
    </PATCH>

@@ -111,9 +111,12 @@ void Gs(lineadj GSIn input[4], inout TriangleStream<GsOut>GSOut)
 
 	float2 aLL_LT = normalize(lerp(aLL.yx * inv, LT.yx * inv, 0.5));
 	float2 LT_TaT = normalize(lerp(LT.yx * inv, TaT.yx * inv, 0.5));
-
-	float LeadMul = min(abs(1/cos(Angle(aLL, aLL_LT) - PI/2)), MaxExtend * InLead.z);
-	float TrailMul = min(abs(1/cos(Angle(LT, LT_TaT) - PI/2)), MaxExtend * InTrail.z);
+	float LeadCosAngle = cos(Angle(aLL, aLL_LT) - PI/2);
+	LeadCosAngle = abs(LeadCosAngle) < 0.001 ? 0.001 : LeadCosAngle;
+	float TrailCosAngle = cos(Angle(LT, LT_TaT) - PI/2);
+	TrailCosAngle = abs(TrailCosAngle) < 0.001 ? 0.001 : TrailCosAngle;
+	float LeadMul = min(abs(1/LeadCosAngle), MaxExtend * InLead.z);
+	float TrailMul = min(abs(1/TrailCosAngle), MaxExtend * InTrail.z);
 
 	float2 vert[4];
 	float invCenter = 1-Center;

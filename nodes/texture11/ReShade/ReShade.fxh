@@ -1,15 +1,15 @@
 
 
-#if !defined(DEPTH_REVERSED) /// type bool.digit
-	#define RESHADE_DEPTH_INPUT_IS_REVERSED 0
+#if !defined(DEPTH_REVERSED) /// -type bool
+	#define DEPTH_REVERSED 0
 #endif
-#if !defined(DEPTH_LOGARITHMIC) /// type bool.digit
-	#define RESHADE_DEPTH_INPUT_IS_LOGARITHMIC 0
+#if !defined(DEPTH_LOGARITHMIC) /// -type bool
+	#define DEPTH_LOGARITHMIC 0
 #endif 
-#if !defined(DEFAULT_SAMPLER_ADDRESS) /// type token
+#if !defined(DEFAULT_SAMPLER_ADDRESS) /// -type token
 	#define DEFAULT_SAMPLER_ADDRESS CLAMP
 #endif 
-#if !defined(DEFAULT_SAMPLER_FILTER) /// type token
+#if !defined(DEFAULT_SAMPLER_FILTER) /// -type token
 	#define DEFAULT_SAMPLER_FILTER MIN_MAG_MIP_LINEAR
 #endif 
 

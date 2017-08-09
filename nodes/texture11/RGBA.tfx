@@ -4,7 +4,7 @@ Texture2D Btex <string uiname="Blue";>;
 Texture2D Atex <string uiname="Alpha";>;
 Texture2D TexArray[4] <string uiname="Spread";>;
 
-#if !defined(PASSFORMAT0) /// type string
+#if !defined(PASSFORMAT0) /// -type string
 #define PASSFORMAT0 "R16G16B16A16_Float"
 #endif
 

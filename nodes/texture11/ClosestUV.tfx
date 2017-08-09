@@ -1,7 +1,7 @@
-#if !defined(PASSFORMAT) /// Type string
+#if !defined(PASSFORMAT) /// -type string
 #define PASSFORMAT "R16G16B16A16_Float"
 #endif
-#if !defined(STEPS) /// Type int
+#if !defined(STEPS) /// -type int
 #define STEPS 1
 #endif/*
 #if !defined(POSTSTEPS)

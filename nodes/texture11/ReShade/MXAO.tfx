@@ -23,23 +23,23 @@
 #define SHADERMODEL 4
 #endif
 
-#if !defined(MXAO_NORMALS_FORMAT) /// type string
+#if !defined(MXAO_NORMALS_FORMAT) /// -type string
 #define MXAO_NORMALS_FORMAT "R16G16B16A16_Float"
 #endif
 
-#if !defined(OUTFORMAT) /// type string
+#if !defined(OUTFORMAT) /// -type string
 #define OUTFORMAT "R16G16B16A16_Float"
 #endif
 
-#if !defined(MXAO_BLUR_GAMMA) /// type float
+#if !defined(MXAO_BLUR_GAMMA) /// -type float
 #define MXAO_BLUR_GAMMA 2.0
 #endif
 
-#if !defined(MXAO_MIPLEVEL_AO) /// type int
+#if !defined(MXAO_MIPLEVEL_AO) /// -type int
 #define MXAO_MIPLEVEL_AO 0
 #endif
 
-#if !defined(MXAO_MIPLEVEL_IL) /// type int
+#if !defined(MXAO_MIPLEVEL_IL) /// -type int
 #define MXAO_MIPLEVEL_IL 2
 #endif
 
@@ -361,9 +361,9 @@ float4 GetMXAO(float2 texcoord, float3 normal, float3 position, float nSamples, 
 
 		float fAO = saturate(1.0 + fNegInvR2/occlDistanceRcp)  * saturate(occlAngle - fMXAONormalBias);
 
-		#if defined(MXAO_IL) /// type switch
+		#if defined(MXAO_IL) /// -type switch
 			float3 fIL = ReShade_Initial.SampleLevel(ReShade_sL, currentOffset ,mipLevel + MXAO_MIPLEVEL_IL).xyz;
-			#if defined(MXAO_BACKFACE) /// type switch
+			#if defined(MXAO_BACKFACE) /// -type switch
 				float3 offsetNormals = normalize(texNormBayer.SampleLevel(ReShade_sL, currentOffset, mipLevel + MXAO_MIPLEVEL_IL).xyz * 2.0 - 1.0);
 				float facingtoSource = dot(occlVec,offsetNormals)*occlDistanceRcp;
 				fIL = fIL - fIL*saturate(facingtoSource*2.0);
@@ -408,7 +408,7 @@ float4 PS_AO_Gen(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) : SV_Tar
 	float3 ScreenSpaceNormals = normalSample.xyz * 2.0 - 1.0;
 	float3 ScreenSpacePosition = GetPositionLOD(texcoord.xy, 0);
 
-#if defined(MXAO_SMOOTHNORMALS) /// type switch
+#if defined(MXAO_SMOOTHNORMALS) /// -type switch
 	ScreenSpaceNormals = GetSmoothedNormals(texcoord, ScreenSpaceNormals, ScreenSpacePosition);
 #endif
     float2 farplanew = mul(float4(0, 0, 1, 1), ReShade_tPI).zw;

@@ -49,7 +49,6 @@ struct PointLight /// strides 32
 
 //#define DO_VELOCITY 1
 
-int numThreadGroupsX : THREADGROUPSX;
 StructuredBuffer<MatData> MaterialData;
 StructuredBuffer<PointLight> PointLights : POINTLIGHTS;
 float PointCount : POINTLIGHTCOUNT;
@@ -62,8 +61,7 @@ Texture2D Environment;
 struct PSout
 {
     float4 Lit : SV_Target0;
-    float Alpha : SV_Target1;
-    float4 VelUV : SV_Target2;
+    float4 VelUV : SV_Target1;
 };
 
 cbuffer cbPerObj : register( b0 )
@@ -74,7 +72,7 @@ cbuffer cbPerObj : register( b0 )
 	float gMetal <string uiname="Default Metal";> = 0;
 	float gAnisotropic <string uiname="Default Anisotropic";> = 0;
 	float ggRotate <string uiname="Default Anisotropic Rotation";> = 0;
-	float gSpecular <string uiname="Default Specular";> = 0;
+	float gSpecular <string uiname="Default Specular";> = 1;
 	float gSpecTint <string uiname="Default Specular Tint";> = 0;
 	float gSheen <string uiname="Default Sheen";> = 0;
 	float gSheenTint <string uiname="Default Sheen Tint";> = 0;

@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
-   <PATCH nodename="E:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\geometry\EmesheInputElements (DX11 MRE).v4p" systemname="EmesheInpuElements (DX11 MRE)" filename="C:\vvvv\libs\mcropack\nodes\Modules\EmesheInpuElements (DX11 MRE).v4p" scrollx="0" scrolly="0">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.9.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\geometry\EmesheInputElements (DX11 MRE).v4p" systemname="EmesheInpuElements (DX11 MRE)" filename="C:\vvvv\libs\mcropack\nodes\Modules\EmesheInpuElements (DX11 MRE).v4p" scrollx="0" scrolly="15">
    <BOUNDS type="Window" left="14625" top="1410" width="10950" height="10020">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.1.0">
+   <PACK Name="addonpack" Version="35.9.0">
    </PACK>
    <NODE systemname="Zip (Value Bin)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Zip (Value Bin)" componentmode="Hidden" id="3">
    <BOUNDS type="Node" left="4215" top="3330" width="100" height="100">
@@ -297,6 +297,8 @@
    </PIN>
    <PIN pinname="Subset ID" visible="1">
    </PIN>
+   <PIN pinname="Evaluate" visible="1" pintype="Input" slicecount="1" values="1">
+   </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="31" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="9555" top="4245" width="480" height="480">
@@ -347,6 +349,8 @@
    </PIN>
    <PIN pinname="Subset ID" visible="1">
    </PIN>
+   <PIN pinname="Evaluate" visible="1" pintype="Input" slicecount="1" values="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="4" srcpinname="Y Output Value" dstnodeid="34" dstpinname="Texture Coordinates">
    </LINK>
@@ -387,13 +391,15 @@
    <LINK srcnodeid="35" srcpinname="Y Output Value" dstnodeid="36" dstpinname="Select">
    </LINK>
    <NODE systemname="Cons (String)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Cons (String)" componentmode="Hidden" id="37">
-   <BOUNDS type="Node" left="7695" top="6555" width="100" height="100">
+   <BOUNDS type="Node" left="7740" top="6870" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
    <PIN pinname="Input 2" visible="1">
    </PIN>
    <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Evaluate" visible="1" pintype="Input" slicecount="1" values="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="36" srcpinname="Output" dstnodeid="37" dstpinname="Input 1">
@@ -416,6 +422,8 @@
    <PIN pinname="Slot" slicecount="1" values="0">
    </PIN>
    <PIN pinname="Per Vertex" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Evaluate" visible="1" pintype="Input" slicecount="1" values="1">
    </PIN>
    </NODE>
    <NODE id="43" nodename="IOBox (String)" componentmode="InABox" systemname="IOBox (String)" hiddenwhenlocked="0" managers="">
@@ -509,6 +517,8 @@
    </PIN>
    <PIN pinname="Enum" visible="1">
    </PIN>
+   <PIN pinname="Evaluate" visible="1" pintype="Input" slicecount="1" values="1">
+   </PIN>
    </NODE>
    <NODE systemname="Select (String)" nodename="Select (String)" componentmode="Hidden" id="49">
    <BOUNDS type="Node" left="2130" top="4170" width="100" height="100">
@@ -552,6 +562,8 @@
    <PIN pinname="Remainder" visible="1">
    </PIN>
    <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Evaluate" visible="1" pintype="Input" slicecount="1" values="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="50" srcpinname="Size" dstnodeid="53" dstpinname="Input">
@@ -600,20 +612,6 @@
    </LINK>
    <LINK srcnodeid="59" srcpinname="Output" dstnodeid="23" dstpinname="Input 6">
    </LINK>
-   <NODE systemname="Performer (String)" filename="..\..\..\..\mp.essentials\nodes\modules\string\Performer (String).v4p" nodename="Performer (String)" componentmode="Hidden" id="60">
-   <BOUNDS type="Node" left="7740" top="7050" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1">
-   </PIN>
-   <PIN pinname="Execute" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="37" srcpinname="Output" dstnodeid="60" dstpinname="Input">
-   </LINK>
    <NODE systemname="OnOpen (VVVV)" nodename="OnOpen (VVVV)" componentmode="Hidden" id="61">
    <BOUNDS type="Node" left="9120" top="3135" width="100" height="100">
    </BOUNDS>
@@ -622,8 +620,8 @@
    <PIN pinname="Simulate" slicecount="1" values="0">
    </PIN>
    </NODE>
-   <NODE systemname="OR (Boolean)" nodename="OR (Boolean)" componentmode="Hidden" id="62">
-   <BOUNDS type="Node" left="7935" top="3930" width="100" height="100">
+   <NODE systemname="OR (Boolean)" nodename="OR (Boolean)" componentmode="Hidden" id="62" debug="0">
+   <BOUNDS type="Node" left="7965" top="3990" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 2" visible="1" slicecount="1" values="0">
    </PIN>
@@ -644,10 +642,6 @@
    <PIN pinname="Input 6" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="62" srcpinname="Output" dstnodeid="60" dstpinname="Execute">
-   </LINK>
-   <LINK srcnodeid="60" srcpinname="Output" dstnodeid="22" dstpinname="Input String">
-   </LINK>
    <LINK srcnodeid="61" srcpinname="Bang" dstnodeid="62" dstpinname="Input 7">
    </LINK>
    <LINK srcnodeid="4" srcpinname="Changed" dstnodeid="62" dstpinname="Input 1">
@@ -661,60 +655,6 @@
    <LINK srcnodeid="58" srcpinname="Changed" dstnodeid="62" dstpinname="Input 5">
    </LINK>
    <LINK srcnodeid="35" srcpinname="Changed" dstnodeid="62" dstpinname="Input 6">
-   </LINK>
-   <NODE systemname="Performer (String)" filename="..\..\..\..\mp.essentials\nodes\modules\string\Performer (String).v4p" nodename="Performer (String)" componentmode="Hidden" id="64">
-   <BOUNDS type="Node" left="2130" top="6795" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Execute" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="62" srcpinname="Output" dstnodeid="64" dstpinname="Execute">
-   </LINK>
-   <LINK srcnodeid="49" srcpinname="Output" dstnodeid="64" dstpinname="Input">
-   </LINK>
-   <LINK srcnodeid="64" srcpinname="Output" dstnodeid="48" dstpinname="String Value">
-   </LINK>
-   <NODE systemname="Performer (Value)" filename="..\..\..\..\mp.essentials\nodes\modules\value\Performer (Value).v4p" nodename="Performer (Value)" componentmode="Hidden" id="65">
-   <BOUNDS type="Node" left="2610" top="6075" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Execute" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="0">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="62" srcpinname="Output" dstnodeid="65" dstpinname="Execute">
-   </LINK>
-   <LINK srcnodeid="53" srcpinname="Output" dstnodeid="65" dstpinname="Input">
-   </LINK>
-   <LINK srcnodeid="65" srcpinname="Output" dstnodeid="38" dstpinname="Offset">
-   </LINK>
-   <NODE systemname="Performer (String)" filename="..\..\..\..\mp.essentials\nodes\modules\string\Performer (String).v4p" nodename="Performer (String)" componentmode="Hidden" id="66">
-   <BOUNDS type="Node" left="1125" top="6165" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Execute" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="62" srcpinname="Output" dstnodeid="66" dstpinname="Execute">
-   </LINK>
-   <LINK srcnodeid="44" srcpinname="Output" dstnodeid="66" dstpinname="Input">
-   </LINK>
-   <LINK srcnodeid="66" srcpinname="Output" dstnodeid="38" dstpinname="Name">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="67" systemname="IOBox (String)">
    <BOUNDS type="Box" left="3180" top="8430" width="795" height="240">
@@ -748,6 +688,20 @@
    <PIN pinname="Descriptive Name" slicecount="1" values="Offsets">
    </PIN>
    </NODE>
-   <LINK srcnodeid="65" srcpinname="Output" dstnodeid="68" dstpinname="Y Input Value">
+   <LINK srcnodeid="44" srcpinname="Output" dstnodeid="38" dstpinname="Name">
+   </LINK>
+   <LINK srcnodeid="49" srcpinname="Output" dstnodeid="48" dstpinname="String Value">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Output" dstnodeid="38" dstpinname="Offset">
+   </LINK>
+   <LINK srcnodeid="37" srcpinname="Output" dstnodeid="22" dstpinname="Input String">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Output" dstnodeid="68" dstpinname="Y Input Value">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.9.9">
+   </PACK>
+   <LINK srcnodeid="62" srcpinname="Output" dstnodeid="34" dstpinname="Evaluate">
+   </LINK>
+   <LINK srcnodeid="62" srcpinname="Output" dstnodeid="30" dstpinname="Evaluate">
    </LINK>
    </PATCH>

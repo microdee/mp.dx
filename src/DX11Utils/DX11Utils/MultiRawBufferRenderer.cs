@@ -126,7 +126,6 @@ namespace VVVV.DX11.Nodes
                 }
             }
         }
-
         public bool IsEnabled
         {
             get { return this.FInEnabled[0]; }

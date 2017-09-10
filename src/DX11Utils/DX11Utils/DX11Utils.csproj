@@ -191,7 +191,6 @@
     <Compile Include="AdvancedResetCounter.cs" />
     <Compile Include="CopyBuffer.cs" />
     <Compile Include="CopyCounter.cs" />
-    <Compile Include="Uberer.cs" />
     <Compile Include="PDDNDynamicStructuredBuffer.cs" />
     <Compile Include="DispatchIndirectOnBindedResource.cs" />
     <Compile Include="DX11MessageTypes.cs" />

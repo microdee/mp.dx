@@ -90,26 +90,6 @@
       <HintPath>..\..\..\..\mp.essentials\nodes\plugins\PDDN.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpDX">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\SharpDX.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SharpDX.D3DCompiler">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\SharpDX.D3DCompiler.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SharpDX.Direct2D1">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\SharpDX.Direct2D1.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SharpDX.DXGI">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\SharpDX.DXGI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SharpDX.Mathematics">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\SharpDX.Mathematics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="SharpMessage, Version=2.9.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpMessage.2.9.6\lib\net46\SharpMessage.dll</HintPath>
       <Private>False</Private>
@@ -188,6 +168,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractDX11Renderer2DNodeAdvanced.cs" />
     <Compile Include="AdvancedResetCounter.cs" />
     <Compile Include="CopyBuffer.cs" />
     <Compile Include="CopyCounter.cs" />
@@ -199,7 +180,9 @@
     <Compile Include="MultiStructuredBufferRenderer.cs" />
     <Compile Include="MultiRawBufferRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RWTextureArray2D.cs" />
     <Compile Include="StringShaderNode.cs" />
+    <Compile Include="TempTargetAndArray.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

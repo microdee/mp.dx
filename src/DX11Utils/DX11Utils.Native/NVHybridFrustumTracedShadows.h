@@ -180,7 +180,9 @@ namespace VVVV {
 				ret->uResolutionWidth = bufwidth;
 				ret->uResolutionHeight = bufheight;
 				ret->uSampleCount = bufsampcount;
+				ret->uViewportLeft = 0;
 				ret->uViewportRight = bufwidth;
+				ret->uViewportTop = 0;
 				ret->uViewportBottom = bufheight;
 				return ret;
 			}
@@ -192,11 +194,11 @@ namespace VVVV {
 				ret->eViewType = cascaded ? GFSDK_ShadowLib_ViewType::GFSDK_ShadowLib_ViewType_Cascades_4 : GFSDK_ShadowLib_ViewType::GFSDK_ShadowLib_ViewType_Single;
 				ret->FrustumTraceMapDesc = *new GFSDK_ShadowLib_FrustumTraceMapDesc();
 				ret->FrustumTraceMapDesc.bRequireFrustumTraceMap = true;
-				ret->FrustumTraceMapDesc.uDynamicReprojectionCascades = 2;
+				ret->FrustumTraceMapDesc.uDynamicReprojectionCascades = 1;
 				ret->FrustumTraceMapDesc.uResolutionWidth = mapwidth;
 				ret->FrustumTraceMapDesc.uResolutionHeight = mapheight;
-				ret->RayTraceMapDesc.uMaxNumberOfPrimitives = 100000;
-				ret->RayTraceMapDesc.uMaxNumberOfPrimitivesPerPixel = 8;
+				ret->RayTraceMapDesc.uMaxNumberOfPrimitives = 1000000;
+				ret->RayTraceMapDesc.uMaxNumberOfPrimitivesPerPixel = 10;
 				ret->RayTraceMapDesc.uResolutionWidth = mapwidth;
 				ret->RayTraceMapDesc.uResolutionHeight = mapheight;
 
@@ -257,14 +259,14 @@ namespace VVVV {
 				Np->pMapFrustum->fFar = Far;
 				stat = Np->pContext->UpdateMapBounds(Np->pMap, Np->pMapView, Np->pMapProj, Np->pMapFrustum);
 
-				stat = Np->pContext->ClearBuffer(Np->pBuffer);
-				stat = Np->pContext->InitializeMapRendering(Np->pMap, GFSDK_ShadowLib_MapRenderType::GFSDK_ShadowLib_MapRenderType_FT);
-				stat = Np->pContext->BeginMapRendering(Np->pMap, GFSDK_ShadowLib_MapRenderType::GFSDK_ShadowLib_MapRenderType_FT, 0);
+				//stat = Np->pContext->ClearBuffer(Np->pBuffer);
+				stat = Np->pContext->InitializeMapRendering(Np->pMap, GFSDK_ShadowLib_MapRenderType::GFSDK_ShadowLib_MapRenderType_Depth);
+				stat = Np->pContext->BeginMapRendering(Np->pMap, GFSDK_ShadowLib_MapRenderType::GFSDK_ShadowLib_MapRenderType_Depth, 0);
 			}
 			void NVShadowContext::EndRender()
 			{
-				GFSDK_ShadowLib_Status stat = Np->pContext->EndMapRendering(Np->pMap, GFSDK_ShadowLib_MapRenderType::GFSDK_ShadowLib_MapRenderType_FT, 0);
-				//stat = Np->pContext->ClearBuffer(Np->pBuffer);
+				GFSDK_ShadowLib_Status stat = Np->pContext->EndMapRendering(Np->pMap, GFSDK_ShadowLib_MapRenderType::GFSDK_ShadowLib_MapRenderType_Depth, 0);
+				stat = Np->pContext->ClearBuffer(Np->pBuffer);
 				stat = Np->pContext->RenderBuffer(Np->pMap, Np->pBuffer, Np->pBufferParams);
 				
 				if (Np->pBufferSRV == NULL) Np->pBufferSRV = new GFSDK_ShadowLib_ShaderResourceView();
@@ -389,6 +391,7 @@ namespace VVVV {
 
 			void NVHybridFrustumTracedShadowsNode::Evaluate(int SpreadMax)
 			{
+				if (!FInLayer->PluginIO->IsConnected) return;
 				rendereddevices->Clear();
 				updateddevices->Clear();
 				Reset = FBufRes->IsChanged || FMapRes->IsChanged /*|| FCascaded->IsChanged */;
@@ -407,6 +410,9 @@ namespace VVVV {
 			void NVHybridFrustumTracedShadowsNode::Update(DX11RenderContext^ context)
 			{
 				if (updateddevices->Contains(context)) return;
+				if (!FInDepth->PluginIO->IsConnected) return;
+				if (FInDepth->SliceCount == 0) return;
+				if (FInDepth[0] == nullptr) return;
 				NVShadowContext^ currshadow;
 				if (!Shadows->ContainsKey(context)) // not created yet
 				{
@@ -419,6 +425,17 @@ namespace VVVV {
 				else // already created
 				{
 					currshadow = Shadows[context];
+
+					bool notneeded = currshadow->Np->pBufferDesc->uResolutionWidth == (int)FBufRes[0].x;
+					notneeded = notneeded || currshadow->Np->pBufferDesc->uResolutionWidth == (int)FBufRes[0].x;
+					notneeded = notneeded || currshadow->Np->pMapDesc->uResolutionWidth == (int)FMapRes[0].x;
+					notneeded = notneeded || currshadow->Np->pMapDesc->uResolutionHeight == (int)FMapRes[0].y;
+					if (notneeded)
+					{
+						updateddevices->Add(context);
+						return;
+					}
+
 					currshadow->Np->pBufferDesc->uResolutionWidth = (int)FBufRes[0].x;
 					currshadow->Np->pBufferDesc->uResolutionHeight = (int)FBufRes[0].y;
 					currshadow->Np->pMapDesc->uResolutionWidth = (int)FMapRes[0].x;
@@ -431,7 +448,7 @@ namespace VVVV {
 				if (currshadow->Np->pMapParams == NULL) currshadow->Np->pMapParams = new GFSDK_ShadowLib_MapRenderParams();
 
 				// Simple fields
-				currshadow->Np->pMapParams->eTechniqueType = GFSDK_ShadowLib_TechniqueType::GFSDK_ShadowLib_TechniqueType_HFTS;
+				currshadow->Np->pMapParams->eTechniqueType = GFSDK_ShadowLib_TechniqueType::GFSDK_ShadowLib_TechniqueType_PCSS;
 				currshadow->Np->pMapParams->eCullModeType = GFSDK_ShadowLib_CullModeType::GFSDK_ShadowLib_CullModeType_None;
 
 				// Assign Depth Buffer
@@ -450,7 +467,8 @@ namespace VVVV {
 				}
 				else
 				{
-					depthbufdesc.ResolvedDepthSRV.pSRV = (ID3D11ShaderResourceView*)(void*)ds->SRV->ComPointer;
+					//depthbufdesc.ResolvedDepthSRV.pSRV = (ID3D11ShaderResourceView*)(void*)ds->SRV->ComPointer;
+					depthbufdesc.ResolvedDepthSRV.pSRV = NULL;
 				}
 				currshadow->Np->pMapParams->DepthBufferDesc = depthbufdesc;
 
@@ -461,6 +479,8 @@ namespace VVVV {
 			{
 				if (!updateddevices->Contains(context)) Update(context);
 				if (!FInDepth->PluginIO->IsConnected) return;
+				if (FInDepth->SliceCount == 0) return;
+				if (FInDepth[0] == nullptr) return;
 				if (!FInLayer->PluginIO->IsConnected) return;
 				if (rendereddevices->Contains(context)) return;
 				if (!FEnabled[0]) return;
@@ -470,11 +490,11 @@ namespace VVVV {
 
 				// Map Render Parameters
 				// Eye/Camera matrices
-				NVUtils::V4MatToGFSDKMat(FEyeView[0].Transpose(), pEyeView);
+				NVUtils::V4MatToGFSDKMat(FEyeView[0], pEyeView);
 				currshadow->Np->pMapParams->m4x4EyeViewMatrix = *pEyeView;
 
-				NVUtils::V4MatToGFSDKMat(FEyeProj[0].Transpose(), pEyeProj);
-				currshadow->Np->pMapParams->m4x4EyeViewMatrix = *pEyeProj;
+				NVUtils::V4MatToGFSDKMat(FEyeProj[0], pEyeProj);
+				currshadow->Np->pMapParams->m4x4EyeProjectionMatrix = *pEyeProj;
 
 				// World space box
 				gfsdk_float3 wsbbmin = currshadow->Np->pMapParams->v3WorldSpaceBBox[0];
@@ -519,8 +539,8 @@ namespace VVVV {
 				currshadow->Np->pMapParams->LightDesc = lightd;
 
 				// Begin render
-				currshadow->BeginRender(FLView[0].Transpose(), FLProj[0].Transpose(), (float)FNear[0], (float)FFar[0]);
-				
+				currshadow->BeginRender(FLView[0], FLProj[0], (float)FNear[0], (float)FFar[0]);
+
 				settings->View = Matrix4x4Extensions::ToSlimDXMatrix(FLView[0]);
 				settings->Projection = Matrix4x4Extensions::ToSlimDXMatrix(FLProj[0]);
 				settings->ViewProjection = settings->View * settings->Projection;
@@ -533,12 +553,12 @@ namespace VVVV {
 				DX11Layer^ layer = layerres[context];
 
 				layer->Render(context, settings);
-				currshadow->Np->pContext->IncrementMapPrimitiveCounter(currshadow->Np->pMap, GFSDK_ShadowLib_MapRenderType::GFSDK_ShadowLib_MapRenderType_FT, (gfsdk_U32)FTotalPrims[0]);
+				currshadow->Np->pContext->IncrementMapPrimitiveCounter(currshadow->Np->pMap, GFSDK_ShadowLib_MapRenderType::GFSDK_ShadowLib_MapRenderType_Depth, (gfsdk_U32)FTotalPrims[0]);
 
 				currshadow->EndRender();
 
 				// convert buffer to managed
-				if(currshadow->BufferTexture == nullptr)
+				if (currshadow->BufferTexture == nullptr)
 				{
 					currshadow->BufferSRV = ShaderResourceView::FromPointer((IntPtr)currshadow->Np->pBufferSRV->pSRV);
 					currshadow->Np->pBufferSRV->pSRV->GetResource(&currshadow->Np->pBufferD3DResource);
@@ -550,7 +570,7 @@ namespace VVVV {
 				outbufres[context] = currshadow->BufferFtTex;
 
 				// convert map to managed
-				if(currshadow->Np->pMapSRV == NULL)
+				if (currshadow->Np->pMapSRV == NULL)
 				{
 					gfsdk_float4x4 lvm, lpm;
 					GFSDK_ShadowLib_Frustum lft;

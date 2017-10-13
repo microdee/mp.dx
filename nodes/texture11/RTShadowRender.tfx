@@ -1,0 +1,106 @@
+//@author: microdee
+//@help: used in RayTracedShadows module
+//@tags: texture
+//@credits: 
+
+#include <packs/mp.fxh/depthreconstruct.fxh>
+#include <packs/mp.fxh/intersections.fxh>
+
+#if !defined(TRIPERPIXEL) /// -type int -pin "-min 2 -max 16"
+#define TRIPERPIXEL 8
+#endif
+
+Texture2D ColTex : PREVIOUS;
+Texture2D<float> DepthTex;
+Texture2D<uint4> ColStencil;
+Texture2DArray<uint> RTSM;
+Texture2D<uint4> RTSMStencil;
+ByteAddressBuffer Triangles;
+
+cbuffer cbuf : register(b0)
+{
+	float4x4 tP;
+	float4x4 tPI;
+	float4x4 ltVv;
+	float4x4 ltVItV;
+	float4x4 ltP;
+	float3 lPosV;
+	float bias;
+	float2 R : TARGETSIZE;
+	float2 smr = 1024;
+};
+
+SamplerState sL : IMMUTABLE
+{
+    Filter = MIN_MAG_MIP_LINEAR;
+    AddressU = Clamp;
+    AddressV = Clamp;
+};
+
+struct psInput
+{
+	float4 p : SV_Position;
+	float2 uv : TEXCOORD0;
+};
+
+
+float4 PS(psInput i) : SV_Target
+{
+	float4 colin = ColTex.SampleLevel(sL, i.uv, 0);
+	float cold = DepthTex.SampleLevel(sL, i.uv, 0);
+	float light = 0;
+	float3 vpos = UVZtoVIEW(i.uv, cold, tP, tPI);
+	uint2 cpuv = i.uv*R;
+	
+	uint cs = ColStencil.Load(int3(cpuv, 0)).g;
+	if(cs == 0) return 1;
+	
+	float4 projpos = mul(float4(vpos,1), ltVv);
+	projpos = mul(projpos, ltP);
+	float2 lpuv;
+    lpuv.x =  projpos.x / projpos.w / 2.0f + 0.5f;
+    lpuv.y = -projpos.y / projpos.w / 2.0f + 0.5f;
+	float dfc = length(projpos.xy/projpos.w);
+	if((dfc > sqrt(2)) || (projpos.z < 0)) return 1;
+	
+	uint2 lppuv = (lpuv+0.5/smr)*smr;
+	//uint2 lppuv = lpuv*smr;
+	//uint sms = RTSMStencil.Load(int3(lppuv, 0)).g;
+	
+	bool intersect = false;
+	float3 intspoint = 0;
+	float3 bvpos = vpos + normalize(lPosV-vpos)*bias;
+	float3 trid = 0;
+	for(uint j=0; j<TRIPERPIXEL; j++)
+	{
+		uint pid = RTSM.Load(int4(lppuv, j*2, 0));
+		if(pid == 0) break;
+		pid--;
+		float3 tri0 = asfloat(Triangles.Load3((pid*3 + 0)*16));
+		float3 tri1 = asfloat(Triangles.Load3((pid*3 + 1)*16));
+		float3 tri2 = asfloat(Triangles.Load3((pid*3 + 2)*16));
+		tri0 = mul(float4(tri0,1), ltVItV).xyz;
+		tri1 = mul(float4(tri1,1), ltVItV).xyz;
+		tri2 = mul(float4(tri2,1), ltVItV).xyz;
+		//trid = tri2;
+		float intsstat = Segment_TriangleSS(bvpos, lPosV, tri0, tri1, tri2, intspoint);
+		intersect = intsstat == 1;
+		//intersect = Segment_TriangleMT(bvpos, lPosV, tri0, tri1, tri2, intspoint);
+		if(intersect) break;
+	}
+	float res = intersect ? 0 : 1;
+	
+	return res;
+	//return float4(trid,1);
+}
+
+technique10 Process
+{
+	pass P0
+	{
+		SetPixelShader(CompileShader(ps_4_0,PS()));
+	}
+}
+
+
+

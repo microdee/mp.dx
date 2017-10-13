@@ -6,6 +6,7 @@
 Texture2D texi: INITIAL;
 Texture2D tex0: PREVIOUS;
 Texture2D<float> tex1 <string uiname="Control";>;
+Texture2D<float2> Rays;
 
 float2 R:TARGETSIZE;
 
@@ -42,6 +43,10 @@ float4 pBLUR(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{
 		}
 	}
 	c/=samps;
+	#if defined(WORLDRESULT) /// -type switch
+	float2 sp = Rays.SampleLevel(s0,x,0);
+	c.rgb = float3(sp*c.r*0.5, c.r*0.5);
+	#endif
 	return c;
 }
 float4 pMIPS(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_Target{

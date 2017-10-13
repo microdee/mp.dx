@@ -1,0 +1,69 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.8.dtd" >
+   <PATCH nodename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\SplitBlendState (DX11.RenderState).v4p" systemname="SplitBlendState (DX11.RenderState)" filename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\nodes\modules\essentials\SplitBlendState (DX11.RenderState).v4p">
+   <BOUNDS type="Window" left="30150" top="6975" width="9000" height="6000">
+   </BOUNDS>
+   <PACK Name="vvvv-Message" Version="2.9.9">
+   </PACK>
+   <PACK Name="addonpack" Version="35.0.0">
+   </PACK>
+   <NODE systemname="Expand (Node)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Expand (Node)" componentmode="Hidden" id="2">
+   <BOUNDS type="Node" left="2400" top="1080" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2400" top="1080" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Reference Type" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Learn Type" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Type" slicecount="1" values="|FeralTic.DX11.DX11RenderState, FeralTic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|">
+   </PIN>
+   <PIN pinname="Input" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Blend" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Expand (Node)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Expand (Node)" componentmode="Hidden" id="1">
+   <BOUNDS type="Node" left="2700" top="1515" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2700" top="1515" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Type" slicecount="1" values="|SlimDX.Direct3D11.BlendStateDescription, SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9|">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="RenderTargets" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Blend" dstnodeid="1" dstpinname="Input">
+   </LINK>
+   <NODE systemname="Expand (Node)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Expand (Node)" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="2685" top="1965" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2685" top="1965" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Type" slicecount="1" values="|SlimDX.Direct3D11.RenderTargetBlendDescription, SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9|">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="RenderTargetWriteMask" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="1" srcpinname="RenderTargets" dstnodeid="0" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="3">
+   <BOUNDS type="Box" left="6795" top="3405" width="1470" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6795" top="3405" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="None">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Write Mask|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="RenderTargetWriteMask" dstnodeid="3" dstpinname="Input Enum">
+   </LINK>
+   </PATCH>

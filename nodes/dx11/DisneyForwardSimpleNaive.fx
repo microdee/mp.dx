@@ -172,15 +172,17 @@ PSout PS(PSin input)
 		PointLight pl = PointLights[i];
 		float3 ld = pl.Position - input.posw;
 		float d = length(ld);
+		ld = normalize(ld);
 		if(d < pl.AttenuationEnd)
 		{
-			float3 light = Disney.brdf(normalize(ld), wvdir, wnorm, wtan, wbin, matdat);
+			float3 light = Disney.brdf(ld, wvdir, wnorm, wtan, wbin, matdat);
+			//light *= pow(saturate(dot(wnorm, ld)*2), 2);
 			float attend = pl.AttenuationEnd - pl.AttenuationStart;
 			outcol += light * pl.Color * smoothstep(1, 0, saturate(d/attend-pl.AttenuationStart/attend));
 		}
 	}
 
-    o.Lit = float4(outcol, 1);
+    o.Lit = float4(outcol, col.a);
     o.VelUV = float4((input.pspos.xy / input.pspos.w) - (input.ppos.xy / input.ppos.w)+0.5, input.UV);
     //o.VelUV = float4(0.5, 0.5, input.UV);
 

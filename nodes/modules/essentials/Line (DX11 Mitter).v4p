@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.8.dtd" >
-   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" systemname="Line (DX11 Mitter)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" scrollx="0" scrolly="4770">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.9.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" systemname="Line (DX11 Mitter)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" scrollx="0" scrolly="3510">
    <BOUNDS type="Window" left="-18555" top="-14055" width="14385" height="11625">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="35.0.0">
+   <PACK Name="addonpack" Version="35.9.0">
    </PACK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="1" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="705" top="375" width="795" height="720">
@@ -765,7 +765,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4140" top="12375" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.05">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -797,7 +797,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4890" top="13440" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="10">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="8.54">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -913,7 +913,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="9750" top="7125" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -1033,7 +1033,7 @@
    <LINK srcnodeid="54" srcpinname="Output" dstnodeid="61" dstpinname="Data">
    </LINK>
    <NODE systemname="Performer (Value)" filename="%VVVV%\packs\mp.essentials\nodes\modules\value\Performer (Value).v4p" nodename="Performer (Value)" componentmode="Hidden" id="88">
-   <BOUNDS type="Node" left="4860" top="10830" width="100" height="100">
+   <BOUNDS type="Node" left="4845" top="10965" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>

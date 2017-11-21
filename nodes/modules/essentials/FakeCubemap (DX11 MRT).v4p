@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha31.1.dtd" >
-   <PATCH nodename="D:\vvvv\github\mdbot\mdbot\vvvv_45alpha31.1_x86\packs\mre.mdmod.2\nodes\modules\FakeCubemap (DX11 MRT).v4p" systemname="FakeCubemap (DX11 MRT)" filename="D:\vvvv\github\mdbot\mdbot\nodes\Modules\FakeCubemap\FakeCubemap (DX11 MRT).v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.8.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\essentials\FakeCubemap (DX11 MRT).v4p" systemname="FakeCubemap (DX11 MRT)" filename="D:\vvvv\github\mdbot\mdbot\nodes\Modules\FakeCubemap\FakeCubemap (DX11 MRT).v4p" scrollx="0" scrolly="6480">
    <BOUNDS type="Window" left="3135" top="3465" width="19500" height="11580">
    </BOUNDS>
    <NODE systemname="Perspective (Transform)" nodename="Perspective (Transform)" componentmode="Hidden" id="4">
@@ -687,7 +687,7 @@
    <LINK srcnodeid="72" srcpinname="Depth Buffer" dstnodeid="96" dstpinname="Input 4">
    </LINK>
    <NODE systemname="Renderer (DX11 MRT)" filename="%VVVV%\packs\DX11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11 MRT)" componentmode="Hidden" id="73">
-   <BOUNDS type="Node" left="12555" top="9240" width="100" height="100">
+   <BOUNDS type="Node" left="12600" top="9240" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Target Format" visible="1">
    </PIN>
@@ -705,7 +705,7 @@
    </PIN>
    <PIN pinname="Buffers" visible="1">
    </PIN>
-   <BOUNDS type="Box" left="12555" top="9240">
+   <BOUNDS type="Box" left="12600" top="9240">
    </BOUNDS>
    <PIN pinname="AA Texture Out" visible="1" pintype="Output">
    </PIN>
@@ -719,21 +719,21 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="54" srcpinname="Output Enum" dstnodeid="73" dstpinname="Target Format" hiddenwhenlocked="1" linkstyle="Bezier">
-   <LINKPOINT x="1230" y="4935">
+   <LINKPOINT x="1245" y="4935">
    </LINKPOINT>
-   <LINKPOINT x="12690" y="4935">
+   <LINKPOINT x="12720" y="4935">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="68" srcpinname="Color Output" dstnodeid="73" dstpinname="Background Color" linkstyle="Bezier">
-   <LINKPOINT x="8400" y="5993">
+   <LINKPOINT x="8415" y="5993">
    </LINKPOINT>
-   <LINKPOINT x="13650" y="5993">
+   <LINKPOINT x="13680" y="5993">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="52" srcpinname="Y Output Value" dstnodeid="73" dstpinname="Texture SizeXY" linkstyle="Bezier">
-   <LINKPOINT x="6165" y="5363">
+   <LINKPOINT x="6180" y="5363">
    </LINKPOINT>
-   <LINKPOINT x="13800" y="5363">
+   <LINKPOINT x="13830" y="5363">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="67" srcpinname="Output 5" dstnodeid="73" dstpinname="View">
@@ -741,21 +741,21 @@
    <LINK srcnodeid="73" srcpinname="Buffers" dstnodeid="75" dstpinname="Input 5">
    </LINK>
    <LINK srcnodeid="4" srcpinname="Transform Out" dstnodeid="73" dstpinname="Projection" linkstyle="Bezier">
-   <LINKPOINT x="7395" y="5393">
+   <LINKPOINT x="7410" y="5393">
    </LINKPOINT>
-   <LINKPOINT x="14580" y="5393">
+   <LINKPOINT x="14610" y="5393">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="93" srcpinname="Output Enum" dstnodeid="73" dstpinname="AA Samples per Pixel" hiddenwhenlocked="1" linkstyle="Bezier">
-   <LINKPOINT x="3210" y="5085">
+   <LINKPOINT x="3225" y="5085">
    </LINKPOINT>
-   <LINKPOINT x="13950" y="5085">
+   <LINKPOINT x="13980" y="5085">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="73" srcpinname="Depth Buffer" dstnodeid="96" dstpinname="Input 5">
    </LINK>
    <NODE systemname="Renderer (DX11 MRT)" filename="%VVVV%\packs\DX11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11 MRT)" componentmode="Hidden" id="74">
-   <BOUNDS type="Node" left="15105" top="9240" width="100" height="100">
+   <BOUNDS type="Node" left="15195" top="9240" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Target Format" visible="1">
    </PIN>
@@ -773,7 +773,7 @@
    </PIN>
    <PIN pinname="Buffers" visible="1">
    </PIN>
-   <BOUNDS type="Box" left="15105" top="9240">
+   <BOUNDS type="Box" left="15195" top="9240">
    </BOUNDS>
    <PIN pinname="AA Texture Out" visible="1" pintype="Output">
    </PIN>
@@ -787,21 +787,21 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="54" srcpinname="Output Enum" dstnodeid="74" dstpinname="Target Format" hiddenwhenlocked="1" linkstyle="Bezier">
-   <LINKPOINT x="1230" y="4935">
+   <LINKPOINT x="1260" y="4935">
    </LINKPOINT>
-   <LINKPOINT x="15255" y="4935">
+   <LINKPOINT x="15315" y="4935">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="68" srcpinname="Color Output" dstnodeid="74" dstpinname="Background Color" linkstyle="Bezier">
-   <LINKPOINT x="8400" y="5985">
+   <LINKPOINT x="8430" y="5985">
    </LINKPOINT>
-   <LINKPOINT x="16185" y="5985">
+   <LINKPOINT x="16245" y="5985">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="52" srcpinname="Y Output Value" dstnodeid="74" dstpinname="Texture SizeXY" linkstyle="Bezier">
-   <LINKPOINT x="6165" y="5355">
+   <LINKPOINT x="6195" y="5355">
    </LINKPOINT>
-   <LINKPOINT x="16335" y="5355">
+   <LINKPOINT x="16395" y="5355">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="67" srcpinname="Output 6" dstnodeid="74" dstpinname="View">
@@ -809,15 +809,15 @@
    <LINK srcnodeid="74" srcpinname="Buffers" dstnodeid="75" dstpinname="Input 6">
    </LINK>
    <LINK srcnodeid="4" srcpinname="Transform Out" dstnodeid="74" dstpinname="Projection" linkstyle="Bezier">
-   <LINKPOINT x="7395" y="5385">
+   <LINKPOINT x="7425" y="5385">
    </LINKPOINT>
-   <LINKPOINT x="17115" y="5385">
+   <LINKPOINT x="17175" y="5385">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="93" srcpinname="Output Enum" dstnodeid="74" dstpinname="AA Samples per Pixel" hiddenwhenlocked="1" linkstyle="Bezier">
-   <LINKPOINT x="3210" y="5085">
+   <LINKPOINT x="3240" y="5085">
    </LINKPOINT>
-   <LINKPOINT x="16515" y="5085">
+   <LINKPOINT x="16575" y="5085">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="74" srcpinname="Depth Buffer" dstnodeid="96" dstpinname="Input 6">
@@ -865,15 +865,15 @@
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="97" srcpinname="Y Output Value" dstnodeid="73" dstpinname="Target Count" linkstyle="Bezier">
-   <LINKPOINT x="480" y="5205">
+   <LINKPOINT x="495" y="5205">
    </LINKPOINT>
-   <LINKPOINT x="12555" y="5205">
+   <LINKPOINT x="12585" y="5205">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="97" srcpinname="Y Output Value" dstnodeid="74" dstpinname="Target Count" linkstyle="Bezier">
-   <LINKPOINT x="480" y="5205">
+   <LINKPOINT x="510" y="5205">
    </LINKPOINT>
-   <LINKPOINT x="15105" y="5205">
+   <LINKPOINT x="15165" y="5205">
    </LINKPOINT>
    </LINK>
    <NODE systemname="I (Spreads)" nodename="I (Spreads)" componentmode="Hidden" id="101">
@@ -1047,15 +1047,15 @@
    <LINK srcnodeid="60" srcpinname="Output Node" dstnodeid="106" dstpinname="Layer In">
    </LINK>
    <LINK srcnodeid="106" srcpinname="Layer Out" dstnodeid="74" dstpinname="Layer" linkstyle="Bezier">
-   <LINKPOINT x="2745" y="6038">
+   <LINKPOINT x="2775" y="6038">
    </LINKPOINT>
-   <LINKPOINT x="15420" y="6038">
+   <LINKPOINT x="15480" y="6038">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="106" srcpinname="Layer Out" dstnodeid="73" dstpinname="Layer" linkstyle="Bezier">
-   <LINKPOINT x="2745" y="6038">
+   <LINKPOINT x="2760" y="6038">
    </LINKPOINT>
-   <LINKPOINT x="12870" y="6038">
+   <LINKPOINT x="12900" y="6038">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="106" srcpinname="Layer Out" dstnodeid="72" dstpinname="Layer" linkstyle="Bezier">
@@ -1139,15 +1139,15 @@
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="110" srcpinname="Y Output Value" dstnodeid="73" dstpinname="Enabled" hiddenwhenlocked="1" linkstyle="Bezier">
-   <LINKPOINT x="12975" y="5498">
+   <LINKPOINT x="12990" y="5498">
    </LINKPOINT>
-   <LINKPOINT x="14130" y="5498">
+   <LINKPOINT x="14160" y="5498">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="110" srcpinname="Y Output Value" dstnodeid="74" dstpinname="Enabled" hiddenwhenlocked="1" linkstyle="Bezier">
-   <LINKPOINT x="12990" y="5498">
+   <LINKPOINT x="13020" y="5498">
    </LINKPOINT>
-   <LINKPOINT x="16680" y="5498">
+   <LINKPOINT x="16740" y="5498">
    </LINKPOINT>
    </LINK>
    <NODE systemname="StencilView (DX11.Texture 2d)" filename="%VVVV%\packs\DX11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="StencilView (DX11.Texture 2d)" componentmode="Hidden" id="118">
@@ -1268,4 +1268,8 @@
    </LINK>
    <INFO author="microdee" description="naive fake cubemap MRT renderer" tags="">
    </INFO>
+   <PACK Name="vvvv-Message" Version="2.9.9">
+   </PACK>
+   <PACK Name="addonpack" Version="35.0.0">
+   </PACK>
    </PATCH>

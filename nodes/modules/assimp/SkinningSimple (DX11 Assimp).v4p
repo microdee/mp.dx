@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.103.dtd" >
-   <PATCH nodename="F:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\assimp\SkinningSimple (DX11 Assimp).v4p" systemname="SkinningSimple (DX11 Assimp)" filename="D:\vvvv\app\vvvv_45alpha31.7_x86\packs\Emeshe\nodes\Modules\SkinningSimple (DX11 Assimp).v4p" scrollx="0" scrolly="720">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.9.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\assimp\SkinningSimple (DX11 Assimp).v4p" systemname="SkinningSimple (DX11 Assimp)" filename="D:\vvvv\app\vvvv_45alpha31.7_x86\packs\Emeshe\nodes\Modules\SkinningSimple (DX11 Assimp).v4p" scrollx="0" scrolly="720">
    <BOUNDS type="Window" left="2340" top="1500" width="12255" height="9495">
    </BOUNDS>
    <PACK Name="testPack" Version="0.1.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.101.0">
+   <PACK Name="addonpack" Version="35.9.0">
    </PACK>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
@@ -484,4 +484,6 @@
    </NODE>
    <LINK srcnodeid="38" srcpinname="Output Strides" dstnodeid="58" dstpinname="Y Input Value">
    </LINK>
+   <PACK Name="vvvv-Message" Version="2.9.9">
+   </PACK>
    </PATCH>

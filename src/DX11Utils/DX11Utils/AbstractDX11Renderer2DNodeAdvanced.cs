@@ -24,7 +24,7 @@ using FeralTic.DX11.Queries;
 using FeralTic.DX11;
 using FeralTic.DX11.Resources;
 
-namespace VVVV.DX11
+namespace mp.dx.dx11
 {
     public abstract class AbstractDX11Renderer2DNodeAdvanced : IDX11RendererHost, IPluginEvaluate, IDisposable, IDX11Queryable
     {

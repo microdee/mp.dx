@@ -20,9 +20,10 @@ using VVVV.DX11.Internals.Effects;
 using VVVV.PluginInterfaces.V2;
 using VVVV.PluginInterfaces.V1;
 using VVVV.Core.Logging;
+using VVVV.DX11;
 
 
-namespace VVVV.DX11.Nodes
+namespace mp.dx.dx11.Nodes
 {
     #region PluginInfo
     [PluginInfo(

@@ -2,9 +2,11 @@
 using SlimDX.Direct3D11;
 using SlimDX.DXGI;
 using System;
+using FeralTic.DX11;
+using FeralTic.DX11.Resources;
 using VVVV.DX11.Lib.Rendering;
 
-namespace FeralTic.DX11.Resources
+namespace mp.dx.dx11.Resources
 {
     public class DX11RWTextureArray2D : DX11TextureArray2D, IDX11RWResource
     {

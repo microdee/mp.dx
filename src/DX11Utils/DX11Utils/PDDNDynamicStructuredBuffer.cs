@@ -16,7 +16,7 @@ using VVVV.PluginInterfaces.V1;
 using VVVV.PluginInterfaces.V2;
 using VVVV.Utils.VMath;
 
-namespace DX11Utils
+namespace mp.dx.dx11.Nodes
 {
     [PluginInfo(
         Name = "DynamicBuffer",

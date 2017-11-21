@@ -10,11 +10,12 @@ using VVVV.PluginInterfaces.V1;
 using FeralTic.DX11;
 using FeralTic.DX11.Resources;
 using SlimDX.Direct3D11;
+using VVVV.DX11;
 using VVVV.DX11.Lib.Rendering;
 using Buffer = SlimDX.Direct3D11.Buffer;
 
 
-namespace VVVV.DX11.Nodes
+namespace mp.dx.dx11.Nodes
 {
     [PluginInfo(Name = "CopyCounter", Category = "DX11.Layer", Version = "", Author = "microdee")]
     public class DX11LayerCopyCounterNode : IPluginEvaluate, IDX11LayerHost, IDX11UpdateBlocker

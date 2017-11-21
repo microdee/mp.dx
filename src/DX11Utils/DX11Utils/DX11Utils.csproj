@@ -104,6 +104,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Reactive.Core">
       <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\System.Reactive.Core.dll</HintPath>
       <Private>False</Private>
@@ -124,6 +125,7 @@
       <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\System.Reflection.Context.CodePlex.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -141,6 +143,9 @@
     <Reference Include="VVVV.DX11.Lib">
       <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\VVVV.DX11.Lib.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="VVVV.DX11.Nodes">
+      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll</HintPath>
     </Reference>
     <Reference Include="VVVV.Hosting">
       <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\VVVV.Hosting.dll</HintPath>
@@ -183,6 +188,7 @@
     <Compile Include="RWTextureArray2D.cs" />
     <Compile Include="StringShaderNode.cs" />
     <Compile Include="TempTargetAndArray.cs" />
+    <Compile Include="TransparentRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

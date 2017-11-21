@@ -16,7 +16,7 @@ using FeralTic.DX11;
 using VVVV.DX11;
 using VVVV.DX11.Lib.Rendering;
 
-namespace VVVV.DX11.Nodes
+namespace mp.dx.dx11.Nodes
 {
     [PluginInfo(Name = "Renderer", Category = "DX11", Version = "MultiStructuredBuffer", Author = "microdee", AutoEvaluate = false)]
     public class DX11MultiStructuredBufferRendererNode : IPluginEvaluate, IDX11RendererHost, IDisposable, IDX11Queryable

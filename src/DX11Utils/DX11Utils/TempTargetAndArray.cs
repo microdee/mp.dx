@@ -11,15 +11,14 @@ using VVVV.DX11.Lib.Rendering;
 
 using FeralTic.DX11;
 using FeralTic.DX11.Resources;
+using mp.dx.dx11.Resources;
 using SlimDX.Direct3D11;
+using VVVV.DX11;
 using VVVV.Utils.VColor;
 
 
-namespace VVVV.DX11
+namespace mp.dx.dx11.Nodes
 {
-
-
-
     [PluginInfo(Name = "TemptargetAndArray", Category = "DX11", Author = "vux,tonfilm,microdee", AutoEvaluate = false)]
     public class DX11TempRTRendererNode : AbstractDX11Renderer2DNodeAdvanced
     {
@@ -207,15 +206,8 @@ namespace VVVV.DX11
 
                     this.FOutBuffers[0][context] = temptarget;
                     this.FOutAABuffers[0][context] = temptarget;
-
                 }
-
-
-
             }
-
-
-
         }
         #endregion
 

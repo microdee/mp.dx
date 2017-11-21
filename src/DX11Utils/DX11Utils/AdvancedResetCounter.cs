@@ -9,9 +9,10 @@ using VVVV.PluginInterfaces.V1;
 
 using FeralTic.DX11;
 using SlimDX.Direct3D11;
+using VVVV.DX11;
 using VVVV.DX11.Lib.Rendering;
 
-namespace VVVV.DX11.Nodes
+namespace mp.dx.dx11.Nodes
 {
     [PluginInfo(Name = "ResetCounter", Category = "DX11.Layer", Version = "Advanced", Author = "microdee")]
     public class DX11AdvancedResetCounterNode : IPluginEvaluate, IDX11LayerHost

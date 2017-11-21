@@ -7,7 +7,7 @@ using FeralTic.DX11.Resources;
 using VVVV.DX11;
 using VVVV.Packs.Messaging;
 
-namespace VVVV.Nodes
+namespace mp.dx.dx11
 {
     class DX11Types : TypeProfile
     {

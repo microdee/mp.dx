@@ -11,10 +11,11 @@ using FeralTic.DX11;
 using FeralTic.DX11.Resources;
 using FeralTic.Resources.Geometry;
 using SlimDX.Direct3D11;
+using VVVV.DX11;
 using VVVV.DX11.Lib.Rendering;
 
 
-namespace VVVV.DX11.Nodes
+namespace mp.dx.dx11.Nodes
 {
     public enum DispatchIndirectMode
     {

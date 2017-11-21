@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.9.dtd" >
-   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\geometry\EmesheInputElements (DX11 MRE).v4p" systemname="EmesheInpuElements (DX11 MRE)" filename="C:\vvvv\libs\mcropack\nodes\Modules\EmesheInpuElements (DX11 MRE).v4p" scrollx="0" scrolly="15">
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\geometry\EmesheInputElements (DX11 MRE).v4p" systemname="EmesheInpuElements (DX11 MRE)" filename="C:\vvvv\libs\mcropack\nodes\Modules\EmesheInpuElements (DX11 MRE).v4p" scrollx="1365" scrolly="0">
    <BOUNDS type="Window" left="14625" top="1410" width="10950" height="10020">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -374,6 +374,10 @@
    <PIN pinname="Y Output Value" visible="1">
    </PIN>
    <PIN pinname="Changed" visible="1" pintype="Output">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="1" values="0">
    </PIN>
    </NODE>
    <NODE systemname="Select (String)" filename="" nodename="Select (String)" componentmode="Hidden" id="36">

@@ -1,12 +1,12 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
-   <PATCH nodename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\CalibratePlaneRenderer.v4p" systemname="CalibratePlaneRenderer" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\CalibratePlaneRenderer.v4p" scrollx="300" scrolly="0">
-   <BOUNDS type="Window" left="18840" top="6780" width="9000" height="6000">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.9.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\Kinect2\CalibratePlaneRenderer.v4p" systemname="CalibratePlaneRenderer" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\CalibratePlaneRenderer.v4p" scrollx="300" scrolly="-360">
+   <BOUNDS type="Window" left="9435" top="-11130" width="9000" height="6000">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.1.0">
+   <PACK Name="addonpack" Version="35.9.0">
    </PACK>
-   <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="Hidden" id="10" border="1">
+   <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="10" border="1">
    <BOUNDS type="Node" left="1395" top="4425" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="1395" top="4425" width="6000" height="4500">
@@ -34,32 +34,6 @@
    <PIN pinname="Enabled" slicecount="1" values="1">
    </PIN>
    </NODE>
-   <NODE systemname="Camera (Transform VOOCAM)" filename="..\..\..\..\mp.voocam\nodes\modules\Camera (Transform VOOCAM).v4p" nodename="Camera (Transform VOOCAM)" componentmode="Hidden" id="9">
-   <BOUNDS type="Node" left="3150" top="2055" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="View" visible="1">
-   </PIN>
-   <PIN pinname="Projection" visible="1">
-   </PIN>
-   <PIN pinname="Mouse" visible="1">
-   </PIN>
-   <PIN pinname="Keyboard" visible="1">
-   </PIN>
-   <PIN pinname="PivotDistance" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Camera Out" visible="1">
-   </PIN>
-   <PIN pinname="Rotate XYZ" slicecount="3" visible="1" values="0,0,0">
-   </PIN>
-   <PIN pinname="TranslationXYZ" visible="1">
-   </PIN>
-   <PIN pinname="Near" slicecount="1" values="0.1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="10" srcpinname="Mouse State" dstnodeid="9" dstpinname="Mouse">
-   </LINK>
-   <LINK srcnodeid="10" srcpinname="Keyboard State" dstnodeid="9" dstpinname="Keyboard">
-   </LINK>
    <NODE systemname="ComponentMode (VVVV alias)" filename="..\..\..\..\mp.essentials\nodes\modules\vvvv\ComponentMode (VVVV alias).v4p" nodename="ComponentMode (VVVV alias)" componentmode="Hidden" id="8">
    <BOUNDS type="Node" left="2970" top="5760" width="100" height="100">
    </BOUNDS>
@@ -134,8 +108,6 @@
    <PIN pinname="Input 1" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <LINK srcnodeid="9" srcpinname="Projection" dstnodeid="3" dstpinname="Input 2">
-   </LINK>
    <LINK srcnodeid="3" srcpinname="Output" dstnodeid="10" dstpinname="Projection">
    </LINK>
    <NODE systemname="Switch (Node Input)" nodename="Switch (Node Input)" componentmode="Hidden" id="2">
@@ -148,45 +120,7 @@
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="9" srcpinname="View" dstnodeid="2" dstpinname="Input 2">
-   </LINK>
    <LINK srcnodeid="2" srcpinname="Output" dstnodeid="10" dstpinname="View">
-   </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="1" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="3255" top="645" width="795" height="720">
-   </BOUNDS>
-   <BOUNDS type="Node" left="3255" top="645" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="3" visible="1" values="2.2,1.46,-2.8">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Vector Size" slicecount="1" values="3">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="3">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="1" srcpinname="Y Output Value" dstnodeid="9" dstpinname="TranslationXYZ">
-   </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="0" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="4350" top="525" width="795" height="720">
-   </BOUNDS>
-   <BOUNDS type="Node" left="4350" top="525" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="3" visible="1" values="0.02,-0.1,0">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Vector Size" slicecount="1" values="3">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="3">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="0" srcpinname="Y Output Value" dstnodeid="9" dstpinname="Rotate XYZ">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="11" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="1590" top="1605" width="795" height="240">
@@ -228,8 +162,6 @@
    <PIN pinname="Descriptive Name" slicecount="1" values="|Camera Out|">
    </PIN>
    </NODE>
-   <LINK srcnodeid="9" srcpinname="Camera Out" dstnodeid="14" dstpinname="Input Node">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="16" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="8010" top="2040" width="480" height="480">
    </BOUNDS>
@@ -292,4 +224,30 @@
    </LINK>
    <LINK srcnodeid="18" srcpinname="Y Output Value" dstnodeid="4" dstpinname="Switch">
    </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="19">
+   <BOUNDS type="Box" left="3090" top="1680" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3090" top="1680" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Cam View|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="19" srcpinname="Output Node" dstnodeid="2" dstpinname="Input 2">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="20">
+   <BOUNDS type="Box" left="4170" top="1665" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4170" top="1665" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Cam Projection|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="20" srcpinname="Output Node" dstnodeid="3" dstpinname="Input 2">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.9.9">
+   </PACK>
    </PATCH>

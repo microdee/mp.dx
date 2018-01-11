@@ -18,15 +18,9 @@
 #define INST_ROUGHMETALOFFS 0x0000FFFF
 #endif
 
-#if defined(__INTELLISENSE__)
-#include <../../../mp.fxh/bitwise.fxh>
-#include <../../../mp.fxh/ManualUVAddress.fxh>
-#include <../../../mp.fxh/VRotate.fxh>
-#else
-#include <packs/mp.fxh/bitwise.fxh>
-#include <packs/mp.fxh/ManualUVAddress.fxh>
-#include <packs/mp.fxh/VRotate.fxh>
-#endif
+#include <packs/mp.fxh/math/bitwise.fxh>
+#include <packs/mp.fxh/texture/manualUVAddress.fxh>
+#include <packs/mp.fxh/math/rotate.fxh>
 
 #if !defined(UVLAYER)
 #define UVLAYER TEXCOORD0

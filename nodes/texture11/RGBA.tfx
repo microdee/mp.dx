@@ -8,7 +8,7 @@ Texture2D TexArray[4] <string uiname="Spread";>;
 #define PASSFORMAT0 "R16G16B16A16_Float"
 #endif
 
-#include <packs/mp.fxh/ColorSpace.fxh>
+#include <packs/mp.fxh/math/colorSpace.fxh>
 
 SamplerState s0 <bool visible=false;string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
 float2 R:TARGETSIZE;

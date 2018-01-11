@@ -1,7 +1,7 @@
 Texture2D tex0: PREVIOUS;
 Texture2D<uint4> Tangent;
 
-#include <packs/mp.fxh/bitwise.fxh>
+#include <packs/mp.fxh/math/bitwise.fxh>
 
 
 cbuffer controls:register(b0){

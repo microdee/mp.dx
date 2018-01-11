@@ -28,28 +28,10 @@
  * SOFTWARE.
  */
 
-/*<vvvv quoteEscape="¤">
-    <defines>
-        <def
-            type="int"
-            default="2"
-            desc="0 warm, 1 cold, 2 light dependent"
-            >
-            ADAPTMODE
-        </def>
-        <def
-            type="enum:texformat"
-            default="¤R16G16B16A16_Float¤"
-            >
-            OUTFORMAT
-        </def>
-    </defines>
-</vvvv>*/
-
 #define ADAPTMODE_WARM 0
 #define ADAPTMODE_COLD 1
 #define ADAPTMODE_LIGHTDEPENDENT 2
-#if !defined(ADAPTMODE)
+#if !defined(ADAPTMODE) /// -type int -pin "-min 0 -max 2"
 #define ADAPTMODE ADAPTMODE_LIGHTDEPENDENT
 #endif
 
@@ -85,8 +67,8 @@ Texture2D lensDB2Tex : LENSDB2;
 Texture2D lensDOVTex : LENSDOV;
 Texture2D lensDUVTex : LENSDUV;
 
-sampler alInColor { Texture = alInTex; };
-sampler alOutColor { Texture = alOutTex; };
+sampler ReShade_BackBuffer { Texture = alInTex; };
+sampler ReShade_BackBuffer { Texture = alOutTex; };
 
 void PS_AL_DetectInt(float4 vpos : SV_Position, float2 texcoord : TEXCOORD, out float4 detectInt : SV_Target0)
 {
@@ -174,80 +156,80 @@ void PS_AL_HGB(float4 vpos : SV_Position, float2 texcoord : TEXCOORD, out float4
 	const float sampleOffsets[5] = { 0.0, 2.4347826, 4.3478260, 6.2608695, 8.1739130 };
 	const float sampleWeights[5] = { 0.16818994, 0.27276957, 0.111690125, 0.024067905, 0.0021112196 };
 
-	hgb = tex2D(alInColor, texcoord) * sampleWeights[0];
+	hgb = tex2D(ReShade_BackBuffer, texcoord) * sampleWeights[0];
 	hgb = float4(max(hgb.rgb - alThreshold, 0.0), hgb.a);
 	float step = 1.08 + (AL_t.x / 100) * 0.02;
 
 	[flatten]
 	if ((texcoord.x + sampleOffsets[1] * GEMFX_PIXEL_SIZE.x) < 1.05)
-		hgb += tex2D(alInColor, texcoord + float2(sampleOffsets[1] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[1] * step;
+		hgb += tex2D(ReShade_BackBuffer, texcoord + float2(sampleOffsets[1] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[1] * step;
 	[flatten]
 	if ((texcoord.x - sampleOffsets[1] * GEMFX_PIXEL_SIZE.x) > -0.05)
-		hgb += tex2D(alInColor, texcoord - float2(sampleOffsets[1] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[1] * step;
+		hgb += tex2D(ReShade_BackBuffer, texcoord - float2(sampleOffsets[1] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[1] * step;
 
 	[flatten]
 	if ((texcoord.x + sampleOffsets[2] * GEMFX_PIXEL_SIZE.x) < 1.05)
-		hgb += tex2D(alInColor, texcoord + float2(sampleOffsets[2] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[2] * step;
+		hgb += tex2D(ReShade_BackBuffer, texcoord + float2(sampleOffsets[2] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[2] * step;
 	[flatten]
 	if ((texcoord.x - sampleOffsets[2] * GEMFX_PIXEL_SIZE.x) > -0.05)
-		hgb += tex2D(alInColor, texcoord - float2(sampleOffsets[2] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[2] * step;
+		hgb += tex2D(ReShade_BackBuffer, texcoord - float2(sampleOffsets[2] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[2] * step;
 
 	[flatten]
 	if ((texcoord.x + sampleOffsets[3] * GEMFX_PIXEL_SIZE.x) < 1.05)
-		hgb += tex2D(alInColor, texcoord + float2(sampleOffsets[3] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[3] * step;
+		hgb += tex2D(ReShade_BackBuffer, texcoord + float2(sampleOffsets[3] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[3] * step;
 	[flatten]
 	if ((texcoord.x - sampleOffsets[3] * GEMFX_PIXEL_SIZE.x) > -0.05)
-		hgb += tex2D(alInColor, texcoord - float2(sampleOffsets[3] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[3] * step;
+		hgb += tex2D(ReShade_BackBuffer, texcoord - float2(sampleOffsets[3] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[3] * step;
 
 	[flatten]
 	if ((texcoord.x + sampleOffsets[4] * GEMFX_PIXEL_SIZE.x) < 1.05)
-		hgb += tex2D(alInColor, texcoord + float2(sampleOffsets[4] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[4] * step;
+		hgb += tex2D(ReShade_BackBuffer, texcoord + float2(sampleOffsets[4] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[4] * step;
 	[flatten]
 	if ((texcoord.x - sampleOffsets[4] * GEMFX_PIXEL_SIZE.x) > -0.05)
-		hgb += tex2D(alInColor, texcoord - float2(sampleOffsets[4] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[4] * step;
+		hgb += tex2D(ReShade_BackBuffer, texcoord - float2(sampleOffsets[4] * GEMFX_PIXEL_SIZE.x, 0.0)) * sampleWeights[4] * step;
 }
 void PS_AL_VGB(float4 vpos : SV_Position, float2 texcoord : TEXCOORD, out float4 vgb : SV_Target)
 {
 	const float sampleOffsets[5] = { 0.0, 2.4347826, 4.3478260, 6.2608695, 8.1739130 };
 	const float sampleWeights[5] = { 0.16818994, 0.27276957, 0.111690125, 0.024067905, 0.0021112196 };
 
-	vgb = tex2D(alOutColor, texcoord) * sampleWeights[0];
+	vgb = tex2D(ReShade_BackBuffer, texcoord) * sampleWeights[0];
 	vgb = float4(max(vgb.rgb - alThreshold, 0.0), vgb.a);
 	float step = 1.08 + (AL_t.x / 100) * 0.02;
 	
 	[flatten]
 	if ((texcoord.y + sampleOffsets[1] * GEMFX_PIXEL_SIZE.y) < 1.05)
-		vgb += tex2D(alOutColor, texcoord + float2(0.0, sampleOffsets[1] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[1] * step;
+		vgb += tex2D(ReShade_BackBuffer, texcoord + float2(0.0, sampleOffsets[1] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[1] * step;
 	[flatten]
 	if ((texcoord.y - sampleOffsets[1] * GEMFX_PIXEL_SIZE.y) > -0.05)
-		vgb += tex2D(alOutColor, texcoord - float2(0.0, sampleOffsets[1] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[1] * step;
+		vgb += tex2D(ReShade_BackBuffer, texcoord - float2(0.0, sampleOffsets[1] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[1] * step;
 	
 	[flatten]
 	if ((texcoord.y + sampleOffsets[2] * GEMFX_PIXEL_SIZE.y) < 1.05)
-		vgb += tex2D(alOutColor, texcoord + float2(0.0, sampleOffsets[2] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[2] * step;
+		vgb += tex2D(ReShade_BackBuffer, texcoord + float2(0.0, sampleOffsets[2] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[2] * step;
 	[flatten]
 	if ((texcoord.y - sampleOffsets[2] * GEMFX_PIXEL_SIZE.y) > -0.05)
-		vgb += tex2D(alOutColor, texcoord - float2(0.0, sampleOffsets[2] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[2] * step;
+		vgb += tex2D(ReShade_BackBuffer, texcoord - float2(0.0, sampleOffsets[2] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[2] * step;
 
 	[flatten]
 	if ((texcoord.y + sampleOffsets[3] * GEMFX_PIXEL_SIZE.y) < 1.05)
-		vgb += tex2D(alOutColor, texcoord + float2(0.0, sampleOffsets[3] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[3] * step;
+		vgb += tex2D(ReShade_BackBuffer, texcoord + float2(0.0, sampleOffsets[3] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[3] * step;
 	[flatten]
 	if ((texcoord.y - sampleOffsets[3] * GEMFX_PIXEL_SIZE.y) > -0.05)
-		vgb += tex2D(alOutColor, texcoord - float2(0.0, sampleOffsets[3] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[3] * step;
+		vgb += tex2D(ReShade_BackBuffer, texcoord - float2(0.0, sampleOffsets[3] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[3] * step;
 
 	[flatten]
 	if ((texcoord.y + sampleOffsets[4] * GEMFX_PIXEL_SIZE.y) < 1.05)
-		vgb += tex2D(alOutColor, texcoord + float2(0.0, sampleOffsets[4] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[4] * step;
+		vgb += tex2D(ReShade_BackBuffer, texcoord + float2(0.0, sampleOffsets[4] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[4] * step;
 	[flatten]
 	if ((texcoord.y - sampleOffsets[4] * GEMFX_PIXEL_SIZE.y) > -0.05)
-		vgb += tex2D(alOutColor, texcoord - float2(0.0, sampleOffsets[4] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[4] * step;
+		vgb += tex2D(ReShade_BackBuffer, texcoord - float2(0.0, sampleOffsets[4] * GEMFX_PIXEL_SIZE.y)) * sampleWeights[4] * step;
 }
 
 float4 PS_AL_Magic(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
 {
-	float4 base = tex2D(ReShade::BackBuffer, texcoord);
-	float4 high = tex2D(alInColor, texcoord);
+	float4 base = tex2D(ReShade_Initial, texcoord);
+	float4 high = tex2D(ReShade_BackBuffer, texcoord);
 	float adapt = 0;
 
 #if __RENDERER__ < 0xa000 && !__RESHADE_PERFORMANCE_MODE__
@@ -280,7 +262,7 @@ float4 PS_AL_Magic(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) : SV_T
 	float4 highOrig = high;
 
 	float2 flipcoord = 1.0f - texcoord;
-	float4 highFlipOrig = tex2D(alInColor, flipcoord);
+	float4 highFlipOrig = tex2D(ReShade_BackBuffer, flipcoord);
 	highFlipOrig = min(0.03f, highFlipOrig) * 1.15f;
 
 	float4 highFlip = highFlipOrig;

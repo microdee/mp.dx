@@ -7,12 +7,8 @@
 #define DISCSAMPLES 4
 #define DIFFENVSRC Environment
 
+#include <packs/mp.fxh/math/bitwise.fxh>
 
-#if defined(__INTELLISENSE__)
-#include <../../../mp.fxh/bitwise.fxh>
-#else
-#include <packs/mp.fxh/bitwise.fxh>
-#endif
 #if !defined(UVLAYER)
 #define UVLAYER TEXCOORD0
 #endif

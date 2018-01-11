@@ -10,9 +10,9 @@
 #define DISCSAMPLES 8
 #define DIFFENVSRC Environment
 
-#include <packs/mp.fxh/depthreconstruct.fxh>
-#include <packs/mp.fxh/DiscSample.fxh>
-#include <packs/mp.fxh/quaternion.fxh>
+#include <packs/mp.fxh/texture/depthreconstruct.fxh>
+#include <packs/mp.fxh/texture/discSample.fxh>
+#include <packs/mp.fxh/math/quaternion.fxh>
 
 Texture2D Albedo : PREVIOUS;
 //rgb: normal, a: matid

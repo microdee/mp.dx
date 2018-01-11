@@ -25,24 +25,9 @@
 // Adaptive sharpen - version 2016-09-24 - (requires ps >= 3.0)
 // Tuned for use post resize, EXPECTS FULL RANGE GAMMA LIGHT
 
-/*<vvvv quoteEscape="¤">
-    <defines>
-        <def
-            type="enum:texformat"
-            default="¤R8G8B8A8_UNorm¤"
-            >
-            OUTFORMAT
-        </def>
-    </defines>
-</vvvv>*/
+#include <packs/mp.fxh/math/pows.fxh>
 
-#if defined(__INTELLISENSE__)
-#include <../../../../mp.fxh/pows.fxh>
-#else
-#include <packs/mp.fxh/pows.fxh>
-#endif
-
-#if !defined(OUTFORMAT)
+#if !defined(OUTFORMAT) /// -type string
 #define OUTFORMAT "R8G8B8A8_UNorm"
 #endif
 
@@ -140,7 +125,7 @@ float2 AdaptiveSharpenP0(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) 
 
 float3 AdaptiveSharpenP1(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
 {
-    float4 origa = ReShade_BackBuffer.SampleLevel(ReShade_sL, texcoord, 0);
+    float4 origa = ReShade_Initial.SampleLevel(ReShade_sL, texcoord, 0);
 	float3 orig    = origa.rgb;
 	float3 satorig = saturate(orig);
 
@@ -326,11 +311,11 @@ float3 AdaptiveSharpenP1(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) 
 
 technique11 AdaptiveSharpen
 {
+	
     pass AdaptiveSharpenPass1 <string format="R16G16_Float";>
     {
         SetPixelShader(CompileShader(ps_4_0, AdaptiveSharpenP0()));
 	}
-
     pass AdaptiveSharpenPass2 <string format=OUTFORMAT;>
     {
         SetPixelShader(CompileShader(ps_4_0, AdaptiveSharpenP1()));

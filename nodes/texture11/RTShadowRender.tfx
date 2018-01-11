@@ -3,8 +3,8 @@
 //@tags: texture
 //@credits: 
 
-#include <packs/mp.fxh/depthreconstruct.fxh>
-#include <packs/mp.fxh/intersections.fxh>
+#include <packs/mp.fxh/texture/depthreconstruct.fxh>
+#include <packs/mp.fxh/math/intersections.fxh>
 
 #if !defined(TRIPERPIXEL) /// -type int -pin "-min 2 -max 16"
 #define TRIPERPIXEL 8

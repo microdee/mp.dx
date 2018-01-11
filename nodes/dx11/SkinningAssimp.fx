@@ -13,7 +13,7 @@
 #define STREAMOUTLAYOUT "POSITION.xyz;NORMAL.xyz;BLENDINDICES.xyzw;BLENDWEIGHT.xyzw;SUBSETID.x;INSTANCEID.x;MATERIALID.x"
 #endif
 
-#include <packs/mp.fxh/geomfx.mdlayout.fxh>
+#include <packs/mp.fxh/mdp/geom.layout.fxh>
 
 StructuredBuffer<float4x4> InstanceTr;
 StructuredBuffer<float4x4> SkinningMatrices;

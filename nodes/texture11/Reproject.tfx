@@ -2,7 +2,7 @@ Texture2D tex0: PREVIOUS;
 Texture2D<float> depth <string uiname="Depth";>;
 Texture2D<float> pdepth <string uiname="Previous Depth";>;
 Texture2D feed <string uiname="Feedback Texture";>;
-#include <packs/mp.fxh/depthreconstruct.fxh>
+#include <packs/mp.fxh/texture/depthReconstruct.fxh>
 
 SamplerState s0 <string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
 float2 R:TARGETSIZE;

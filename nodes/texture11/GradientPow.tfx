@@ -4,7 +4,7 @@
 //@credits:
 
 float2 R:TARGETSIZE;
-#include <packs/mp.fxh/noise.fxh>
+#include <packs/mp.fxh/math/noise.fxh>
 
 #if !defined(OUTFORMAT) /// -type string
 #define OUTFORMAT "R16G16B16A16_Float"

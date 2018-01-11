@@ -1,7 +1,7 @@
 Texture2D tex0: PREVIOUS;
 Texture2D tex1 <string uiname="Control";>;
 
-#include <packs/mp.fxh/pows.fxh>
+#include <packs/mp.fxh/math/pows.fxh>
 
 float2 R:TARGETSIZE;
 

@@ -34,12 +34,12 @@ struct MatData /// strides 60
 #define BRDF_PARAM_Disney_clearcoat mat.Clearcoat
 #define BRDF_PARAM_Disney_clearcoatGloss mat.CCGloss
 
-#include <packs/mp.fxh/brdf.fxh>
-#include <packs/mp.fxh/AnisotropicEnvSample.fxh>
-#include <packs/mp.fxh/quaternion.fxh>
-#include <packs/mp.fxh/ByteAddressBufferUtils.fxh>
-#include <packs/mp.fxh/forwardplus.fxh>
-#include <packs/mp.fxh/mdpipeline.fxh>
+#include <packs/mp.fxh/brdf/brdf.fxh>
+#include <packs/mp.fxh/brdf/anisotropicEnvSample.fxh>
+#include <packs/mp.fxh/math/quaternion.fxh>
+#include <packs/mp.fxh/cs/byteAddressBuffer.fxh>
+#include <packs/mp.fxh/brdf/forwardplus.fxh>
+#include <packs/mp.fxh/mdp/mdp.fxh>
 
 //#define DO_VELOCITY 1
 

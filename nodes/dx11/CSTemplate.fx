@@ -1,5 +1,5 @@
 
-#include <packs/mp.fxh/CSThreadDefines.fxh>
+#include <packs/mp.fxh/cs/csThreadDefines.fxh>
 
 RWByteAddressBuffer Outbuf : BACKBUFFER;
 

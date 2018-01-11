@@ -21,7 +21,7 @@ cbuffer cbuf : register(b0)
 
 float4 VibrancePass(float4 position : SV_Position, float2 texcoord : TexCoord) : SV_Target
 {
-    float4 colori = ReShade::BackBuffer.SampleLevel(ReShade::sL, texcoord, 0);
+    float4 colori = ReShade_BackBuffer.SampleLevel(ReShade_sL, texcoord, 0);
     float3 color = colori.rgb;
   
 	const float3 coefLuma = float3(0.212656, 0.715158, 0.072186);

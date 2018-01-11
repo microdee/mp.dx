@@ -1,0 +1,139 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.8.dtd" >
+   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\texture11\ReShade\AdaptiveSharpen (DX11.TextureFX) help.v4p" scrollx="0" scrolly="30">
+   <BOUNDS type="Window" left="3900" top="990" width="14790" height="11190">
+   </BOUNDS>
+   <NODE systemname="Assets (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\modules\Assets (DX11.Texture 2d).v4p" nodename="Assets (DX11.Texture 2d)" componentmode="Hidden" id="4">
+   <BOUNDS type="Node" left="4455" top="705" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Index" slicecount="1" values="18">
+   </PIN>
+   </NODE>
+   <NODE systemname="Preview (DX11.Texture)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Preview (DX11.Texture)" componentmode="InABox" id="5">
+   <BOUNDS type="Node" left="5790" top="930" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5790" top="930" width="5415" height="4080">
+   </BOUNDS>
+   <BOUNDS type="Window" left="600" top="495" width="6240" height="5085">
+   </BOUNDS>
+   <PIN pinname="Texture In" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="4" srcpinname="Output" dstnodeid="5" dstpinname="Texture In">
+   </LINK>
+   <NODE systemname="Preview (DX11.Texture)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Preview (DX11.Texture)" componentmode="InABox" id="7">
+   <BOUNDS type="Node" left="5805" top="5205" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5805" top="5205" width="6000" height="4500">
+   </BOUNDS>
+   <BOUNDS type="Window" left="12270" top="7200" width="6240" height="5085">
+   </BOUNDS>
+   <PIN pinname="Texture In" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="8">
+   <BOUNDS type="Box" left="1260" top="2385" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1260" top="2385" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="9">
+   <BOUNDS type="Box" left="2340" top="2235" width="795" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2340" top="2235" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="512,512">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="10">
+   <BOUNDS type="Box" left="3015" top="2940" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3015" top="2940" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="12">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <NODE nodename="AdaptiveSharpen (DX11.TextureFX)" componentmode="Hidden" id="11">
+   <BOUNDS type="Node" left="1950" top="3525" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1950" top="3525" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Enabled" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Shader Path" visible="1" pintype="Output">
+   </PIN>
+   <PIN pinname="Defines" visible="1" pintype="Input" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Max light overshoot before compression" slicecount="1" values="0.21">
+   </PIN>
+   <PIN pinname="Light compression Low" slicecount="1" values="0.67">
+   </PIN>
+   <PIN pinname="Light compression High" slicecount="1" values="0.95">
+   </PIN>
+   <PIN pinname="Max dark overshoot before compression" slicecount="1" values="0.11">
+   </PIN>
+   <PIN pinname="Dark compression Low" slicecount="1" values="1.16">
+   </PIN>
+   <PIN pinname="Dark compression High" slicecount="1" values="1.11">
+   </PIN>
+   <PIN pinname="Abs max change before compression" slicecount="1" values="0.100000001490116">
+   </PIN>
+   <PIN pinname="Power mean p-value" slicecount="1" values="0.67">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="4" srcpinname="Output" dstnodeid="11" dstpinname="Texture In">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Texture Out" dstnodeid="7" dstpinname="Texture In">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="11" dstpinname="Use Default Size">
+   </LINK>
+   <LINK srcnodeid="9" srcpinname="Y Output Value" dstnodeid="11" dstpinname="Default SizeXY">
+   </LINK>
+   <LINK srcnodeid="10" srcpinname="Y Output Value" dstnodeid="11" dstpinname="Sharpening strength">
+   </LINK>
+   <NODE systemname="PreprocessorOptions (File)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="PreprocessorOptions (File)" componentmode="Hidden" id="12">
+   <BOUNDS type="Node" left="4050" top="2700" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4050" top="2700" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Shader Path" visible="1">
+   </PIN>
+   <PIN pinname="Shader Path Config" slicecount="1" values="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\texture11\ReShade\AdaptiveSharpen.tfx">
+   </PIN>
+   <PIN pinname="Defines" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="Shader Path" dstnodeid="12" dstpinname="Shader Path">
+   </LINK>
+   <LINK srcnodeid="12" srcpinname="Defines" dstnodeid="11" dstpinname="Defines">
+   </LINK>
+   <PACK Name="vvvv-Message" Version="2.9.9">
+   </PACK>
+   <PACK Name="addonpack" Version="35.0.0">
+   </PACK>
+   </PATCH>

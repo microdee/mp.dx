@@ -21,7 +21,7 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NVHybridFrustumTracedShadows.h">
+    <ClInclude Include="FaceTracker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClCompile Include="Stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NVHybridFrustumTracedShadows.cpp">
+    <ClCompile Include="FaceTracker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

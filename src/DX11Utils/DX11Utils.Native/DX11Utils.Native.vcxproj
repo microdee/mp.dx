@@ -136,74 +136,34 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Reference Include="FeralTic">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\FeralTic.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet.Core">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\NuGet.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGetAssemblyLoader">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\NuGetAssemblyLoader.dll</HintPath>
+      <HintPath>..\dependencies\x64\FeralTic.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\SharpDX.dll</HintPath>
+      <HintPath>..\dependencies\x64\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct3D11">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\SharpDX.Direct3D11.dll</HintPath>
+      <HintPath>..\dependencies\x64\SharpDX.Direct3D11.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.DXGI">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\SharpDX.DXGI.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Mathematics">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\SharpDX.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="SlimDX">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\SlimDX.dll</HintPath>
+      <HintPath>..\dependencies\x64\SharpDX.DXGI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition.CodePlex">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\System.ComponentModel.Composition.CodePlex.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Reflection.Context.CodePlex">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\System.Reflection.Context.CodePlex.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="VVVV.Core">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\VVVV.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="VVVV.DX11.Core">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\VVVV.DX11.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="VVVV.DX11.Lib">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\packs\dx11\core\VVVV.DX11.Lib.dll</HintPath>
-    </Reference>
-    <Reference Include="VVVV.Hosting">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\VVVV.Hosting.dll</HintPath>
-    </Reference>
-    <Reference Include="VVVV.Nodes.Generic">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\VVVV.Nodes.Generic.dll</HintPath>
-    </Reference>
-    <Reference Include="VVVV.PluginInterfaces">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\VVVV.PluginInterfaces.dll</HintPath>
-    </Reference>
     <Reference Include="VVVV.Utils">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\VVVV.Utils.dll</HintPath>
-    </Reference>
-    <Reference Include="VVVV.Utils3rdParty">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\VVVV.Utils3rdParty.dll</HintPath>
-    </Reference>
-    <Reference Include="VVVV.UtilsIL">
-      <HintPath>..\..\..\..\..\..\..\app\vvvv-vpm\lib\core\VVVV.UtilsIL.dll</HintPath>
+      <HintPath>..\packages\VVVV.Utils.35.12.0-develop-3280\lib\net46\VVVV.Utils.dll</HintPath>
+      <Private>false</Private>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NVHybridFrustumTracedShadows.h" />
+    <ClInclude Include="FaceTracker.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="NVHybridFrustumTracedShadows.cpp" />
+    <ClCompile Include="FaceTracker.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

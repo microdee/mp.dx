@@ -1,13 +1,13 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.6.dtd" >
-   <PATCH nodename="C:\vvvv_system\app\vvvv-vpm\packs\mp.dx\nodes\modules\directwrite\TextBackground (Transform DirectWrite).v4p" systemname="TextBackground (Transform DirectWrite)" filename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\nodes\modules\directwrite\TextBackground (Transform DirectWrite).v4p" scrollx="30" scrolly="0">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.11.dtd" >
+   <PATCH nodename="D:\local\DI-DVAG-MultitouchWand\v2\DVAG-MultitouchWand-2\vvvv\vvvv_50alpha35.11_x64\packs\mp.dx\nodes\modules\directwrite\TextBackground (Transform DirectWrite).v4p" systemname="TextBackground (Transform DirectWrite)" filename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\nodes\modules\directwrite\TextBackground (Transform DirectWrite).v4p" scrollx="0" scrolly="690">
    <BOUNDS type="Window" left="19740" top="-8430" width="9000" height="6000">
    </BOUNDS>
-   <PACK Name="vvvv-Message" Version="2.9.6">
+   <PACK Name="vvvv-Message" Version="2.9.10">
    </PACK>
-   <PACK Name="addonpack" Version="35.0.0">
+   <PACK Name="addonpack" Version="35.9.0">
    </PACK>
    <NODE systemname="Transform (Transform 2d)" nodename="Transform (Transform 2d)" componentmode="Hidden" id="2">
-   <BOUNDS type="Node" left="1530" top="4005" width="100" height="100">
+   <BOUNDS type="Node" left="1530" top="5055" width="100" height="100">
    </BOUNDS>
    <PIN pinname="TranslateX" visible="1">
    </PIN>
@@ -41,7 +41,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Subtract (Value)" nodename="Subtract (Value)" componentmode="Hidden" id="0">
-   <BOUNDS type="Node" left="1845" top="3165" width="100" height="100">
+   <BOUNDS type="Node" left="1965" top="4275" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 2" visible="1">
    </PIN>
@@ -75,9 +75,9 @@
    <LINK srcnodeid="4" srcpinname="Output Node" dstnodeid="2" dstpinname="Transform In">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="5">
-   <BOUNDS type="Box" left="1530" top="4740" width="795" height="240">
+   <BOUNDS type="Box" left="1530" top="5790" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="1530" top="4740" width="0" height="0">
+   <BOUNDS type="Node" left="1530" top="5790" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Transform Out|">
    </PIN>
@@ -85,7 +85,7 @@
    <LINK srcnodeid="2" srcpinname="Transform Out" dstnodeid="5" dstpinname="Input Node">
    </LINK>
    <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="6">
-   <BOUNDS type="Node" left="2295" top="3180" width="100" height="100">
+   <BOUNDS type="Node" left="2415" top="4275" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -99,7 +99,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="3645" top="780" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="3">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -112,10 +112,8 @@
    <PIN pinname="Value Type" slicecount="1" values="Integer">
    </PIN>
    </NODE>
-   <LINK srcnodeid="7" srcpinname="Y Output Value" dstnodeid="6" dstpinname="Input 2">
-   </LINK>
    <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="8">
-   <BOUNDS type="Node" left="3300" top="2280" width="100" height="100">
+   <BOUNDS type="Node" left="2940" top="4275" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -124,8 +122,6 @@
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="7" srcpinname="Y Output Value" dstnodeid="8" dstpinname="Input 2">
-   </LINK>
    <LINK srcnodeid="1" srcpinname="Height" dstnodeid="8" dstpinname="Input 1">
    </LINK>
    <NODE systemname="Subtract (Value)" nodename="Subtract (Value)" componentmode="Hidden" id="10">
@@ -139,7 +135,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Subtract (Value)" nodename="Subtract (Value)" componentmode="Hidden" id="9">
-   <BOUNDS type="Node" left="1980" top="2505" width="100" height="100">
+   <BOUNDS type="Node" left="1980" top="2490" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -153,7 +149,7 @@
    <LINK srcnodeid="1" srcpinname="Top" dstnodeid="9" dstpinname="Input 1">
    </LINK>
    <NODE systemname="Divide (Value)" nodename="Divide (Value)" componentmode="Hidden" id="11">
-   <BOUNDS type="Node" left="3930" top="1515" width="100" height="100">
+   <BOUNDS type="Node" left="3630" top="1410" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -164,18 +160,12 @@
    </NODE>
    <LINK srcnodeid="7" srcpinname="Y Output Value" dstnodeid="11" dstpinname="Input">
    </LINK>
-   <LINK srcnodeid="11" srcpinname="Output" dstnodeid="10" dstpinname="Input 2">
-   </LINK>
-   <LINK srcnodeid="11" srcpinname="Output" dstnodeid="9" dstpinname="Input 2">
-   </LINK>
    <LINK srcnodeid="9" srcpinname="Output" dstnodeid="0" dstpinname="Input 2">
-   </LINK>
-   <LINK srcnodeid="10" srcpinname="Output" dstnodeid="2" dstpinname="TranslateX">
    </LINK>
    <LINK srcnodeid="8" srcpinname="Output" dstnodeid="2" dstpinname="ScaleY">
    </LINK>
    <NODE systemname="Max (Value)" nodename="Max (Value)" componentmode="Hidden" id="12">
-   <BOUNDS type="Node" left="2415" top="2520" width="100" height="100">
+   <BOUNDS type="Node" left="2415" top="2490" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -199,6 +189,8 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Minimum Width|">
    </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="13" srcpinname="Y Output Value" dstnodeid="12" dstpinname="Input 2">
    </LINK>
@@ -207,5 +199,89 @@
    <LINK srcnodeid="1" srcpinname="Width" dstnodeid="12" dstpinname="Input 1">
    </LINK>
    <LINK srcnodeid="12" srcpinname="Output" dstnodeid="6" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="Vector (2d Split)" nodename="Vector (2d Split)" componentmode="Hidden" id="14">
+   <BOUNDS type="Node" left="4545" top="1890" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="XY" visible="1">
+   </PIN>
+   <PIN pinname="X" visible="1">
+   </PIN>
+   <PIN pinname="Y" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="7" srcpinname="Y Output Value" dstnodeid="14" dstpinname="XY">
+   </LINK>
+   <NODE systemname="Vector (2d Split)" nodename="Vector (2d Split)" componentmode="Hidden" id="15">
+   <BOUNDS type="Node" left="3615" top="1860" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="XY" visible="1" slicecount="2" values="0,0">
+   </PIN>
+   <PIN pinname="X" visible="1">
+   </PIN>
+   <PIN pinname="Y" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="Output" dstnodeid="15" dstpinname="XY">
+   </LINK>
+   <LINK srcnodeid="15" srcpinname="X" dstnodeid="10" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="15" srcpinname="Y" dstnodeid="9" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="14" srcpinname="X" dstnodeid="6" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="14" srcpinname="Y" dstnodeid="8" dstpinname="Input 2">
+   </LINK>
+   <NODE systemname="Subtract (Value)" nodename="Subtract (Value)" componentmode="Hidden" id="20">
+   <BOUNDS type="Node" left="3180" top="2640" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Max (Value)" nodename="Max (Value)" componentmode="Hidden" id="21">
+   <BOUNDS type="Node" left="3180" top="3075" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="20" srcpinname="Output" dstnodeid="21" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="1" srcpinname="Width" dstnodeid="20" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="13" srcpinname="Y Output Value" dstnodeid="20" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="Subtract (Value)" nodename="Subtract (Value)" componentmode="Hidden" id="22">
+   <BOUNDS type="Node" left="1560" top="4275" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Divide (Value)" nodename="Divide (Value)" componentmode="Hidden" id="23">
+   <BOUNDS type="Node" left="3180" top="3525" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 2" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="21" srcpinname="Output" dstnodeid="23" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="23" srcpinname="Output" dstnodeid="22" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="10" srcpinname="Output" dstnodeid="22" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="22" srcpinname="Output" dstnodeid="2" dstpinname="TranslateX">
    </LINK>
    </PATCH>

@@ -11,7 +11,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #include "ReShade.fxh"
-#include <packs/mp.fxh/VRotate.fxh>
+//#include <packs/mp.fxh/math/rotate.fxh>
 
 #if defined(__INTELLISENSE__)
 #define MXAO_SMOOTHNORMALS

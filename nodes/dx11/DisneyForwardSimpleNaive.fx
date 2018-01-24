@@ -42,7 +42,7 @@ struct PointLight
 #define BRDF_PARAM_Disney_clearcoatGloss mat.CCGloss
 
 #include <packs/mp.fxh/brdf/brdf.fxh>
-#include <packs/mp.fxh/brdf/anisotropicEnvSample.fxh>
+#include <packs/mp.fxh/texture/anisotropicEnvSample.fxh>
 #include <packs/mp.fxh/math/quaternion.fxh>
 #include <packs/mp.fxh/cs/byteAddressBuffer.fxh>
 #include <packs/mp.fxh/mdp/mdp.fxh>
@@ -112,13 +112,8 @@ PSout PS(PSin input)
 	#endif
 	matdat.Rotate = rot;
 
-    #if defined(HAS_TANGENT)
 	float3 rtan = normalize(mul(float4(input.Tan, 0), qrot(aa2q(input.Norm, rot*2))).xyz);
 	float3 rbin = normalize(mul(float4(input.Bin, 0), qrot(aa2q(input.Norm, rot*2))).xyz);
-	#else
-	float3 rtan = float3(1,0,0);
-	float3 rbin = float3(0,1,0);
-	#endif
 
 	matdat.Rough = gRough * rmar.r * matdat.Rough;
 	matdat.Metal = gMetal * rmar.g * matdat.Metal;

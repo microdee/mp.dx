@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.1.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\texture\DX9ToDX11 (DX11.Texture2D OffscreenWindow).v4p" systemname="DX9ToDX11 (DX11.Texture2D OffscreenWindow)" filename="C:\vvvv\libs\mcropack\nodes\Modules\DX9ToDX11 (DX11.Texture2D OffscreenWindow).v4p" scrollx="0" scrolly="-360">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.11.dtd" >
+   <PATCH nodename="D:\local\DI-DVAG-MultitouchWand\v2\DVAG-MultitouchWand-2\vvvv\vvvv_50alpha35.11_x64\packs\mp.dx\nodes\modules\texture\DX9ToDX11 (DX11.Texture2D OffscreenWindow).v4p" systemname="DX9ToDX11 (DX11.Texture2D OffscreenWindow)" filename="C:\vvvv\libs\mcropack\nodes\Modules\DX9ToDX11 (DX11.Texture2D OffscreenWindow).v4p" scrollx="0" scrolly="-360">
    <BOUNDS type="Window" left="8745" top="2760" width="9000" height="10290">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="35.0.0">
+   <PACK Name="addonpack" Version="35.9.0">
    </PACK>
    <NODE systemname="Info (EX9.Texture)" nodename="Info (EX9.Texture)" componentmode="Hidden" id="3">
    <BOUNDS type="Node" left="1290" top="1260" width="100" height="100">
@@ -606,7 +606,7 @@
    </LINK>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
    </PACK>
-   <PACK Name="vvvv-Message" Version="2.9.0">
+   <PACK Name="vvvv-Message" Version="2.9.10">
    </PACK>
    <PACK Name="vvvv-ZeroMQ" Version="0.5.3">
    </PACK>

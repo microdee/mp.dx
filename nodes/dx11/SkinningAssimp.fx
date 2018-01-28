@@ -69,7 +69,7 @@ GSin VS(VSin input)
 	output.sid = SsId;
 	output.mid = MatId;
 	
-#include <packs/mp.fxh/geomfx.inset.md.uvpassthru.fxh>
+#include <packs/mp.fxh/mdp/geom.inset.uvPassthru.fxh>
 	
 	output.BlendId = bldi;
 	#if defined(PREVPOS_OUT)

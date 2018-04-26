@@ -1,0 +1,127 @@
+#if !defined(PASSFORMAT) /// -type string
+#define PASSFORMAT "R16G16B16A16_Float"
+#endif
+#if !defined(STEPS) /// -type int
+#define STEPS 1
+#endif/*
+#if !defined(POSTSTEPS)
+#define STEPS 1
+#endif
+*/
+Texture2D tex0: PREVIOUS;
+Texture2D<float> Depth;
+Texture2D<float> Mask;
+Texture2D<float> DF;
+cbuffer controls:register(b0){
+	float2 R:TARGETSIZE;
+	float doffs = 0;
+};
+SamplerState s0:IMMUTABLE <string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
+float4 pPP(float4 PosWVP: SV_POSITION,float2 x: TEXCOORD0):SV_Target{
+	float4 o = 0;
+	o.r = Depth.SampleLevel(s0, x, 0);
+	o.g = Mask.SampleLevel(s0, x, 0);
+	o.ba = x;
+	return o;
+}
+float4 pEdge(float4 PosWVP: SV_POSITION,float2 x: TEXCOORD0):SV_Target{
+	float4 cc=tex0.Load(int3(R*x, 0));
+	if(cc.y >= 0.999) return cc;
+	float4 ctl = tex0.Load(int3(R*x + int2(-1,-1), 0));
+	if(ctl.y >= 0.999) return ctl;
+	float4 ctc = tex0.Load(int3(R*x + int2(0,-1), 0));
+	if(ctc.y >= 0.999) return ctc;
+	float4 ctr = tex0.Load(int3(R*x + int2(1,-1), 0));
+	if(ctr.y >= 0.999) return ctr;
+	float4 ccr = tex0.Load(int3(R*x + int2(1,0), 0));
+	if(ccr.y >= 0.999) return ccr;
+	float4 cbr = tex0.Load(int3(R*x + int2(1,1), 0));
+	if(cbr.y >= 0.999) return cbr;
+	float4 cbc = tex0.Load(int3(R*x + int2(0,1), 0));
+	if(cbc.y >= 0.999) return cbc;
+	float4 cbl = tex0.Load(int3(R*x + int2(-1,1), 0));
+	if(cbl.y >= 0.999) return cbl;
+	float4 ccl = tex0.Load(int3(R*x + int2(-1,0), 0));
+	if(ccl.y >= 0.999) return ccl;
+	return cc;
+}
+float4 pDist(float4 PosWVP: SV_POSITION,float2 x: TEXCOORD0):SV_Target{
+	float cc=DF.Load(int3(R*x, 0));
+	float4 mc=tex0.Load(int3(R*x, 0));
+	if(cc <= 0.0001) return mc;
+	float cr=DF.Load(int3(R*x + int2(1,0), 0));
+	float cb=DF.Load(int3(R*x + int2(0,1), 0));
+	float cl=DF.Load(int3(R*x - int2(1,0), 0));
+	float ct=DF.Load(int3(R*x - int2(0,1), 0));
+	
+	float2 dir = float2(cl-cr, ct-cb);
+	if(length(dir) < 0.0001) return mc;
+	float2 uv = x + normalize(dir) * (cc * .5 + doffs);
+	return tex0.Load(int3(R * uv, 0));
+}
+
+technique10 Scalar{
+	pass P0 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pPP()));}
+	pass P1 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#if STEPS > 1
+	pass P2 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	#if STEPS > 2
+	pass P3 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	#if STEPS > 3
+	pass P4 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	#if STEPS > 4
+	pass P5 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	#if STEPS > 5
+	pass P6 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	#if STEPS > 6
+	pass P7 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	#if STEPS > 7
+	pass P8 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	
+	pass P9 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pDist()));}
+	
+	#if STEPS > 2
+	pass P10 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	#if STEPS > 3
+	pass P11 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	#if STEPS > 4
+	pass P12 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	#if STEPS > 5
+	pass P13 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	#if STEPS > 6
+	pass P14 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+	#if STEPS > 7
+	pass P15 <string format=PASSFORMAT;>
+	{SetPixelShader(CompileShader(ps_4_0,pEdge()));}
+	#endif
+}
+
+
+

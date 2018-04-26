@@ -1,0 +1,999 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\girlpower\Nodes.v4p" systemname="Nodes" filename="D:\local\vvvv-gp\packs\mp.dx\girlpower\Nodes.v4p" scrollx="0" scrolly="-360" locked="0">
+   <BOUNDS type="Window" left="2760" top="1065" width="22395" height="22200">
+   </BOUNDS>
+   <PACK Name="KeyboardUI" Version="1.1.1">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.10">
+   </PACK>
+   <PACK Name="addonpack" Version="36.0.0">
+   </PACK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="5">
+   <BOUNDS type="Node" left="8295" top="855" width="1110" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8295" top="855" width="1485" height="585">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="mp.dx">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="20">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
+   <BOUNDS type="Box" left="10095" top="2010" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10095" top="2010" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|mp.dx Version|">
+   </PIN>
+   <PIN pinname="Input String" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="2">
+   <BOUNDS type="Box" left="10440" top="945" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10440" top="945" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|mp.pddn Version|">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="1">
+   <BOUNDS type="Box" left="10260" top="1485" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10260" top="1485" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|md.stdl Version|">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="0">
+   <BOUNDS type="Node" left="12285" top="1125" width="1365" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12285" top="1125" width="1365" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|scroll for more ;)|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="About (Mp.Dx)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="About (Mp.Dx)" componentmode="Hidden" id="4">
+   <BOUNDS type="Node" left="10095" top="525" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10095" top="525" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="mp.essentials Version" visible="1">
+   </PIN>
+   <PIN pinname="mp.pddn Version" visible="1">
+   </PIN>
+   <PIN pinname="md.stdl Version" visible="1">
+   </PIN>
+   <PIN pinname="mp.dx Version" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="4" srcpinname="mp.pddn Version" dstnodeid="2" dstpinname="Input String">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="md.stdl Version" dstnodeid="1" dstpinname="Input String">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="mp.dx Version" dstnodeid="3" dstpinname="Input String">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="6">
+   <BOUNDS type="Node" left="990" top="3705" width="600" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="990" top="3705" width="1050" height="375">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="effects">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
+   </NODE>
+   <NODE systemname="CSTemplate (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\CSTemplate.fx" nodename="CSTemplate (DX11.Effect)" componentmode="Hidden" id="7">
+   <BOUNDS type="Node" left="990" top="4455" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="990" top="4455">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="DisneyForwardSimpleNaive (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive.fx" nodename="DisneyForwardSimpleNaive (DX11.Effect)" componentmode="Hidden" id="8">
+   <BOUNDS type="Node" left="990" top="5025" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="990" top="5025">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="FrustumCull (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\FrustumCull.fx" nodename="FrustumCull (DX11.Effect)" componentmode="Hidden" id="9">
+   <BOUNDS type="Node" left="990" top="5505" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="990" top="5505">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="mdpTemplate (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\mdpTemplate.fx" nodename="mdpTemplate (DX11.Effect)" componentmode="Hidden" id="10">
+   <BOUNDS type="Node" left="990" top="5955" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="990" top="5955">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Minimal (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\Minimal.fx" nodename="Minimal (DX11.Effect)" componentmode="Hidden" id="11">
+   <BOUNDS type="Node" left="990" top="6435" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="990" top="6435">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="PBRBase (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\PBRBase.fx" nodename="PBRBase (DX11.Effect)" componentmode="Hidden" id="12">
+   <BOUNDS type="Node" left="990" top="6915" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="990" top="6915">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="PBRBaseAdvanced (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\PBRBaseAdvanced.fx" nodename="PBRBaseAdvanced (DX11.Effect)" componentmode="Hidden" id="13">
+   <BOUNDS type="Node" left="990" top="7440" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="990" top="7440">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="SuppressDiagonals (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\SuppressDiagonals.fx" nodename="SuppressDiagonals (DX11.Effect)" componentmode="Hidden" id="14">
+   <BOUNDS type="Node" left="990" top="7980" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="990" top="7980">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="15">
+   <BOUNDS type="Node" left="8655" top="3735" width="600" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="3735" width="1380" height="375">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|texture fx|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
+   </NODE>
+   <NODE systemname="BlendControl (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\BlendControl.tfx" nodename="BlendControl (DX11.TextureFX)" componentmode="Hidden" id="16">
+   <BOUNDS type="Node" left="8655" top="6315" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="6315">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="BlurFlow (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\BlurFlow.tfx" nodename="BlurFlow (DX11.TextureFX)" componentmode="Hidden" id="17">
+   <BOUNDS type="Node" left="8655" top="6810" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="6810">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="BlurMax (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\BlurMax.tfx" nodename="BlurMax (DX11.TextureFX)" componentmode="Hidden" id="18">
+   <BOUNDS type="Node" left="8655" top="7245" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="7245">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="ColorChannelRemapFormat (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\ColorChannelRemapFormat.tfx" nodename="ColorChannelRemapFormat (DX11.TextureFX)" componentmode="Hidden" id="19">
+   <BOUNDS type="Node" left="8655" top="7695" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="7695">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="DisplaceHeight (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\DisplaceHeight.tfx" nodename="DisplaceHeight (DX11.TextureFX)" componentmode="Hidden" id="20">
+   <BOUNDS type="Node" left="8655" top="8190" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="8190">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="GenerateMips (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\GenerateMips.tfx" nodename="GenerateMips (DX11.TextureFX)" componentmode="Hidden" id="21">
+   <BOUNDS type="Node" left="8655" top="8655" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="8655">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="LavaTransform (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\LavaTransform.tfx" nodename="LavaTransform (DX11.TextureFX)" componentmode="Hidden" id="22">
+   <BOUNDS type="Node" left="8655" top="9210" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="9210">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Lookup (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\Lookup.tfx" nodename="Lookup (DX11.TextureFX)" componentmode="Hidden" id="23">
+   <BOUNDS type="Node" left="8655" top="9735" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="9735">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Morph (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\Morph.tfx" nodename="Morph (DX11.TextureFX)" componentmode="Hidden" id="24">
+   <BOUNDS type="Node" left="8655" top="10215" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="10215">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="MotionBlurSA (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\MotionBlurSA.tfx" nodename="MotionBlurSA (DX11.TextureFX)" componentmode="Hidden" id="25">
+   <BOUNDS type="Node" left="8655" top="10695" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="10695">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="PerlinPos (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\PerlinPos.tfx" nodename="PerlinPos (DX11.TextureFX)" componentmode="Hidden" id="26">
+   <BOUNDS type="Node" left="8655" top="11250" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="11250">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Plasma (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\Plasma.tfx" nodename="Plasma (DX11.TextureFX)" componentmode="Hidden" id="27">
+   <BOUNDS type="Node" left="8655" top="11850" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="11850">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="PlasmaTrig (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\PlasmaTrig.tfx" nodename="PlasmaTrig (DX11.TextureFX)" componentmode="Hidden" id="28">
+   <BOUNDS type="Node" left="8655" top="12375" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="12375">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="PreviewSlice (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\PreviewSlice.tfx" nodename="PreviewSlice (DX11.TextureFX)" componentmode="Hidden" id="29">
+   <BOUNDS type="Node" left="8655" top="13005" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="13005">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Reproject (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\Reproject.tfx" nodename="Reproject (DX11.TextureFX)" componentmode="Hidden" id="30">
+   <BOUNDS type="Node" left="8655" top="13485" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="13485">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="ScalarOperationBundle (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\ScalarOperationBundle.tfx" nodename="ScalarOperationBundle (DX11.TextureFX)" componentmode="Hidden" id="31">
+   <BOUNDS type="Node" left="8655" top="14010" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="14010">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="SimpleOperation (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\SimpleOperation.tfx" nodename="SimpleOperation (DX11.TextureFX)" componentmode="Hidden" id="32">
+   <BOUNDS type="Node" left="8655" top="14535" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="14535">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="StencilView (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\StencilView.tfx" nodename="StencilView (DX11.TextureFX)" componentmode="Hidden" id="33">
+   <BOUNDS type="Node" left="8655" top="15180" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="15180">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="TemporalFilter (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\TemporalFilter.tfx" nodename="TemporalFilter (DX11.TextureFX)" componentmode="Hidden" id="34">
+   <BOUNDS type="Node" left="8655" top="15705" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="15705">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="UnPreMultiply (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\UnPreMultiply.tfx" nodename="UnPreMultiply (DX11.TextureFX)" componentmode="Hidden" id="35">
+   <BOUNDS type="Node" left="8655" top="16260" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="16260">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Voronoise (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\Voronoise.tfx" nodename="Voronoise (DX11.TextureFX)" componentmode="Hidden" id="36">
+   <BOUNDS type="Node" left="8655" top="16755" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="16755">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="MXAO (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\ReShade\MXAO.tfx" nodename="MXAO (DX11.TextureFX)" componentmode="Hidden" id="37">
+   <BOUNDS type="Node" left="8655" top="4575" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="4575">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="AdaptiveSharpen (DX11.TextureFX)" filename="%VVVV%\packs\mp.dx\nodes\texture11\ReShade\AdaptiveSharpen.tfx" nodename="AdaptiveSharpen (DX11.TextureFX)" componentmode="Hidden" id="38">
+   <BOUNDS type="Node" left="8655" top="5025" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="5025">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="41">
+   <BOUNDS type="Node" left="8655" top="4200" width="3330" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="4200" width="1710" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|from ReShade library:|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="43">
+   <BOUNDS type="Node" left="8655" top="5925" width="600" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8655" top="5925" width="600" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="mp.dx:">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="44">
+   <BOUNDS type="Node" left="12675" top="3795" width="600" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="3795" width="1380" height="375">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="essentials">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
+   </NODE>
+   <NODE systemname="AxisAndGrid (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\AxisAndGrid (DX11).v4p" nodename="AxisAndGrid (DX11)" componentmode="Hidden" id="45">
+   <BOUNDS type="Node" left="12675" top="4680" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="4680">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="CameraTfxSemantics (DX11.Semantics)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\CameraTfxSemantics (DX11.Semantics).v4p" nodename="CameraTfxSemantics (DX11.Semantics)" componentmode="Hidden" id="46">
+   <BOUNDS type="Node" left="12675" top="11370" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="11370">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Environment (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\Environment (DX11).v4p" nodename="Environment (DX11)" componentmode="Hidden" id="47">
+   <BOUNDS type="Node" left="12675" top="10905" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="10905">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Invert (DX11.RenderState)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\Invert (DX11.RenderState).v4p" nodename="Invert (DX11.RenderState)" componentmode="Hidden" id="48">
+   <BOUNDS type="Node" left="12675" top="9510" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="9510">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="49">
+   <BOUNDS type="Node" left="12675" top="4335" width="495" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="4335" width="495" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="layer">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="Line (DX11 Mitter)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" nodename="Line (DX11 Mitter)" componentmode="Hidden" id="50">
+   <BOUNDS type="Node" left="12675" top="5175" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="5175">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Line (DX11 RawBuffer)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\Line (DX11 RawBuffer).v4p" nodename="Line (DX11 RawBuffer)" componentmode="Hidden" id="51">
+   <BOUNDS type="Node" left="12675" top="5610" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="5610">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Line (DX11 StructuredBuffer)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\Line (DX11 StructuredBuffer).v4p" nodename="Line (DX11 StructuredBuffer)" componentmode="Hidden" id="52">
+   <BOUNDS type="Node" left="12675" top="6015" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="6015">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="PerfMeter2 (DX11.Debug)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\PerfMeter2 (DX11.Debug).v4p" nodename="PerfMeter2 (DX11.Debug)" componentmode="Hidden" id="53">
+   <BOUNDS type="Node" left="12675" top="6495" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="6495">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Picture (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\Picture (DX11).v4p" nodename="Picture (DX11)" componentmode="Hidden" id="55">
+   <BOUNDS type="Node" left="12675" top="6975" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="6975">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="PreviousMatrices (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\PreviousMatrices (DX11).v4p" nodename="PreviousMatrices (DX11)" componentmode="Hidden" id="56">
+   <BOUNDS type="Node" left="12675" top="7500" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="7500">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="PreviousMatrices (DX11.Semantics)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\PreviousMatrices (DX11.Semantics).v4p" nodename="PreviousMatrices (DX11.Semantics)" componentmode="Hidden" id="57">
+   <BOUNDS type="Node" left="14460" top="7485" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="RoundRect (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\RoundRect (DX11).v4p" nodename="RoundRect (DX11)" componentmode="Hidden" id="58">
+   <BOUNDS type="Node" left="12675" top="8055" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="8055">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="TextBlock (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\TextBlock (DX11).v4p" nodename="TextBlock (DX11)" componentmode="Hidden" id="59">
+   <BOUNDS type="Node" left="12675" top="8580" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="8580">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="61">
+   <BOUNDS type="Node" left="12675" top="9090" width="975" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="9090" width="975" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="renderstate">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="Subtract (DX11.RenderState)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\Subtract (DX11.RenderState).v4p" nodename="Subtract (DX11.RenderState)" componentmode="Hidden" id="63">
+   <BOUNDS type="Node" left="12675" top="9960" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="9960">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="64">
+   <BOUNDS type="Node" left="12675" top="10545" width="480" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="10545" width="480" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="misc">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="65">
+   <BOUNDS type="Node" left="16365" top="3780" width="600" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16365" top="3780" width="1380" height="375">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="assimp">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
+   </NODE>
+   <NODE systemname="SkeletalMesh (DX11 Assimp)" filename="%VVVV%\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" nodename="SkeletalMesh (DX11 Assimp)" componentmode="Hidden" id="66">
+   <BOUNDS type="Node" left="16365" top="4440" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16365" top="4440">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="SkeletonSimple (Assimp)" filename="%VVVV%\packs\mp.dx\nodes\modules\assimp\SkeletonSimple (Assimp).v4p" nodename="SkeletonSimple (Assimp)" componentmode="Hidden" id="68">
+   <BOUNDS type="Node" left="16365" top="4935" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16365" top="4935">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="TextureRouter (Assimp)" filename="%VVVV%\packs\mp.dx\nodes\modules\assimp\TextureRouter (Assimp).v4p" nodename="TextureRouter (Assimp)" componentmode="Hidden" id="70">
+   <BOUNDS type="Node" left="16365" top="5415" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16365" top="5415">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="TextureRouter (Assimp Advanced)" filename="%VVVV%\packs\mp.dx\nodes\modules\assimp\TextureRouter (Assimp Advanced).v4p" nodename="TextureRouter (Assimp Advanced)" componentmode="Hidden" id="71">
+   <BOUNDS type="Node" left="16365" top="5820" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16365" top="5820">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="TextureRouter (Assimp ToMerged)" filename="%VVVV%\packs\mp.dx\nodes\modules\assimp\TextureRouter (Assimp ToMerged).v4p" nodename="TextureRouter (Assimp ToMerged)" componentmode="Hidden" id="72">
+   <BOUNDS type="Node" left="16365" top="6270" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16365" top="6270">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="74">
+   <BOUNDS type="Node" left="18600" top="3765" width="600" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="18600" top="3765" width="1515" height="375">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="directwrite">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
+   </NODE>
+   <NODE systemname="Caret (Transform DirectWrite)" filename="%VVVV%\packs\mp.dx\nodes\modules\directwrite\Caret (Transform DirectWrite).v4p" nodename="Caret (Transform DirectWrite)" componentmode="Hidden" id="75">
+   <BOUNDS type="Node" left="18600" top="4395" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="18600" top="4395">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Reveal (DirectWrite Styles)" filename="%VVVV%\packs\mp.dx\nodes\modules\directwrite\Reveal (DirectWrite Styles).v4p" nodename="Reveal (DirectWrite Styles)" componentmode="Hidden" id="76">
+   <BOUNDS type="Node" left="18600" top="4935" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="18600" top="4935">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Selection (Transform DirectWrite)" filename="%VVVV%\packs\mp.dx\nodes\modules\directwrite\Selection (Transform DirectWrite).v4p" nodename="Selection (Transform DirectWrite)" componentmode="Hidden" id="77">
+   <BOUNDS type="Node" left="18600" top="5445" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="18600" top="5445">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="TextBackground (Transform DirectWrite)" filename="%VVVV%\packs\mp.dx\nodes\modules\directwrite\TextBackground (Transform DirectWrite).v4p" nodename="TextBackground (Transform DirectWrite)" componentmode="Hidden" id="78">
+   <BOUNDS type="Node" left="18600" top="5985" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="18600" top="5985">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="TypeWriter (DirectWrite Form)" filename="%VVVV%\packs\mp.dx\nodes\modules\directwrite\TypeWriter (DirectWrite Form).v4p" nodename="TypeWriter (DirectWrite Form)" componentmode="Hidden" id="79">
+   <BOUNDS type="Node" left="18600" top="6495" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="18600" top="6495">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="80">
+   <BOUNDS type="Node" left="975" top="8670" width="600" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="975" top="8670" width="1455" height="405">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="geometry">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
+   </NODE>
+   <NODE systemname="BoundingBox (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\BoundingBox (DX11.Geometry).v4p" nodename="BoundingBox (DX11.Geometry)" componentmode="Hidden" id="81">
+   <BOUNDS type="Node" left="1020" top="9375" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Dispatcher (DX11.Drawer Threaded)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\Dispatcher (DX11.Drawer Threaded).v4p" nodename="Dispatcher (DX11.Drawer Threaded)" componentmode="Hidden" id="82">
+   <BOUNDS type="Node" left="1005" top="9885" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="JoinGeometry (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\JoinGeometry (DX11.Geometry).v4p" nodename="JoinGeometry (DX11.Geometry)" componentmode="Hidden" id="83">
+   <BOUNDS type="Node" left="990" top="10455" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="ModGeomLayout (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\ModGeomLayout (DX11.Geometry).v4p" nodename="ModGeomLayout (DX11.Geometry)" componentmode="Hidden" id="84">
+   <BOUNDS type="Node" left="990" top="10935" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="MultiBoundingBox (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\MultiBoundingBox (DX11.Geometry).v4p" nodename="MultiBoundingBox (DX11.Geometry)" componentmode="Hidden" id="85">
+   <BOUNDS type="Node" left="2460" top="9375" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="ReadBackBoundingBox (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\ReadBackBoundingBox (DX11.Geometry).v4p" nodename="ReadBackBoundingBox (DX11.Geometry)" componentmode="Hidden" id="86">
+   <BOUNDS type="Node" left="4230" top="9375" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="91">
+   <BOUNDS type="Node" left="960" top="11610" width="600" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="11610" width="1455" height="405">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="texture">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
+   </NODE>
+   <NODE systemname="ArrangeTextureAtlas (DX11.Texture2D)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\ArrangeTextureAtlas (DX11.Texture2D).v4p" nodename="ArrangeTextureAtlas (DX11.Texture2D)" componentmode="Hidden" id="92">
+   <BOUNDS type="Node" left="960" top="12210" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="12210">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="BlendMultiple (DX11.Texture2D)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\BlendMultiple (DX11.Texture2D).v4p" nodename="BlendMultiple (DX11.Texture2D)" componentmode="Hidden" id="93">
+   <BOUNDS type="Node" left="960" top="12780" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="12780">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="CameraMotionBlur (DX11.Texture2D)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\CameraMotionBlur (DX11.Texture2D).v4p" nodename="CameraMotionBlur (DX11.Texture2D)" componentmode="Hidden" id="95">
+   <BOUNDS type="Node" left="960" top="13320" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="13320">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="DX9ToDX11 (DX11.Texture2D OffscreenWindow)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\DX9ToDX11 (DX11.Texture2D OffscreenWindow).v4p" nodename="DX9ToDX11 (DX11.Texture2D OffscreenWindow)" componentmode="Hidden" id="96">
+   <BOUNDS type="Node" left="960" top="13875" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="13875">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="97">
+   <BOUNDS type="Node" left="2145" top="13890" width="4815" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2145" top="13890" width="4815" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Creates a DX9 renderer window without borders and with size = 0|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="FillHoles (DX11.Texture2D)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\FillHoles (DX11.Texture2D).v4p" nodename="FillHoles (DX11.Texture2D)" componentmode="Hidden" id="98">
+   <BOUNDS type="Node" left="960" top="14400" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="14400">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Growth (DX11.Texture2D)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\Growth (DX11.Texture2D).v4p" nodename="Growth (DX11.Texture2D)" componentmode="Hidden" id="100">
+   <BOUNDS type="Node" left="960" top="14925" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="14925">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="RenderTextureAtlas (DX11.Texture2D)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\RenderTextureAtlas (DX11.Texture2D).v4p" nodename="RenderTextureAtlas (DX11.Texture2D)" componentmode="Hidden" id="101">
+   <BOUNDS type="Node" left="960" top="15450" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="15450">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="SetSlice (DX11.Texture2DArray)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\SetSlice (DX11.Texture2DArray).v4p" nodename="SetSlice (DX11.Texture2DArray)" componentmode="Hidden" id="102">
+   <BOUNDS type="Node" left="960" top="16050" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="16050">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="SSLAO (DX11.Texture2D DepthNorm)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" nodename="SSLAO (DX11.Texture2D DepthNorm)" componentmode="Hidden" id="103">
+   <BOUNDS type="Node" left="960" top="16590" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="16590">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="TextureAtlas (DX11.Texture2D)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\TextureAtlas (DX11.Texture2D).v4p" nodename="TextureAtlas (DX11.Texture2D)" componentmode="Hidden" id="104">
+   <BOUNDS type="Node" left="960" top="17115" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Window" left="8145" top="10155" width="11460" height="7965">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="17115">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="ToneMapping (DX11.Texture2D)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\ToneMapping (DX11.Texture2D).v4p" nodename="ToneMapping (DX11.Texture2D)" componentmode="Hidden" id="105">
+   <BOUNDS type="Node" left="960" top="17655" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="17655">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="UnfoldedPreview (DX11.Texture2D Cubemap)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\UnfoldedPreview (DX11.Texture2D Cubemap).v4p" nodename="UnfoldedPreview (DX11.Texture2D Cubemap)" componentmode="Hidden" id="106">
+   <BOUNDS type="Node" left="960" top="18225" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="18225">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="VelMapExtenderSA (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\VelMapExtenderSA (DX11).v4p" nodename="VelMapExtenderSA (DX11)" componentmode="Hidden" id="107">
+   <BOUNDS type="Node" left="960" top="18765" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="18765">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="VideoPlayer (DX9.Texture)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\VideoPlayer (DX9.Texture).v4p" nodename="VideoPlayer (DX9.Texture)" componentmode="Hidden" id="108">
+   <BOUNDS type="Node" left="960" top="19245" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="19245">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="109">
+   <BOUNDS type="Node" left="3000" top="19230" width="435" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3000" top="19230" width="435" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="DX9">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="VisualizeColorSpace (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\VisualizeColorSpace (DX11).v4p" nodename="VisualizeColorSpace (DX11)" componentmode="Hidden" id="110">
+   <BOUNDS type="Node" left="960" top="19800" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="19800">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="WaveForm (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\WaveForm (DX11).v4p" nodename="WaveForm (DX11)" componentmode="Hidden" id="111">
+   <BOUNDS type="Node" left="960" top="20400" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="960" top="20400">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="WaveForm (DX11.Texture 2d)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\WaveForm (DX11.Texture 2d).v4p" nodename="WaveForm (DX11.Texture 2d)" componentmode="Hidden" id="112">
+   <BOUNDS type="Node" left="2280" top="20400" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2280" top="20400">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="113">
+   <BOUNDS type="Node" left="12675" top="12585" width="600" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="12585" width="1380" height="375">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="kinect2">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
+   </NODE>
+   <NODE systemname="CalibratePlane (Kinect2)" filename="%VVVV%\packs\mp.dx\nodes\modules\Kinect2\CalibratePlane (Kinect2).v4p" nodename="CalibratePlane (Kinect2)" componentmode="Hidden" id="115">
+   <BOUNDS type="Node" left="12675" top="13125" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Window" left="1785" top="5250" width="15060" height="11415">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="13125">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="CorrectOrientation (Kinect2)" filename="%VVVV%\packs\mp.dx\nodes\modules\Kinect2\CorrectOrientation (Kinect2).v4p" nodename="CorrectOrientation (Kinect2)" componentmode="Hidden" id="116">
+   <BOUNDS type="Node" left="12675" top="13635" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="13635">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="FillDepth (DX11.Texture Kinect2)" filename="%VVVV%\packs\mp.dx\nodes\modules\Kinect2\FillDepth (DX11.Texture Kinect2).v4p" nodename="FillDepth (DX11.Texture Kinect2)" componentmode="Hidden" id="117">
+   <BOUNDS type="Node" left="12675" top="14205" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="14205">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="GuessJointOrientation (Kinect2)" filename="%VVVV%\packs\mp.dx\nodes\modules\Kinect2\GuessJointOrientation (Kinect2).v4p" nodename="GuessJointOrientation (Kinect2)" componentmode="Hidden" id="119">
+   <BOUNDS type="Node" left="12675" top="14685" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="14685">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="JointConnection (Kinect2)" filename="%VVVV%\packs\mp.dx\nodes\modules\Kinect2\JointConnection (Kinect2).v4p" nodename="JointConnection (Kinect2)" componentmode="Hidden" id="120">
+   <BOUNDS type="Node" left="12675" top="15210" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="15210">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="JointTransform (Kinect2 Bones)" filename="%VVVV%\packs\mp.dx\nodes\modules\Kinect2\JointTransform (Kinect2 Bones).v4p" nodename="JointTransform (Kinect2 Bones)" componentmode="Hidden" id="121">
+   <BOUNDS type="Node" left="14280" top="15780" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="14280" top="15780">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="JointTransform (Kinect2)" filename="%VVVV%\packs\mp.dx\nodes\modules\Kinect2\JointTransform (Kinect2).v4p" nodename="JointTransform (Kinect2)" componentmode="Hidden" id="122">
+   <BOUNDS type="Node" left="12675" top="15780" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Window" left="38325" top="7110" width="9000" height="14445">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="15780">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="KinectSkeleton (Kinect2)" filename="%VVVV%\packs\mp.dx\nodes\modules\Kinect2\KinectSkeleton (Kinect2).v4p" nodename="KinectSkeleton (Kinect2)" componentmode="Hidden" id="123">
+   <BOUNDS type="Node" left="12690" top="16305" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="124">
+   <BOUNDS type="Node" left="990" top="3330" width="4125" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="990" top="3330" width="4140" height="315">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Red nodes here are caused by the abscense of input data|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="HEXViewer (DX11 Raw)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\HEXViewer (DX11 Raw).v4p" nodename="HEXViewer (DX11 Raw)" componentmode="Hidden" id="125">
+   <BOUNDS type="Node" left="12675" top="11850" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12675" top="11850">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="126">
+   <BOUNDS type="Node" left="8625" top="5400" width="2655" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8625" top="5400" width="2655" height="300">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|there are more but not ported yet|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <PACK Name="dx11" Version="1.2">
+   </PACK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="127">
+   <BOUNDS type="Node" left="16815" top="7755" width="600" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16815" top="7755" width="1380" height="375">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="plugins">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="12">
+   </PIN>
+   </NODE>
+   <NODE systemname="ResetCounter (DX11.Layer Advanced)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="ResetCounter (DX11.Layer Advanced)" componentmode="Hidden" id="128">
+   <BOUNDS type="Node" left="16845" top="8325" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16845" top="8325" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="CopyBuffer (DX11.Layer)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="CopyBuffer (DX11.Layer)" componentmode="Hidden" id="129">
+   <BOUNDS type="Node" left="16860" top="8760" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16860" top="8760" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="CopyCounter (DX11.Layer)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="CopyCounter (DX11.Layer)" componentmode="Hidden" id="130">
+   <BOUNDS type="Node" left="16830" top="9270" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16830" top="9270" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="DynamicBuffer (DX11.Buffer Custom)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="DynamicBuffer (DX11.Buffer Custom)" componentmode="Hidden" id="131">
+   <BOUNDS type="Node" left="16830" top="9750" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16830" top="9750" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="DynamicBuffer (DX11.Buffer DynamicPin)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="DynamicBuffer (DX11.Buffer DynamicPin)" componentmode="Hidden" id="132">
+   <BOUNDS type="Node" left="16830" top="10245" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16830" top="10245" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="DispatchIndirectOnBindedBuffer (DX11.Layer)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="DispatchIndirectOnBindedBuffer (DX11.Layer)" componentmode="Hidden" id="133">
+   <BOUNDS type="Node" left="16845" top="11265" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16845" top="11265" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Renderer (DX11 MultiRawBuffer)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="Renderer (DX11 MultiRawBuffer)" componentmode="Hidden" id="134">
+   <BOUNDS type="Node" left="16830" top="11730" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16830" top="11730" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Renderer (DX11 MultiStructuredBuffer)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="Renderer (DX11 MultiStructuredBuffer)" componentmode="Hidden" id="135">
+   <BOUNDS type="Node" left="16830" top="12195" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16830" top="12195" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="DynamicBuffer (DX11.Buffer Raw)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="DynamicBuffer (DX11.Buffer Raw)" componentmode="Hidden" id="136">
+   <BOUNDS type="Node" left="16830" top="10755" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16830" top="10755" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Shader (DX11.Effect String)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="Shader (DX11.Effect String)" componentmode="Hidden" id="137">
+   <BOUNDS type="Node" left="16815" top="12810" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16815" top="12810" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="138">
+   <BOUNDS type="Node" left="18135" top="12660" width="6525" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="18135" top="12660" width="3465" height="540">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|By tmp, originally present in dx11.particles. He gave me permission to include it in mp.dx|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="TemptargetAndArray (DX11)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="TemptargetAndArray (DX11)" componentmode="Hidden" id="139">
+   <BOUNDS type="Node" left="16770" top="13470" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16770" top="13470" width="3000" height="3000">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="FaceTracker (DX11.Texture 2d)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="FaceTracker (DX11.Texture 2d)" componentmode="Hidden" id="140">
+   <BOUNDS type="Node" left="16785" top="14010" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16785" top="14010" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="FaceTrackerContext (FaceTracker Split)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="FaceTrackerContext (FaceTracker Split)" componentmode="Hidden" id="141">
+   <BOUNDS type="Node" left="16785" top="14550" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="16785" top="14550" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Faces" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="140" srcpinname="Output" dstnodeid="141" dstpinname="Input">
+   </LINK>
+   <NODE systemname="DetectedFace (FaceTracker Split)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="DetectedFace (FaceTracker Split)" componentmode="Hidden" id="142">
+   <BOUNDS type="Node" left="17985" top="15090" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="17985" top="15090" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="141" srcpinname="Faces" dstnodeid="142" dstpinname="Input">
+   </LINK>
+   </PATCH>

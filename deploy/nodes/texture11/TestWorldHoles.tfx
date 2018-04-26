@@ -1,0 +1,20 @@
+#if !defined(COMPONENT) /// -type token
+#define COMPONENT r
+#endif
+
+Texture2D tex0: PREVIOUS;
+float2 R:TARGETSIZE;
+SamplerState s0:IMMUTABLE <string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
+float4 pADD(float4 PosWVP: SV_POSITION,float2 x: TEXCOORD0):SV_Target{
+	float4 c=tex0.Sample(s0,x,0);
+	if(c.COMPONENT<=0) return float4(0,0,0,1);
+	return 1;
+}
+
+technique10 Scalar{
+	pass P1
+	{SetPixelShader(CompileShader(ps_4_0,pADD()));}
+}
+
+
+

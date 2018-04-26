@@ -1,0 +1,78 @@
+Texture2D<float2> PrevTex: PREVIOUS;
+Texture2D ColorTex: INITIAL;
+//Texture2D CorrVelTex: PASSRESULT0;
+//Texture2D OffsVelTex1: PASSRESULT2;
+//Texture2D OffsVelTex2: PASSRESULT3;
+#define PI 3.14159265358979
+
+Texture2D Velocity;
+
+cbuffer controls:register(b0){
+	float2 ScreenSize:TARGETSIZE;
+	float Amount = 0.5;
+	float PixelsPerSample = 1;
+	float MaxSamples = 16;
+	float BlurOffset = 0;
+	float alphapower = 1;
+	bool Aspect <bool visible=false;string uiname="Keep Aspect Ratio";> = true;
+};
+
+SamplerState s0 <bool visible=false;string uiname="Sampler";>
+{
+	Filter=MIN_MAG_MIP_LINEAR;
+	AddressU=CLAMP;
+	AddressV=CLAMP;
+	MipLODBias = 0;
+};
+
+SamplerState s_vel : IMMUTABLE
+{
+	Filter=MIN_MAG_MIP_POINT;
+	AddressU=CLAMP;
+	AddressV=CLAMP;
+	MipLODBias = 0;
+};
+float2 FillVel(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
+{
+    float2 colin = Velocity.Sample(s_vel,uv).xy;
+	float2 col = colin;
+	float FillEpsilon = 0.01;
+	
+	if((colin.r<=FillEpsilon) && (colin.g<=FillEpsilon))
+	{
+		col = 0.5;
+	}
+	//if(vPos.z==0) col.rgb = 0.5;
+    return col;
+}
+
+float4 mblur(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0):SV_Target
+{
+	float irs = length(2/ScreenSize);
+    float2 vmap = PrevTex.Sample(s0, uv);
+    float2 vel = vmap-0.5;
+	vel *= Amount;
+	
+	//float2 asp=lerp(1,ScreenSize.x/ScreenSize,Aspect);
+	float2 asp=1;
+    float4 c=0;
+	float iter=min(length(vel)/irs/PixelsPerSample, MaxSamples);
+	if(iter <= 1.0)
+		return ColorTex.SampleLevel(s0,uv,0);
+	float twg = 0;
+    for (float i=0; i<iter; i++){
+    	float prog = i/iter-0.5;
+    	float wg = pow(abs(prog), 0.25);
+    	twg += wg;
+        c+=ColorTex.SampleLevel(s0,((uv-.5)/asp+vel*float2(1,-1)*(prog-BlurOffset/2))*asp+.5,0)*wg;
+    }
+    c=c/twg;
+    return c;
+}
+
+technique10 MotionBlur{
+	pass P0 <string format="R32G32_Float";>
+	{SetPixelShader(CompileShader(ps_5_0,FillVel()));}
+	pass P3 <string format="R16G16B16A16_Float";>
+	{SetPixelShader(CompileShader(ps_5_0,mblur()));}
+}

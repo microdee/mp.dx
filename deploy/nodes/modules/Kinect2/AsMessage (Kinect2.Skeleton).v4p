@@ -1,0 +1,415 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
+   <PATCH nodename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\Kinect2\AsMessage (Kinect2.Skeleton).v4p" systemname="AsMessage (Kinect2.Skeleton)" filename="C:\vvvv\libs\md.ecosystem\packs\mp.dx\nodes\modules\Kinect2\AsMessage (Kinect2.Skeleton).v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="11340" top="4995" width="12990" height="9495">
+   </BOUNDS>
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
+   <PACK Name="addonpack" Version="34.101.0">
+   </PACK>
+   <NODE systemname="Create (Message.Keep Formular)" filename="%VVVV%\packs\vvvv-Message\nodes\plugins\VVVV.Nodes.Messaging.dll" nodename="Create (Message.Keep Formular)" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="2685" top="3780" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Configuration" slicecount="1" values="|string JointID, Vector3d Position, Vector2d PositionRGB, Vector4d Orientation, string State|">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   <PIN pinname="AutoSense" visible="1">
+   </PIN>
+   <PIN pinname="PositionXYZ" visible="1">
+   </PIN>
+   <PIN pinname="PositionRGBXY" visible="1">
+   </PIN>
+   <PIN pinname="OrientationXYZW" visible="1">
+   </PIN>
+   <PIN pinname="State" visible="1">
+   </PIN>
+   <PIN pinname="JointID" visible="1">
+   </PIN>
+   <PIN pinname="Topic" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Skeleton (Kinect2 Microsoft)" filename="%VVVV%\packs\dx11\nodes\plugins\kinect2\VVVV.DX11.Nodes.Kinect2.dll" nodename="Skeleton (Kinect2 Microsoft)" componentmode="Hidden" id="2">
+   <BOUNDS type="Node" left="2550" top="1335" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Kinect Runtime" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="User Index" visible="1">
+   </PIN>
+   <PIN pinname="PositionXYZ" visible="1">
+   </PIN>
+   <PIN pinname="Joint PositionXYZ" visible="1">
+   </PIN>
+   <PIN pinname="Joint ID" visible="1">
+   </PIN>
+   <PIN pinname="Short Index" visible="1">
+   </PIN>
+   <PIN pinname="ClippingXYZW" visible="1">
+   </PIN>
+   <PIN pinname="Joint Position RGBXY" visible="1">
+   </PIN>
+   <PIN pinname="Joint OrientationXYZW" visible="1">
+   </PIN>
+   <PIN pinname="Joint State" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="3" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="3165" top="5100" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3165" top="5100" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="25">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="4" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="2130" top="510" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2130" top="510" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Kinect Runtime|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="4" srcpinname="Output Node" dstnodeid="2" dstpinname="Kinect Runtime">
+   </LINK>
+   <NODE systemname="Count (String)" nodename="Count (String)" componentmode="Hidden" id="5">
+   <BOUNDS type="Node" left="4875" top="3300" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Joint ID" dstnodeid="5" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="5" srcpinname="Count" dstnodeid="0" dstpinname="Count">
+   </LINK>
+   <NODE systemname="Count (String)" nodename="Count (String)" componentmode="Hidden" id="6">
+   <BOUNDS type="Node" left="3810" top="5550" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="User Index" dstnodeid="6" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="7" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="4980" top="2310" width="285" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4980" top="2310" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="7" srcpinname="Y Output Value" dstnodeid="0" dstpinname="AutoSense">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Joint PositionXYZ" dstnodeid="0" dstpinname="PositionXYZ">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Joint Position RGBXY" dstnodeid="0" dstpinname="PositionRGBXY">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Joint OrientationXYZW" dstnodeid="0" dstpinname="OrientationXYZW">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Joint State" dstnodeid="0" dstpinname="State">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Joint ID" dstnodeid="0" dstpinname="JointID">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="8" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="2610" top="3045" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2610" top="3045" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="Joint">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="State">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="8" srcpinname="Output String" dstnodeid="0" dstpinname="Topic">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="9" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="1035" top="4005" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1035" top="4005" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="Skeleton">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="State">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="10" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="1140" top="6465" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1140" top="6465" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Output">
+   </PIN>
+   <PIN pinname="Input Node" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE systemname="JointTransform (Kinect2 Bones)" filename="JointTransform (Kinect2 Bones).v4p" nodename="JointTransform (Kinect2 Bones)" componentmode="Hidden" id="11">
+   <BOUNDS type="Node" left="5730" top="2340" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Window Handle" visible="1" pintype="Output">
+   </PIN>
+   <BOUNDS type="Window" left="1335" top="1140" width="13605" height="12900">
+   </BOUNDS>
+   <PIN pinname="Kinect Runtime" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Bone Origin" visible="1">
+   </PIN>
+   <PIN pinname="Do Not Keep Last Face Orientation" visible="1">
+   </PIN>
+   <PIN pinname="Use Face For Head (CAUTION BUGGY AS FUCK)" visible="1" pintype="Input" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Use HDFace For Head" visible="1" pintype="Input" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Distance" visible="1">
+   </PIN>
+   <PIN pinname="Center Y" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="4" srcpinname="Output Node" dstnodeid="11" dstpinname="Kinect Runtime">
+   </LINK>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="14" systemname="IOBox (Enumerations)">
+   <BOUNDS type="Box" left="4755" top="345" width="1590" height="270">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4755" top="345" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="Center">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Bone Origin|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="14" srcpinname="Output Enum" dstnodeid="11" dstpinname="Bone Origin">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="15" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="9735" top="690" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9735" top="690" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Do Not Keep Last Face Orientation|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="11" dstpinname="Do Not Keep Last Face Orientation">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="17" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="6675" top="600" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6675" top="600" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Use Face For Head (CAUTION BUGGY AS FUCK)|">
+   </PIN>
+   <PIN pinname="Pin Visibility" slicecount="1" values="OnlyInspector">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="16">
+   <BOUNDS type="Node" left="7470" top="1035" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7470" top="1035" width="480" height="480">
+   </BOUNDS>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Use HDFace For Head|">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   <PIN pinname="Pin Visibility" slicecount="1" values="OnlyInspector">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="17" srcpinname="Y Output Value" dstnodeid="11" dstpinname="Use Face For Head (CAUTION BUGGY AS FUCK)">
+   </LINK>
+   <LINK srcnodeid="16" srcpinname="Y Output Value" dstnodeid="11" dstpinname="Use HDFace For Head">
+   </LINK>
+   <NODE systemname="Create (Message.Keep Formular)" filename="%VVVV%\packs\vvvv-Message\nodes\plugins\VVVV.Nodes.Messaging.dll" nodename="Create (Message.Keep Formular)" componentmode="Hidden" id="1">
+   <BOUNDS type="Node" left="1110" top="5745" width="1950" height="270">
+   </BOUNDS>
+   <PIN pinname="Configuration" slicecount="1" values="|string UserID, int ShortID, Vector3d Position, Vector4d Clipping, Message Joints, Message Bones|">
+   </PIN>
+   <BOUNDS type="Window" left="285" top="1170" width="6000" height="7590">
+   </BOUNDS>
+   <PIN pinname="Joint Bin Size" visible="1">
+   </PIN>
+   <PIN pinname="Joint" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   <PIN pinname="AutoSense" visible="1">
+   </PIN>
+   <PIN pinname="UserID" visible="1">
+   </PIN>
+   <PIN pinname="ShortID" visible="1">
+   </PIN>
+   <PIN pinname="PositionXYZ" visible="1">
+   </PIN>
+   <PIN pinname="ClippingXYZW" visible="1">
+   </PIN>
+   <PIN pinname="Topic" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Bones Bin Size" visible="1" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Bones" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Joints" visible="1">
+   </PIN>
+   <PIN pinname="Joints Bin Size" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="3" srcpinname="Y Output Value" dstnodeid="1" dstpinname="Joint Bin Size">
+   </LINK>
+   <LINK srcnodeid="6" srcpinname="Count" dstnodeid="1" dstpinname="Count">
+   </LINK>
+   <LINK srcnodeid="7" srcpinname="Y Output Value" dstnodeid="1" dstpinname="AutoSense">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="User Index" dstnodeid="1" dstpinname="UserID">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Short Index" dstnodeid="1" dstpinname="ShortID">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="PositionXYZ" dstnodeid="1" dstpinname="PositionXYZ">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="ClippingXYZW" dstnodeid="1" dstpinname="ClippingXYZW">
+   </LINK>
+   <LINK srcnodeid="9" srcpinname="Output String" dstnodeid="1" dstpinname="Topic">
+   </LINK>
+   <LINK srcnodeid="1" srcpinname="Output" dstnodeid="10" dstpinname="Input Node">
+   </LINK>
+   <NODE systemname="Create (Message.Keep Formular)" filename="%VVVV%\packs\vvvv-Message\nodes\plugins\VVVV.Nodes.Messaging.dll" nodename="Create (Message.Keep Formular)" componentmode="Hidden" id="18">
+   <BOUNDS type="Node" left="5895" top="3375" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Configuration" slicecount="1" values="|Transform Bone, double Width, double Center|">
+   </PIN>
+   <PIN pinname="Bone" visible="1">
+   </PIN>
+   <PIN pinname="Width" visible="1">
+   </PIN>
+   <PIN pinname="Center" visible="1">
+   </PIN>
+   <PIN pinname="AutoSense" visible="1">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Topic" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="Transform Out" dstnodeid="18" dstpinname="Bone">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Distance" dstnodeid="18" dstpinname="Width">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Center Y" dstnodeid="18" dstpinname="Center">
+   </LINK>
+   <LINK srcnodeid="7" srcpinname="Y Output Value" dstnodeid="18" dstpinname="AutoSense">
+   </LINK>
+   <NODE systemname="Count (Value)" nodename="Count (Value)" componentmode="Hidden" id="19">
+   <BOUNDS type="Node" left="7470" top="2880" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="Distance" dstnodeid="19" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="19" srcpinname="Count" dstnodeid="18" dstpinname="Count">
+   </LINK>
+   <LINK srcnodeid="0" srcpinname="Output" dstnodeid="1" dstpinname="Joints">
+   </LINK>
+   <LINK srcnodeid="3" srcpinname="Y Output Value" dstnodeid="1" dstpinname="Joints Bin Size">
+   </LINK>
+   <LINK srcnodeid="18" srcpinname="Output" dstnodeid="1" dstpinname="Bones">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="20" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="2790" top="4695" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2790" top="4695" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="24">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="20" srcpinname="Y Output Value" dstnodeid="1" dstpinname="Bones Bin Size">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="21" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="5970" top="2925" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5970" top="2925" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="Bone">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="State">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="21" srcpinname="Output String" dstnodeid="18" dstpinname="Topic">
+   </LINK>
+   </PATCH>

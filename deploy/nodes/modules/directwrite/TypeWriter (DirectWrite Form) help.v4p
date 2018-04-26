@@ -1,0 +1,419 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\directwrite\TypeWriter (DirectWrite Form) help.v4p">
+   <BOUNDS type="Window" left="450" top="660" width="12885" height="13050">
+   </BOUNDS>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
+   <BOUNDS type="Node" left="225" top="225" width="5100" height="450">
+   </BOUNDS>
+   <BOUNDS type="Box" left="225" top="225" width="5100" height="450">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="|TypeWriter (DirectWrite Form)|">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" visible="1" values="14">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="2">
+   <BOUNDS type="Node" left="225" top="600" width="5100" height="600">
+   </BOUNDS>
+   <BOUNDS type="Box" left="225" top="600" width="5100" height="600">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="0" values="|A windows form backed general purpose TypeWriter, with selection and copy/paste|">
+   </PIN>
+   <PIN pinname="Output String" slicecount="1" visible="0" values="||">
+   </PIN>
+   </NODE>
+   <NODE nodename="TypeWriter (DirectWrite Form)" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="1830" top="3915" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1830" top="3915" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Touch" visible="1">
+   </PIN>
+   <PIN pinname="Text Layout" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Set" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Select All" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Selection Start" visible="1">
+   </PIN>
+   <PIN pinname="Selection Length" visible="1">
+   </PIN>
+   <PIN pinname="Set Focus" visible="1">
+   </PIN>
+   <PIN pinname="Transform" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="5">
+   <BOUNDS type="Node" left="3780" top="8145" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3780" top="8145" width="6000" height="4500">
+   </BOUNDS>
+   <BOUNDS type="Window" left="13245" top="705" width="9495" height="7470">
+   </BOUNDS>
+   <PIN pinname="Mouse State" visible="1">
+   </PIN>
+   <PIN pinname="Touch Data" visible="1">
+   </PIN>
+   <PIN pinname="Actual BackBuffer SizeXY" visible="1">
+   </PIN>
+   <PIN pinname="Show Cursor" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Layers" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="MergeMouseAndTouch (Interaction)" filename="%VVVV%\packs\mp.essentials\nodes\modules\interaction\MergeMouseAndTouch (Interaction).v4p" nodename="MergeMouseAndTouch (Interaction)" componentmode="Hidden" id="6">
+   <BOUNDS type="Node" left="2940" top="9075" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Mouse" visible="1">
+   </PIN>
+   <PIN pinname="Touch Data" visible="1">
+   </PIN>
+   <PIN pinname="Point" visible="1">
+   </PIN>
+   <PIN pinname="Id" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="5" srcpinname="Mouse State" dstnodeid="6" dstpinname="Mouse">
+   </LINK>
+   <LINK srcnodeid="5" srcpinname="Touch Data" dstnodeid="6" dstpinname="Touch Data">
+   </LINK>
+   <NODE systemname="TextBlock (DX11)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\TextBlock (DX11).v4p" nodename="TextBlock (DX11)" componentmode="Hidden" id="8">
+   <BOUNDS type="Node" left="4455" top="3810" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Resolution" visible="1">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Text" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Text Layout" visible="1">
+   </PIN>
+   <PIN pinname="Format" visible="1">
+   </PIN>
+   <PIN pinname="Apply" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="S (Value)" nodename="S (Value)" componentmode="Hidden" id="9">
+   <BOUNDS type="Node" left="5040" top="9000" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Send String" slicecount="1" values="res">
+   </PIN>
+   <PIN pinname="Input Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="5" srcpinname="Actual BackBuffer SizeXY" dstnodeid="9" dstpinname="Input Value">
+   </LINK>
+   <NODE systemname="R (Value)" nodename="R (Value)" componentmode="Hidden" id="10">
+   <BOUNDS type="Node" left="6270" top="3075" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="10" srcpinname="Input Value" dstnodeid="8" dstpinname="Resolution">
+   </LINK>
+   <NODE systemname="S (Node)" nodename="S (Node)" componentmode="Hidden" id="11">
+   <BOUNDS type="Node" left="3120" top="10410" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Send String" slicecount="1" values="touches">
+   </PIN>
+   <PIN pinname="Input Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="TouchProcessor (Join)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="TouchProcessor (Join)" componentmode="Hidden" id="13">
+   <BOUNDS type="Node" left="3120" top="9735" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3120" top="9735" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="PointsXY" visible="1">
+   </PIN>
+   <PIN pinname="ID&apos;s" visible="1">
+   </PIN>
+   <PIN pinname="Container" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="6" srcpinname="Point" dstnodeid="13" dstpinname="PointsXY">
+   </LINK>
+   <LINK srcnodeid="6" srcpinname="Id" dstnodeid="13" dstpinname="ID&apos;s">
+   </LINK>
+   <LINK srcnodeid="13" srcpinname="Container" dstnodeid="11" dstpinname="Input Value">
+   </LINK>
+   <PACK Name="dx11" Version="1.2">
+   </PACK>
+   <PACK Name="KeyboardUI" Version="1.1.1">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.10">
+   </PACK>
+   <PACK Name="addonpack" Version="36.0.0">
+   </PACK>
+   <NODE systemname="R (Node)" nodename="R (Node)" componentmode="Hidden" id="14">
+   <BOUNDS type="Node" left="3270" top="2160" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="14" srcpinname="Input Value" dstnodeid="0" dstpinname="Touch">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="15">
+   <BOUNDS type="Box" left="915" top="1485" width="2235" height="870">
+   </BOUNDS>
+   <BOUNDS type="Node" left="915" top="1485" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="|Uvuvwevwevwe Onyetenyevwe Ugwemuhwem Osas|">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Output String" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Output" dstnodeid="8" dstpinname="Text" linkstyle="Bezier">
+   <LINKPOINT x="1995" y="6135">
+   </LINKPOINT>
+   <LINKPOINT x="5025" y="2415">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Text Layout" dstnodeid="0" dstpinname="Text Layout" linkstyle="Bezier">
+   <LINKPOINT x="4575" y="7290">
+   </LINKPOINT>
+   <LINKPOINT x="3105" y="360">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="15" srcpinname="Output String" dstnodeid="0" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="16">
+   <BOUNDS type="Box" left="2040" top="3270" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2040" top="3270" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="16" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Set">
+   </LINK>
+   <NODE systemname="TextFormat (DirectWrite)" filename="%VVVV%\packs\dx11\nodes\plugins\directwrite\VVVV.Nodes.DirectWrite.dll" nodename="TextFormat (DirectWrite)" componentmode="Hidden" id="17">
+   <BOUNDS type="Node" left="5745" top="2625" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5745" top="2625" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Font Size" slicecount="1" values="43">
+   </PIN>
+   <PIN pinname="Line Spacing Method" slicecount="1" values="Default">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="17" srcpinname="Output" dstnodeid="8" dstpinname="Format">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="18">
+   <BOUNDS type="Box" left="6990" top="3285" width="285" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6990" top="3285" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="18" srcpinname="Y Output Value" dstnodeid="8" dstpinname="Apply">
+   </LINK>
+   <NODE systemname="Caret (Transform DirectWrite)" filename="%VVVV%\packs\mp.dx\nodes\modules\directwrite\Caret (Transform DirectWrite).v4p" nodename="Caret (Transform DirectWrite)" componentmode="Hidden" id="19">
+   <BOUNDS type="Node" left="7035" top="5160" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Text Layout" visible="1">
+   </PIN>
+   <PIN pinname="Caret Position" visible="1">
+   </PIN>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Color" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="8" srcpinname="Text Layout" dstnodeid="19" dstpinname="Text Layout">
+   </LINK>
+   <LINK srcnodeid="0" srcpinname="Selection Start" dstnodeid="19" dstpinname="Caret Position">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Transform Out" dstnodeid="19" dstpinname="Transform In">
+   </LINK>
+   <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="20">
+   <BOUNDS type="Node" left="3975" top="7590" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3975" top="7590" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Layer 1" visible="1">
+   </PIN>
+   <PIN pinname="Input Count" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Layer 3" visible="1">
+   </PIN>
+   <PIN pinname="Layer Out" visible="1">
+   </PIN>
+   <PIN pinname="Layer 2" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="8" srcpinname="Layer" dstnodeid="20" dstpinname="Layer 1">
+   </LINK>
+   <NODE systemname="Quad (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Quad (DX11.Layer)" componentmode="Hidden" id="21">
+   <BOUNDS type="Node" left="6855" top="5715" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6855" top="5715" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Transform" visible="1">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Color" visible="1">
+   </PIN>
+   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="19" srcpinname="Transform Out" dstnodeid="21" dstpinname="Transform">
+   </LINK>
+   <LINK srcnodeid="21" srcpinname="Layer" dstnodeid="20" dstpinname="Layer 3">
+   </LINK>
+   <LINK srcnodeid="20" srcpinname="Layer Out" dstnodeid="5" dstpinname="Layers">
+   </LINK>
+   <LINK srcnodeid="19" srcpinname="Color" dstnodeid="21" dstpinname="Color">
+   </LINK>
+   <NODE systemname="Blend (DX11.RenderState)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Blend (DX11.RenderState)" componentmode="Hidden" id="22">
+   <BOUNDS type="Node" left="5940" top="5475" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5940" top="5475" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Mode" slicecount="1" values="Blend">
+   </PIN>
+   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE systemname="Selection (Transform DirectWrite)" filename="%VVVV%\packs\mp.dx\nodes\modules\directwrite\Selection (Transform DirectWrite).v4p" nodename="Selection (Transform DirectWrite)" componentmode="Hidden" id="24">
+   <BOUNDS type="Node" left="4545" top="5535" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   <PIN pinname="Text Layout" visible="1">
+   </PIN>
+   <PIN pinname="Index" visible="1">
+   </PIN>
+   <PIN pinname="Range" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Padding" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="8" srcpinname="Transform Out" dstnodeid="24" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Text Layout" dstnodeid="24" dstpinname="Text Layout">
+   </LINK>
+   <LINK srcnodeid="0" srcpinname="Selection Start" dstnodeid="24" dstpinname="Index">
+   </LINK>
+   <LINK srcnodeid="0" srcpinname="Selection Length" dstnodeid="24" dstpinname="Range">
+   </LINK>
+   <NODE systemname="Quad (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Quad (DX11.Layer)" componentmode="Hidden" id="25">
+   <BOUNDS type="Node" left="4410" top="6345" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4410" top="6345" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Transform" visible="1">
+   </PIN>
+   <PIN pinname="Render State" visible="1">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Color" slicecount="1" values="|0.66651,0.66651,0.66651,1.00000|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="24" srcpinname="Transform Out" dstnodeid="25" dstpinname="Transform">
+   </LINK>
+   <NODE systemname="Invert (DX11.RenderState)" filename="%VVVV%\packs\mp.dx\nodes\modules\essentials\Invert (DX11.RenderState).v4p" nodename="Invert (DX11.RenderState)" componentmode="Hidden" id="26">
+   <BOUNDS type="Node" left="3465" top="6135" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Render State" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="26" srcpinname="Render State" dstnodeid="25" dstpinname="Render State">
+   </LINK>
+   <LINK srcnodeid="25" srcpinname="Layer" dstnodeid="20" dstpinname="Layer 2">
+   </LINK>
+   <LINK srcnodeid="22" srcpinname="Render State" dstnodeid="21" dstpinname="Render State">
+   </LINK>
+   <NODE systemname="Count (Node)" nodename="Count (Node)" componentmode="Hidden" id="27">
+   <BOUNDS type="Node" left="3600" top="2640" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="14" srcpinname="Input Value" dstnodeid="27" dstpinname="Input">
+   </LINK>
+   <NODE systemname="GT (Value)" nodename="GT (Value)" componentmode="Hidden" id="28">
+   <BOUNDS type="Node" left="3615" top="3090" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="27" srcpinname="Count" dstnodeid="28" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="TogEdge (Animation)" nodename="TogEdge (Animation)" componentmode="Hidden" id="29">
+   <BOUNDS type="Node" left="3435" top="3420" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Up Edge" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="28" srcpinname="Output" dstnodeid="29" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="29" srcpinname="Up Edge" dstnodeid="0" dstpinname="Set Focus">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Transform Out" dstnodeid="0" dstpinname="Transform" linkstyle="Bezier">
+   <LINKPOINT x="5460" y="6270">
+   </LINKPOINT>
+   <LINKPOINT x="3285" y="1050">
+   </LINKPOINT>
+   </LINK>
+   <NODE systemname="Transform (Transform 2d)" nodename="Transform (Transform 2d)" componentmode="Hidden" id="30">
+   <BOUNDS type="Node" left="5115" top="2085" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="ScaleX" slicecount="1" values="1.1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="30" srcpinname="Transform Out" dstnodeid="8" dstpinname="Transform In">
+   </LINK>
+   </PATCH>

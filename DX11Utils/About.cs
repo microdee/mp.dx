@@ -38,7 +38,7 @@ namespace mp.dx.Nodes
 
     [PluginInfo(
         Name = "About",
-        Category = "Mp.Dx",
+        Category = "mp.dx",
         Author = "microdee"
     )]
     public class AboutNode : IPluginEvaluate, IPartImportsSatisfiedNotification

@@ -210,3 +210,6 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+deploy/*/nodes/plugins/*.dll
+deploy/*/nodes/plugins/*.xml

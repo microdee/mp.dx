@@ -80,11 +80,11 @@
       <HintPath>..\dlls\FeralTic.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="md.stdl, Version=0.1.47.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\md-stdl.0.1.47-beta\lib\net47\md.stdl.dll</HintPath>
+    <Reference Include="md.stdl, Version=0.1.50.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\md-stdl.0.1.50-beta\lib\net47\md.stdl.dll</HintPath>
     </Reference>
-    <Reference Include="mp.pddn, Version=1.1.26.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\mp.pddn.1.1.26\lib\net47\mp.pddn.dll</HintPath>
+    <Reference Include="mp.pddn, Version=1.1.27.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mp.pddn.1.1.27\lib\net47\mp.pddn.dll</HintPath>
     </Reference>
     <Reference Include="SevenZip, Version=9.20.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LZMA-SDK.9.20\lib\net20\SevenZip.dll</HintPath>

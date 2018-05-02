@@ -61,32 +61,26 @@ void GS(point vs2gs input[1], inout LineStream<gs2ps> gsout)
 	vel = normalize(vel)*min(length(vel),maxextend);
 	if(length(vel)>velocityepsilon && inp.mask)
 	{
-		float veltest = 0;
+		float pd = depth.SampleLevel(s0,inp.TexCd,0);
 		//float2 asp=lerp(1,res.x/res.y,Aspect);
 		float2 asp=1;
 		float2 newtxcd = ((inp.TexCd-.5)/asp+vel*float2(1,-1))*asp+.5;
 		if(ConstantVelCol)
 		{
-			//veltest = max(.9999-length(vel)/ maxextend,0);
-			veltest = depth.SampleLevel(s0,newtxcd,0);
-			o.pos = float4((newtxcd.x-.5)*2,-(newtxcd.y-.5)*2,veltest,1);
+			o.pos = float4((newtxcd.x-.5)*2,-(newtxcd.y-.5)*2,pd,1);
 			o.TexCd = inp.TexCd;
 			o.vel = colin;
 		}
 		else
 		{
 			float2 vvel = velmap.SampleLevel(s0,newtxcd,0).xy;
-			//veltest = max(.9999-length(vvel)/ maxextend,0);
-			veltest = depth.SampleLevel(s0,newtxcd,0);
-			o.pos = float4((newtxcd.x-.5)*2,-(newtxcd.y-.5)*2,veltest,1);
+			o.pos = float4((newtxcd.x-.5)*2,-(newtxcd.y-.5)*2,pd,1);
 			o.TexCd = newtxcd;
 			o.vel = vvel;
 		}
 		gsout.Append(o);
 		
-		//veltest = max(.9999-length(vel)/ maxextend,0);
-		veltest = depth.SampleLevel(s0,inp.TexCd,0);
-		o.pos = float4(inp.pos.xy,veltest,1);
+		o.pos = float4(inp.pos.xy,pd,1);
 		o.TexCd = inp.TexCd;
 		o.vel = inp.vel;
 		gsout.Append(o);
@@ -95,18 +89,14 @@ void GS(point vs2gs input[1], inout LineStream<gs2ps> gsout)
 		
 		if(ConstantVelCol)
 		{
-			//veltest = max(.9999-length(vel)/ maxextend,0);
-			veltest = depth.SampleLevel(s0,newtxcd,0);
-			o.pos = float4((newtxcd.x-.5)*2,-(newtxcd.y-.5)*2,veltest,1);
+			o.pos = float4((newtxcd.x-.5)*2,-(newtxcd.y-.5)*2,pd,1);
 			o.TexCd = inp.TexCd;
 			o.vel = colin;
 		}
 		else
 		{
 			float2 vvel = velmap.SampleLevel(s0,newtxcd,0).xy;
-			//veltest = max(.9999-length(vvel)/ maxextend,0);
-			veltest = depth.SampleLevel(s0,newtxcd,0);
-			o.pos = float4((newtxcd.x-.5)*2,-(newtxcd.y-.5)*2,veltest,1);
+			o.pos = float4((newtxcd.x-.5)*2,-(newtxcd.y-.5)*2,pd,1);
 			o.TexCd = newtxcd;
 			o.vel = vvel;
 		}

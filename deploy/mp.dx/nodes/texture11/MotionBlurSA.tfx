@@ -6,6 +6,7 @@ Texture2D ColorTex: INITIAL;
 #define PI 3.14159265358979
 
 Texture2D Velocity;
+Texture2D Depth;
 
 cbuffer controls:register(b0){
 	float2 ScreenSize:TARGETSIZE;
@@ -49,7 +50,7 @@ float2 FillVel(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 float4 mblur(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0):SV_Target
 {
 	float irs = length(2/ScreenSize);
-    float2 vmap = PrevTex.Sample(s0, uv);
+    float2 vmap = PrevTex.SampleLevel(s0, uv, 0);
     float2 vel = vmap-0.5;
 	vel *= Amount;
 	
@@ -59,12 +60,18 @@ float4 mblur(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0):SV_Target
 	float iter=min(length(vel)/irs/PixelsPerSample, MaxSamples);
 	if(iter <= 1.0)
 		return ColorTex.SampleLevel(s0,uv,0);
+	
+    float cd = Depth.SampleLevel(s0, uv, 0).r;
 	float twg = 0;
-    for (float i=0; i<iter; i++){
+    for (float i=0; i<iter; i++)
+	{
     	float prog = i/iter-0.5;
+		float2 puv = ((uv-.5)/asp+vel*float2(1,-1)*(prog-BlurOffset/2))*asp+.5;
+		float pd = Depth.SampleLevel(s0, puv, 0).r;
+		if(pd-cd > 0.01) continue;
     	float wg = pow(abs(prog), 0.25);
     	twg += wg;
-        c+=ColorTex.SampleLevel(s0,((uv-.5)/asp+vel*float2(1,-1)*(prog-BlurOffset/2))*asp+.5,0)*wg;
+        c+=ColorTex.SampleLevel(s0,puv,0)*wg;
     }
     c=c/twg;
     return c;

@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.1.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\texture\ToneMapping (DX11.Texture2D).v4p" systemname="ToneMapping (DX11 MRE)" filename="G:\vvvv\app\vvvv_45alpha31.7_x86\packs\mrre\nodes\Modules\ToneMapping (DX11 MRE).v4p" scrollx="0" scrolly="0">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\ToneMapping (DX11.Texture2D).v4p" systemname="ToneMapping (DX11 MRE)" filename="G:\vvvv\app\vvvv_45alpha31.7_x86\packs\mrre\nodes\Modules\ToneMapping (DX11 MRE).v4p" scrollx="0" scrolly="2520">
    <BOUNDS type="Window" left="4740" top="840" width="18345" height="12720">
    </BOUNDS>
    <NODE systemname="Renderer (DX11 TempTarget)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11 TempTarget)" componentmode="Hidden" id="0">
@@ -151,7 +151,7 @@
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Average Value|">
    </PIN>
-   <PIN pinname="Input Node" slicecount="1" values="||" visible="1">
+   <PIN pinname="Input Node" slicecount="1" visible="1" values="||">
    </PIN>
    </NODE>
    <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="32">
@@ -311,7 +311,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="3735" top="7710" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="0.06">
+   <PIN pinname="Y Input Value" slicecount="1" values="0.02">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -327,7 +327,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="1635" top="9690" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" values="6">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -375,7 +375,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5580" top="7590" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="1.96">
+   <PIN pinname="Y Input Value" slicecount="1" values="2.34">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -391,7 +391,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5805" top="8100" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="1.69">
+   <PIN pinname="Y Input Value" slicecount="1" values="1.91">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -407,7 +407,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="6075" top="8595" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="0.9">
+   <PIN pinname="Y Input Value" slicecount="1" values="0.49">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -423,7 +423,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="6405" top="9120" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="0.95">
+   <PIN pinname="Y Input Value" slicecount="1" values="0.35">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -439,7 +439,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="6645" top="9645" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="2.03">
+   <PIN pinname="Y Input Value" slicecount="1" values="-0.33">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -455,7 +455,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="6840" top="10215" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="1.02">
+   <PIN pinname="Y Input Value" slicecount="1" values="0.06">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -471,7 +471,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="7110" top="10725" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="2.26">
+   <PIN pinname="Y Input Value" slicecount="1" values="2.03">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -724,7 +724,7 @@
    </LINK>
    <LINK srcnodeid="76" srcpinname="Output" dstnodeid="72" dstpinname="Color">
    </LINK>
-   <PACK Name="addonpack" Version="35.0.0">
+   <PACK Name="addonpack" Version="36.0.0">
    </PACK>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
@@ -766,7 +766,7 @@
    </NODE>
    <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
    </PACK>
-   <PACK Name="vvvv-Message" Version="2.9.0">
+   <PACK Name="vvvv-Message" Version="2.9.10">
    </PACK>
    <PACK Name="vvvv-ZeroMQ" Version="0.5.3">
    </PACK>
@@ -972,4 +972,8 @@
    </LINK>
    <LINK srcnodeid="82" srcpinname="Texture Out" dstnodeid="31" dstpinname="Input Node">
    </LINK>
+   <PACK Name="dx11" Version="1.2">
+   </PACK>
+   <PACK Name="KeyboardUI" Version="1.1.1">
+   </PACK>
    </PATCH>

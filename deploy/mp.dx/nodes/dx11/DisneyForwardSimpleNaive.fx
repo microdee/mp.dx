@@ -84,6 +84,7 @@ cbuffer cbPerObj : register( b0 )
 	float diffbluradd = 0.5;
 	float3 SunDir = float3(1,1,0);
 	float4 SunColor <bool color=true;> = 1;
+	float VelAm <string uiname="Velocity Amount";> = 1;
 };
 
 PSout PS(PSin input)
@@ -180,7 +181,11 @@ PSout PS(PSin input)
 	}
 
     o.Lit = float4(outcol, col.a);
-    o.VelUV = float4((input.pspos.xy / input.pspos.w) - (input.ppos.xy / input.ppos.w)+0.5, input.UV);
+	
+	float2 cpos = input.pspos.xy / input.pspos.w;
+	float2 ppos = input.ppos.xy / input.ppos.w;
+    o.VelUV = float4(cpos - lerp(cpos, ppos, VelAm) + 0.5, input.UV);
+    //o.VelUV = float4((input.pspos.xy / input.pspos.w) - (input.ppos.xy / input.ppos.w)+0.5, input.UV);
     //o.VelUV = float4(0.5, 0.5, input.UV);
 
     return o;

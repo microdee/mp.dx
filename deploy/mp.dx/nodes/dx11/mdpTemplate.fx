@@ -10,8 +10,9 @@ struct PSout
 Texture2D Tex;
 cbuffer cbuf : register(b0)
 {
-	float Alphatest = 0;
 	float4 cAmb <bool color=true;String uiname="Color";> = { 1.0f,1.0f,1.0f,1.0f };
+	float Alphatest = 0;
+	float VelAm = 1;
 }
 
 PSout PS(PSin input)
@@ -26,7 +27,9 @@ PSout PS(PSin input)
 	#if defined(ALPHATEST) /// -type switch
 	clip(o.Lit.a - Alphatest);
 	#endif
-    o.VelUV = float4((input.pspos.xy / input.pspos.w) - (input.ppos.xy / input.ppos.w)+0.5, input.UV);
+	float2 cpos = input.pspos.xy / input.pspos.w;
+	float2 ppos = input.ppos.xy / input.ppos.w;
+    o.VelUV = float4(cpos - lerp(cpos, ppos, VelAm) + 0.5, input.UV);
     return o;
 }
 

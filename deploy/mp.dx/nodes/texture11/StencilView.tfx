@@ -3,7 +3,7 @@
 //@tags: texture
 //@credits: 
 
-#if !defined(PASSFORMAT0)
+#if !defined(PASSFORMAT0) /// -type string
 #define PASSFORMAT0 "R32G32B32A32_Float"
 #endif
 

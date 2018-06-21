@@ -1,5 +1,11 @@
 
 #include <packs/mp.fxh/texture/depthReconstruct.fxh>
+#define PI 3.14159265358979
+#define PI2 6.28318530718
+
+#if !defined(SAMPCOUNT) /// -type int
+#define SAMPCOUNT 16
+#endif
 
 Texture2D<float> Depth: PREVIOUS;
 Texture2D<float> DepthI: INITIAL;
@@ -18,6 +24,7 @@ cbuffer cb
 {
 	float4x4 CamProj : CPROJ;
 	float4x4 CamProjInv : CPROJINV;
+	float4x4 CamViewInv : CVIEWINV;
 	float2 oR = float2(256, 256);
 	float2 R : TARGETSIZE;
 	float aoSize = 1;
@@ -26,10 +33,7 @@ cbuffer cb
 	float Gamma = 1;
 	float NoiseAmount = 0;
 	float RandomSeed = 0;
-	bool IgnoreStencil = false;
 };
-
-StructuredBuffer<float2> kernel;
 
 float _dnoise1(float3 u){
 	u=dot(u+.2,float3(1,57,21));
@@ -44,6 +48,15 @@ float4 _dnoise4(float2 x,float RandomSeed){
 	_dnoise1(float3((x+RandomSeed*11+97)+13,length(sin((x-37)/181+RandomSeed*float2(5,23))))+.5)
 	};
 	return frac(c+x.x*2+RandomSeed+dot(c,1))-.5;
+}
+float4 _dnoise4pos(float3 pos){
+	float4 c={
+	_dnoise1(pos * 0.7)+.5,
+	_dnoise1(pos * 0.6)+.5,
+	_dnoise1(pos * 0.5)+.5,
+	_dnoise1(pos * 0.4)+.5
+	};
+	return frac(c)-.5;
 }
 
 float3 GetViewPos(SamplerState SS, float2 uv)
@@ -79,8 +92,11 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 {
     int3 puv = int3((int2)(uv*oR), 0);
     uint4 stcl = Stencil.Load(puv);
-    if((any(stcl > 0) && any(stcl < 129)) || IgnoreStencil)
+	
+	#if !defined(IGNORESTENCIL) /// -type switch
+    if(any(stcl > 0) && any(stcl < 129))
     {
+    #endif
 		// Get the current pixel's positiom
     	float d;
 		float3 currentPos = GetViewPos(s0, uv, d);
@@ -90,7 +106,7 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 		float currentDistance = length( currentPos );
 	
 		// Get either pixel normal or face normal
-    	#if defined(ONLYDEPTH)
+    	#if defined(ONLYDEPTH) /// -type switch
 		float3 currentNormal = getFaceNormal(currentPos, uv);
     	#else
 		float3 currentNormal = Normals.SampleLevel(s0, uv, 0).rgb*2-1;
@@ -108,14 +124,21 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 		// For your own source, it is better to #define PI
 		
 		float amount = 0.0;
+    	
+    	float3 wpos = mul(float4(currentPos, 1), CamViewInv).xyz;
 		
-		for ( uint i = 0; i < uint( kernelSize ); i++ )
+    	[unroll]
+		for ( uint i = 0; i < SAMPCOUNT; i++ )
 		{
-			float4 randomVec = _dnoise4(uv*100, RandomSeed + ((float)i)*0.247);
-			float2x2 rotMat = float2x2( float2( cos( randomVec.x * 3.1415926 ), -sin( randomVec.x * 3.1415926 ) ),
-								float2( sin( randomVec.x * 3.1415926 ), cos( randomVec.x * 3.1415926 ) ) );
+			float4 randomVec = _dnoise4pos(wpos + ((float)i)*0.107);
+			float2x2 rotMat = float2x2( float2( cos( randomVec.x * 3.1415926 ), -sin( randomVec.y * 3.1415926 ) ),
+								float2( sin( randomVec.z * 3.1415926 ), cos( randomVec.w * 3.1415926 ) ) );
 			// Retrieve the kernel vector and scale it with aspectRatio
-			float2 kernelVec = kernel[i];
+			float kangle = (i/SAMPCOUNT)*PI2;
+			float2 kernelVec = float2(
+				cos(kangle) * (randomVec.x+0.5),
+				sin(kangle) * (randomVec.x+0.5)
+			);
 			kernelVec *= aspectRatio;
 		
 			float radius = aoSize * lerp(1,randomVec.y, NoiseAmount);
@@ -145,7 +168,7 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
 		}
 		
 		// Create the final amount value
-		amount *= strength / kernelSize;
+		amount *= strength / SAMPCOUNT;
 		amount = 1.0 - amount;
 		amount = max( 0.0, amount );
 		
@@ -154,15 +177,20 @@ float4 PS(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
     	o = saturate(o*lerp(0.3,1,dm));
 	
 		return o;
+    	
+	#if !defined(IGNORESTENCIL)
     }
 	else return 1;
+	#endif
 }
 float4 SSAOBlurB(float4 PosWVP:SV_POSITION, float2 uv:TEXCOORD0): SV_Target
 {
     int3 puv = int3((int2)(uv*oR), 0);
     uint4 stcl = Stencil.Load(puv);
-    if((any(stcl > 0) && any(stcl < 129)) || IgnoreStencil)
+	#if !defined(IGNORESTENCIL)
+    if(any(stcl > 0) && any(stcl < 129))
     {
+    #endif
 		float2 InvScreenSize = 3/R;
 		float o = 1;
 		const float2 vec[8] = {
@@ -183,21 +211,25 @@ float4 SSAOBlurB(float4 PosWVP:SV_POSITION, float2 uv:TEXCOORD0): SV_Target
 		for (int k=0;k<8;k++)
     	{
 			float2 tcoord = uv+float2(vec[k].x*InvScreenSize.x,vec[k].y*InvScreenSize.y);
-    		if(abs(dd-DepthI.SampleLevel(s0,tcoord,0)) > 0.0005) continue;
+    		if(abs(dd-DepthI.SampleLevel(s0,tcoord,0)) > 0.0001) continue;
 			ao+=Depth.SampleLevel(s0,tcoord,0);
 			samples++;
     	}
 		ao/=samples;
     	return float4(ao.xxx,1);
+	#if !defined(IGNORESTENCIL)
     }
 	else return 1;
+	#endif
 }
 float4 SSAOBlurF(float4 PosWVP:SV_POSITION, float2 uv:TEXCOORD0): SV_Target
 {
     int3 puv = int3((int2)(uv*oR), 0);
     uint4 stcl = Stencil.Load(puv);
-    if((any(stcl > 0) && any(stcl < 129)) || IgnoreStencil)
+	#if !defined(IGNORESTENCIL)
+    if(any(stcl > 0) && any(stcl < 129))
     {
+    #endif
 		float2 InvScreenSize = 1/R;
 		float o = 1;
 		const float2 vec[8] = {
@@ -218,14 +250,16 @@ float4 SSAOBlurF(float4 PosWVP:SV_POSITION, float2 uv:TEXCOORD0): SV_Target
 		for (int k=0;k<8;k++)
     	{
 			float2 tcoord = uv+float2(vec[k].x*InvScreenSize.x,vec[k].y*InvScreenSize.y);
-    		if(abs(dd-DepthI.SampleLevel(s0,tcoord,0)) > 0.0005) continue;
+    		if(abs(dd-DepthI.SampleLevel(s0,tcoord,0)) > 0.0001) continue;
 			ao+=Depth.SampleLevel(s0,tcoord,0);
 			samples++;
     	}
 		ao/=samples;
     	return float4(ao.xxx,1);
+	#if !defined(IGNORESTENCIL)
     }
 	else return 1;
+	#endif
 }
 
 technique10 SSAOt{

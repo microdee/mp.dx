@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha34.106.dtd" >
-   <PATCH nodename="C:\vvvv\app\vvvv_autoalpha\packs\mp.dx\nodes\modules\geometry\IO\STLFile (DX11.Geometry).v4p" systemname="STLFile (DX11.Geometry)" filename="C:\vjing\STL\STLFile (DX11.Geometry).v4p" scrollx="465" scrolly="1725">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha36.1.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\geometry\IO\STLFile (DX11.Geometry).v4p" systemname="STLFile (DX11.Geometry)" filename="C:\vjing\STL\STLFile (DX11.Geometry).v4p" scrollx="1350" scrolly="14100">
    <BOUNDS type="Window" left="3495" top="4155" width="15180" height="9555">
    </BOUNDS>
    <NODE systemname="Reader (Raw)" nodename="Reader (Raw)" componentmode="Hidden" id="19">
@@ -229,7 +229,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="11520" top="15030" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -943,7 +943,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="10785" top="15930" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -992,6 +992,8 @@
    <PIN pinname="Input Layout" visible="1">
    </PIN>
    <PIN pinname="Apply" visible="1">
+   </PIN>
+   <PIN pinname="Geometry Out" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="106" srcpinname="Output" dstnodeid="107" dstpinname="Vertices" linkstyle="VHV">
@@ -1087,18 +1089,18 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="113" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="5025" top="20550" width="795" height="240">
+   <BOUNDS type="Box" left="5100" top="22290" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="5025" top="20550" width="0" height="0">
+   <BOUNDS type="Node" left="5100" top="22290" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Geometry Out|">
    </PIN>
+   <PIN pinname="Input Node" visible="1">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="107" srcpinname="Geometry Out" dstnodeid="113" dstpinname="Input Node">
-   </LINK>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.101.0">
+   <PACK Name="addonpack" Version="36.0.0">
    </PACK>
    <NODE systemname="Unzip (3d)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Unzip (3d)" componentmode="Hidden" id="114">
    <BOUNDS type="Node" left="6525" top="18465" width="100" height="100">
@@ -1110,24 +1112,104 @@
    </NODE>
    <LINK srcnodeid="59" srcpinname="OutputXYZ" dstnodeid="114" dstpinname="InputXYZ">
    </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="115">
-   <BOUNDS type="Box" left="6540" top="20985" width="795" height="720">
+   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
+   </PACK>
+   <PACK Name="dx11" Version="1.2">
+   </PACK>
+   <PACK Name="KeyboardUI" Version="1.1.1">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.10">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
+   <NODE systemname="BoundingBox (DX11.Geometry Set)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="BoundingBox (DX11.Geometry Set)" componentmode="Hidden" id="116">
+   <BOUNDS type="Node" left="8775" top="21285" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Node" left="6540" top="20985" width="0" height="0">
+   <BOUNDS type="Box" left="8775" top="21285" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Enabled" visible="1">
+   </PIN>
+   <PIN pinname="MinimumXYZ" visible="1">
+   </PIN>
+   <PIN pinname="MaximumXYZ" visible="1">
+   </PIN>
+   <PIN pinname="Geometry In" visible="1">
+   </PIN>
+   <PIN pinname="Geometry Out" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="109" srcpinname="Output" dstnodeid="116" dstpinname="Enabled">
+   </LINK>
+   <NODE systemname="Bounds (Spectral Vector)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Bounds (Spectral Vector)" componentmode="Hidden" id="117">
+   <BOUNDS type="Node" left="8700" top="20760" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8700" top="20760" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Minimum" visible="1">
+   </PIN>
+   <PIN pinname="Maximum" visible="1">
+   </PIN>
+   <PIN pinname="Evaluate" visible="1" pintype="Input" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="114" srcpinname="Output 1XYZ" dstnodeid="117" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="117" srcpinname="Minimum" dstnodeid="116" dstpinname="MinimumXYZ">
+   </LINK>
+   <LINK srcnodeid="117" srcpinname="Maximum" dstnodeid="116" dstpinname="MaximumXYZ">
+   </LINK>
+   <LINK srcnodeid="107" srcpinname="Geometry Out" dstnodeid="116" dstpinname="Geometry In">
+   </LINK>
+   <LINK srcnodeid="116" srcpinname="Geometry Out" dstnodeid="113" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="119">
+   <BOUNDS type="Box" left="9015" top="21975" width="795" height="720">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9015" top="21975" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Precision" slicecount="1" values="4">
    </PIN>
+   <PIN pinname="Rows" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="3" values="0,,">
+   </PIN>
    <PIN pinname="Vector Size" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0, 0|">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Minimum">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="117" srcpinname="Minimum" dstnodeid="119" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="120">
+   <BOUNDS type="Box" left="10365" top="21945" width="795" height="720">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10365" top="21945" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
    </PIN>
    <PIN pinname="Rows" slicecount="1" values="3">
    </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Positions">
+   <PIN pinname="Y Input Value" slicecount="3" values="0,,">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0, 0|">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Maximum">
    </PIN>
    </NODE>
-   <LINK srcnodeid="114" srcpinname="Output 1XYZ" dstnodeid="115" dstpinname="Y Input Value">
+   <LINK srcnodeid="117" srcpinname="Maximum" dstnodeid="120" dstpinname="Y Input Value">
    </LINK>
-   <PACK Name="vvvv-ZeroMQ_Release_x64" Version="0.5.0">
-   </PACK>
+   <LINK srcnodeid="109" srcpinname="Output" dstnodeid="117" dstpinname="Evaluate">
+   </LINK>
    </PATCH>

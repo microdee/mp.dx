@@ -1,9 +1,9 @@
-Texture2D<float2> PrevTex: PREVIOUS;
-Texture2D ColorTex: INITIAL;
-//Texture2D CorrVelTex: PASSRESULT0;
-//Texture2D OffsVelTex1: PASSRESULT2;
-//Texture2D OffsVelTex2: PASSRESULT3;
+Texture2D ColorTex: PREVIOUS;
 #define PI 3.14159265358979
+
+#if !defined(SAMPCOUNT) /// -type int
+#define SAMPCOUNT 16
+#endif
 
 Texture2D Velocity;
 Texture2D Depth;
@@ -33,24 +33,14 @@ SamplerState s_vel : IMMUTABLE
 	AddressV=CLAMP;
 	MipLODBias = 0;
 };
-float2 FillVel(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0): SV_Target
-{
-    float2 colin = Velocity.Sample(s_vel,uv).xy;
-	float2 col = colin;
-	float FillEpsilon = 0.01;
-	
-	if((colin.r<=FillEpsilon) && (colin.g<=FillEpsilon))
-	{
-		col = 0.5;
-	}
-	//if(vPos.z==0) col.rgb = 0.5;
-    return col;
-}
 
 float4 mblur(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0):SV_Target
 {
 	float irs = length(2/ScreenSize);
-    float2 vmap = PrevTex.SampleLevel(s0, uv, 0);
+    float2 vmap = Velocity.SampleLevel(s0, uv, 0).xy;
+	if(all(vmap<=0.01))
+		vmap = 0.5;
+	
     float2 vel = vmap-0.5;
 	vel *= Amount;
 	
@@ -76,10 +66,46 @@ float4 mblur(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0):SV_Target
     c=c/twg;
     return c;
 }
+float4 mblurfixedsamp(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0):SV_Target
+{
+	float irs = length(2/ScreenSize);
+    float2 vmap = Velocity.SampleLevel(s0, uv, 0).xy;
+	if(all(vmap<=0.01))
+		vmap = 0.5;
+	
+    float2 vel = vmap-0.5;
+	vel *= Amount;
+	
+	//float2 asp=lerp(1,ScreenSize.x/ScreenSize,Aspect);
+	float2 asp=1;
+    float4 c=0;
+	//float iter=min(length(vel)/irs/PixelsPerSample, MaxSamples);
+	//if(iter <= 1.0)
+		//return ColorTex.SampleLevel(s0,uv,0);
+	
+    float cd = Depth.SampleLevel(s0, uv, 0).r;
+	float twg = 0;
+	
+	[unroll]
+    for (float i=0; i<SAMPCOUNT; i++)
+	{
+    	float prog = i/SAMPCOUNT-0.5;
+		float2 puv = ((uv-.5)/asp+vel*float2(1,-1)*(prog-BlurOffset/2))*asp+.5;
+		float pd = Depth.SampleLevel(s0, puv, 0).r;
+		float valid = pd-cd > 0.01 ? 0.0 : 1.0;
+    	float wg = pow(abs(prog), 0.25) * valid;
+    	twg += wg;
+        c+=ColorTex.SampleLevel(s0,puv,0)*wg;
+    }
+    c=c/twg;
+    return c;
+}
 
-technique10 MotionBlur{
-	pass P0 <string format="R32G32_Float";>
-	{SetPixelShader(CompileShader(ps_5_0,FillVel()));}
+technique11 DynamicSampleCount {
 	pass P3 <string format="R16G16B16A16_Float";>
 	{SetPixelShader(CompileShader(ps_5_0,mblur()));}
+}
+technique11 FixedSampleCount {
+	pass P3 <string format="R16G16B16A16_Float";>
+	{SetPixelShader(CompileShader(ps_5_0,mblurfixedsamp()));}
 }

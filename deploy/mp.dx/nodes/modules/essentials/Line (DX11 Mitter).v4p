@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" systemname="Line (DX11 Mitter)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" scrollx="0" scrolly="2805">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta37.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" systemname="Line (DX11 Mitter)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 Mitter).v4p" scrollx="0" scrolly="2880">
    <BOUNDS type="Window" left="0" top="0" width="14385" height="16875">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -78,16 +78,6 @@
    </NODE>
    <LINK srcnodeid="0" srcpinname="Y Output Value" dstnodeid="7" dstpinname="Input 1">
    </LINK>
-   <NODE systemname="SequentialAdd (Value)" filename="%VVVV%\packs\mp.essentials\nodes\modules\value\SequentialAdd (Value).v4p" nodename="SequentialAdd (Value)" componentmode="Hidden" id="8">
-   <BOUNDS type="Node" left="4125" top="3630" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="7" srcpinname="Output" dstnodeid="8" dstpinname="Input">
-   </LINK>
    <NODE systemname="Select (Value)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Select (Value)" componentmode="Hidden" id="9">
    <BOUNDS type="Node" left="3090" top="3645" width="100" height="100">
    </BOUNDS>
@@ -103,14 +93,12 @@
    </BOUNDS>
    <PIN pinname="Index" visible="1">
    </PIN>
-   <PIN pinname="Spread" visible="1">
+   <PIN pinname="Spread" visible="1" slicecount="1" values="0">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="9" srcpinname="Former Slice" dstnodeid="10" dstpinname="Index">
-   </LINK>
-   <LINK srcnodeid="8" srcpinname="Output" dstnodeid="10" dstpinname="Spread">
    </LINK>
    <NODE systemname="Switch (Value Input)" nodename="Switch (Value Input)" componentmode="Hidden" id="11">
    <BOUNDS type="Node" left="2535" top="4425" width="100" height="100">
@@ -164,16 +152,6 @@
    </NODE>
    <LINK srcnodeid="11" srcpinname="Output" dstnodeid="20" dstpinname="Input 1">
    </LINK>
-   <NODE systemname="SequentialAdd (Value)" filename="%VVVV%\packs\mp.essentials\nodes\modules\value\SequentialAdd (Value).v4p" nodename="SequentialAdd (Value)" componentmode="Hidden" id="21">
-   <BOUNDS type="Node" left="5835" top="5385" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1" slicecount="6" values="6,5,0,12,0,7">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   <PIN pinname="Output Bin Size" visible="1">
-   </PIN>
-   </NODE>
    <NODE systemname="Vector (2d Join)" nodename="Vector (2d Join)" componentmode="Hidden" id="28">
    <BOUNDS type="Node" left="2025" top="5565" width="100" height="100">
    </BOUNDS>
@@ -193,16 +171,12 @@
    </BOUNDS>
    <PIN pinname="Y" visible="1" slicecount="1" values="0">
    </PIN>
-   <PIN pinname="X" visible="1" slicecount="6" values="0,6,0,35,0,71">
+   <PIN pinname="X" visible="1" slicecount="1" values="0">
    </PIN>
    <PIN pinname="XY" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="20" srcpinname="Output" dstnodeid="29" dstpinname="Y">
-   </LINK>
-   <LINK srcnodeid="20" srcpinname="Output" dstnodeid="21" dstpinname="Input">
-   </LINK>
-   <LINK srcnodeid="21" srcpinname="Output" dstnodeid="29" dstpinname="X">
    </LINK>
    <NODE systemname="Add (Value Spectral)" nodename="Add (Value Spectral)" componentmode="Hidden" id="30">
    <BOUNDS type="Node" left="7380" top="4875" width="100" height="100">
@@ -291,13 +265,11 @@
    <NODE systemname="Dispatcher (DX11.Drawer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Dispatcher (DX11.Drawer)" componentmode="Hidden" id="36">
    <BOUNDS type="Node" left="2565" top="10275" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Thread X" visible="1">
+   <PIN pinname="Thread X" visible="1" slicecount="1" values="1">
    </PIN>
    <PIN pinname="Geometry Out" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="21" srcpinname="Output Bin Size" dstnodeid="36" dstpinname="Thread X">
-   </LINK>
    <LINK srcnodeid="36" srcpinname="Geometry Out" dstnodeid="19" dstpinname="Geometry">
    </LINK>
    <NODE systemname="MitterFill (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\MitterFill.fx" nodename="MitterFill (DX11.Effect)" componentmode="Hidden" id="38">
@@ -385,13 +357,11 @@
    </BOUNDS>
    <PIN pinname="Input 2" slicecount="1" values="1">
    </PIN>
-   <PIN pinname="Input 1" visible="1">
+   <PIN pinname="Input 1" visible="1" slicecount="1" values="0">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="21" srcpinname="Output" dstnodeid="44" dstpinname="Input 1">
-   </LINK>
    <LINK srcnodeid="44" srcpinname="Output" dstnodeid="40" dstpinname="[ From ..">
    </LINK>
    <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="45">
@@ -541,7 +511,7 @@
    </BOUNDS>
    <PIN pinname="Output" visible="1" pintype="Output">
    </PIN>
-   <PIN pinname=".. To [" visible="1" pintype="Input" slicecount="6" values="4,3,22,10,22,5">
+   <PIN pinname=".. To [" visible="1" pintype="Input" slicecount="1" values="1">
    </PIN>
    <PIN pinname="Descriptive Name" pintype="Configuration" slicecount="1" values="||">
    </PIN>
@@ -552,8 +522,6 @@
    <PIN pinname="ID" pintype="Output" visible="-1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="21" srcpinname="Output Bin Size" dstnodeid="58" dstpinname=".. To [">
-   </LINK>
    <NODE systemname="Select (Value)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Select (Value)" componentmode="Hidden" id="59">
    <BOUNDS type="Node" left="6615" top="8190" width="100" height="100">
    </BOUNDS>
@@ -1067,5 +1035,41 @@
    <LINK srcnodeid="94" srcpinname="Buffer" dstnodeid="90" dstpinname="TrBuf">
    </LINK>
    <PACK Name="KeyboardUI" Version="1.1.1">
+   </PACK>
+   <NODE systemname="SequentialAdd (Value)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="SequentialAdd (Value)" componentmode="Hidden" id="21">
+   <BOUNDS type="Node" left="5835" top="5385" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1" slicecount="6" values="6,5,0,12,0,7">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Output Bin Size" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="20" srcpinname="Output" dstnodeid="21" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="21" srcpinname="Output" dstnodeid="29" dstpinname="X">
+   </LINK>
+   <LINK srcnodeid="21" srcpinname="Output Bin Size" dstnodeid="36" dstpinname="Thread X">
+   </LINK>
+   <LINK srcnodeid="21" srcpinname="Output" dstnodeid="44" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="21" srcpinname="Output Bin Size" dstnodeid="58" dstpinname=".. To [">
+   </LINK>
+   <NODE systemname="SequentialAdd (Value)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="SequentialAdd (Value)" componentmode="Hidden" id="8">
+   <BOUNDS type="Node" left="4125" top="3630" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="7" srcpinname="Output" dstnodeid="8" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="8" srcpinname="Output" dstnodeid="10" dstpinname="Spread">
+   </LINK>
+   <PACK Name="dx11" Version="1.3.1.1">
+   </PACK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
    </PACK>
    </PATCH>

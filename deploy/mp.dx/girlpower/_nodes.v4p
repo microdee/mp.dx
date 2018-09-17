@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\girlpower\Nodes.v4p" systemname="Nodes" filename="D:\local\vvvv-gp\packs\mp.dx\girlpower\Nodes.v4p" scrollx="0" scrolly="-360" locked="0">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta37.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\girlpower\_nodes.v4p" systemname="Nodes" filename="D:\local\vvvv-gp\packs\mp.dx\girlpower\Nodes.v4p" scrollx="0" scrolly="-360" locked="0">
    <BOUNDS type="Window" left="2760" top="1065" width="22395" height="22200">
    </BOUNDS>
    <PACK Name="KeyboardUI" Version="1.1.1">
@@ -604,14 +604,6 @@
    <BOUNDS type="Node" left="1005" top="9885" width="100" height="100">
    </BOUNDS>
    </NODE>
-   <NODE systemname="JoinGeometry (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\JoinGeometry (DX11.Geometry).v4p" nodename="JoinGeometry (DX11.Geometry)" componentmode="Hidden" id="83">
-   <BOUNDS type="Node" left="990" top="10455" width="100" height="100">
-   </BOUNDS>
-   </NODE>
-   <NODE systemname="ModGeomLayout (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\ModGeomLayout (DX11.Geometry).v4p" nodename="ModGeomLayout (DX11.Geometry)" componentmode="Hidden" id="84">
-   <BOUNDS type="Node" left="990" top="10935" width="100" height="100">
-   </BOUNDS>
-   </NODE>
    <NODE systemname="MultiBoundingBox (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\MultiBoundingBox (DX11.Geometry).v4p" nodename="MultiBoundingBox (DX11.Geometry)" componentmode="Hidden" id="85">
    <BOUNDS type="Node" left="2460" top="9375" width="100" height="100">
    </BOUNDS>
@@ -868,7 +860,7 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
-   <PACK Name="dx11" Version="1.2">
+   <PACK Name="dx11" Version="1.3.1.1">
    </PACK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="127">
    <BOUNDS type="Node" left="16815" top="7755" width="600" height="270">
@@ -996,4 +988,10 @@
    </NODE>
    <LINK srcnodeid="141" srcpinname="Faces" dstnodeid="142" dstpinname="Input">
    </LINK>
+   <NODE systemname="StandardGeomLayout (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\StandardGeomLayout (DX11.Geometry).v4p" nodename="StandardGeomLayout (DX11.Geometry)" componentmode="Hidden" id="84">
+   <BOUNDS type="Node" left="990" top="10335" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
    </PATCH>

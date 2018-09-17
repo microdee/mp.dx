@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" systemname="SkeletalMesh (DX11 Assimp)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" scrollx="0" scrolly="3840">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta37.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" systemname="SkeletalMesh (DX11 Assimp)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" scrollx="0" scrolly="4590">
    <BOUNDS type="Window" left="33270" top="3510" width="17625" height="11085">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -28,14 +28,6 @@
    </NODE>
    <NODE systemname="Add (Value Spectral)" nodename="Add (Value Spectral)" componentmode="Hidden" id="9">
    <BOUNDS type="Node" left="2985" top="5130" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1">
-   </PIN>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <NODE systemname="SequentialAdd (Value)" filename="..\..\..\..\mp.essentials\nodes\modules\value\SequentialAdd (Value).v4p" nodename="SequentialAdd (Value)" componentmode="Hidden" id="28">
-   <BOUNDS type="Node" left="1605" top="7710" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
@@ -292,8 +284,6 @@
    </LINK>
    <LINK srcnodeid="78" srcpinname="Y Output Value" dstnodeid="82" dstpinname="Select Mesh">
    </LINK>
-   <LINK srcnodeid="82" srcpinname="Bone Matrices Bin Size" dstnodeid="28" dstpinname="Input">
-   </LINK>
    <LINK srcnodeid="82" srcpinname="Bone Matrices Bin Size" dstnodeid="9" dstpinname="Input">
    </LINK>
    <NODE systemname="GetSlice (Spreads)" nodename="GetSlice (Spreads)" componentmode="Hidden" id="83">
@@ -390,36 +380,6 @@
    </LINK>
    <LINK srcnodeid="84" srcpinname="Output" dstnodeid="55" dstpinname="Y Input Value">
    </LINK>
-   <NODE systemname="ModGeomLayout (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\ModGeomLayout (DX11.Geometry).v4p" componentmode="Hidden" id="93" nodename="%VVVV%\packs\mp.dx\nodes\modules\geometry\ModGeomLayout (DX11.Geometry).v4p" debug="0">
-   <BOUNDS type="Node" left="4440" top="10830" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="4440" top="10830" width="4800" height="3600">
-   </BOUNDS>
-   <BOUNDS type="Window" left="31485" top="5640" width="14250" height="8940">
-   </BOUNDS>
-   <PIN pinname="Texture Coordinate Count" visible="1">
-   </PIN>
-   <PIN pinname="Tangent Vectors" visible="1">
-   </PIN>
-   <PIN pinname="Skinning" visible="1">
-   </PIN>
-   <PIN pinname="Previous Position" visible="1">
-   </PIN>
-   <PIN pinname="Subset ID" visible="1">
-   </PIN>
-   <PIN pinname="Instance ID" visible="1">
-   </PIN>
-   <PIN pinname="Material ID" visible="1">
-   </PIN>
-   <PIN pinname="Normal" visible="1">
-   </PIN>
-   <PIN pinname="Defines" visible="1">
-   </PIN>
-   <PIN pinname="Strides" visible="1">
-   </PIN>
-   <PIN pinname="Layout" visible="1">
-   </PIN>
-   </NODE>
    <NODE systemname="SkinningAssimp (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\SkinningAssimp.fx" nodename="SkinningAssimp (DX11.Effect)" componentmode="Hidden" id="97">
    <BOUNDS type="Node" left="2520" top="12375" width="2250" height="270">
    </BOUNDS>
@@ -431,7 +391,7 @@
    </PIN>
    <PIN pinname="Shader Path" visible="1" pintype="Output">
    </PIN>
-   <PIN pinname="BlendIDOffset" visible="1" slicecount="1" values="0">
+   <PIN pinname="BlendIDOffset" visible="1">
    </PIN>
    <PIN pinname="MatId" visible="1" slicecount="1" values="0">
    </PIN>
@@ -478,8 +438,6 @@
    <PIN pinname="Y Output Value" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="100" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Texture Coordinate Count">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="101">
    <BOUNDS type="Box" left="5085" top="9885" width="480" height="480">
    </BOUNDS>
@@ -500,20 +458,6 @@
    <PIN pinname="X Input Value" slicecount="1" values="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Tangent Vectors">
-   </LINK>
-   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Skinning">
-   </LINK>
-   <LINK srcnodeid="49" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Previous Position">
-   </LINK>
-   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Subset ID">
-   </LINK>
-   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Instance ID">
-   </LINK>
-   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Material ID">
-   </LINK>
-   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Normal">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="108">
    <BOUNDS type="Box" left="6900" top="9945" width="480" height="480">
    </BOUNDS>
@@ -557,7 +501,7 @@
    </PIN>
    <PIN pinname="REAL_INSTANCEID" visible="1" slicecount="1" values="0">
    </PIN>
-   <PIN pinname="Defines Input" visible="1">
+   <PIN pinname="Defines Input" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Defines" visible="1">
    </PIN>
@@ -570,11 +514,7 @@
    </LINK>
    <LINK srcnodeid="108" srcpinname="Y Output Value" dstnodeid="114" dstpinname="TANGENT_IN">
    </LINK>
-   <LINK srcnodeid="93" srcpinname="Defines" dstnodeid="114" dstpinname="Defines Input">
-   </LINK>
    <LINK srcnodeid="114" srcpinname="Defines" dstnodeid="97" dstpinname="Defines">
-   </LINK>
-   <LINK srcnodeid="28" srcpinname="Output" dstnodeid="97" dstpinname="BlendIDOffset">
    </LINK>
    <NODE systemname="I (Spreads)" nodename="I (Spreads)" componentmode="Hidden" id="117">
    <BOUNDS type="Node" left="1560" top="10080" width="100" height="100">
@@ -794,21 +734,15 @@
    </NODE>
    <LINK srcnodeid="97" srcpinname="Layer" dstnodeid="144" dstpinname="Layer">
    </LINK>
-   <LINK srcnodeid="93" srcpinname="Layout" dstnodeid="144" dstpinname="Output Layout">
-   </LINK>
    <LINK srcnodeid="119" srcpinname="Output Enum" dstnodeid="144" dstpinname="Output Draw Mode">
    </LINK>
    <LINK srcnodeid="144" srcpinname="Buffer Out" dstnodeid="52" dstpinname="Input Node">
-   </LINK>
-   <LINK srcnodeid="93" srcpinname="Strides" dstnodeid="144" dstpinname="Stride">
    </LINK>
    <LINK srcnodeid="132" srcpinname="Y Output Value" dstnodeid="144" dstpinname="Attach Index Buffer">
    </LINK>
    <LINK srcnodeid="133" srcpinname="Y Output Value" dstnodeid="144" dstpinname="Vertex Buffer Binding">
    </LINK>
    <LINK srcnodeid="134" srcpinname="Y Output Value" dstnodeid="144" dstpinname="Index Buffer Binding">
-   </LINK>
-   <LINK srcnodeid="93" srcpinname="Strides" dstnodeid="144" dstpinname="Vertex Size">
    </LINK>
    <LINK srcnodeid="144" srcpinname="Geometry Out" dstnodeid="51" dstpinname="Input Node">
    </LINK>
@@ -908,6 +842,74 @@
    </LINK>
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
-   <PACK Name="dx11" Version="1.2">
+   <PACK Name="dx11" Version="1.3.1.1">
    </PACK>
+   <NODE systemname="StandardGeomLayout (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\StandardGeomLayout (DX11.Geometry).v4p" componentmode="Hidden" id="93" nodename="StandardGeomLayout (DX11.Geometry)" debug="0">
+   <BOUNDS type="Node" left="4440" top="10830" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4440" top="10830" width="4800" height="3600">
+   </BOUNDS>
+   <BOUNDS type="Window" left="31485" top="5640" width="14250" height="8940">
+   </BOUNDS>
+   <PIN pinname="Texture Coordinate Count" visible="1">
+   </PIN>
+   <PIN pinname="Tangent Vectors" visible="1">
+   </PIN>
+   <PIN pinname="Skinning" visible="1">
+   </PIN>
+   <PIN pinname="Previous Position" visible="1">
+   </PIN>
+   <PIN pinname="Subset ID" visible="1">
+   </PIN>
+   <PIN pinname="Instance ID" visible="1">
+   </PIN>
+   <PIN pinname="Material ID" visible="1">
+   </PIN>
+   <PIN pinname="Normal" visible="1">
+   </PIN>
+   <PIN pinname="Defines" visible="1">
+   </PIN>
+   <PIN pinname="Strides" visible="1">
+   </PIN>
+   <PIN pinname="Layout" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="100" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Texture Coordinate Count">
+   </LINK>
+   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Tangent Vectors">
+   </LINK>
+   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Skinning">
+   </LINK>
+   <LINK srcnodeid="49" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Previous Position">
+   </LINK>
+   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Subset ID">
+   </LINK>
+   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Instance ID">
+   </LINK>
+   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Material ID">
+   </LINK>
+   <LINK srcnodeid="101" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Normal">
+   </LINK>
+   <LINK srcnodeid="93" srcpinname="Defines" dstnodeid="114" dstpinname="Defines Input">
+   </LINK>
+   <LINK srcnodeid="93" srcpinname="Layout" dstnodeid="144" dstpinname="Output Layout">
+   </LINK>
+   <LINK srcnodeid="93" srcpinname="Strides" dstnodeid="144" dstpinname="Stride">
+   </LINK>
+   <LINK srcnodeid="93" srcpinname="Strides" dstnodeid="144" dstpinname="Vertex Size">
+   </LINK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
+   <NODE systemname="SequentialAdd (Value)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="SequentialAdd (Value)" componentmode="Hidden" id="28">
+   <BOUNDS type="Node" left="1605" top="7710" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="82" srcpinname="Bone Matrices Bin Size" dstnodeid="28" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="28" srcpinname="Output" dstnodeid="97" dstpinname="BlendIDOffset">
+   </LINK>
    </PATCH>

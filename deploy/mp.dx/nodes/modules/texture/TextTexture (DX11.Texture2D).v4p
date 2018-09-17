@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha36.1.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\TextTexture (DX11.Texture2D).v4p" systemname="TextTexture (DX11.Texture2D)" filename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\TextTexture (DX11.Texture2D).v4p" scrollx="0" scrolly="5400">
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\TextTexture (DX11.Texture2D).v4p" systemname="TextTexture (DX11.Texture2D)" filename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\TextTexture (DX11.Texture2D).v4p" scrollx="0" scrolly="240">
    <BOUNDS type="Window" left="17490" top="10770" width="14445" height="12960">
    </BOUNDS>
    <PACK Name="vvvv-Message" Version="2.9.10">
@@ -708,16 +708,6 @@
    <PIN pinname="Transform Out" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="Enum2Ord (Enumerations)" nodename="Enum2Ord (Enumerations)" componentmode="Hidden" id="54">
-   <BOUNDS type="Node" left="8295" top="10140" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Enum" visible="1">
-   </PIN>
-   <PIN pinname="Ord Value" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="22" srcpinname="Output Enum" dstnodeid="54" dstpinname="Enum">
-   </LINK>
    <NODE systemname="Vector (2d Split)" nodename="Vector (2d Split)" componentmode="Hidden" id="55">
    <BOUNDS type="Node" left="5340" top="7995" width="100" height="100">
    </BOUNDS>
@@ -765,7 +755,7 @@
    <NODE systemname="Switch (Value Input)" nodename="Switch (Value Input)" componentmode="Hidden" id="58">
    <BOUNDS type="Node" left="8160" top="10830" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Switch" visible="1">
+   <PIN pinname="Switch" visible="1" slicecount="4" values="-1,-1,-1,-1">
    </PIN>
    <PIN pinname="Input 2" slicecount="1" values="1">
    </PIN>
@@ -776,8 +766,6 @@
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="54" srcpinname="Ord Value" dstnodeid="58" dstpinname="Switch">
-   </LINK>
    <LINK srcnodeid="58" srcpinname="Output" dstnodeid="57" dstpinname="Input 2">
    </LINK>
    <NODE systemname="Vector (2d Split)" nodename="Vector (2d Split)" componentmode="Hidden" id="59">
@@ -877,8 +865,6 @@
    <LINK srcnodeid="24" srcpinname="Output Node" dstnodeid="5" dstpinname="Styles">
    </LINK>
    <LINK srcnodeid="23" srcpinname="Output Enum" dstnodeid="5" dstpinname="Paragraph Alignment">
-   </LINK>
-   <LINK srcnodeid="22" srcpinname="Output Enum" dstnodeid="5" dstpinname="Text Alignment">
    </LINK>
    <LINK srcnodeid="21" srcpinname="Output Node" dstnodeid="5" dstpinname="Format">
    </LINK>
@@ -1045,5 +1031,21 @@
    <LINK srcnodeid="68" srcpinname="Output" dstnodeid="37" dstpinname="Enabled">
    </LINK>
    <LINK srcnodeid="69" srcpinname="Output" dstnodeid="6" dstpinname="Enabled">
+   </LINK>
+   <LINK srcnodeid="22" srcpinname="Output Enum" dstnodeid="5" dstpinname="Text Alignment">
+   </LINK>
+   <NODE id="54" systemname="Enum2Ord (Enumerations Explicit)" nodename="Enum2Ord (Enumerations Explicit)" componentmode="Hidden">
+   <BOUNDS type="Node" left="8295" top="10140" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Enum" visible="1">
+   </PIN>
+   <PIN pinname="Ord Value" visible="1">
+   </PIN>
+   <PIN pinname="Enumeration" slicecount="1" values="SharpDX.DirectWrite.TextAlignment">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="54" srcpinname="Ord Value" dstnodeid="58" dstpinname="Switch">
+   </LINK>
+   <LINK srcnodeid="22" srcpinname="Output Enum" dstnodeid="54" dstpinname="Enum">
    </LINK>
    </PATCH>

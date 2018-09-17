@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha36.1.dtd" >
    <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\TextTexture (DX11.Texture2D) help.v4p" scrollx="0" scrolly="-360">
-   <BOUNDS type="Window" left="885" top="1830" width="30120" height="15705">
+   <BOUNDS type="Window" left="9945" top="1215" width="33420" height="19125">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="225" top="225" width="5100" height="450">
@@ -25,15 +25,15 @@
    </PIN>
    </NODE>
    <NODE nodename="TextTexture (DX11.Texture2D)" componentmode="Hidden" id="0">
-   <BOUNDS type="Node" left="7350" top="10065" width="0" height="0">
+   <BOUNDS type="Node" left="7350" top="12915" width="0" height="0">
    </BOUNDS>
-   <BOUNDS type="Box" left="7350" top="10065" width="0" height="0">
+   <BOUNDS type="Box" left="7350" top="12915" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Text" visible="1">
    </PIN>
    <PIN pinname="Format" visible="1">
    </PIN>
-   <PIN pinname="Text Alignment" visible="1">
+   <PIN pinname="Text Alignment" visible="1" slicecount="4" values="|Segoe UI|,|Segoe UI|,|Segoe Script|,|Times New Roman|">
    </PIN>
    <PIN pinname="Paragraph Alignment" visible="1">
    </PIN>
@@ -119,9 +119,9 @@
    </PIN>
    </NODE>
    <NODE systemname="Cons (String)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Cons (String)" componentmode="Hidden" id="8">
-   <BOUNDS type="Node" left="5115" top="5295" width="100" height="100">
+   <BOUNDS type="Node" left="5235" top="3645" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="5115" top="5295" width="3000" height="3000">
+   <BOUNDS type="Box" left="5235" top="3645" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Input Count" slicecount="1" values="4">
    </PIN>
@@ -144,12 +144,12 @@
    </LINK>
    <LINK srcnodeid="7" srcpinname="Output String" dstnodeid="8" dstpinname="Input 4">
    </LINK>
-   <LINK srcnodeid="8" srcpinname="Output" dstnodeid="0" dstpinname="Text">
+   <LINK srcnodeid="8" srcpinname="Output" dstnodeid="0" dstpinname="Text" hiddenwhenlocked="0">
    </LINK>
    <NODE systemname="TextFormat (DirectWrite)" filename="%VVVV%\packs\dx11\nodes\plugins\directwrite\VVVV.Nodes.DirectWrite.dll" nodename="TextFormat (DirectWrite)" componentmode="Hidden" id="9">
-   <BOUNDS type="Node" left="7140" top="6435" width="100" height="100">
+   <BOUNDS type="Node" left="7380" top="8970" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="7140" top="6435" width="3000" height="3000">
+   <BOUNDS type="Box" left="7380" top="8970" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Font" visible="1">
    </PIN>
@@ -158,56 +158,14 @@
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="10">
-   <BOUNDS type="Box" left="6045" top="4815" width="1545" height="1110">
-   </BOUNDS>
-   <BOUNDS type="Node" left="6045" top="4815" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="4" visible="1" values="|Segoe UI|,|Segoe UI|,|Segoe Script|,|Times New Roman|">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="Arial">
-   </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="SliceCount Mode" slicecount="1" values="ColsRowsPages">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="10" srcpinname="Output Enum" dstnodeid="9" dstpinname="Font">
-   </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="11">
-   <BOUNDS type="Box" left="8295" top="4920" width="795" height="960">
-   </BOUNDS>
-   <BOUNDS type="Node" left="8295" top="4920" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="4" visible="1" values="53,30,30,30">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Integer">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Vector Size" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="|0, 0, 0, 1|">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="11" srcpinname="Y Output Value" dstnodeid="9" dstpinname="Font Size">
-   </LINK>
    <LINK srcnodeid="9" srcpinname="Output" dstnodeid="0" dstpinname="Format">
    </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="12">
-   <BOUNDS type="Box" left="5235" top="7020" width="1470" height="990">
+   <BOUNDS type="Box" left="5145" top="10185" width="1470" height="990">
    </BOUNDS>
-   <BOUNDS type="Node" left="5235" top="7020" width="0" height="0">
+   <BOUNDS type="Node" left="5145" top="10185" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="4" visible="1" values="Justified,Leading,Center,Trailing">
+   <PIN pinname="Input Enum" slicecount="4" visible="1" values="Leading,Leading,Leading,Leading">
    </PIN>
    <PIN pinname="Default" slicecount="1" values="Leading">
    </PIN>
@@ -221,13 +179,13 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Text Alignment|">
    </PIN>
+   <PIN pinname="Output Enum" visible="1">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="12" srcpinname="Output Enum" dstnodeid="0" dstpinname="Text Alignment">
-   </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="13">
-   <BOUNDS type="Box" left="6915" top="7050" width="1470" height="990">
+   <BOUNDS type="Box" left="6870" top="10170" width="1470" height="990">
    </BOUNDS>
-   <BOUNDS type="Node" left="6915" top="7050" width="0" height="0">
+   <BOUNDS type="Node" left="6870" top="10170" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Enum" slicecount="4" visible="1" values="Near,Far,Near,Far">
    </PIN>
@@ -249,9 +207,9 @@
    <LINK srcnodeid="13" srcpinname="Output Enum" dstnodeid="0" dstpinname="Paragraph Alignment">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="14">
-   <BOUNDS type="Box" left="9120" top="9300" width="480" height="480">
+   <BOUNDS type="Box" left="9075" top="12105" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="9120" top="9300" width="0" height="0">
+   <BOUNDS type="Node" left="9075" top="12105" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
@@ -268,7 +226,7 @@
    </NODE>
    <LINK srcnodeid="14" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Apply">
    </LINK>
-   <PACK Name="dx11" Version="1.2">
+   <PACK Name="dx11" Version="1.3.0.1">
    </PACK>
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
@@ -289,7 +247,7 @@
    </PIN>
    </NODE>
    <NODE systemname="GridSplit (Transform)" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\GridSplit (Transform).v4p" nodename="GridSplit (Transform)" componentmode="Hidden" id="19">
-   <BOUNDS type="Node" left="11400" top="10860" width="100" height="100">
+   <BOUNDS type="Node" left="10035" top="13710" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
@@ -299,13 +257,15 @@
    </PIN>
    <PIN pinname="Transform In" visible="1">
    </PIN>
-   <PIN pinname="Height" slicecount="1" values="0.36">
+   <PIN pinname="Height" slicecount="1" values="0.61">
+   </PIN>
+   <PIN pinname="Width" slicecount="1" values="0.97">
    </PIN>
    </NODE>
    <NODE systemname="Quad (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Quad (DX11.Layer)" componentmode="Hidden" id="20">
-   <BOUNDS type="Node" left="7050" top="12150" width="100" height="100">
+   <BOUNDS type="Node" left="7365" top="15015" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="7050" top="12150" width="3000" height="3000">
+   <BOUNDS type="Box" left="7365" top="15015" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Texture" visible="1">
    </PIN>
@@ -317,7 +277,7 @@
    <LINK srcnodeid="0" srcpinname="Texture Out" dstnodeid="20" dstpinname="Texture">
    </LINK>
    <NODE systemname="UniformScale (Transform)" nodename="UniformScale (Transform)" componentmode="Hidden" id="21">
-   <BOUNDS type="Node" left="11760" top="10140" width="100" height="100">
+   <BOUNDS type="Node" left="10155" top="13050" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
@@ -327,9 +287,9 @@
    <LINK srcnodeid="21" srcpinname="Transform Out" dstnodeid="19" dstpinname="Transform In">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="22">
-   <BOUNDS type="Box" left="8535" top="7080" width="795" height="960">
+   <BOUNDS type="Box" left="8535" top="9930" width="795" height="960">
    </BOUNDS>
-   <BOUNDS type="Node" left="8535" top="7080" width="0" height="0">
+   <BOUNDS type="Node" left="8535" top="9930" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="4" visible="1" values="910,910,910,910">
    </PIN>
@@ -351,7 +311,7 @@
    <LINK srcnodeid="22" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Maximum Width">
    </LINK>
    <NODE systemname="Multiply (Transform)" nodename="Multiply (Transform)" componentmode="Hidden" id="24">
-   <BOUNDS type="Node" left="9690" top="11280" width="100" height="100">
+   <BOUNDS type="Node" left="9690" top="14130" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform In 2" visible="1">
    </PIN>
@@ -367,9 +327,9 @@
    <LINK srcnodeid="24" srcpinname="Transform Out" dstnodeid="20" dstpinname="Transform">
    </LINK>
    <NODE systemname="AspectRatio (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="AspectRatio (DX11.Layer)" componentmode="Hidden" id="25">
-   <BOUNDS type="Node" left="6705" top="12675" width="100" height="100">
+   <BOUNDS type="Node" left="6705" top="15525" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="6705" top="12675" width="3000" height="3000">
+   <BOUNDS type="Box" left="6705" top="15525" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Layer In" visible="1">
    </PIN>
@@ -379,19 +339,19 @@
    <LINK srcnodeid="20" srcpinname="Layer" dstnodeid="25" dstpinname="Layer In">
    </LINK>
    <LINK srcnodeid="25" srcpinname="Layer Out" dstnodeid="17" dstpinname="Layers">
-   <LINKPOINT x="6675" y="13920">
+   <LINKPOINT x="6675" y="16200">
    </LINKPOINT>
-   <LINKPOINT x="14280" y="13995">
+   <LINKPOINT x="14280" y="15705">
    </LINKPOINT>
-   <LINKPOINT x="14490" y="1095">
+   <LINKPOINT x="14550" y="1155">
    </LINKPOINT>
-   <LINKPOINT x="16515" y="750">
+   <LINKPOINT x="16515" y="1320">
    </LINKPOINT>
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="26">
-   <BOUNDS type="Box" left="9510" top="7380" width="795" height="960">
+   <BOUNDS type="Box" left="9465" top="9630" width="795" height="960">
    </BOUNDS>
-   <BOUNDS type="Node" left="9510" top="7380" width="0" height="0">
+   <BOUNDS type="Node" left="9465" top="9630" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="4" visible="1" values="220,60,0,224">
    </PIN>
@@ -413,9 +373,9 @@
    <LINK srcnodeid="26" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Maximum Height">
    </LINK>
    <NODE nodename="IOBox (Color)" componentmode="InABox" id="27">
-   <BOUNDS type="Box" left="12720" top="5520" width="1155" height="1155">
+   <BOUNDS type="Box" left="12720" top="6870" width="1155" height="1155">
    </BOUNDS>
-   <BOUNDS type="Node" left="12720" top="5520" width="0" height="0">
+   <BOUNDS type="Node" left="12720" top="6870" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Color Input" slicecount="4" visible="1" values="|0.20993,0.17692,1.00000,1.00000|,|0.75813,1.00000,0.77337,1.00000|,|0.87924,0.89905,0.77741,1.00000|,|0.24918,0.24918,0.24918,1.00000|">
    </PIN>
@@ -429,9 +389,9 @@
    <LINK srcnodeid="27" srcpinname="Color Output" dstnodeid="0" dstpinname="Background Color">
    </LINK>
    <NODE nodename="IOBox (Color)" componentmode="InABox" id="28">
-   <BOUNDS type="Box" left="11385" top="5490" width="1155" height="1155">
+   <BOUNDS type="Box" left="11385" top="6840" width="1155" height="1155">
    </BOUNDS>
-   <BOUNDS type="Node" left="11385" top="5490" width="0" height="0">
+   <BOUNDS type="Node" left="11385" top="6840" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Color Input" slicecount="4" visible="1" values="|1.00000,1.00000,1.00000,1.00000|,|0.50953,0.00000,0.14020,1.00000|,|0.00000,0.00000,0.00000,1.00000|,|1.00000,1.00000,1.00000,1.00000|">
    </PIN>
@@ -447,9 +407,9 @@
    <LINK srcnodeid="28" srcpinname="Color Output" dstnodeid="0" dstpinname="Color">
    </LINK>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="29">
-   <BOUNDS type="Node" left="11640" top="7815" width="100" height="100">
+   <BOUNDS type="Node" left="11640" top="10665" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="11640" top="7815" width="885" height="1095">
+   <BOUNDS type="Box" left="11640" top="10665" width="885" height="1095">
    </BOUNDS>
    <PIN pinname="Columns" slicecount="1" values="2">
    </PIN>
@@ -461,15 +421,15 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Padding RightBottom|">
    </PIN>
-   <PIN pinname="Y Input Value" slicecount="8" values="20,20,10,8,33,10,23,39">
+   <PIN pinname="Y Input Value" slicecount="8" visible="1" values="20,20,10,8,33,10,23,39">
    </PIN>
    </NODE>
    <LINK srcnodeid="29" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Padding RightBottom">
    </LINK>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="30">
-   <BOUNDS type="Node" left="12930" top="8175" width="100" height="100">
+   <BOUNDS type="Node" left="12720" top="10260" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="12930" top="8175" width="885" height="1095">
+   <BOUNDS type="Box" left="12720" top="10260" width="885" height="1095">
    </BOUNDS>
    <PIN pinname="Columns" slicecount="1" values="2">
    </PIN>
@@ -481,15 +441,15 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Padding LeftTop|">
    </PIN>
-   <PIN pinname="Y Input Value" slicecount="8" values="30,22,10,13,33,10,21,0">
+   <PIN pinname="Y Input Value" slicecount="8" visible="1" values="30,22,10,13,33,10,21,0">
    </PIN>
    </NODE>
    <LINK srcnodeid="30" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Padding LeftTop">
    </LINK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="31">
-   <BOUNDS type="Node" left="1095" top="9330" width="2355" height="270">
+   <BOUNDS type="Node" left="1095" top="12180" width="2355" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="1095" top="9330" width="2355" height="270">
+   <BOUNDS type="Box" left="1095" top="12180" width="2355" height="270">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|in DX11 check out these guys ;)|">
    </PIN>
@@ -501,33 +461,33 @@
    </PIN>
    </NODE>
    <NODE systemname="ViewportRouter (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="ViewportRouter (DX11.Layer)" componentmode="Hidden" id="32">
-   <BOUNDS type="Node" left="1110" top="9750" width="100" height="100">
+   <BOUNDS type="Node" left="1110" top="12600" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="1110" top="9750" width="3000" height="3000">
+   <BOUNDS type="Box" left="1110" top="12600" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="ViewportIndex (DX11.Validator)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="ViewportIndex (DX11.Validator)" componentmode="Hidden" id="33">
-   <BOUNDS type="Node" left="2475" top="9750" width="100" height="100">
+   <BOUNDS type="Node" left="2475" top="12600" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="2475" top="9750" width="3000" height="3000">
+   <BOUNDS type="Box" left="2475" top="12600" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="SelectViewport (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="SelectViewport (DX11.Layer)" componentmode="Hidden" id="35">
-   <BOUNDS type="Node" left="3660" top="9750" width="100" height="100">
+   <BOUNDS type="Node" left="3660" top="12600" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="3660" top="9750" width="3000" height="3000">
+   <BOUNDS type="Box" left="3660" top="12600" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE systemname="Renderer (DX11 TextureSpread)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11 TextureSpread)" componentmode="Hidden" id="36">
-   <BOUNDS type="Node" left="1095" top="10245" width="100" height="100">
+   <BOUNDS type="Node" left="1095" top="13095" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="1095" top="10245" width="3000" height="3000">
+   <BOUNDS type="Box" left="1095" top="13095" width="3000" height="3000">
    </BOUNDS>
    </NODE>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="37">
-   <BOUNDS type="Box" left="5520" top="9585" width="1800" height="285">
+   <BOUNDS type="Box" left="5520" top="12435" width="1800" height="285">
    </BOUNDS>
-   <BOUNDS type="Node" left="5520" top="9585" width="0" height="0">
+   <BOUNDS type="Node" left="5520" top="12435" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input Enum" slicecount="1" visible="1" values="R16G16B16A16_Float">
    </PIN>
@@ -557,9 +517,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="40">
-   <BOUNDS type="Box" left="10515" top="8085" width="795" height="960">
+   <BOUNDS type="Box" left="10440" top="10890" width="795" height="960">
    </BOUNDS>
-   <BOUNDS type="Node" left="10515" top="8085" width="0" height="0">
+   <BOUNDS type="Node" left="10440" top="10890" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="4" visible="1" values="0,0,0,-1">
    </PIN>
@@ -683,5 +643,295 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="46" srcpinname="Output Enum" dstnodeid="45" dstpinname="Font">
+   </LINK>
+   <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
+   <NODE systemname="Spreadsheet (ReoGrid)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Spreadsheet (ReoGrid)" componentmode="InABox" id="48">
+   <BOUNDS type="Node" left="2130" top="4065" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2130" top="4065" width="11880" height="2400">
+   </BOUNDS>
+   <BOUNDS type="Window" left="0" top="0" width="17460" height="4920">
+   </BOUNDS>
+   <PIN pinname="Workbook Data" slicecount="1" values="Sheet1:PGdyaWQgeG1sbnM6eHNkPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSI+DQogIDxoZWFkPg0KICAgIDxtZXRhPg0KICAgICAgPGN1bHR1cmU+ZW4tREU8L2N1bHR1cmU+DQogICAgICA8ZWRpdG9yPlJlb0dyaWQgQ29yZTwvZWRpdG9yPg0KICAgICAgPGNvcmUtdmVyPjIuMS4wLjA8L2NvcmUtdmVyPg0KICAgIDwvbWV0YT4NCiAgICA8cm93cz4yMDA8L3Jvd3M+DQogICAgPGNvbHM+MTAwPC9jb2xzPg0KICAgIDxkZWZhdWx0LXJvdy1oZWlnaHQ+MjA8L2RlZmF1bHQtcm93LWhlaWdodD4NCiAgICA8ZGVmYXVsdC1jb2wtd2lkdGg+NzA8L2RlZmF1bHQtY29sLXdpZHRoPg0KICAgIDxmcmVlemUtcm93PjE8L2ZyZWV6ZS1yb3c+DQogICAgPGZyZWV6ZS1jb2w+MTwvZnJlZXplLWNvbD4NCiAgICA8ZnJlZXplLWFyZWE+bGVmdC10b3A8L2ZyZWV6ZS1hcmVhPg0KICAgIDxzZXR0aW5ncyBtZXRhPSIzMDQ3NTAyNjM5OCIgLz4NCiAgICA8c2NyaXB0IC8+DQogIDwvaGVhZD4NCiAgPHN0eWxlIGZvbnQ9IkNhbGlicmkiIGZvbnQtc2l6ZT0iMTAsMjUiIGFsaWduPSJnZW5lcmFsIiB2YWxpZ249Im1pZGRsZSIgLz4NCiAgPHJvd3MgLz4NCiAgPGNvbHM+DQogICAgPGNvbCBjb2w9IjEiIHdpZHRoPSIxNjkiIGxhc3Qtd2lkdGg9IjE3OSIgLz4NCiAgICA8Y29sIGNvbD0iMyIgd2lkdGg9Ijk5IiBsYXN0LXdpZHRoPSI4NyIgLz4NCiAgICA8Y29sIGNvbD0iNCIgd2lkdGg9IjEyNSIgbGFzdC13aWR0aD0iODYiIC8+DQogICAgPGNvbCBjb2w9IjgiIHdpZHRoPSI1NCIgbGFzdC13aWR0aD0iNDgiIC8+DQogICAgPGNvbCBjb2w9IjkiIHdpZHRoPSI1NCIgbGFzdC13aWR0aD0iNDgiIC8+DQogICAgPGNvbCBjb2w9IjEwIiB3aWR0aD0iNDgiIGxhc3Qtd2lkdGg9IjQ1IiAvPg0KICAgIDxjb2wgY29sPSIxMSIgd2lkdGg9IjQ4IiBsYXN0LXdpZHRoPSI0NSIgLz4NCiAgPC9jb2xzPg0KICA8di1ib3JkZXJzIC8+DQogIDxoLWJvcmRlcnMgLz4NCiAgPGNlbGxzPg0KICAgIDxjZWxsIHJvdz0iMCIgY29sPSIwIiBib2R5LXR5cGU9IkNoZWNrQm94Q2VsbCI+DQogICAgICA8Zm9ybXVsYT5UcnVlPC9mb3JtdWxhPg0KICAgICAgPHN0eWxlIGFsaWduPSJjZW50ZXIiIC8+DQogICAgPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMCIgY29sPSIxIj5mb250PC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMCIgY29sPSIyIj5zaXplPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMCIgY29sPSIzIj5UZXh0IEFsaWdubWVudDwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjAiIGNvbD0iNCI+UGFyYWdyYXBoIEFsaWdubWVudDwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjAiIGNvbD0iNSI+TWF4IFdpZHRoPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMCIgY29sPSI2Ij5NYXggSGVpZ2h0PC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMCIgY29sPSI3Ij5TdHlsZSBCaW48L2NlbGw+DQogICAgPGNlbGwgcm93PSIwIiBjb2w9IjgiIGNvbHNwYW49IjIiPlBhZCBSaWdodEJvdHRvbTwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjAiIGNvbD0iMTAiIGNvbHNwYW49IjIiPlBhZCBMZWZ0VG9wPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMSIgY29sPSIxIiBib2R5LXR5cGU9IkRyb3Bkb3duTGlzdENlbGwiIGVudW0tbmFtZT0iRGlyZWN0V3JpdGVfRm9udF9GYW1pbGllcyI+U2Vnb2UgVUk8L2NlbGw+DQogICAgPGNlbGwgcm93PSIxIiBjb2w9IjIiPjUzPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMSIgY29sPSIzIiBib2R5LXR5cGU9IkRyb3Bkb3duTGlzdENlbGwiIGVudW0tbmFtZT0iU2hhcnBEWC5EaXJlY3RXcml0ZS5UZXh0QWxpZ25tZW50Ij5KdXN0aWZpZWQ8L2NlbGw+DQogICAgPGNlbGwgcm93PSIxIiBjb2w9IjQiIGJvZHktdHlwZT0iRHJvcGRvd25MaXN0Q2VsbCIgZW51bS1uYW1lPSJTbGltRFguRGlyZWN0V3JpdGUuUGFyYWdyYXBoQWxpZ25tZW50Ij5OZWFyPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMSIgY29sPSI1Ij45MTA8L2NlbGw+DQogICAgPGNlbGwgcm93PSIxIiBjb2w9IjYiPjIyMDwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjEiIGNvbD0iNyI+MDwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjEiIGNvbD0iOCI+MjA8L2NlbGw+DQogICAgPGNlbGwgcm93PSIxIiBjb2w9IjkiPjIwPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMSIgY29sPSIxMCI+MzA8L2NlbGw+DQogICAgPGNlbGwgcm93PSIxIiBjb2w9IjExIj4yMjwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjIiIGNvbD0iMSIgYm9keS10eXBlPSJEcm9wZG93bkxpc3RDZWxsIiBlbnVtLW5hbWU9IkRpcmVjdFdyaXRlX0ZvbnRfRmFtaWxpZXMiPlNlZ29lIFVJPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMiIgY29sPSIyIj4zMDwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjIiIGNvbD0iMyIgYm9keS10eXBlPSJEcm9wZG93bkxpc3RDZWxsIiBlbnVtLW5hbWU9IlNoYXJwRFguRGlyZWN0V3JpdGUuVGV4dEFsaWdubWVudCI+TGVhZGluZzwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjIiIGNvbD0iNCIgYm9keS10eXBlPSJEcm9wZG93bkxpc3RDZWxsIiBlbnVtLW5hbWU9IlNsaW1EWC5EaXJlY3RXcml0ZS5QYXJhZ3JhcGhBbGlnbm1lbnQiPkZhcjwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjIiIGNvbD0iNSI+OTEwPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMiIgY29sPSI2Ij42MDwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjIiIGNvbD0iNyI+MDwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjIiIGNvbD0iOCI+MTA8L2NlbGw+DQogICAgPGNlbGwgcm93PSIyIiBjb2w9IjkiPjg8L2NlbGw+DQogICAgPGNlbGwgcm93PSIyIiBjb2w9IjEwIj4xMDwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjIiIGNvbD0iMTEiPjEzPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMyIgY29sPSIxIiBib2R5LXR5cGU9IkRyb3Bkb3duTGlzdENlbGwiIGVudW0tbmFtZT0iRGlyZWN0V3JpdGVfRm9udF9GYW1pbGllcyI+U2Vnb2UgU2NyaXB0PC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMyIgY29sPSIyIj4zMDwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjMiIGNvbD0iMyIgYm9keS10eXBlPSJEcm9wZG93bkxpc3RDZWxsIiBlbnVtLW5hbWU9IlNoYXJwRFguRGlyZWN0V3JpdGUuVGV4dEFsaWdubWVudCI+Q2VudGVyPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMyIgY29sPSI0IiBib2R5LXR5cGU9IkRyb3Bkb3duTGlzdENlbGwiIGVudW0tbmFtZT0iU2xpbURYLkRpcmVjdFdyaXRlLlBhcmFncmFwaEFsaWdubWVudCI+TmVhcjwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjMiIGNvbD0iNSI+OTEwPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMyIgY29sPSI2Ij4wPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMyIgY29sPSI3Ij4wPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iMyIgY29sPSI4Ij4zMzwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjMiIGNvbD0iOSI+MTA8L2NlbGw+DQogICAgPGNlbGwgcm93PSIzIiBjb2w9IjEwIj4zMzwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjMiIGNvbD0iMTEiPjEwPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iNCIgY29sPSIxIiBib2R5LXR5cGU9IkRyb3Bkb3duTGlzdENlbGwiIGVudW0tbmFtZT0iRGlyZWN0V3JpdGVfRm9udF9GYW1pbGllcyI+VGltZXMgTmV3IFJvbWFuPC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iNCIgY29sPSIyIj4zMDwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjQiIGNvbD0iMyIgYm9keS10eXBlPSJEcm9wZG93bkxpc3RDZWxsIiBlbnVtLW5hbWU9IlNoYXJwRFguRGlyZWN0V3JpdGUuVGV4dEFsaWdubWVudCI+VHJhaWxpbmc8L2NlbGw+DQogICAgPGNlbGwgcm93PSI0IiBjb2w9IjQiIGJvZHktdHlwZT0iRHJvcGRvd25MaXN0Q2VsbCIgZW51bS1uYW1lPSJTbGltRFguRGlyZWN0V3JpdGUuUGFyYWdyYXBoQWxpZ25tZW50Ij5GYXI8L2NlbGw+DQogICAgPGNlbGwgcm93PSI0IiBjb2w9IjUiPjkxMDwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjQiIGNvbD0iNiI+MjI0PC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iNCIgY29sPSI3Ij4tMTwvY2VsbD4NCiAgICA8Y2VsbCByb3c9IjQiIGNvbD0iOCI+MjM8L2NlbGw+DQogICAgPGNlbGwgcm93PSI0IiBjb2w9IjkiPjM5PC9jZWxsPg0KICAgIDxjZWxsIHJvdz0iNCIgY29sPSIxMCI+MjE8L2NlbGw+DQogICAgPGNlbGwgcm93PSI0IiBjb2w9IjExIj4wPC9jZWxsPg0KICA8L2NlbGxzPg0KPC9ncmlkPg==">
+   </PIN>
+   <PIN pinname="Worksheet" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Cell (ReoGrid Range)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Cell (ReoGrid Range)" componentmode="Hidden" id="49">
+   <BOUNDS type="Node" left="2070" top="7260" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2070" top="7260" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Worksheet" visible="1">
+   </PIN>
+   <PIN pinname="Query Text" visible="1" slicecount="1" values="A1">
+   </PIN>
+   <PIN pinname="Row Count" visible="1">
+   </PIN>
+   <PIN pinname="Flat Text" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Worksheet" dstnodeid="49" dstpinname="Worksheet" hiddenwhenlocked="1">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="51">
+   <BOUNDS type="Box" left="7605" top="6675" width="510" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7605" top="6675" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="4">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Y Output Value" dstnodeid="49" dstpinname="Row Count" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="12" srcpinname="Output Enum" dstnodeid="0" dstpinname="Text Alignment">
+   </LINK>
+   <NODE systemname="String2Enum (Enumerations)" nodename="String2Enum (Enumerations)" componentmode="Hidden" id="53">
+   <BOUNDS type="Node" left="2265" top="7815" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="String Value" visible="1">
+   </PIN>
+   <PIN pinname="Enum" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="49" srcpinname="Flat Text" dstnodeid="53" dstpinname="String Value">
+   </LINK>
+   <LINK srcnodeid="53" srcpinname="Enum" dstnodeid="9" dstpinname="Font">
+   </LINK>
+   <NODE systemname="Cell (ReoGrid Range)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Cell (ReoGrid Range)" componentmode="Hidden" id="54">
+   <BOUNDS type="Node" left="7035" top="8160" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7035" top="8160" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Worksheet" visible="1">
+   </PIN>
+   <PIN pinname="Query Text" visible="1" slicecount="1" values="A1">
+   </PIN>
+   <PIN pinname="Row Count" visible="1">
+   </PIN>
+   <PIN pinname="Flat Text" visible="1">
+   </PIN>
+   <PIN pinname="Left Column" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Flat Values" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Worksheet" dstnodeid="54" dstpinname="Worksheet" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Y Output Value" dstnodeid="54" dstpinname="Row Count" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="54" srcpinname="Flat Values" dstnodeid="9" dstpinname="Font Size">
+   </LINK>
+   <NODE systemname="Cell (ReoGrid Range)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Cell (ReoGrid Range)" componentmode="Hidden" id="56">
+   <BOUNDS type="Node" left="3645" top="7290" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3645" top="7290" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Worksheet" visible="1">
+   </PIN>
+   <PIN pinname="Query Text" visible="1" slicecount="1" values="A1">
+   </PIN>
+   <PIN pinname="Row Count" visible="1">
+   </PIN>
+   <PIN pinname="Flat Text" visible="1">
+   </PIN>
+   <PIN pinname="Left Column" slicecount="1" values="3">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Worksheet" dstnodeid="56" dstpinname="Worksheet" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Y Output Value" dstnodeid="56" dstpinname="Row Count" hiddenwhenlocked="1">
+   </LINK>
+   <NODE systemname="String2Enum (Enumerations)" nodename="String2Enum (Enumerations)" componentmode="Hidden" id="55">
+   <BOUNDS type="Node" left="3840" top="7845" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="String Value" visible="1">
+   </PIN>
+   <PIN pinname="Enum" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="56" srcpinname="Flat Text" dstnodeid="55" dstpinname="String Value">
+   </LINK>
+   <LINK srcnodeid="55" srcpinname="Enum" dstnodeid="12" dstpinname="Input Enum">
+   </LINK>
+   <NODE systemname="Cell (ReoGrid Range)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Cell (ReoGrid Range)" componentmode="Hidden" id="58">
+   <BOUNDS type="Node" left="4875" top="7305" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4875" top="7305" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Worksheet" visible="1">
+   </PIN>
+   <PIN pinname="Query Text" visible="1" slicecount="1" values="A1">
+   </PIN>
+   <PIN pinname="Row Count" visible="1">
+   </PIN>
+   <PIN pinname="Flat Text" visible="1">
+   </PIN>
+   <PIN pinname="Left Column" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Worksheet" dstnodeid="58" dstpinname="Worksheet" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Y Output Value" dstnodeid="58" dstpinname="Row Count" hiddenwhenlocked="1">
+   </LINK>
+   <NODE systemname="String2Enum (Enumerations)" nodename="String2Enum (Enumerations)" componentmode="Hidden" id="57">
+   <BOUNDS type="Node" left="5070" top="7860" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="String Value" visible="1">
+   </PIN>
+   <PIN pinname="Enum" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="58" srcpinname="Flat Text" dstnodeid="57" dstpinname="String Value">
+   </LINK>
+   <LINK srcnodeid="57" srcpinname="Enum" dstnodeid="13" dstpinname="Input Enum">
+   </LINK>
+   <NODE systemname="Cell (ReoGrid Range)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Cell (ReoGrid Range)" componentmode="Hidden" id="59">
+   <BOUNDS type="Node" left="8580" top="7845" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8580" top="7845" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Worksheet" visible="1">
+   </PIN>
+   <PIN pinname="Query Text" visible="1" slicecount="1" values="A1">
+   </PIN>
+   <PIN pinname="Row Count" visible="1">
+   </PIN>
+   <PIN pinname="Flat Text" visible="1">
+   </PIN>
+   <PIN pinname="Left Column" slicecount="1" values="5">
+   </PIN>
+   <PIN pinname="Flat Values" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Worksheet" dstnodeid="59" dstpinname="Worksheet" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Y Output Value" dstnodeid="59" dstpinname="Row Count" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="59" srcpinname="Flat Values" dstnodeid="22" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="Cell (ReoGrid Range)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Cell (ReoGrid Range)" componentmode="Hidden" id="60">
+   <BOUNDS type="Node" left="9165" top="8205" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9165" top="8205" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Worksheet" visible="1">
+   </PIN>
+   <PIN pinname="Query Text" visible="1" slicecount="1" values="A1">
+   </PIN>
+   <PIN pinname="Row Count" visible="1">
+   </PIN>
+   <PIN pinname="Flat Text" visible="1">
+   </PIN>
+   <PIN pinname="Left Column" slicecount="1" values="6">
+   </PIN>
+   <PIN pinname="Flat Values" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Worksheet" dstnodeid="60" dstpinname="Worksheet" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Y Output Value" dstnodeid="60" dstpinname="Row Count" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="60" srcpinname="Flat Values" dstnodeid="26" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="Cell (ReoGrid Range)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Cell (ReoGrid Range)" componentmode="Hidden" id="61">
+   <BOUNDS type="Node" left="9825" top="8550" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9825" top="8550" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Worksheet" visible="1">
+   </PIN>
+   <PIN pinname="Query Text" visible="1" slicecount="1" values="A1">
+   </PIN>
+   <PIN pinname="Row Count" visible="1">
+   </PIN>
+   <PIN pinname="Flat Text" visible="1">
+   </PIN>
+   <PIN pinname="Left Column" slicecount="1" values="7">
+   </PIN>
+   <PIN pinname="Flat Values" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Worksheet" dstnodeid="61" dstpinname="Worksheet" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Y Output Value" dstnodeid="61" dstpinname="Row Count" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="61" srcpinname="Flat Values" dstnodeid="40" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="Cell (ReoGrid Range)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Cell (ReoGrid Range)" componentmode="Hidden" id="62">
+   <BOUNDS type="Node" left="11805" top="8925" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="11805" top="8925" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Worksheet" visible="1">
+   </PIN>
+   <PIN pinname="Query Text" visible="1" slicecount="1" values="A1">
+   </PIN>
+   <PIN pinname="Row Count" visible="1">
+   </PIN>
+   <PIN pinname="Flat Text" visible="1">
+   </PIN>
+   <PIN pinname="Left Column" slicecount="1" values="8">
+   </PIN>
+   <PIN pinname="Flat Values" visible="1">
+   </PIN>
+   <PIN pinname="Column Count" slicecount="1" values="2">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Worksheet" dstnodeid="62" dstpinname="Worksheet" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Y Output Value" dstnodeid="62" dstpinname="Row Count" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="62" srcpinname="Flat Values" dstnodeid="29" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="Cell (ReoGrid Range)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Cell (ReoGrid Range)" componentmode="Hidden" id="63">
+   <BOUNDS type="Node" left="12570" top="9390" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12570" top="9390" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Worksheet" visible="1">
+   </PIN>
+   <PIN pinname="Query Text" visible="1" slicecount="1" values="A1">
+   </PIN>
+   <PIN pinname="Row Count" visible="1">
+   </PIN>
+   <PIN pinname="Flat Text" visible="1">
+   </PIN>
+   <PIN pinname="Left Column" slicecount="1" values="10">
+   </PIN>
+   <PIN pinname="Flat Values" visible="1">
+   </PIN>
+   <PIN pinname="Column Count" slicecount="1" values="2">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Worksheet" dstnodeid="63" dstpinname="Worksheet" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Y Output Value" dstnodeid="63" dstpinname="Row Count" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="63" srcpinname="Flat Values" dstnodeid="30" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="Cell (ReoGrid Single)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="Cell (ReoGrid Single)" componentmode="Hidden" id="64">
+   <BOUNDS type="Node" left="8580" top="11595" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8580" top="11595" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Worksheet" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Row" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Column" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Flat Values" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="48" srcpinname="Worksheet" dstnodeid="64" dstpinname="Worksheet" hiddenwhenlocked="1">
+   </LINK>
+   <LINK srcnodeid="64" srcpinname="Flat Values" dstnodeid="14" dstpinname="Y Input Value">
    </LINK>
    </PATCH>

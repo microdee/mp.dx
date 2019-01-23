@@ -21,14 +21,18 @@ namespace DX11Utils.ModularRenderer
 
         public ModularResourceHost BindedResources { get; set; }
 
-        public ModularRenderTarget RenderTarget { get; set; }
-        // TODO: port https://github.com/mrvux/dx11-vvvv/blob/368aabdf73bee27ee156e6bfa48dc318768f0643/Core/VVVV.DX11.Lib/Rendering/DepthBufferManager.cs
-        // TODO: port https://github.com/mrvux/dx11-vvvv/blob/4d5d99ac7d5d528b5d68086ade4e428c766a2ba4/Core/VVVV.DX11.Lib/Rendering/RenderTargetManager.cs
+        public IModularRenderTarget RenderTarget { get; set; }
+
+        // DONE: port https://github.com/mrvux/dx11-vvvv/blob/368aabdf73bee27ee156e6bfa48dc318768f0643/Core/VVVV.DX11.Lib/Rendering/DepthBufferManager.cs
+        // DONE: port https://github.com/mrvux/dx11-vvvv/blob/4d5d99ac7d5d528b5d68086ade4e428c766a2ba4/Core/VVVV.DX11.Lib/Rendering/RenderTargetManager.cs
         // TODO: explicitly manage rendertargets with Depthbuffers, AA and MRT
 
         public StreamoutResource Streamout { get; set; }
+
         // TODO: explicitly manage streamouts, and maybe bind them?
-        
+
+        public DX11Resource<DX11Layer> Layer { get; set; }
+
         public ISpread<Matrix> View { get; set; }
         public ISpread<Matrix> Projection { get; set; }
         public ISpread<Matrix> Aspect { get; set; }

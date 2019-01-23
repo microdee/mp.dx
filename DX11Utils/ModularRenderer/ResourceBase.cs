@@ -13,7 +13,25 @@ using VVVV.PluginInterfaces.V2.Graph;
 
 namespace DX11Utils.ModularRenderer
 {
-    public abstract class ModularResourceBase : OperationBase, IDisposable
+    public interface IModularResourceBase : IDisposable
+    {
+        IDX11RenderSemantic UavSemantic { get; set; }
+
+        IDX11RenderSemantic SrvSemantic { get; set; }
+
+        bool Reset { get; set; }
+
+        bool IsEnabled { get; set; }
+
+        ModularResourceHost Host { get; set; }
+
+        void OnEvaluate(ModularRenderer visitor);
+        void Render(DX11RenderContext context, ModularRenderer visitor);
+        void Update(DX11RenderContext context, ModularRenderer visitor);
+        void Destroy(DX11RenderContext context, bool force, ModularRenderer visitor);
+    }
+
+    public abstract class ModularResourceBase : OperationBase, IModularResourceBase
     {
         public IDX11RenderSemantic UavSemantic { get; set; }
 

@@ -235,6 +235,7 @@
     <Compile Include="AdvancedResetCounter.cs" />
     <Compile Include="CopyBuffer.cs" />
     <Compile Include="CopyCounter.cs" />
+    <Compile Include="ModularRenderer\RenderTarget2D.cs" />
     <Compile Include="ModularRenderer\RendertargetResource.cs" />
     <Compile Include="ModularRenderer\AbstractModularResourceNode.cs" />
     <Compile Include="ModularRenderer\ModularRenderer.cs" />

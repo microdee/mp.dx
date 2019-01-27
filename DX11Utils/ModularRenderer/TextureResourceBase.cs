@@ -6,10 +6,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VVVV.DX11.Lib.Rendering;
 
 namespace DX11Utils.ModularRenderer
 {
-    public abstract class TextureResourceBase<TRes> : ModularResourceBase<TRes> where TRes : IDX11Resource
+    public interface ITextureResourceBase : IModularResourceBase
+    {
+        bool Clear { get; set; }
+        Color4 ClearColor { get; set; }
+        int Width { get; set; }
+        int Height { get; set; }
+        SlimDX.DXGI.Format Format { get; set; }
+        List<string> AllowedFormats { get; }
+        TexInfo TextureInfo { get; }
+    }
+
+    public abstract class TextureResourceBase<TRes> : ModularResourceBase<TRes>, ITextureResourceBase where TRes : IDX11Resource
     {
         public bool Clear { get; set; }
 
@@ -24,6 +36,11 @@ namespace DX11Utils.ModularRenderer
         public List<string> AllowedFormats { get; } =
             DX11EnumFormatHelper.NullDeviceFormats.GetAllowedFormats(SlimDX.Direct3D11.FormatSupport.RenderTarget);
 
-
+        public TexInfo TextureInfo => new TexInfo
+        {
+            format = Format,
+            w = Width,
+            h = Height
+        };
     }
 }

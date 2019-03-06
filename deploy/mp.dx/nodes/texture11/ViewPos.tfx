@@ -1,0 +1,34 @@
+#include <packs/mp.fxh/texture/depthReconstruct.fxh>
+Texture2D<float> Depth;
+
+cbuffer controls:register(b0){
+	float4x4 tPI : CPROJINV;
+	float4x4 tP : CPROJ;
+};
+
+float3 GetViewPos(SamplerState SS, float2 uv)
+{
+	float d = Depth.SampleLevel(SS, uv, 0);
+	return UVZtoVIEW(uv, d, tP, tPI);
+}
+
+SamplerState s0 <bool visible=false;string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
+float2 R:TARGETSIZE;
+
+float4 pVIEW(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
+    return float4(GetViewPos(s0, x), 1);
+}
+float pLDEPTH(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
+    return GetViewPos(s0, x).z;
+}
+
+technique10 View
+{
+	pass P1 <string format="R16G16B16A16_Float";>
+	{SetPixelShader(CompileShader(ps_4_0,pVIEW()));}
+}
+technique10 LinDepth
+{
+	pass P1 <string format="R16_Float";>
+	{SetPixelShader(CompileShader(ps_4_0,pLDEPTH()));}
+}

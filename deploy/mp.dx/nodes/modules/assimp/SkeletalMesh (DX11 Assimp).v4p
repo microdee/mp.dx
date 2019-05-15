@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.dtd" >
-   <PATCH nodename="D:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" systemname="SkeletalMesh (DX11 Assimp)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" scrollx="0" scrolly="1080">
-   <BOUNDS type="Window" left="1320" top="3210" width="17625" height="11085">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" systemname="SkeletalMesh (DX11 Assimp)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" scrollx="0" scrolly="8850">
+   <BOUNDS type="Window" left="2415" top="3675" width="17625" height="11085">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="38.0.0">
+   <PACK Name="addonpack" Version="38.1.0">
    </PACK>
    <NODE systemname="Mesh (Geometry Split Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="Mesh (Geometry Split Assimp)" componentmode="Hidden" id="27">
    <BOUNDS type="Node" left="630" top="4200" width="100" height="100">
@@ -83,7 +83,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="8730" top="3360" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -828,7 +828,7 @@
    </LINK>
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
-   <PACK Name="dx11" Version="1.3.1">
+   <PACK Name="dx11" Version="1.3.1.1">
    </PACK>
    <NODE systemname="StandardGeomLayout (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\StandardGeomLayout (DX11.Geometry).v4p" componentmode="Hidden" id="93" nodename="StandardGeomLayout (DX11.Geometry)" debug="0">
    <BOUNDS type="Node" left="4440" top="10830" width="100" height="100">
@@ -858,6 +858,12 @@
    <PIN pinname="Strides" visible="1">
    </PIN>
    <PIN pinname="Layout" visible="1">
+   </PIN>
+   <PIN pinname="Components" visible="1">
+   </PIN>
+   <PIN pinname="Component Size" visible="1">
+   </PIN>
+   <PIN pinname="Offsets" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="100" srcpinname="Y Output Value" dstnodeid="93" dstpinname="Texture Coordinate Count">
@@ -1069,5 +1075,77 @@
    <LINK srcnodeid="149" srcpinname="Transform Out" dstnodeid="121" dstpinname="Input">
    </LINK>
    <LINK srcnodeid="162" srcpinname="Output Node" dstnodeid="160" dstpinname="Transform In 3">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="163">
+   <BOUNDS type="Box" left="9810" top="16485" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9810" top="16485" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="text">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Components">
+   </PIN>
+   <PIN pinname="Pin Visibility" slicecount="1" values="OnlyInspector">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="93" srcpinname="Components" dstnodeid="163" dstpinname="Input String">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="164">
+   <BOUNDS type="Box" left="11310" top="16665" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11310" top="16665" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Component Size|">
+   </PIN>
+   <PIN pinname="Pin Visibility" slicecount="1" values="OnlyInspector">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="93" srcpinname="Component Size" dstnodeid="164" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="165">
+   <BOUNDS type="Box" left="12750" top="16455" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="12750" top="16455" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Offsets">
+   </PIN>
+   <PIN pinname="Pin Visibility" slicecount="1" values="OnlyInspector">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="93" srcpinname="Offsets" dstnodeid="165" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="166">
+   <BOUNDS type="Box" left="14130" top="16500" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="14130" top="16500" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Strides">
+   </PIN>
+   <PIN pinname="Pin Visibility" slicecount="1" values="OnlyInspector">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="93" srcpinname="Strides" dstnodeid="166" dstpinname="Y Input Value">
    </LINK>
    </PATCH>

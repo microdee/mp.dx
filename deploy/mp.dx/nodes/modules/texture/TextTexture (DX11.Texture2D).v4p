@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha36.1.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\TextTexture (DX11.Texture2D).v4p" systemname="TextTexture (DX11.Texture2D)" filename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\TextTexture (DX11.Texture2D).v4p" scrollx="0" scrolly="240">
-   <BOUNDS type="Window" left="17490" top="10770" width="14445" height="12960">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\TextTexture (DX11.Texture2D).v4p" systemname="TextTexture (DX11.Texture2D)" filename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\TextTexture (DX11.Texture2D).v4p" scrollx="0" scrolly="1680">
+   <BOUNDS type="Window" left="33555" top="16230" width="14445" height="12960">
    </BOUNDS>
    <PACK Name="vvvv-Message" Version="2.9.10">
    </PACK>
-   <PACK Name="addonpack" Version="36.0.0">
+   <PACK Name="addonpack" Version="38.1.0">
    </PACK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="16" systemname="IOBox (String)">
    <BOUNDS type="Box" left="1335" top="1275" width="2310" height="240">
@@ -79,7 +79,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Add (Value)" nodename="Add (Value)" componentmode="Hidden" id="2">
-   <BOUNDS type="Node" left="3375" top="8460" width="100" height="100">
+   <BOUNDS type="Node" left="3435" top="8490" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 2" slicecount="1" values="1">
    </PIN>
@@ -269,7 +269,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="2130" top="2595" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="1" visible="1" pintype="Input" values="Far">
+   <PIN pinname="Input Enum" slicecount="1" visible="1" pintype="Input" values="Center">
    </PIN>
    <PIN pinname="Default" slicecount="1" values="Near">
    </PIN>
@@ -471,7 +471,7 @@
    </PIN>
    <PIN pinname="Rows" slicecount="1" values="2">
    </PIN>
-   <PIN pinname="Y Input Value" slicecount="2" values="0,">
+   <PIN pinname="Y Input Value" slicecount="2" values="0," visible="1">
    </PIN>
    <PIN pinname="Vector Size" slicecount="1" values="2">
    </PIN>
@@ -480,8 +480,6 @@
    <PIN pinname="Descriptive Name" slicecount="1" values="Resolution">
    </PIN>
    </NODE>
-   <LINK srcnodeid="2" srcpinname="Output" dstnodeid="31" dstpinname="Y Input Value">
-   </LINK>
    <NODE systemname="Max (Value)" nodename="Max (Value)" componentmode="Hidden" id="32">
    <BOUNDS type="Node" left="2475" top="3945" width="100" height="100">
    </BOUNDS>
@@ -516,7 +514,7 @@
    <PIN pinname="Input Node" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <PACK Name="dx11" Version="1.3.0.1">
+   <PACK Name="dx11" Version="1.3.1.1">
    </PACK>
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
@@ -578,8 +576,6 @@
    <PIN pinname="Transform Out" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="2" srcpinname="Output" dstnodeid="41" dstpinname="Resolution">
-   </LINK>
    <NODE systemname="ViewportIndex (DX11.Validator)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="ViewportIndex (DX11.Validator)" componentmode="Hidden" id="44">
    <BOUNDS type="Node" left="2055" top="9690" width="100" height="100">
    </BOUNDS>
@@ -611,7 +607,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="9615" top="2580" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="10,10">
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0,0">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -778,8 +774,6 @@
    <PIN pinname="Y" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="2" srcpinname="Output" dstnodeid="59" dstpinname="XY">
-   </LINK>
    <NODE systemname="AspectRatio (Transform)" filename="" nodename="AspectRatio (Transform)" componentmode="Hidden" id="60">
    <BOUNDS type="Node" left="7110" top="13290" width="100" height="100">
    </BOUNDS>
@@ -928,8 +922,6 @@
    </NODE>
    <LINK srcnodeid="64" srcpinname="Y Output Value" dstnodeid="63" dstpinname="Default">
    </LINK>
-   <LINK srcnodeid="2" srcpinname="Output" dstnodeid="63" dstpinname="Input">
-   </LINK>
    <NODE systemname="Max (Value)" nodename="Max (Value)" componentmode="Hidden" id="65">
    <BOUNDS type="Node" left="2100" top="12795" width="100" height="100">
    </BOUNDS>
@@ -1047,5 +1039,45 @@
    <LINK srcnodeid="54" srcpinname="Ord Value" dstnodeid="58" dstpinname="Switch">
    </LINK>
    <LINK srcnodeid="22" srcpinname="Output Enum" dstnodeid="54" dstpinname="Enum">
+   </LINK>
+   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="70">
+   <BOUNDS type="Node" left="8685" top="3465" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8685" top="3465" width="480" height="480">
+   </BOUNDS>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|True Manual Resolution|">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Switch (Value Input)" nodename="Switch (Value Input)" componentmode="Hidden" id="71">
+   <BOUNDS type="Node" left="3255" top="9330" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Switch" visible="1">
+   </PIN>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="70" srcpinname="Y Output Value" dstnodeid="71" dstpinname="Switch">
+   </LINK>
+   <LINK srcnodeid="2" srcpinname="Output" dstnodeid="71" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="71" srcpinname="Output" dstnodeid="59" dstpinname="XY">
+   </LINK>
+   <LINK srcnodeid="71" srcpinname="Output" dstnodeid="31" dstpinname="Y Input Value">
+   </LINK>
+   <LINK srcnodeid="71" srcpinname="Output" dstnodeid="41" dstpinname="Resolution">
+   </LINK>
+   <LINK srcnodeid="71" srcpinname="Output" dstnodeid="63" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="30" srcpinname="Y Output Value" dstnodeid="71" dstpinname="Input 2">
    </LINK>
    </PATCH>

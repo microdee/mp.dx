@@ -1,0 +1,20 @@
+
+#define MDP_GEOMFX 1
+#include <packs/mp.fxh/mdp/mdp.fxh>
+
+GeometryShader MdpGeomLayoutStreamout = ConstructGSWithSO( CompileShader( gs_5_0, GS() ), MDP_GEOMFX_STREAMOUT );
+
+technique11 Layout
+{
+	pass P0
+	{
+		SetVertexShader( CompileShader( vs_5_0, VS() ) );
+		#if defined(TESSELLATE)
+			SetHullShader( CompileShader( hs_5_0, HS()) );
+			SetDomainShader( CompileShader( ds_5_0, DS() ) );
+		#endif
+		SetGeometryShader( CompileShader( gs_5_0, GS() ) );
+	    SetGeometryShader( MdpGeomLayoutStreamout );
+
+	}
+}

@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" systemname="SkeletalMesh (DX11 Assimp)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" scrollx="0" scrolly="8850">
-   <BOUNDS type="Window" left="2415" top="3675" width="17625" height="11085">
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" systemname="SkeletalMesh (DX11 Assimp)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\assimp\SkeletalMesh (DX11 Assimp).v4p" scrollx="0" scrolly="1035">
+   <BOUNDS type="Window" left="33270" top="3510" width="17625" height="11085">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
@@ -367,7 +367,7 @@
    </PIN>
    <PIN pinname="Shader Path" visible="1" pintype="Output">
    </PIN>
-   <PIN pinname="BlendIDOffset" visible="1">
+   <PIN pinname="BlendIDOffset" visible="1" slicecount="1" values="0">
    </PIN>
    <PIN pinname="MatId" visible="1" slicecount="1" values="0">
    </PIN>
@@ -459,7 +459,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="4725" top="11580" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if !defined(TEXCOORDCOUNT) /// -type int&lf;#define TEXCOORDCOUNT 0&lf;#endif&lf;#if defined(NORMAL_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD0_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD1_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD2_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD3_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD4_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD5_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD6_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD7_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD8_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD9_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TANGENT_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(BLENDWEIGHT_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(PREVPOS_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(SUBSETID_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(MATERIALID_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(REAL_INSTANCEID) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(INSTANCEID_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_NORMAL)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD0)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD1)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD2)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD3)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD4)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD5)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD6)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD7)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD8)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD9)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TANGENT)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_BLENDWEIGHT)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_PREVPOS)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_SUBSETID)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_MATERIALID)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;|">
+   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if !defined(TEXCOORDCOUNT) /// -type int -pin &quot;-visibility OnlyInspector&quot;&lf;#define TEXCOORDCOUNT 0&lf;#endif&lf;#if defined(NORMAL_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD0_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD1_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD2_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD3_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD4_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD5_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD6_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD7_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD8_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD9_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TANGENT_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(BLENDWEIGHT_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(PREVPOS_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(SUBSETID_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(MATERIALID_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(REAL_INSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(INSTANCEID_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_NORMAL)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD0)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD1)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD2)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD3)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD4)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD5)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD6)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD7)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD8)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD9)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TANGENT)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_BLENDWEIGHT)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_PREVPOS)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_SUBSETID)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_MATERIALID)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;|">
    </PIN>
    <PIN pinname="Shader Path" visible="1">
    </PIN>
@@ -1015,20 +1015,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="158" srcpinname="Y Output Value" dstnodeid="114" dstpinname="HAS_PREVPOS">
-   </LINK>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="159">
-   <BOUNDS type="Box" left="10905" top="7320" width="4335" height="1605">
-   </BOUNDS>
-   <BOUNDS type="Node" left="10905" top="7320" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="97" srcpinname="Layout Message" dstnodeid="159" dstpinname="Input String">
    </LINK>
    <NODE systemname="Multiply (Transform)" nodename="Multiply (Transform)" componentmode="Hidden" id="160">
    <BOUNDS type="Node" left="5955" top="5235" width="100" height="100">

@@ -39,7 +39,7 @@ GSin VS(VSin input)
 	#else
 	float4 bldi = input.BlendId + BlendIDOffset;
 	#endif
-	float3 opos = mul(float4(input.cpoint, 1), PreTr).xyz;
+	float3 opos = mul(float4(input.Pos, 1), PreTr).xyz;
 	float4 pos = float4(0,0,0,1);
 	float4 ppos = float4(0,0,0,1);
 	float3 norm = 0;
@@ -47,33 +47,33 @@ GSin VS(VSin input)
 	{
 		pos = pos + mul(float4(opos,1), SkinningMatrices[bldi[i]]) * bldw[i];
 		ppos = ppos + mul(float4(opos,1), PrevSkinningMatrices[bldi[i]]) * bldw[i];
-		norm = norm + mul(float4(input.norm,0), SkinningMatrices[bldi[i]]).xyz * bldw[i];
+		norm = norm + mul(float4(input.Norm,0), SkinningMatrices[bldi[i]]).xyz * bldw[i];
 		
-		#if defined(TANGENTS_IN) && defined(TANGENTS_OUT)
-			output.Tangent += mul(float4(input.Tangent,0), SkinningMatrices[bldi[i]]) * bldw[i];
-			output.Binormal += mul(float4(input.Binormal,0), SkinningMatrices[bldi[i]]) * bldw[i];
+		#if defined(TANGENTS_IN) && defined(HAS_TANGENTS)
+			output.Tan += mul(float4(input.Tan,0), SkinningMatrices[bldi[i]]) * bldw[i];
+			output.Bin += mul(float4(input.Bin,0), SkinningMatrices[bldi[i]]) * bldw[i];
 		#endif
 	}
-	#if defined(TANGENTS_IN) && defined(TANGENTS_OUT)
-		output.Tangent = normalize(output.Tangent);
-		output.Binormal = normalize(output.Binormal);
+	#if defined(TANGENTS_IN) && defined(HAS_TANGENTS)
+		output.Tan = normalize(output.Tan);
+		output.Bin = normalize(output.Bin);
 	#endif
 	
 	#if defined(REAL_INSTANCEID)
-	output.cpoint = mul(pos, InstanceTr[input.iid]).xyz;
+	output.Pos = mul(pos, InstanceTr[input.iid]).xyz;
 	#else
-	output.cpoint = mul(pos, InstanceTr[0]).xyz;
+	output.Pos = mul(pos, InstanceTr[0]).xyz;
 	#endif
 	//output.cpoint = float4(input.cpoint,1);
-	output.norm = normalize(norm);
+	output.Norm = normalize(norm);
 	output.sid = SsId;
 	output.mid = MatId;
 	
 #include <packs/mp.fxh/mdp/geom.inset.uvPassthru.fxh>
 	
 	output.BlendId = bldi;
-	#if defined(PREVPOS_OUT)
-		output.PrevPos = pos - (pos-ppos)*PrevPosMul;
+	#if defined(HAS_PREVPOS)
+		output.ppos = pos - (pos-ppos)*PrevPosMul;
 	#endif
 	output.BlendWeight = bldw;
 	

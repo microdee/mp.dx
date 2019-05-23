@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\MXAO (DX11.Texture2D ReShade).v4p" systemname="MXAO (DX11.Texture2D ReShade)" filename="D:\local\lib\md.ecosystem\packs\mp.dx\deploy\mp.dx\nodes\modules\texture\MXAO (DX11.Texture2D ReShade).v4p" scrollx="7995" scrolly="0">
-   <BOUNDS type="Window" left="26925" top="15720" width="16845" height="9975">
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\MXAO (DX11.Texture2D ReShade).v4p" systemname="MXAO (DX11.Texture2D ReShade)" filename="D:\local\lib\md.ecosystem\packs\mp.dx\deploy\mp.dx\nodes\modules\texture\MXAO (DX11.Texture2D ReShade).v4p" scrollx="1395" scrolly="285">
+   <BOUNDS type="Window" left="-18825" top="3960" width="16845" height="9975">
    </BOUNDS>
    <PACK Name="dx11" Version="1.3.1.1">
    </PACK>
@@ -390,6 +390,8 @@
    <PIN pinname="Defines Extract Config" slicecount="1" values="|#if !defined(MXAO_GLOBAL_SAMPLE_QUALITY_PRESET) /// -type int -pin &quot;-min 0 -max 6 -name Quality&quot;&lf;#define MXAO_GLOBAL_SAMPLE_QUALITY_PRESET 2&lf;#endif&lf;#if !defined(MXAO_MIPLEVEL_AO) /// -type int -pin &quot;-name AOMipLevel&quot;&lf;#define MXAO_MIPLEVEL_AO 0&lf;#endif&lf;#if !defined(MXAO_MIPLEVEL_IL) /// -type int -pin &quot;-name ColorBleedingMipLevel&quot;&lf;#define MXAO_MIPLEVEL_IL 2&lf;#endif&lf;#if !defined(MXAO_ENABLE_IL) /// -type int -pin &quot;-name ColorBleeding&quot;&lf;#define MXAO_ENABLE_IL 1&lf;#endif&lf;#if !defined(MXAO_TWO_LAYER) /// -type int -pin &quot;-name TwoLayer&quot;&lf;#define MXAO_TWO_LAYER 1&lf;#endif&lf;#if !defined(MXAO_BLEND_TYPE) /// -type int -pin &quot;-name AOBlendType&quot;&lf;#define MXAO_BLEND_TYPE 0&lf;#endif&lf;#if !defined(MXAO_SMOOTHNORMALS) /// -type int -pin &quot;-name SmoothNormals&quot;&lf;#define MXAO_SMOOTHNORMALS 1&lf;#endif&lf;#if !defined(MXAO_DEBUG_VIEW_ENABLE) /// -type int -pin &quot;-name DebugViewMode&quot;&lf;#define MXAO_DEBUG_VIEW_ENABLE 0&lf;#endif&lf;#if !defined(RESHADE_DEPTH_INPUT_IS_REVERSED) /// -type int -pin &quot;-visibility onlyinspector&quot;&lf;#define RESHADE_DEPTH_INPUT_IS_REVERSED 0&lf;#endif&lf;#if !defined(RESHADE_DEPTH_INPUT_IS_LOGARITHMIC) /// -type int -pin &quot;-visibility onlyinspector&quot;&lf;#define RESHADE_DEPTH_INPUT_IS_LOGARITHMIC 0&lf;#endif&lf;#if !defined(DEFAULT_SAMPLER_ADDRESS) /// -type token -pin &quot;-visibility onlyinspector&quot;&lf;#define DEFAULT_SAMPLER_ADDRESS CLAMP&lf;#endif&lf;#if !defined(DEFAULT_SAMPLER_FILTER) /// -type token -pin &quot;-visibility onlyinspector&quot;&lf;#define DEFAULT_SAMPLER_FILTER MIN_MAG_MIP_LINEAR&lf;#endif&lf;|">
    </PIN>
    <PIN pinname="Defines" visible="1">
+   </PIN>
+   <PIN pinname="RESHADE_DEPTH_INPUT_IS_REVERSED" visible="1" pintype="Input" slicecount="1" values="0">
    </PIN>
    </NODE>
    <LINK srcnodeid="17" srcpinname="Selected Index" dstnodeid="38" dstpinname="Quality">
@@ -1669,32 +1671,24 @@
    <LINK srcnodeid="90" srcpinname="Buffers" dstnodeid="176" dstpinname="ReShade_BackBuffer">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="251">
-   <BOUNDS type="Box" left="2970" top="16920" width="795" height="240">
+   <BOUNDS type="Box" left="6705" top="14955" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="2970" top="16920" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="2">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="252">
-   <BOUNDS type="Box" left="3645" top="17700" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="3645" top="17700" width="0" height="0">
+   <BOUNDS type="Node" left="6705" top="14955" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="2">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
    </PIN>
    </NODE>
    <NODE systemname="MXAOPort (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\MXAOPort.fx" nodename="MXAOPort (DX11.Effect)" componentmode="Hidden" id="255">
    <BOUNDS type="Node" left="5010" top="15585" width="1065" height="270">
    </BOUNDS>
+   <PIN pinname="AOGamma" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="12" srcpinname="Output Node" dstnodeid="255" dstpinname="ReShade_DepthBuffer" hiddenwhenlocked="1">
    </LINK>
@@ -1738,6 +1732,28 @@
    </LINK>
    <LINK srcnodeid="251" srcpinname="Y Output Value" dstnodeid="255" dstpinname="ILGamma">
    </LINK>
-   <LINK srcnodeid="252" srcpinname="Y Output Value" dstnodeid="255" dstpinname="AOGamma">
+   <LINK srcnodeid="251" srcpinname="Y Output Value" dstnodeid="255" dstpinname="AOGamma">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="256">
+   <BOUNDS type="Box" left="11100" top="2835" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11100" top="2835" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Depth Reversed|">
+   </PIN>
+   <PIN pinname="Pin Visibility" slicecount="1" values="OnlyInspector">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="256" srcpinname="Y Output Value" dstnodeid="38" dstpinname="RESHADE_DEPTH_INPUT_IS_REVERSED">
    </LINK>
    </PATCH>

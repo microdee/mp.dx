@@ -1,0 +1,141 @@
+#include <packs/mp.fxh/math/common.fxh>
+#include <packs/mp.fxh/math/noise.fxh>
+
+#if !defined(SAMPLECOUNT) /// -type int
+#define SAMPLECOUNT 24
+#endif
+
+#if !defined(INVSAMPLECOUNT) /// -type float
+#define INVSAMPLECOUNT 0.04166667
+#endif
+
+#if !defined(BLURTAPS) /// -type int
+#define BLURTAPS 6
+#endif
+
+#if !defined(INVBLURTAPS) /// -type float
+#define INVBLURTAPS 0.166667
+#endif
+
+Texture2D tex0: PREVIOUS;
+Texture2D Normals;
+
+SamplerState s0 <string uiname="Sampler Height";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=BORDER;AddressV=BORDER;};
+SamplerState s1 <string uiname="Sampler Output";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
+float2 R:TARGETSIZE;
+
+cbuffer controls:register(b0){
+	float3 LightDir = float3(-1, -1, -1);
+	float Height = 1;
+	float RayLength = 1;
+	float RayJitter = 0.1;
+	float ShadowFade = 1;
+	float ShadowFalloffPow = 1;
+	float SharpOffset = 0;
+	float ShadowBlurPow = 1;
+	float ShadowBlurAmount = 0.01;
+	
+	float DotTolerance = 0;
+};
+
+float4 pShadow(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET
+{
+	float3 cpos = float3(x, tex0.SampleLevel(s0, x, 0).x * Height);
+	float3 occluderpos = 0;
+	bool gotoccluder = false;
+	float3 orig = cpos;
+	float heightdiff = 1;
+	float3 raydir = -normalize(LightDir);
+	
+	float3 norm = Normals.SampleLevel(s0, x, 0).xyz;
+	float dotnorm = dot(raydir, norm);
+	float normtol = mapClamp(abs(dotnorm), 0, DotTolerance, 0, 1);
+	
+	[unroll]
+	for(float i=0; i<SAMPLECOUNT; i++)
+	{
+		float jitter = hash13(cpos*455) * RayJitter * (i>0);
+		float distfac = 0.2 + distance(cpos, orig);
+		cpos += raydir * (INVSAMPLECOUNT * RayLength + jitter * distfac);
+		float cheight = tex0.SampleLevel(s0, cpos.xy, 0).x * Height;
+		//float3 chp = float3(cpos.xy, cheight) + bias * raydir;
+		float cdiff = cpos.z - cheight;
+		heightdiff = lerp(heightdiff, cdiff, cdiff < heightdiff);
+		if(!gotoccluder && cdiff < 0)
+		{
+			gotoccluder = true;
+			occluderpos = cpos;
+		}
+	}
+	
+	float dist = lerp(0, distance(occluderpos, orig), gotoccluder);
+	
+	float outdiff = saturate(heightdiff + 1) * (1-(heightdiff >= 0));
+	float outbluram = mapClamp(dist, 0.0, 0.8, 0, 1);
+	
+	float outcol = mapClamp(outbluram, 0, ShadowFade, 0, 1);
+	outcol = lerp(1, pow(outcol, ShadowFalloffPow), pow(normtol, 0.3333));
+	
+	float4 res = float4(
+		lerp(outcol, 1, heightdiff >= 0),
+		outbluram * (1-(heightdiff >= 0)),
+		orig.z,
+		outdiff);
+    return res;
+}
+
+float4 pBlur(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET
+{
+	float4 input = tex0.SampleLevel(s1, x, 0);
+	//return input.x;
+	float3 orig = float3(x, input.z);
+	float3 raydir = normalize(-LightDir);
+	
+	float bluram = input.y;
+	
+	[unroll]
+	for(float i=0; i<BLURTAPS; i++)
+	{
+		float2 uv = x + float2(
+			cos(i * INVBLURTAPS * PI * 2),
+			sin(i * INVBLURTAPS * PI * 2)
+		) * ShadowBlurAmount * hash13(float3(x*1000, i)) * 1.25;
+		float4 cinput = tex0.SampleLevel(s1, uv, 0);
+		bluram = max(bluram, cinput.y * (cinput.z >= input.z));
+	}
+	
+	bluram = pow(max(bluram - SharpOffset, 0), ShadowBlurPow);
+	
+	float levels=log2(max(R.x,R.y));
+	float lod = levels * 0.25 * saturate(bluram);
+	
+	float4 c=0;
+	
+	[unroll]
+	for(float i=0; i<BLURTAPS; i++)
+	{
+		float rand = pow(hash13(float3(x*1000+324, i)), 0.5);
+		float2 deviation = float2(
+			cos(i * INVBLURTAPS * PI * 2),
+			sin(i * INVBLURTAPS * PI * 2)
+		) * rand;
+		float2 amount = deviation 
+			* bluram
+			* ShadowBlurAmount;
+		float2 uv = x + amount;
+		float4 curr = tex0.SampleLevel(s1, uv, lod);
+		curr = lerp(input, curr, curr.z >= input.z) * INVBLURTAPS;
+		c += curr;
+	}
+	
+	return c.x;
+}
+
+
+technique10 Mix
+{
+	pass P1 <bool mips=true; string format="R16G16B16A16_Float";>
+	{ SetPixelShader(CompileShader(ps_4_0,pShadow())); }
+	pass P2 <string format="R16_Float";>
+	{ SetPixelShader(CompileShader(ps_4_0,pBlur())); }
+}

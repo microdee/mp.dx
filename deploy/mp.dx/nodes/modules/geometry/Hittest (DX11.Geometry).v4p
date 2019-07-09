@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta37.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\geometry\Hittest (DX11.Geometry).v4p" systemname="Hittest (DX11.Geometry)" filename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\geometry\Hittest (DX11.Geometry).v4p" scrollx="2295" scrolly="6930">
-   <BOUNDS type="Window" left="12630" top="18270" width="13950" height="8940">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\geometry\Hittest (DX11.Geometry).v4p" systemname="Hittest (DX11.Geometry)" filename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\geometry\Hittest (DX11.Geometry).v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="13440" top="21630" width="13950" height="8940">
    </BOUNDS>
    <PACK Name="dx11" Version="1.3.1.1">
    </PACK>
@@ -10,7 +10,7 @@
    </PACK>
    <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
    </PACK>
-   <PACK Name="addonpack" Version="36.0.0">
+   <PACK Name="addonpack" Version="38.1.0">
    </PACK>
    <NODE systemname="StandardGeomLayout (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\StandardGeomLayout (DX11.Geometry).v4p" nodename="StandardGeomLayout (DX11.Geometry)" componentmode="Hidden" id="1" debug="0">
    <BOUNDS type="Node" left="6570" top="5040" width="100" height="100">
@@ -385,7 +385,7 @@
    </PIN>
    <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="RayCount" visible="1">
+   <PIN pinname="RayCount" visible="1" slicecount="1" values="1">
    </PIN>
    <PIN pinname="SsId" visible="1" slicecount="1" values="0">
    </PIN>
@@ -447,7 +447,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="6915" top="6450" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if !defined(TEXCOORDCOUNT) /// -type int&lf;#define TEXCOORDCOUNT 0&lf;#endif&lf;#if defined(NORMAL_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD0_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD1_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD2_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD3_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD4_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD5_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD6_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD7_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD8_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TEXCOORD9_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(TANGENT_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(BLENDWEIGHT_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(PREVPOS_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(SUBSETID_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(MATERIALID_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(REAL_INSTANCEID) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(INSTANCEID_IN) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;|">
+   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if !defined(TEXCOORDCOUNT) /// -type int -pin &quot;-visibility OnlyInspector&quot;&lf;#define TEXCOORDCOUNT 0&lf;#endif&lf;#if defined(NORMAL_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD0_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD1_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD2_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD3_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD4_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD5_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD6_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD7_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD8_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TEXCOORD9_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(TANGENT_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(BLENDWEIGHT_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(PREVPOS_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(SUBSETID_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(MATERIALID_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(REAL_INSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(INSTANCEID_IN) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_NORMAL)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD0)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD1)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD2)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD3)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD4)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD5)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD6)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD7)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD8)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TEXCOORD9)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TANGENT)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_BLENDWEIGHT)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_PREVPOS)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_SUBSETID)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_MATERIALID)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID)  /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;|">
    </PIN>
    <PIN pinname="REAL_INSTANCEID" visible="1">
    </PIN>

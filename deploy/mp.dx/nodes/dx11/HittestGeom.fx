@@ -16,7 +16,7 @@
 #include <packs/mp.fxh/math/intersections.fxh>
 
 #define BCFIND_TRI_ARG GSin tri[3]
-#define BCFIND_TRI_GETV(I) tri[I].cpoint
+#define BCFIND_TRI_GETV(I) tri[I].Pos
 #include <packs/mp.fxh/math/barycentric.fxh>
 
 StructuredBuffer<float4x4> InstanceTr;
@@ -48,13 +48,13 @@ GSin VS(VSin input)
 	#if defined(SUBSETID_IN)
 		w = mul(SubsetTr[input.sid], w);
 	#endif
-	output.cpoint = mul(float4(input.cpoint, 1), PreTr).xyz;
+	output.Pos = mul(float4(input.Pos, 1), PreTr).xyz;
 	#if defined(NORMAL_IN) && defined(HAS_NORMAL)
-		output.norm = mul(float4(input.norm, 0), PreTr).xyz;
+		output.Norm = mul(float4(input.Norm, 0), PreTr).xyz;
 	#endif
 	#if defined(TANGENTS_IN) && defined(TANGENTS_OUT)
-		output.Tangent = mul(float4(input.Tangent, 0), PreTr).xyz;
-		output.Binormal = mul(float4(input.Binormal, 0), PreTr).xyz;
+		output.Tan = mul(float4(input.Tan, 0), PreTr).xyz;
+		output.Bin = mul(float4(input.Bin, 0), PreTr).xyz;
 	#endif
 	#if defined(HAS_SUBSETID)
 		output.sid = SsId;
@@ -80,7 +80,7 @@ void GS(triangle GSin input[3], inout PointStream<GSin> outsream, uint pid : SV_
 	for(uint r = 0; r<RayCount; r++)
 	{
 		float3 intspoint = 0;
-		bool result = Segment_TriangleMT(RayBuf[r].Start, RayBuf[r].Stop, input[0].cpoint, input[1].cpoint, input[2].cpoint, intspoint);
+		bool result = Segment_TriangleMT(RayBuf[r].Start, RayBuf[r].Stop, input[0].Pos, input[1].Pos, input[2].Pos, intspoint);
 		if(result)
 		{
 			float3 tridat3[3];
@@ -88,34 +88,34 @@ void GS(triangle GSin input[3], inout PointStream<GSin> outsream, uint pid : SV_
 			
 			GSin o = input[0];
 			o.bar = BcFind(intspoint, input);
-			o.cpoint = intspoint;
+			o.Pos = intspoint;
 			o.rdist = distance(RayBuf[r].Start, intspoint);
 			o.rid = r;
 			o.pid = pid;
 			
-			#if defined(HAS_NORMAL)
-			tridat3[0] = input[0].norm;
-			tridat3[1] = input[1].norm;
-			tridat3[2] = input[2].norm;
-			o.norm = BcBlend(tridat3, o.bar);
+			#if defined(HAS_NORMAL) && defined(NORMAL_IN)
+			tridat3[0] = input[0].Norm;
+			tridat3[1] = input[1].Norm;
+			tridat3[2] = input[2].Norm;
+			o.Norm = BcBlend(tridat3, o.bar);
 			#endif
 			
-			#if defined(HAS_TEXCOORD0)
-			tridat2[0] = input[0].TexCd0;
-			tridat2[1] = input[1].TexCd0;
-			tridat2[2] = input[2].TexCd0;
-			o.TexCd0 = BcBlend(tridat2, o.bar);
+			#if defined(HAS_TEXCOORD0) && defined(TEXCOORD0_IN)
+			tridat2[0] = input[0].Uv0;
+			tridat2[1] = input[1].Uv0;
+			tridat2[2] = input[2].Uv0;
+			o.Uv0 = BcBlend(tridat2, o.bar);
 			#endif
 			
-			#if defined(HAS_TANGENT)
-			tridat3[0] = input[0].Tangent;
-			tridat3[1] = input[1].Tangent;
-			tridat3[2] = input[2].Tangent;
-			o.Tangent = BcBlend(tridat3, o.bar);
-			tridat3[0] = input[0].Binormal;
-			tridat3[1] = input[1].Binormal;
-			tridat3[2] = input[2].Binormal;
-			o.Binormal = BcBlend(tridat3, o.bar);
+			#if defined(HAS_TANGENT) && defined(TANGENT_IN)
+			tridat3[0] = input[0].Tan;
+			tridat3[1] = input[1].Tan;
+			tridat3[2] = input[2].Tan;
+			o.Tan = BcBlend(tridat3, o.bar);
+			tridat3[0] = input[0].Bin;
+			tridat3[1] = input[1].Bin;
+			tridat3[2] = input[2].Bin;
+			o.Bin = BcBlend(tridat3, o.bar);
 			#endif
 			
 			outsream.Append(o);

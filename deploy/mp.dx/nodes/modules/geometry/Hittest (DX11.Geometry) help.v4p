@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\geometry\Hittest (DX11.Geometry) help.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="315" top="345" width="14175" height="13710">
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\geometry\Hittest (DX11.Geometry) help.v4p" scrollx="0" scrolly="8640">
+   <BOUNDS type="Window" left="315" top="345" width="16680" height="13710">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
    <BOUNDS type="Node" left="225" top="225" width="5100" height="450">
@@ -1606,4 +1606,224 @@
    </LINK>
    <LINK srcnodeid="50" srcpinname="Transform Out" dstnodeid="144" dstpinname="Projection">
    </LINK>
+   <NODE systemname="ReadBackHittest (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\ReadBackHittest (DX11.Geometry).v4p" nodename="ReadBackHittest (DX11.Geometry)" componentmode="Hidden" id="145">
+   <BOUNDS type="Node" left="10920" top="27270" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Strides" visible="1">
+   </PIN>
+   <PIN pinname="Only Closest" visible="1">
+   </PIN>
+   <PIN pinname="Enabled" visible="1">
+   </PIN>
+   <PIN pinname="Primitive ID" visible="1">
+   </PIN>
+   <PIN pinname="Ray ID" visible="1">
+   </PIN>
+   <PIN pinname="Distance On Ray" visible="1">
+   </PIN>
+   <PIN pinname="Barycentric Coordinates" visible="1">
+   </PIN>
+   <PIN pinname="Position" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="120" srcpinname="Output Node" dstnodeid="145" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="112" srcpinname="Y Output Value" dstnodeid="145" dstpinname="Strides">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="146">
+   <BOUNDS type="Box" left="11835" top="25650" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11835" top="25650" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Only Closest|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="146" srcpinname="Y Output Value" dstnodeid="145" dstpinname="Only Closest">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="147">
+   <BOUNDS type="Box" left="12285" top="26445" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="12285" top="26445" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Enabled">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="147" srcpinname="Y Output Value" dstnodeid="145" dstpinname="Enabled">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="148">
+   <BOUNDS type="Node" left="10335" top="24600" width="7140" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10335" top="24600" width="3210" height="735">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|There&apos;s a helper module which simplifies reading back, but it still has all the performance penalties of regular readback|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="149">
+   <BOUNDS type="Box" left="12285" top="27795" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="12285" top="27795" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Primitive ID|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="145" srcpinname="Primitive ID" dstnodeid="149" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="150">
+   <BOUNDS type="Box" left="12075" top="28305" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="12075" top="28305" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Ray ID|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="145" srcpinname="Ray ID" dstnodeid="150" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="151">
+   <BOUNDS type="Box" left="11835" top="28875" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11835" top="28875" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Distance On Ray|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="145" srcpinname="Distance On Ray" dstnodeid="151" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="152">
+   <BOUNDS type="Box" left="11610" top="29460" width="795" height="720">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11610" top="29460" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Barycentric Coordinates|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="145" srcpinname="Barycentric Coordinates" dstnodeid="152" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="153">
+   <BOUNDS type="Box" left="11370" top="30555" width="795" height="720">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11370" top="30555" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Position">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="145" srcpinname="Position" dstnodeid="153" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="154">
+   <BOUNDS type="Box" left="10920" top="31650" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10920" top="31650" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Output">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="145" srcpinname="Output" dstnodeid="154" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="155">
+   <BOUNDS type="Node" left="12405" top="25800" width="2730" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="12405" top="25800" width="2730" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Select the single closest intersection|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="156">
+   <BOUNDS type="Node" left="10965" top="32115" width="3285" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10965" top="32115" width="2715" height="510">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|The output contains all the elements as a single spread.|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="157">
+   <BOUNDS type="Node" left="9540" top="17895" width="4155" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9540" top="17895" width="4155" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|Scroll down to see how to retrieve the result on CPU side|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
    </PATCH>

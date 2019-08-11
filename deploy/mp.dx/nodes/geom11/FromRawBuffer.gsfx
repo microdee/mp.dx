@@ -1,0 +1,106 @@
+
+#include <packs/mp.fxh/mdp/geom.layout.fxh>
+#include <packs/mp.fxh/cs/rwByteAddressBuffer.fxh>
+#include <packs/mp.fxh/cs/ByteAddressBuffer.fxh>
+
+ByteAddressBuffer geom;
+#if !defined(STRIDES) /// -type int
+#define STRIDES 16
+#define STRIDES_VALS 4
+#endif
+
+GSin VS(uint invid : SV_VERTEXID)
+{
+    GSin o = (GSin)0;
+	uint vid = invid * STRIDES_VALS;
+	uint offs = 0;
+	
+	o.Pos = BABLoad3(geom, vid + offs);
+	offs += 3;
+	
+	#if defined(NORMAL_IN) && defined(HAS_NORMAL)
+	o.Norm = BABLoad3(geom, vid + offs);
+	offs += 3;
+	#endif
+	
+	#if defined(TEXCOORD0_IN) && defined(HAS_TEXCOORD0)
+		o.Uv0 = BABLoad2(geom, vid + offs);
+		offs += 2;
+	#endif
+	#if defined(TEXCOORD1_IN) && defined(HAS_TEXCOORD1)
+		o.Uv1 = BABLoad2(geom, vid + offs);
+		offs += 2;
+	#endif
+	#if defined(TEXCOORD2_IN) && defined(HAS_TEXCOORD2)
+		o.Uv2 = BABLoad2(geom, vid + offs);
+		offs += 2;
+	#endif
+	#if defined(TEXCOORD3_IN) && defined(HAS_TEXCOORD3)
+		o.Uv3 = BABLoad2(geom, vid + offs);
+		offs += 2;
+	#endif
+	#if defined(TEXCOORD4_IN) && defined(HAS_TEXCOORD4)
+		o.Uv4 = BABLoad2(geom, vid + offs);
+		offs += 2;
+	#endif
+	#if defined(TEXCOORD5_IN) && defined(HAS_TEXCOORD5)
+		o.Uv5 = BABLoad2(geom, vid + offs);
+		offs += 2;
+	#endif
+	#if defined(TEXCOORD6_IN) && defined(HAS_TEXCOORD6)
+		o.Uv6 = BABLoad2(geom, vid + offs);
+		offs += 2;
+	#endif
+	#if defined(TEXCOORD7_IN) && defined(HAS_TEXCOORD7)
+		o.Uv7 = BABLoad2(geom, vid + offs);
+		offs += 2;
+	#endif
+	#if defined(TEXCOORD8_IN) && defined(HAS_TEXCOORD8)
+		o.Uv8 = BABLoad2(geom, vid + offs);
+		offs += 2;
+	#endif
+	#if defined(TEXCOORD9_IN) && defined(HAS_TEXCOORD9)
+		o.Uv9 = BABLoad2(geom, vid + offs);
+		offs += 2;
+	#endif
+	
+	#if defined(TANGENT_IN) && defined(HAS_TANGENT)
+	o.Tan = BABLoad3(geom, vid + offs);
+	offs += 3;
+	o.Bin = BABLoad3(geom, vid + offs);
+	offs += 3;
+	#endif
+	
+	#if defined(SUBSETID_IN) && defined(HAS_SUBSETID)
+	o.sid = BABLoad1(geom, vid + offs);
+	offs += 1;
+	#endif
+		
+    return o;
+}
+
+[maxvertexcount(3)]
+void GS(triangle GSin input[3], inout TriangleStream<GSin>GSOut)
+{
+	GSin v = (GSin)0;
+
+	for(uint i=0;i<3;i++)
+	{
+		v=input[i];
+		GSOut.Append(v);
+	}
+}
+
+#include <packs/mp.fxh/mdp/geom.layout.streamout.fxh>
+
+technique11 Layout
+{
+	pass P0
+	{
+		
+		SetVertexShader( CompileShader( vs_5_0, VS() ) );
+		SetGeometryShader( CompileShader( gs_5_0, GS() ) );
+	    SetGeometryShader( MdpGeomLayoutStreamout );
+
+	}
+}

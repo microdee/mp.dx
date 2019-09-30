@@ -48,13 +48,13 @@ GSin VS(VSin input)
 	#if defined(SUBSETID_IN)
 		w = mul(SubsetTr[input.sid], w);
 	#endif
-	output.Pos = mul(float4(input.Pos, 1), PreTr).xyz;
+	output.Pos = mul(float4(input.Pos, 1), w).xyz;
 	#if defined(NORMAL_IN) && defined(HAS_NORMAL)
-		output.Norm = mul(float4(input.Norm, 0), PreTr).xyz;
+		output.Norm = mul(float4(input.Norm, 0), w).xyz;
 	#endif
 	#if defined(TANGENTS_IN) && defined(TANGENTS_OUT)
-		output.Tan = mul(float4(input.Tan, 0), PreTr).xyz;
-		output.Bin = mul(float4(input.Bin, 0), PreTr).xyz;
+		output.Tan = mul(float4(input.Tan, 0), w).xyz;
+		output.Bin = mul(float4(input.Bin, 0), w).xyz;
 	#endif
 	#if defined(HAS_SUBSETID)
 		output.sid = SsId;

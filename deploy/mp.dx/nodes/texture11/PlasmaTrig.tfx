@@ -54,6 +54,6 @@ float4 PS(float4 pos:SV_Position, float2 uv:TEXCOORD0) : SV_Target
 
 technique10 Process
 {
-	pass P0 <bool mips=true; string format="R8G8B8A8_UNorm";>
+	pass P0 <bool mips=true; string format="R16G16B16A16_Float";>
 	{ SetPixelShader(CompileShader(ps_4_0,PS())); }
 }

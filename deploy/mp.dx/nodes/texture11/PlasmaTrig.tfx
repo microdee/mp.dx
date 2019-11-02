@@ -27,7 +27,7 @@ float4 PS(float4 pos:SV_Position, float2 uv:TEXCOORD0) : SV_Target
 	float3 s = 0;
 	for( int i=0; i<100; i++ )
 	{
-		z = iterate( z, t );
+		z = iterate( z + mouse * 0.01, t );
 
 		float d = dot( z-p, z-p );
 		s.x += 1.0/(0.1+d);

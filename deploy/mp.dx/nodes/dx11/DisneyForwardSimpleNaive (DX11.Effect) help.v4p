@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50alpha35.18.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive (DX11.Effect) help.v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.dtd" >
+   <PATCH nodename="D:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive (DX11.Effect) help.v4p">
    <BOUNDS type="Window" left="5880" top="7095" width="16935" height="8310">
    </BOUNDS>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="3">
@@ -25,7 +25,7 @@
    </PIN>
    </NODE>
    <NODE nodename="DisneyForwardSimpleNaive (DX11.Effect)" componentmode="Hidden" id="0">
-   <BOUNDS type="Node" left="570" top="1905" width="0" height="0">
+   <BOUNDS type="Node" left="570" top="1905" width="6900" height="270">
    </BOUNDS>
    <BOUNDS type="Box" left="570" top="1905" width="0" height="0">
    </BOUNDS>
@@ -40,7 +40,7 @@
    </PACK>
    <PACK Name="vvvv-Message" Version="2.9.10">
    </PACK>
-   <PACK Name="addonpack" Version="36.0.0">
+   <PACK Name="addonpack" Version="38.0.0">
    </PACK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="5">
    <BOUNDS type="Node" left="615" top="2565" width="1155" height="270">
@@ -56,6 +56,6 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
-   <PACK Name="dx11" Version="1.2">
+   <PACK Name="dx11" Version="1.3.1">
    </PACK>
    </PATCH>

@@ -6,6 +6,7 @@
 struct MatData
 {
 	float4 AlbedoAlpha;
+	float4 Emit;
 	float Rough;
 	float Metal;
 	float Anisotropic;
@@ -40,6 +41,7 @@ struct PointLight
 #define BRDF_PARAM_Disney_sheenTint mat.SheenTint
 #define BRDF_PARAM_Disney_clearcoat mat.Clearcoat
 #define BRDF_PARAM_Disney_clearcoatGloss mat.CCGloss
+#define BRDF_PARAM_Disney_Emit mat.Emit
 
 #include <packs/mp.fxh/brdf/brdf.fxh>
 #include <packs/mp.fxh/texture/anisotropicEnvSample.fxh>
@@ -127,6 +129,7 @@ PSout PS(PSin input)
 	matdat.Clearcoat = gClearcoat * matdat.Clearcoat;
 	matdat.CCGloss = gClearcoatGloss * matdat.CCGloss;
 	matdat.SSS = gSSS * matdat.SSS;
+	matdat.Emit = 0;
 
 	float3 outcol = 0;
 	float3 wnorm = mul(float4(norm,0), tVI).xyz;
@@ -204,6 +207,194 @@ technique11 AnisotropicIBL
 		SetPixelShader( CompileShader( ps_5_0, PS() ) );
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,5 +1,5 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="D:\local\lib\md.ecosystem\packs\mp.dx\deploy\mp.dx\girlpower\dynamiclight-forward.v4p" scrollx="435" scrolly="9315" systemname="dynamiclight-forward" filename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\girlpower\dynamiclight-forward.v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.dtd" >
+   <PATCH nodename="D:\vvvv\app\vvvv-vpm\packs\mp.dx\girlpower\dynamiclight-forward.v4p" scrollx="3270" scrolly="8520" systemname="dynamiclight-forward" filename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\girlpower\dynamiclight-forward.v4p">
    <BOUNDS type="Window" left="15120" top="5655" width="17610" height="10770">
    </BOUNDS>
    <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="7" border="0">
@@ -7,7 +7,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="9810" top="33705" width="6000" height="4500">
    </BOUNDS>
-   <BOUNDS type="Window" left="-14400" top="0" width="14400" height="8100">
+   <BOUNDS type="Window" left="14400" top="0" width="14400" height="8100">
    </BOUNDS>
    <PIN pinname="Layers" visible="1">
    </PIN>
@@ -76,7 +76,7 @@
    </NODE>
    <PACK Name="vvvv-Message" Version="2.9.10">
    </PACK>
-   <PACK Name="addonpack" Version="38.1.0">
+   <PACK Name="addonpack" Version="38.0.0">
    </PACK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="31">
    <BOUNDS type="Box" left="11775" top="18465" width="525" height="240">
@@ -841,7 +841,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="12585" top="14220" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if !defined(AESAMPLES_W) /// -type int&lf;#define AESAMPLES_W 10&lf;#define AESAMPLES_H 10&lf;#endif&lf;#if defined(FIXSHALLOWEYE) /// -type switch&lf;#endif&lf;#if !defined(MDP_MAINUVLAYER) /// -type token&lf;#define MDP_MAINUVLAYER TEXCOORD0&lf;#endif&lf;#if defined(TESSELLATE) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(INV_NORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT_WINDING) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(FLATNORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TEXCOORD0) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TANGENT) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_PREVPOS) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_SUBSETID) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_MATERIALID) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;|">
+   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if !defined(AESAMPLES_W) /// -type int&lf;#define AESAMPLES_W 10&lf;#define AESAMPLES_H 10&lf;#endif&lf;#if defined(FIXSHALLOWEYE) /// -type switch&lf;#endif&lf;#if !defined(MDP_MAINUVLAYER) /// -type token -pin &quot;-visibility Hidden&quot;&lf;#define MDP_MAINUVLAYER TEXCOORD0&lf;#endif&lf;#if defined(TESSELLATE) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(INV_NORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT_WINDING) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(FLATNORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TEXCOORD0) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_PREVPOS) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_SUBSETID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_MATERIALID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;|">
    </PIN>
    <PIN pinname="Defines Input" visible="1" slicecount="1" values="||">
    </PIN>
@@ -911,9 +911,9 @@
    </PIN>
    </NODE>
    <NODE systemname="DisneyForwardSimpleNaive (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive.fx" nodename="DisneyForwardSimpleNaive (DX11.Effect)" componentmode="Hidden" id="107">
-   <BOUNDS type="Node" left="5490" top="14460" width="5850" height="270">
+   <BOUNDS type="Node" left="5490" top="14460" width="7050" height="270">
    </BOUNDS>
-   <PIN pinname="Default Anisotropic" slicecount="1" values="1">
+   <PIN pinname="Default Anisotropic" slicecount="1" values="0">
    </PIN>
    <PIN pinname="Default Anisotropic Rotation" slicecount="1" values="0">
    </PIN>
@@ -935,7 +935,7 @@
    </PIN>
    <PIN pinname="Environment Strength" visible="1" slicecount="1" values="0">
    </PIN>
-   <PIN pinname="diffbluradd" slicecount="1" visible="1" values="0.43">
+   <PIN pinname="diffbluradd" slicecount="1" visible="1" values="0.5">
    </PIN>
    <PIN pinname="tEnv" visible="1" slicecount="1" values="||">
    </PIN>
@@ -951,7 +951,7 @@
    </PIN>
    <PIN pinname="RoughMetalAnisoRotMap" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="SunColor" slicecount="1" values="|1.00000,1.00000,1.00000,0.00000|">
+   <PIN pinname="SunColor" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
    </PIN>
    <PIN pinname="Albedo Color" visible="1" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
    </PIN>
@@ -967,11 +967,11 @@
    </PIN>
    <PIN pinname="Textures Sampler" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="Previous World" visible="1">
+   <PIN pinname="Previous World" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Transform In" visible="1">
    </PIN>
-   <PIN pinname="Factor" visible="1">
+   <PIN pinname="Factor" visible="1" slicecount="1" values="5">
    </PIN>
    </NODE>
    <LINK srcnodeid="24" srcpinname="Y Output Value" dstnodeid="107" dstpinname="SunDirXYZ">
@@ -1099,7 +1099,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="13440" top="16395" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if !defined(AESAMPLES_W) /// -type int&lf;#define AESAMPLES_W 10&lf;#define AESAMPLES_H 10&lf;#endif&lf;#if defined(FIXSHALLOWEYE) /// -type switch&lf;#endif&lf;#if !defined(MDP_MAINUVLAYER) /// -type token&lf;#define MDP_MAINUVLAYER TEXCOORD0&lf;#endif&lf;#if defined(TESSELLATE) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(INV_NORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT_WINDING) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(FLATNORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TEXCOORD0) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_TANGENT) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_PREVPOS) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_SUBSETID) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_MATERIALID) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;|">
+   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if !defined(AESAMPLES_W) /// -type int&lf;#define AESAMPLES_W 10&lf;#define AESAMPLES_H 10&lf;#endif&lf;#if defined(FIXSHALLOWEYE) /// -type switch&lf;#endif&lf;#if !defined(MDP_MAINUVLAYER) /// -type token -pin &quot;-visibility Hidden&quot;&lf;#define MDP_MAINUVLAYER TEXCOORD0&lf;#endif&lf;#if defined(TESSELLATE) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(INV_NORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT_WINDING) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(FLATNORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TEXCOORD0) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_PREVPOS) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_SUBSETID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_MATERIALID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;|">
    </PIN>
    <PIN pinname="Defines Input" visible="1" slicecount="1" values="||">
    </PIN>
@@ -1125,9 +1125,9 @@
    </PIN>
    </NODE>
    <NODE systemname="DisneyForwardSimpleNaive (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive.fx" nodename="DisneyForwardSimpleNaive (DX11.Effect)" componentmode="Hidden" id="159">
-   <BOUNDS type="Node" left="6345" top="16635" width="5850" height="270">
+   <BOUNDS type="Node" left="6345" top="16635" width="7050" height="270">
    </BOUNDS>
-   <PIN pinname="Default Anisotropic" slicecount="1" values="0.92">
+   <PIN pinname="Default Anisotropic" slicecount="1" values="0">
    </PIN>
    <PIN pinname="Default Anisotropic Rotation" slicecount="1" values="0">
    </PIN>
@@ -1149,7 +1149,7 @@
    </PIN>
    <PIN pinname="Environment Strength" visible="1" slicecount="1" values="0">
    </PIN>
-   <PIN pinname="diffbluradd" slicecount="1" visible="1" values="0.43">
+   <PIN pinname="diffbluradd" slicecount="1" visible="1" values="0.5">
    </PIN>
    <PIN pinname="tEnv" visible="1" slicecount="1" values="||">
    </PIN>
@@ -1165,7 +1165,7 @@
    </PIN>
    <PIN pinname="RoughMetalAnisoRotMap" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="SunColor" slicecount="1" values="|1.00000,1.00000,1.00000,0.00000|">
+   <PIN pinname="SunColor" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
    </PIN>
    <PIN pinname="Albedo Color" visible="1" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
    </PIN>
@@ -1179,11 +1179,11 @@
    </PIN>
    <PIN pinname="Layer" visible="1">
    </PIN>
-   <PIN pinname="Previous World" visible="1">
+   <PIN pinname="Previous World" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Transform In" visible="1">
    </PIN>
-   <PIN pinname="Default Rough" slicecount="1" values="0.38">
+   <PIN pinname="Default Rough" slicecount="1" values="0.25">
    </PIN>
    <PIN pinname="Default Metal" slicecount="1" values="0">
    </PIN>
@@ -1558,7 +1558,7 @@
    </LINK>
    <LINK srcnodeid="99" srcpinname="Y Output Value" dstnodeid="191" dstpinname="Default SizeXY">
    </LINK>
-   <PACK Name="dx11" Version="1.3.1.1">
+   <PACK Name="dx11" Version="1.3.1">
    </PACK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="192">
    <BOUNDS type="Box" left="14190" top="33630" width="795" height="480">
@@ -1621,7 +1621,7 @@
    </PIN>
    <PIN pinname="Indirect Lighting Amount" visible="1" slicecount="1" values="4">
    </PIN>
-   <PIN pinname="Ambient Occlusion Amount" slicecount="1" values="1" visible="1">
+   <PIN pinname="Ambient Occlusion Amount" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Use Default Size" slicecount="1" values="1">
    </PIN>
@@ -1644,6 +1644,8 @@
    <PIN pinname="Sample Radius" visible="1">
    </PIN>
    <PIN pinname="Fine AO Scale" slicecount="1" values="0.27">
+   </PIN>
+   <PIN pinname="Debug Mode" slicecount="1" values="0">
    </PIN>
    </NODE>
    <LINK srcnodeid="117" srcpinname="Output" dstnodeid="168" dstpinname="Default SizeXY">

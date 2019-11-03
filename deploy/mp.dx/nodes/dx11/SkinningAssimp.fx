@@ -54,18 +54,23 @@ GSin VS(VSin input)
 			output.Bin += mul(float4(input.Bin,0), SkinningMatrices[bldi[i]]) * bldw[i];
 		#endif
 	}
-	#if defined(TANGENTS_IN) && defined(HAS_TANGENTS)
-		output.Tan = normalize(output.Tan);
-		output.Bin = normalize(output.Bin);
-	#endif
+	
+	uint itri = 0;
 	
 	#if defined(REAL_INSTANCEID)
-	output.Pos = mul(pos, InstanceTr[input.iid]).xyz;
-	#else
-	output.Pos = mul(pos, InstanceTr[0]).xyz;
+	itri = input.iid;
 	#endif
-	//output.cpoint = float4(input.cpoint,1);
-	output.Norm = normalize(norm);
+	
+	#if defined(TANGENTS_IN) && defined(HAS_TANGENTS)
+		output.Tan = mul(float4(normalize(output.Tan), 0), InstanceTr[itri]).xyz;
+		output.Bin = mul(float4(normalize(output.Bin), 0), InstanceTr[itri]).xyz;
+	#endif
+	
+	pos = mul(pos, InstanceTr[itri]);
+	ppos = mul(ppos, InstanceTr[itri]);
+	output.Pos = pos.xyz;
+	
+	output.Norm = mul(float4(normalize(norm), 0), InstanceTr[itri]).xyz;
 	output.sid = SsId;
 	output.mid = MatId;
 	

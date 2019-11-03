@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\assimp\SkeletonSimple (Assimp).v4p" systemname="SkeletonSimple (Assimp)" filename="C:\vvvv\libs\mcropack\nodes\Modules\SkeletonSimple (Assimp).v4p" scrollx="0" scrolly="4695">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.dtd" >
+   <PATCH nodename="D:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\assimp\SkeletonSimple (Assimp).v4p" systemname="SkeletonSimple (Assimp)" filename="C:\vvvv\libs\mcropack\nodes\Modules\SkeletonSimple (Assimp).v4p" scrollx="0" scrolly="1320">
    <BOUNDS type="Window" left="39705" top="3675" width="18240" height="13035">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="38.1.0">
+   <PACK Name="addonpack" Version="38.0.0">
    </PACK>
    <NODE systemname="Translate (Transform Vector)" nodename="Translate (Transform Vector)" componentmode="Hidden" id="9">
    <BOUNDS type="Node" left="4260" top="8295" width="100" height="100">
@@ -274,7 +274,7 @@
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="Node (Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="Node (Assimp)" componentmode="Hidden" id="64">
+   <NODE systemname="Node (Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\assimp\VVVV.DX11.Nodes.Assimp.dll" nodename="Node (Assimp)" componentmode="Hidden" id="64">
    <BOUNDS type="Node" left="1680" top="2685" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Scene" visible="1" slicecount="1" values="||">
@@ -296,7 +296,7 @@
    </LINK>
    <PACK Name="vvvv-Message" Version="2.9.10">
    </PACK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="67">
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="67" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="2310" top="3945" width="480" height="480">
    </BOUNDS>
    <BOUNDS type="Node" left="2310" top="3945" width="0" height="0">
@@ -314,7 +314,7 @@
    <PIN pinname="X Input Value" slicecount="1" values="1">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (Node)" componentmode="InABox" id="69">
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="69" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="2145" top="14340" width="795" height="240">
    </BOUNDS>
    <BOUNDS type="Node" left="2145" top="14340" width="0" height="0">
@@ -324,7 +324,7 @@
    <PIN pinname="Input Node" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="70">
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="70" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="2820" top="14895" width="795" height="240">
    </BOUNDS>
    <BOUNDS type="Node" left="2820" top="14895" width="0" height="0">
@@ -337,7 +337,7 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Joint Out Bin Size|">
    </PIN>
-   <PIN pinname="Y Input Value" visible="1" slicecount="1" values="90">
+   <PIN pinname="Y Input Value" visible="1" slicecount="1" values="0">
    </PIN>
    </NODE>
    <NODE systemname="GetSlice (Spreads)" nodename="GetSlice (Spreads)" componentmode="Hidden" id="72">
@@ -356,7 +356,7 @@
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="AnimationChannels (Assimp Animation)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="AnimationChannels (Assimp Animation)" componentmode="Hidden" id="84">
+   <NODE systemname="AnimationChannels (Assimp Animation)" filename="%VVVV%\packs\dx11\nodes\plugins\assimp\VVVV.DX11.Nodes.Assimp.dll" nodename="AnimationChannels (Assimp Animation)" componentmode="Hidden" id="84">
    <BOUNDS type="Node" left="4365" top="7740" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Duration" visible="1">
@@ -382,7 +382,7 @@
    </LINK>
    <LINK srcnodeid="42" srcpinname="Output Node" dstnodeid="84" dstpinname="Channels">
    </LINK>
-   <NODE systemname="Animation (Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="Animation (Assimp)" componentmode="Hidden" id="88">
+   <NODE systemname="Animation (Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\assimp\VVVV.DX11.Nodes.Assimp.dll" nodename="Animation (Assimp)" componentmode="Hidden" id="88">
    <BOUNDS type="Node" left="5685" top="3180" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Duration" visible="1">
@@ -410,7 +410,7 @@
    </LINK>
    <LINK srcnodeid="56" srcpinname="Output Enum" dstnodeid="99" dstpinname="Enum">
    </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="103">
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="103" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="3285" top="12270" width="480" height="480">
    </BOUNDS>
    <BOUNDS type="Node" left="3285" top="12270" width="0" height="0">
@@ -428,7 +428,7 @@
    <PIN pinname="X Input Value" slicecount="1" values="0">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="104">
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="104" systemname="IOBox (Enumerations)">
    <BOUNDS type="Box" left="4665" top="12510" width="1590" height="270">
    </BOUNDS>
    <BOUNDS type="Node" left="4665" top="12510" width="0" height="0">
@@ -442,25 +442,13 @@
    <PIN pinname="Maximum Characters" slicecount="1" values="-1">
    </PIN>
    </NODE>
-   <NODE systemname="Skeleton (Skeleton Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.Assimp.dll" nodename="Skeleton (Skeleton Assimp)" componentmode="Hidden" id="108">
+   <NODE systemname="Skeleton (Skeleton Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\assimp\VVVV.DX11.Nodes.Assimp.dll" nodename="Skeleton (Skeleton Assimp)" componentmode="Hidden" id="108">
    <BOUNDS type="Node" left="1350" top="4125" width="100" height="100">
    </BOUNDS>
    </NODE>
    <LINK srcnodeid="12" srcpinname="Output Node" dstnodeid="108" dstpinname="Scene">
    </LINK>
    <LINK srcnodeid="65" srcpinname="Output" dstnodeid="108" dstpinname="Root">
-   </LINK>
-   <NODE systemname="V1ToV2 (Skeleton)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="V1ToV2 (Skeleton)" componentmode="Hidden" id="109">
-   <BOUNDS type="Node" left="1740" top="4680" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="1740" top="4680" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Skeleton" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="67" srcpinname="Y Output Value" dstnodeid="109" dstpinname="Copy">
-   </LINK>
-   <LINK srcnodeid="108" srcpinname="Skeleton" dstnodeid="109" dstpinname="V1 Skeleton">
    </LINK>
    <NODE systemname="Select (Value)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Select (Value)" componentmode="Hidden" id="110">
    <BOUNDS type="Node" left="4740" top="6210" width="100" height="100">
@@ -497,15 +485,13 @@
    <NODE systemname="Select (Node)" filename="%VVVV%\lib\nodes\modules\Node\Select (Node).v4p" nodename="Select (Node)" componentmode="Hidden" id="114">
    <BOUNDS type="Node" left="1575" top="8310" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Input" visible="1">
+   <PIN pinname="Input" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Select" visible="1">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="109" srcpinname="Skeleton" dstnodeid="114" dstpinname="Input">
-   </LINK>
    <NODE systemname="CreateNode (VVVV)" nodename="CreateNode (VVVV)" componentmode="Hidden" id="116">
    <BOUNDS type="Node" left="5160" top="14235" width="100" height="100">
    </BOUNDS>
@@ -518,7 +504,7 @@
    <PIN pinname="Create Node" visible="1">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="117">
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="117" systemname="IOBox (String)">
    <BOUNDS type="Box" left="5280" top="13635" width="2250" height="240">
    </BOUNDS>
    <BOUNDS type="Node" left="5280" top="13635" width="0" height="0">
@@ -684,8 +670,6 @@
    </LINK>
    <LINK srcnodeid="129" srcpinname="Output" dstnodeid="116" dstpinname="Create Node">
    </LINK>
-   <LINK srcnodeid="109" srcpinname="Skeleton" dstnodeid="128" dstpinname="Input Node">
-   </LINK>
    <NODE systemname="TogEdge (Animation)" nodename="TogEdge (Animation)" componentmode="Hidden" id="131">
    <BOUNDS type="Node" left="1875" top="6660" width="100" height="100">
    </BOUNDS>
@@ -698,7 +682,7 @@
    </LINK>
    <LINK srcnodeid="131" srcpinname="Up Edge" dstnodeid="129" dstpinname="Input 1">
    </LINK>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="132">
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="132" systemname="IOBox (String)">
    <BOUNDS type="Box" left="8850" top="7515" width="795" height="240">
    </BOUNDS>
    <BOUNDS type="Node" left="8850" top="7515" width="0" height="0">
@@ -710,7 +694,7 @@
    <PIN pinname="Maximum Characters" slicecount="1" values="-1">
    </PIN>
    </NODE>
-   <NODE systemname="CustomEnum (Enumerations)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\vvvv\EnumerationsCustomEnum\EnumerationsCustomEnum.csproj" nodename="CustomEnum (Enumerations)" componentmode="Hidden" id="133">
+   <NODE systemname="CustomEnum (Enumerations)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="CustomEnum (Enumerations)" componentmode="Hidden" id="133">
    <BOUNDS type="Node" left="7905" top="7080" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Enum Sample" visible="1" slicecount="1" values="Default">
@@ -746,16 +730,64 @@
    </LINK>
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
-   <PACK Name="dx11" Version="1.3.1.1">
+   <PACK Name="dx11" Version="1.3.1">
    </PACK>
    <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
    </PACK>
+   <NODE systemname="ResetNode (VVVV)" filename="%VVVV%\packs\mp.essentials\nodes\modules\vvvv\ResetNode (VVVV).v4p" nodename="ResetNode (VVVV)" componentmode="Hidden" id="135">
+   <BOUNDS type="Node" left="2385" top="5460" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Id" visible="1" slicecount="1" values="134">
+   </PIN>
+   <PIN pinname="Reset" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="136" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="3345" top="3105" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3345" top="3105" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Reset Skeleton Node|">
+   </PIN>
+   <PIN pinname="Pin Visibility" slicecount="1" values="Hidden">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="136" srcpinname="Y Output Value" dstnodeid="135" dstpinname="Reset">
+   </LINK>
+   <NODE systemname="V1ToV2 (Skeleton)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="V1ToV2 (Skeleton)" componentmode="Hidden" id="134">
+   <BOUNDS type="Node" left="1740" top="4680" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1740" top="4680" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="ID" visible="1" pintype="Output">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="67" srcpinname="Y Output Value" dstnodeid="134" dstpinname="Copy">
+   </LINK>
+   <LINK srcnodeid="108" srcpinname="Skeleton" dstnodeid="134" dstpinname="V1 Skeleton">
+   </LINK>
+   <LINK srcnodeid="134" srcpinname="Skeleton" dstnodeid="114" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="134" srcpinname="Skeleton" dstnodeid="128" dstpinname="Input Node">
+   </LINK>
+   <LINK srcnodeid="134" srcpinname="ID" dstnodeid="135" dstpinname="Id">
+   </LINK>
    <NODE systemname="SetJoint (Skeleton V2)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="SetJoint (Skeleton V2)" componentmode="Hidden" id="115">
    <BOUNDS type="Node" left="1590" top="13170" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="1590" top="13170" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Skeleton" visible="1">
+   <PIN pinname="Skeleton" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="ID" visible="1" pintype="Output">
    </PIN>

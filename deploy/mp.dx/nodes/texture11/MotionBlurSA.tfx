@@ -1,3 +1,6 @@
+#include <packs/mp.fxh/math/noise.fxh>
+
+
 Texture2D ColorTex: PREVIOUS;
 #define PI 3.14159265358979
 
@@ -55,7 +58,8 @@ float4 mblur(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0):SV_Target
 	float twg = 0;
     for (float i=0; i<iter; i++)
 	{
-    	float prog = i/iter-0.5;
+		float noiseoffs = (hash13(float3(uv*100, i))-0.5)/iter * length(vel) * 2;
+    	float prog = i/iter-0.5 + noiseoffs;
 		float2 puv = ((uv-.5)/asp+vel*float2(1,-1)*(prog-BlurOffset/2))*asp+.5;
 		//float pd = Depth.SampleLevel(s0, puv, 0).r;
 		//if(pd-cd > 0.01) continue;
@@ -89,7 +93,8 @@ float4 mblurfixedsamp(float4 PosWVP:SV_POSITION,float2 uv:TEXCOORD0):SV_Target
 	[unroll]
     for (float i=0; i<SAMPCOUNT; i++)
 	{
-    	float prog = i/SAMPCOUNT-0.5;
+		float noiseoffs = (hash13(float3(uv*100, i))-0.5)/SAMPCOUNT * length(vel) * 2;
+    	float prog = i/SAMPCOUNT-0.5 + noiseoffs;
 		float2 puv = ((uv-.5)/asp+vel*float2(1,-1)*(prog-BlurOffset/2))*asp+.5;
 		//float pd = Depth.SampleLevel(s0, puv, 0).r;
 		//float valid = (pd-cd > 0.01) || (cd > 0.1) ? 0.0 : 1.0;

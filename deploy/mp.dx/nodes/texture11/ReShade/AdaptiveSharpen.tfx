@@ -123,7 +123,7 @@ float2 AdaptiveSharpenP0(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) 
 	return float2( edge*c_comp, luma );
 }
 
-float3 AdaptiveSharpenP1(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
+float4 AdaptiveSharpenP1(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
 {
     float4 origa = ReShade_Initial.SampleLevel(ReShade_sL, texcoord, 0);
 	float3 orig    = origa.rgb;
@@ -304,9 +304,9 @@ float3 AdaptiveSharpenP1(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) 
 
 	// Normal path
 	[flatten]
-	if (sharpdiff > 0) { return minim_satloss; }
+	if (sharpdiff > 0) { return float4(minim_satloss, 1); }
 
-	else { return ( satorig + sharpdiff ); }
+	else { return float4( satorig + sharpdiff , 1); }
 }
 
 technique11 AdaptiveSharpen

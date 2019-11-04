@@ -43,8 +43,14 @@ struct PointLight
 #define BRDF_PARAM_Disney_clearcoatGloss mat.CCGloss
 #define BRDF_PARAM_Disney_Emit mat.Emit
 
+#include <packs/mp.fxh/math/vectors.fxh>
 #include <packs/mp.fxh/brdf/brdf.fxh>
 #include <packs/mp.fxh/texture/anisotropicEnvSample.fxh>
+
+#define POM_HEIGHTMAP_ARRAY 1
+#define POM_HEIGHT_COMP a
+#include <packs/mp.fxh/texture/parallaxOccMap.fxh>
+
 #include <packs/mp.fxh/math/quaternion.fxh>
 #include <packs/mp.fxh/cs/byteAddressBuffer.fxh>
 #include <packs/mp.fxh/mdp/mdp.fxh>
@@ -55,10 +61,17 @@ struct PointLight
 StructuredBuffer<MatData> MaterialData;
 StructuredBuffer<PointLight> PointLights : POINTLIGHTS;
 float PointCount : POINTLIGHTCOUNT;
+
+cbuffer params : register(b4)
+{
+	float OccMapHeight = 0.04;
+	float OccShadFactor = 0.5;
+}
 Texture2DArray Albedo;
 Texture2DArray NormBump;
 Texture2DArray RoughMetalAnisoRotMap;
 Texture2DArray SSSMap;
+Texture2DArray AOMap;
 Texture2D Environment;
 
 struct PSout
@@ -95,20 +108,50 @@ PSout PS(PSin input)
     uint ii = input.sid;
     uint mid = input.mid;
 	
+	float2 inuv = input.UV;
+	float3 inposw = input.posw;
+	#if defined(PARALLAX_OCC_MAP) || defined(PARALLAX_SHADOWS)
+		float3 onormw = mul(float4(input.Norm, 0), tVI).xyz;
+	#endif
+	
+	#if defined(PARALLAX_OCC_MAP) /// -type switch
+	
+		float3 ptan = input.Tan;
+		float3 pbin = input.Bin;
+		
+		#if !defined(HAS_TANGENT) && defined(HAS_TEXCOORD0)
+			ptan *= -1; pbin *= -1;
+		#endif
+	
+		float3 tanView = EyeDirToTangentSpace(
+			normalize(input.posv), ptan, pbin, input.Norm
+		);
+		
+		ParallaxOccMap(
+			NormBump, sT, (float)mid, inuv, tanView, ndepth*OccMapHeight
+		);
+		
+		float4 normmapsamp = NormBump.Sample(sT, float3(inuv, mid));
+		float3 normmap = normmapsamp.xyz*2-1;
+		
+		inposw -= onormw * normmapsamp.a * ndepth*OccMapHeight;
+	#else
+		float3 normmap = NormBump.Sample(sT, float3(inuv, mid)).xyz*2-1;
+	#endif
+	
 	#if defined(IGNORE_BUFFERS)
 	MatData matdat = (MatData)1;
-    float4 col = gAlbedoCol * Albedo.Sample(sT, float3(input.UV, mid));
+    float4 col = gAlbedoCol * Albedo.Sample(sT, float3(inuv, mid));
 	#else
 	MatData matdat = MaterialData[mid];
 	float4 acolb = matdat.AlbedoAlpha;
-    float4 col = gAlbedoCol * acolb * Albedo.Sample(sT, float3(input.UV, mid));
+    float4 col = gAlbedoCol * acolb * Albedo.Sample(sT, float3(inuv, mid));
 	#endif
 	matdat.AlbedoAlpha = col;
 	
-	float3 normmap = NormBump.Sample(sT, float3(input.UV, mid)).xyz*2-1;
     normmap = lerp(float3(0,0,1), normmap, ndepth);
 	float3 norm = normalize(normmap.x * input.Tan + normmap.y * input.Bin + normmap.z * input.Norm);
-	float4 rmar = RoughMetalAnisoRotMap.Sample(sT, float3(input.UV, mid));
+	float4 rmar = RoughMetalAnisoRotMap.Sample(sT, float3(inuv, mid));
 	#if defined(IGNORE_BUFFERS)
 	float rot = ggRotate + rmar.a;
 	#else
@@ -135,10 +178,21 @@ PSout PS(PSin input)
 	float3 wnorm = mul(float4(norm,0), tVI).xyz;
 	float3 wtan = mul(float4(rtan,0), tVI).xyz;
 	float3 wbin = mul(float4(rbin,0), tVI).xyz;
-	float3 wvdir = -normalize(input.posw.xyz-mul(float4(0,0,0,1), tVI).xyz);
+	float3 wvdir = -normalize(inposw.xyz-mul(float4(0,0,0,1), tVI).xyz);
 	if(SunColor.a > 0.0001)
 	{
-		float3 light = Disney.brdf(normalize(SunDir), wvdir, wnorm, wtan, wbin, matdat);
+		float3 sdir = normalize(SunDir); 
+		float3 light = Disney.brdf(sdir, wvdir, wnorm, wtan, wbin, matdat);
+		
+		#if defined(PARALLAX_SHADOWS) /// -type switch
+			float3 tanld = LightDirToTangentSpace(
+				mul(float4(sdir, 0), tV).xyz, input.Tan, input.Bin, -input.Norm
+			);
+			light *= ParallaxShadows(
+				NormBump, sT, (float)mid, inuv, tanld, ndepth*OccMapHeight, OccShadFactor
+			);
+		#endif
+		
 		outcol += light * SunColor.rgb * SunColor.a;
 	}
 	
@@ -170,7 +224,7 @@ PSout PS(PSin input)
 	for(float i=0; i<PointCount; i++)
 	{
 		PointLight pl = PointLights[i];
-		float3 ld = pl.Position - input.posw;
+		float3 ld = pl.Position - inposw;
 		float d = length(ld);
 		ld = normalize(ld);
 		
@@ -179,15 +233,28 @@ PSout PS(PSin input)
 			float3 light = Disney.brdf(ld, wvdir, wnorm, wtan, wbin, matdat);
 			//light *= pow(saturate(dot(wnorm, ld)*2), 2);
 			float attend = pl.AttenuationEnd - pl.AttenuationStart;
-			outcol += light * pl.Color * smoothstep(1, 0, saturate(d/attend-pl.AttenuationStart/attend));
+			light *= pl.Color * smoothstep(1, 0, saturate(d/attend-pl.AttenuationStart/attend));
+			
+			#if defined(PARALLAX_SHADOWS)
+				float3 tanld = LightDirToTangentSpace(
+					mul(float4(ld, 0), tV).xyz, input.Tan, input.Bin, -input.Norm
+				);
+				light *= ParallaxShadows(
+					NormBump, sT, (float)mid, inuv, tanld, ndepth*OccMapHeight, OccShadFactor
+				);
+			#endif
+			
+			outcol += light;
 		}
 	}
+	
+	outcol *= AOMap.Sample(sT, float3(inuv, mid)).rgb;
 
     o.Lit = float4(outcol, col.a);
 	
 	float2 cpos = input.pspos.xy / input.pspos.w;
 	float2 ppos = input.ppos.xy / input.ppos.w;
-    o.VelUV = float4(cpos - lerp(cpos, ppos, VelAm) + 0.5, input.UV);
+    o.VelUV = float4(cpos - lerp(cpos, ppos, VelAm) + 0.5, inuv);
     //o.VelUV = float4((input.pspos.xy / input.pspos.w) - (input.ppos.xy / input.ppos.w)+0.5, input.UV);
     //o.VelUV = float4(0.5, 0.5, input.UV);
 

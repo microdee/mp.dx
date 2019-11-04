@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.dtd" >
-   <PATCH nodename="D:\vvvv\app\vvvv-vpm\packs\mp.dx\girlpower\dynamiclight-forward.v4p" scrollx="3270" scrolly="8520" systemname="dynamiclight-forward" filename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\girlpower\dynamiclight-forward.v4p">
+   <PATCH nodename="D:\vvvv\app\vvvv-vpm\packs\mp.dx\girlpower\dynamiclight-forward.v4p" scrollx="4890" scrolly="6690" systemname="dynamiclight-forward" filename="C:\vvvv_system\libs\md.ecosystem\packs\mp.dx\girlpower\dynamiclight-forward.v4p">
    <BOUNDS type="Window" left="15120" top="5655" width="17610" height="10770">
    </BOUNDS>
    <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="7" border="0">
@@ -59,11 +59,11 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="24" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="10365" top="11160" width="795" height="720">
+   <BOUNDS type="Box" left="10245" top="11580" width="795" height="720">
    </BOUNDS>
-   <BOUNDS type="Node" left="10365" top="11160" width="0" height="0">
+   <BOUNDS type="Node" left="10245" top="11580" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="3" visible="1" values="-0.55,3.35,0.73">
+   <PIN pinname="Y Input Value" slicecount="3" visible="1" values="0.5,2.01,0.17">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -107,7 +107,7 @@
    </PIN>
    <PIN pinname="Height" visible="1">
    </PIN>
-   <PIN pinname="Phase" slicecount="1" visible="1" values="0.88">
+   <PIN pinname="Phase" slicecount="1" visible="1" values="0.71">
    </PIN>
    </NODE>
    <LINK srcnodeid="31" srcpinname="Y Output Value" dstnodeid="32" dstpinname="Spread Count">
@@ -121,7 +121,7 @@
    </PIN>
    <PIN pinname="XYZ" visible="1">
    </PIN>
-   <PIN pinname="Y" slicecount="1" values="1.32">
+   <PIN pinname="Y" slicecount="1" values="1.4">
    </PIN>
    </NODE>
    <LINK srcnodeid="32" srcpinname="Output X" dstnodeid="33" dstpinname="X">
@@ -137,7 +137,7 @@
    </PIN>
    <PIN pinname="Hue" visible="1">
    </PIN>
-   <PIN pinname="Value" slicecount="1" values="0.81">
+   <PIN pinname="Value" slicecount="1" values="0.7">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="39">
@@ -145,7 +145,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="9900" top="19545" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="6.37">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="6">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -229,7 +229,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="9420" top="21390" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="5.07">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="5">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -251,7 +251,7 @@
    <LINK srcnodeid="46" srcpinname="Y Output Value" dstnodeid="48" dstpinname="Input 1">
    </LINK>
    <NODE systemname="LFO (Animation)" nodename="LFO (Animation)" componentmode="Hidden" id="49">
-   <BOUNDS type="Node" left="10365" top="19095" width="100" height="100">
+   <BOUNDS type="Node" left="10380" top="18750" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -259,12 +259,6 @@
    </PIN>
    <PIN pinname="Pause" slicecount="1" values="0">
    </PIN>
-   </NODE>
-   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="51">
-   <BOUNDS type="Node" left="10530" top="10035" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="10530" top="10035" width="795" height="240">
-   </BOUNDS>
    </NODE>
    <LINK srcnodeid="34" srcpinname="Output" dstnodeid="44" dstpinname="Color">
    </LINK>
@@ -767,23 +761,9 @@
    </BOUNDS>
    <PIN pinname="Camera Delta Out" visible="1">
    </PIN>
-   <PIN pinname="Delta In" visible="1">
+   <PIN pinname="Delta In" visible="1" slicecount="1" values="||">
    </PIN>
    </NODE>
-   <LINK srcnodeid="122" srcpinname="Camera Delta Out" dstnodeid="4" dstpinname="Camera Delta">
-   </LINK>
-   <NODE systemname="SpaceMouse (CameraDelta)" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\ModularCamera\SpaceMouse (CameraDelta).v4p" nodename="SpaceMouse (CameraDelta)" componentmode="Hidden" id="125">
-   <BOUNDS type="Node" left="10845" top="23565" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Camera Delta Out" visible="1">
-   </PIN>
-   <PIN pinname="Rotation Speed" slicecount="1" values="2">
-   </PIN>
-   <PIN pinname="Translation Speed" slicecount="1" values="5">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="125" srcpinname="Camera Delta Out" dstnodeid="122" dstpinname="Delta In">
-   </LINK>
    <NODE systemname="ASPECTRATIO (TRANSFORM)" nodename="AspectRatio (Transform)" componentmode="Hidden" id="130">
    <BOUNDS type="Node" left="13530" top="23265" width="100" height="100">
    </BOUNDS>
@@ -836,36 +816,6 @@
    <PIN pinname="Exposure" slicecount="1" values="1.16">
    </PIN>
    </NODE>
-   <NODE systemname="PreprocessorOptions (File)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="PreprocessorOptions (File)" componentmode="Hidden" id="146">
-   <BOUNDS type="Node" left="12585" top="14220" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="12585" top="14220" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if !defined(AESAMPLES_W) /// -type int&lf;#define AESAMPLES_W 10&lf;#define AESAMPLES_H 10&lf;#endif&lf;#if defined(FIXSHALLOWEYE) /// -type switch&lf;#endif&lf;#if !defined(MDP_MAINUVLAYER) /// -type token -pin &quot;-visibility Hidden&quot;&lf;#define MDP_MAINUVLAYER TEXCOORD0&lf;#endif&lf;#if defined(TESSELLATE) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(INV_NORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT_WINDING) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(FLATNORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TEXCOORD0) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_PREVPOS) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_SUBSETID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_MATERIALID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;|">
-   </PIN>
-   <PIN pinname="Defines Input" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Shader Path" visible="1" slicecount="1" values="D:\local\DI-DVAG-MultitouchWand\v2\DVAG-MultitouchWand-2\vvvv\vvvv_50alpha35.11_x64\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive.fx">
-   </PIN>
-   <PIN pinname="Defines" visible="1">
-   </PIN>
-   <PIN pinname="HAS_TEXCOORD0" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="IGNORE_BUFFERS" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="FLATNORMALS" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="INV_NORMALS" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="HAS_TANGENT" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="TESSELLATE" visible="1" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="HAS_PREVPOS" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="HAS_TANGENT_WINDING" slicecount="1" values="0">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="149">
    <BOUNDS type="Box" left="2565" top="7920" width="285" height="240">
    </BOUNDS>
@@ -910,82 +860,6 @@
    <PIN pinname="X Input Value" slicecount="1" values="1">
    </PIN>
    </NODE>
-   <NODE systemname="DisneyForwardSimpleNaive (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive.fx" nodename="DisneyForwardSimpleNaive (DX11.Effect)" componentmode="Hidden" id="107">
-   <BOUNDS type="Node" left="5490" top="14460" width="7050" height="270">
-   </BOUNDS>
-   <PIN pinname="Default Anisotropic" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Default Anisotropic Rotation" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Default Specular" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Default Specular Tint" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Default Sheen" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Default Sheen Tint" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Default Clearcoat" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Default Clearcoat Gloss" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Default SSS" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Environment" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Environment Strength" visible="1" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="diffbluradd" slicecount="1" visible="1" values="0.5">
-   </PIN>
-   <PIN pinname="tEnv" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Layout Message" visible="1">
-   </PIN>
-   <PIN pinname="Enabled" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Geometry" visible="1">
-   </PIN>
-   <PIN pinname="Shader Path" visible="1" pintype="Output">
-   </PIN>
-   <PIN pinname="Defines" visible="1">
-   </PIN>
-   <PIN pinname="RoughMetalAnisoRotMap" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="SunColor" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
-   </PIN>
-   <PIN pinname="Albedo Color" visible="1" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
-   </PIN>
-   <PIN pinname="Texture Transform" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Previous Texture Transform" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="CurveAmount" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="DisplaceXY" slicecount="2" values="0,0">
-   </PIN>
-   <PIN pinname="Layer" visible="1">
-   </PIN>
-   <PIN pinname="Textures Sampler" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Previous World" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Transform In" visible="1">
-   </PIN>
-   <PIN pinname="Factor" visible="1" slicecount="1" values="5">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="24" srcpinname="Y Output Value" dstnodeid="107" dstpinname="SunDirXYZ">
-   </LINK>
-   <LINK srcnodeid="64" srcpinname="Output" dstnodeid="107" dstpinname="Default Rough">
-   </LINK>
-   <LINK srcnodeid="65" srcpinname="Output" dstnodeid="107" dstpinname="Default Metal">
-   </LINK>
-   <LINK srcnodeid="139" srcpinname="Transform Out" dstnodeid="107" dstpinname="tEnv">
-   </LINK>
-   <LINK srcnodeid="146" srcpinname="Defines" dstnodeid="107" dstpinname="Defines">
-   </LINK>
-   <LINK srcnodeid="49" srcpinname="Output" dstnodeid="32" dstpinname="Phase">
-   </LINK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="151">
    <BOUNDS type="Node" left="6135" top="9705" width="1410" height="270">
    </BOUNDS>
@@ -1095,11 +969,11 @@
    </PIN>
    </NODE>
    <NODE systemname="PreprocessorOptions (File)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="PreprocessorOptions (File)" componentmode="Hidden" id="160">
-   <BOUNDS type="Node" left="13440" top="16395" width="100" height="100">
+   <BOUNDS type="Node" left="13650" top="17055" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="13440" top="16395" width="3000" height="3000">
+   <BOUNDS type="Box" left="13650" top="17055" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if !defined(AESAMPLES_W) /// -type int&lf;#define AESAMPLES_W 10&lf;#define AESAMPLES_H 10&lf;#endif&lf;#if defined(FIXSHALLOWEYE) /// -type switch&lf;#endif&lf;#if !defined(MDP_MAINUVLAYER) /// -type token -pin &quot;-visibility Hidden&quot;&lf;#define MDP_MAINUVLAYER TEXCOORD0&lf;#endif&lf;#if defined(TESSELLATE) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(INV_NORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT_WINDING) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(FLATNORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TEXCOORD0) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_PREVPOS) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_SUBSETID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_MATERIALID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;|">
+   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if defined(PARALLAX_OCC_MAP) /// -type switch&lf;#endif&lf;#if defined(PARALLAX_SHADOWS) /// -type switch&lf;#endif&lf;#if !defined(AESAMPLES_W) /// -type int&lf;#define AESAMPLES_W 10&lf;#define AESAMPLES_H 10&lf;#endif&lf;#if defined(FIXSHALLOWEYE) /// -type switch&lf;#endif&lf;#if !defined(MDP_MAINUVLAYER) /// -type token -pin &quot;-visibility Hidden&quot;&lf;#define MDP_MAINUVLAYER TEXCOORD0&lf;#endif&lf;#if defined(TESSELLATE) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(INV_NORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT_WINDING) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(FLATNORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TEXCOORD0) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_PREVPOS) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_SUBSETID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_MATERIALID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;|">
    </PIN>
    <PIN pinname="Defines Input" visible="1" slicecount="1" values="||">
    </PIN>
@@ -1125,7 +999,7 @@
    </PIN>
    </NODE>
    <NODE systemname="DisneyForwardSimpleNaive (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive.fx" nodename="DisneyForwardSimpleNaive (DX11.Effect)" componentmode="Hidden" id="159">
-   <BOUNDS type="Node" left="6345" top="16635" width="7050" height="270">
+   <BOUNDS type="Node" left="6255" top="17550" width="7050" height="270">
    </BOUNDS>
    <PIN pinname="Default Anisotropic" slicecount="1" values="0">
    </PIN>
@@ -1191,9 +1065,9 @@
    <LINK srcnodeid="160" srcpinname="Defines" dstnodeid="159" dstpinname="Defines">
    </LINK>
    <NODE systemname="Quad (DX11.Geometry)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Quad (DX11.Geometry)" componentmode="Hidden" id="161">
-   <BOUNDS type="Node" left="6570" top="16065" width="100" height="100">
+   <BOUNDS type="Node" left="6480" top="16980" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="6570" top="16065" width="3000" height="3000">
+   <BOUNDS type="Box" left="6480" top="16980" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Geometry Out" visible="1">
    </PIN>
@@ -1201,23 +1075,21 @@
    <LINK srcnodeid="161" srcpinname="Geometry Out" dstnodeid="159" dstpinname="Geometry">
    </LINK>
    <NODE systemname="Group (DX11.Layer)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Group (DX11.Layer)" componentmode="Hidden" id="162">
-   <BOUNDS type="Node" left="6180" top="17625" width="100" height="100">
+   <BOUNDS type="Node" left="6090" top="18540" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="6180" top="17625" width="3000" height="3000">
+   <BOUNDS type="Box" left="6090" top="18540" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Layer 1" visible="1">
    </PIN>
-   <PIN pinname="Layer 2" visible="1">
+   <PIN pinname="Layer 2" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer Out" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="159" srcpinname="Layer" dstnodeid="162" dstpinname="Layer 1">
    </LINK>
-   <LINK srcnodeid="107" srcpinname="Layer" dstnodeid="162" dstpinname="Layer 2">
-   </LINK>
    <NODE systemname="Transform (Transform 3d)" nodename="Transform (Transform 3d)" componentmode="Hidden" id="163">
-   <BOUNDS type="Node" left="7470" top="15855" width="100" height="100">
+   <BOUNDS type="Node" left="7380" top="16770" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
@@ -1237,9 +1109,9 @@
    <LINK srcnodeid="163" srcpinname="Transform Out" dstnodeid="159" dstpinname="Transform In">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="164">
-   <BOUNDS type="Box" left="8250" top="15405" width="795" height="240">
+   <BOUNDS type="Box" left="8160" top="16320" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="8250" top="15405" width="0" height="0">
+   <BOUNDS type="Node" left="8160" top="16320" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="100">
    </PIN>
@@ -1266,8 +1138,6 @@
    <PIN pinname="SizeXYZ" slicecount="3" values="1.57,1.57,1.57">
    </PIN>
    </NODE>
-   <LINK srcnodeid="158" srcpinname="Y Output Value" dstnodeid="146" dstpinname="HAS_TANGENT">
-   </LINK>
    <NODE systemname="Switch (Node Input)" nodename="Switch (Node Input)" componentmode="Hidden" id="172">
    <BOUNDS type="Node" left="5790" top="13725" width="100" height="100">
    </BOUNDS>
@@ -1284,8 +1154,6 @@
    </LINK>
    <LINK srcnodeid="171" srcpinname="Geometry Out" dstnodeid="172" dstpinname="Input 1">
    </LINK>
-   <LINK srcnodeid="172" srcpinname="Output" dstnodeid="107" dstpinname="Geometry">
-   </LINK>
    <NODE systemname="Switch (Node Input)" nodename="Switch (Node Input)" componentmode="Hidden" id="173">
    <BOUNDS type="Node" left="10815" top="13020" width="100" height="100">
    </BOUNDS>
@@ -1299,8 +1167,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="158" srcpinname="Y Output Value" dstnodeid="173" dstpinname="Switch">
-   </LINK>
-   <LINK srcnodeid="173" srcpinname="Output" dstnodeid="107" dstpinname="RoughMetalAnisoRotMap">
    </LINK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="174">
    <BOUNDS type="Node" left="11685" top="10200" width="1650" height="270">
@@ -1419,19 +1285,15 @@
    <LINK srcnodeid="179" srcpinname="Output" dstnodeid="181" dstpinname="Input 2">
    </LINK>
    <NODE systemname="HSV (Color Join)" nodename="HSV (Color Join)" componentmode="Hidden" id="182">
-   <BOUNDS type="Node" left="7755" top="13425" width="100" height="100">
+   <BOUNDS type="Node" left="8595" top="13455" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Saturation" visible="1">
+   <PIN pinname="Saturation" visible="1" slicecount="1" values="0">
    </PIN>
    <PIN pinname="Hue" slicecount="1" values="0.88">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="158" srcpinname="Y Output Value" dstnodeid="182" dstpinname="Saturation">
-   </LINK>
-   <LINK srcnodeid="182" srcpinname="Output" dstnodeid="107" dstpinname="Albedo Color">
-   </LINK>
    <NODE systemname="Sampler (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Sampler (DX11)" componentmode="Hidden" id="184">
    <BOUNDS type="Node" left="10515" top="13770" width="100" height="100">
    </BOUNDS>
@@ -1441,11 +1303,9 @@
    </PIN>
    <PIN pinname="Maximum Anisotropy" slicecount="1" values="16">
    </PIN>
-   <PIN pinname="Mode" slicecount="1" values="PointClamp">
+   <PIN pinname="Mode" slicecount="1" values="LinearWrap">
    </PIN>
    </NODE>
-   <LINK srcnodeid="184" srcpinname="Sampler" dstnodeid="107" dstpinname="Textures Sampler">
-   </LINK>
    <NODE systemname="Divide (Value)" nodename="Divide (Value)" componentmode="Hidden" id="185">
    <BOUNDS type="Node" left="8820" top="1935" width="100" height="100">
    </BOUNDS>
@@ -1501,9 +1361,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="189">
-   <BOUNDS type="Node" left="9810" top="16080" width="675" height="270">
+   <BOUNDS type="Node" left="9720" top="16995" width="675" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="9810" top="16080" width="675" height="270">
+   <BOUNDS type="Box" left="9720" top="16995" width="675" height="270">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="ground">
    </PIN>
@@ -1515,9 +1375,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="190">
-   <BOUNDS type="Node" left="11625" top="13365" width="5505" height="270">
+   <BOUNDS type="Node" left="12225" top="13365" width="5505" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="11625" top="13365" width="2880" height="525">
+   <BOUNDS type="Box" left="12225" top="13365" width="2880" height="525">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|tweaking the parameters with inspector might be more easier to overview ;)|">
    </PIN>
@@ -1529,8 +1389,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="159" srcpinname="Shader Path" dstnodeid="160" dstpinname="Shader Path">
-   </LINK>
-   <LINK srcnodeid="107" srcpinname="Shader Path" dstnodeid="146" dstpinname="Shader Path">
    </LINK>
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
@@ -1611,8 +1469,6 @@
    <LINK srcnodeid="34" srcpinname="Output" dstnodeid="193" dstpinname="Color">
    </LINK>
    <LINK srcnodeid="162" srcpinname="Layer Out" dstnodeid="193" dstpinname="Layer In">
-   </LINK>
-   <LINK srcnodeid="193" srcpinname="Layer Out" dstnodeid="42" dstpinname="Layer 1">
    </LINK>
    <NODE systemname="MXAO (DX11.Texture2D ReShade)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\MXAO (DX11.Texture2D ReShade).v4p" nodename="MXAO (DX11.Texture2D ReShade)" componentmode="Hidden" id="168">
    <BOUNDS type="Node" left="9330" top="30225" width="100" height="100">
@@ -1698,8 +1554,6 @@
    </LINK>
    <LINK srcnodeid="4" srcpinname="Projection With Aspect Ratio" dstnodeid="3" dstpinname="Projection">
    </LINK>
-   <LINK srcnodeid="107" srcpinname="Layer" dstnodeid="3" dstpinname="Layers">
-   </LINK>
    <LINK srcnodeid="3" srcpinname="Buffers" dstnodeid="168" dstpinname="Texture In">
    </LINK>
    <LINK srcnodeid="3" srcpinname="Depth Buffer" dstnodeid="168" dstpinname="Depth Texture">
@@ -1723,10 +1577,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="158" srcpinname="Y Output Value" dstnodeid="195" dstpinname="Input">
-   </LINK>
-   <LINK srcnodeid="195" srcpinname="Output" dstnodeid="107" dstpinname="Previous World">
-   </LINK>
-   <LINK srcnodeid="195" srcpinname="Output" dstnodeid="107" dstpinname="Transform In">
    </LINK>
    <NODE systemname="UniformScale (Transform)" nodename="UniformScale (Transform)" componentmode="Hidden" id="196">
    <BOUNDS type="Node" left="5130" top="9225" width="100" height="100">
@@ -1868,8 +1718,6 @@
    </LINK>
    <LINK srcnodeid="201" srcpinname="Y Output Value" dstnodeid="204" dstpinname="Input 2">
    </LINK>
-   <LINK srcnodeid="204" srcpinname="Output" dstnodeid="146" dstpinname="TESSELLATE">
-   </LINK>
    <LINK srcnodeid="204" srcpinname="Output" dstnodeid="202" dstpinname="Switch">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="205">
@@ -1884,6 +1732,330 @@
    <PIN pinname="Precision" slicecount="1" values="4">
    </PIN>
    </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="213">
+   <BOUNDS type="Box" left="7515" top="10335" width="660" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7515" top="10335" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="214">
+   <BOUNDS type="Box" left="13305" top="14040" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="13305" top="14040" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="215">
+   <BOUNDS type="Box" left="15135" top="13500" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="15135" top="13500" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   </NODE>
+   <NODE systemname="DisneyForwardSimpleNaive (DX11.Effect)" filename="%VVVV%\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive.fx" nodename="DisneyForwardSimpleNaive (DX11.Effect)" componentmode="Hidden" id="107">
+   <BOUNDS type="Node" left="5535" top="15180" width="7050" height="270">
+   </BOUNDS>
+   <PIN pinname="Default Anisotropic" slicecount="1" values="1" visible="1">
+   </PIN>
+   <PIN pinname="Default Anisotropic Rotation" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Default Specular" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Default Specular Tint" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Default Sheen" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Default Sheen Tint" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Default Clearcoat" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Default Clearcoat Gloss" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Default SSS" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Environment" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Environment Strength" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="diffbluradd" slicecount="1" visible="1" values="0.5">
+   </PIN>
+   <PIN pinname="tEnv" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layout Message" visible="1">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Geometry" visible="1">
+   </PIN>
+   <PIN pinname="Shader Path" visible="1" pintype="Output">
+   </PIN>
+   <PIN pinname="Defines" visible="1" slicecount="6" values="AESAMPLES_W=10,AESAMPLES_H=10,MDP_MAINUVLAYER=TEXCOORD0,IGNORE_BUFFERS=1,HAS_TEXCOORD0=1,PARALLAX_OCC_MAP=1">
+   </PIN>
+   <PIN pinname="RoughMetalAnisoRotMap" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="SunColor" slicecount="1" values="|1.00000,1.00000,1.00000,0.00000|">
+   </PIN>
+   <PIN pinname="Albedo Color" visible="1" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
+   </PIN>
+   <PIN pinname="Texture Transform" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Previous Texture Transform" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="CurveAmount" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="DisplaceXY" slicecount="2" values="0,0">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Textures Sampler" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Previous World" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   <PIN pinname="Factor" visible="1" slicecount="1" values="5">
+   </PIN>
+   <PIN pinname="Albedo" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="NormBump" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Normal Depth" visible="1">
+   </PIN>
+   <PIN pinname="OccMapHeight" visible="1">
+   </PIN>
+   <PIN pinname="AOMap" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="OccShadFactor" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="24" srcpinname="Y Output Value" dstnodeid="107" dstpinname="SunDirXYZ">
+   </LINK>
+   <LINK srcnodeid="64" srcpinname="Output" dstnodeid="107" dstpinname="Default Rough">
+   </LINK>
+   <LINK srcnodeid="65" srcpinname="Output" dstnodeid="107" dstpinname="Default Metal">
+   </LINK>
+   <LINK srcnodeid="139" srcpinname="Transform Out" dstnodeid="107" dstpinname="tEnv">
+   </LINK>
+   <LINK srcnodeid="107" srcpinname="Layer" dstnodeid="162" dstpinname="Layer 2">
+   </LINK>
+   <LINK srcnodeid="172" srcpinname="Output" dstnodeid="107" dstpinname="Geometry">
+   </LINK>
+   <LINK srcnodeid="173" srcpinname="Output" dstnodeid="107" dstpinname="RoughMetalAnisoRotMap">
+   </LINK>
+   <LINK srcnodeid="182" srcpinname="Output" dstnodeid="107" dstpinname="Albedo Color">
+   </LINK>
+   <LINK srcnodeid="184" srcpinname="Sampler" dstnodeid="107" dstpinname="Textures Sampler">
+   </LINK>
+   <LINK srcnodeid="107" srcpinname="Layer" dstnodeid="3" dstpinname="Layers">
+   </LINK>
+   <LINK srcnodeid="195" srcpinname="Output" dstnodeid="107" dstpinname="Previous World">
+   </LINK>
+   <LINK srcnodeid="195" srcpinname="Output" dstnodeid="107" dstpinname="Transform In">
+   </LINK>
    <LINK srcnodeid="205" srcpinname="Y Output Value" dstnodeid="107" dstpinname="Factor">
+   </LINK>
+   <LINK srcnodeid="213" srcpinname="Y Output Value" dstnodeid="107" dstpinname="Normal Depth">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="216">
+   <BOUNDS type="Box" left="11025" top="22695" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11025" top="22695" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE systemname="SpaceMouse (CameraDelta)" filename="%VVVV%\packs\mp.essentials\nodes\modules\transform\ModularCamera\SpaceMouse (CameraDelta).v4p" nodename="SpaceMouse (CameraDelta)" componentmode="Hidden" id="125">
+   <BOUNDS type="Node" left="10845" top="23565" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Camera Delta Out" visible="1">
+   </PIN>
+   <PIN pinname="Rotation Speed" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Translation Speed" slicecount="1" values="5">
+   </PIN>
+   <PIN pinname="Reopen" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="125" srcpinname="Camera Delta Out" dstnodeid="122" dstpinname="Delta In">
+   </LINK>
+   <LINK srcnodeid="216" srcpinname="Y Output Value" dstnodeid="125" dstpinname="Reopen">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="217">
+   <BOUNDS type="Box" left="7560" top="14625" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7560" top="14625" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.04">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="217" srcpinname="Y Output Value" dstnodeid="107" dstpinname="OccMapHeight">
+   </LINK>
+   <NODE systemname="Transform (Transform 2d Vector)" nodename="Transform (Transform 2d Vector)" componentmode="Hidden" id="221">
+   <BOUNDS type="Node" left="8385" top="14160" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="ScaleXY" slicecount="2" values="1,1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="221" srcpinname="Transform Out" dstnodeid="107" dstpinname="Texture Transform">
+   </LINK>
+   <LINK srcnodeid="221" srcpinname="Transform Out" dstnodeid="107" dstpinname="Previous Texture Transform">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="222">
+   <BOUNDS type="Box" left="13290" top="12510" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="13290" top="12510" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="PreprocessorOptions (File)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="PreprocessorOptions (File)" componentmode="Hidden" id="146">
+   <BOUNDS type="Node" left="13230" top="14940" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="13230" top="14940" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="Defines Extract Config" slicecount="1" values="|#if defined(PARALLAX_OCC_MAP) /// -type switch&lf;#endif&lf;#if defined(PARALLAX_SHADOWS) /// -type switch&lf;#endif&lf;#if !defined(AESAMPLES_W) /// -type int&lf;#define AESAMPLES_W 10&lf;#define AESAMPLES_H 10&lf;#endif&lf;#if defined(FIXSHALLOWEYE) /// -type switch&lf;#endif&lf;#if !defined(MDP_MAINUVLAYER) /// -type token -pin &quot;-visibility Hidden&quot;&lf;#define MDP_MAINUVLAYER TEXCOORD0&lf;#endif&lf;#if defined(TESSELLATE) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(USE_SUBSETTRANSFORMS) &amp;&amp; !defined(IGNORE_BUFFERS) /// -type switch&lf;#endif&lf;#if defined(INV_NORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT_WINDING) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(FLATNORMALS) /// -type switch&lf;#endif&lf;#if defined(HAS_TEXCOORD0) /// -type switch&lf;#endif&lf;#if defined(HAS_TANGENT) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_PREVPOS) /// -type switch -pin &quot;-visibility hidden&quot;&lf;#endif&lf;#if defined(HAS_SUBSETID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_MATERIALID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;#if defined(HAS_INSTANCEID) &amp;&amp; !defined(USE_SVINSTANCEID) /// -type switch -pin &quot;-visibility OnlyInspector&quot;&lf;#endif&lf;|">
+   </PIN>
+   <PIN pinname="Defines Input" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Shader Path" visible="1" slicecount="1" values="D:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\dx11\DisneyForwardSimpleNaive.fx">
+   </PIN>
+   <PIN pinname="Defines" visible="1">
+   </PIN>
+   <PIN pinname="HAS_TEXCOORD0" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="IGNORE_BUFFERS" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="FLATNORMALS" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="INV_NORMALS" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="HAS_TANGENT" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="TESSELLATE" visible="1" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="HAS_PREVPOS" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="HAS_TANGENT_WINDING" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="PARALLAX_OCC_MAP" visible="1">
+   </PIN>
+   <PIN pinname="PARALLAX_SHADOWS" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="204" srcpinname="Output" dstnodeid="146" dstpinname="TESSELLATE">
+   </LINK>
+   <LINK srcnodeid="214" srcpinname="Y Output Value" dstnodeid="146" dstpinname="PARALLAX_OCC_MAP">
+   </LINK>
+   <LINK srcnodeid="146" srcpinname="Defines" dstnodeid="107" dstpinname="Defines">
+   </LINK>
+   <LINK srcnodeid="107" srcpinname="Shader Path" dstnodeid="146" dstpinname="Shader Path">
+   </LINK>
+   <LINK srcnodeid="158" srcpinname="Y Output Value" dstnodeid="146" dstpinname="HAS_TANGENT">
+   </LINK>
+   <LINK srcnodeid="222" srcpinname="Y Output Value" dstnodeid="146" dstpinname="HAS_TEXCOORD0">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="223">
+   <BOUNDS type="Box" left="13875" top="13995" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="13875" top="13995" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="223" srcpinname="Y Output Value" dstnodeid="146" dstpinname="PARALLAX_SHADOWS">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="224">
+   <BOUNDS type="Box" left="8460" top="14520" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8460" top="14520" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.5">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="224" srcpinname="Y Output Value" dstnodeid="107" dstpinname="OccShadFactor">
+   </LINK>
+   <LINK srcnodeid="193" srcpinname="Layer Out" dstnodeid="42" dstpinname="Layer 1">
+   </LINK>
+   <LINK srcnodeid="125" srcpinname="Camera Delta Out" dstnodeid="4" dstpinname="Camera Delta">
+   </LINK>
+   <LINK srcnodeid="49" srcpinname="Output" dstnodeid="32" dstpinname="Phase">
+   </LINK>
+   <NODE systemname="NOT (Boolean)" nodename="NOT (Boolean)" componentmode="Hidden" id="227">
+   <BOUNDS type="Node" left="9420" top="13020" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="158" srcpinname="Y Output Value" dstnodeid="227" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="227" srcpinname="Output" dstnodeid="107" dstpinname="Default Anisotropic">
    </LINK>
    </PATCH>

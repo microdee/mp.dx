@@ -28,7 +28,7 @@ float4 pHEIGHT(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
     float4 map=tex1.SampleLevel(s0,x,lod);
 	float2 uv = (x-.5)*1;
 	
-    c=tex0.SampleLevel(s0,(uv*(1+map.r*Amount))+.5,1);
+    c=tex0.SampleLevel(s0,(uv*(1+map.r*Amount))+.5,0);
     return c;
 }
 technique10 RedGreenXY{

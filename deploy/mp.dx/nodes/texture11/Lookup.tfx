@@ -1,6 +1,10 @@
 Texture2D tex0: PREVIOUS;
 Texture2D tex1 <string uiname="UV Texture";>;
 
+#if !defined(COMPONENTS) /// -type token
+#define COMPONENTS xy
+#endif
+
 SamplerState s0 <string uiname="Sampler";> {Filter=MIN_MAG_MIP_LINEAR;AddressU=CLAMP;AddressV=CLAMP;};
 float2 R:TARGETSIZE;
 
@@ -11,7 +15,7 @@ cbuffer controls:register(b0){
 #define bld(op,c0,c1) float4(lerp((c0*c0.a+c1*c1.a*(1-c0.a))/saturate(c0.a+c1.a*(1-c0.a)),(op),c0.a*c1.a).rgb,saturate(c0.a+c1.a*(1-c0.a)))
 
 float4 pMIX(float4 PosWVP:SV_POSITION,float2 x:TEXCOORD0):SV_TARGET{
-	float2 c1=tex1.Sample(s0,x).xy;
+	float2 c1=tex1.Sample(s0,x).COMPONENTS;
 	if(Relative) c1 += x;
 	float4 c0=tex0.Sample(s0,c1);
     return c0;

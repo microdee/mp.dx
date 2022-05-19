@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
-   <PATCH nodename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\JointConnection (Kinect2).v4p" systemname="JointConnection (Kinect2)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\JointConnection (Kinect2).v4p" scrollx="0" scrolly="360">
-   <BOUNDS type="Window" left="13110" top="5670" width="10575" height="8790">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta41.dtd" >
+   <PATCH nodename="C:\projects\10d_space\fuga_gt\vvvv_beta_41\packs\mp.dx\nodes\modules\Kinect2\JointConnection (Kinect2).v4p" systemname="JointConnection (Kinect2)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\JointConnection (Kinect2).v4p" scrollx="0" scrolly="360">
+   <BOUNDS type="Window" left="34410" top="12435" width="10575" height="8790">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.1.0">
+   <PACK Name="addonpack" Version="41.0.0">
    </PACK>
    <NODE id="9" nodename="IOBox (String)" componentmode="InABox" systemname="IOBox (String)">
    <BOUNDS left="3465" top="1110" width="1650" height="5100" type="Box">
@@ -304,4 +304,30 @@
    </LINK>
    <LINK srcnodeid="34" srcpinname="Output" dstnodeid="23" dstpinname="Input String">
    </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="35">
+   <BOUNDS type="Box" left="7605" top="6930" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7605" top="6930" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="BinSize">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="30" srcpinname="Y Output Value" dstnodeid="35" dstpinname="Y Input Value">
+   </LINK>
+   <PACK Name="dx11" Version="1.4">
+   </PACK>
+   <PACK Name="mp.dx" Version="3.0.0.0">
+   </PACK>
+   <PACK Name="mp.essentials" Version="3.0.0.0">
+   </PACK>
+   <PACK Name="Notuiv" Version="0.3.9.0">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.10">
+   </PACK>
    </PATCH>

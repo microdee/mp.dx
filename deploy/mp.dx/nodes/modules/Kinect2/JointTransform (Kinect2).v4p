@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.1.dtd" >
-   <PATCH nodename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\JointTransform (Kinect2).v4p" systemname="JointTransform (Kinect2)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\JointTransform (Kinect2).v4p" scrollx="0" scrolly="-360" locked="0">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta41.dtd" >
+   <PATCH nodename="C:\projects\10d_space\fuga_gt\vvvv_beta_41\packs\mp.dx\nodes\modules\Kinect2\JointTransform (Kinect2).v4p" systemname="JointTransform (Kinect2)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\JointTransform (Kinect2).v4p" scrollx="2370" scrolly="1665" locked="0">
    <BOUNDS type="Window" left="38325" top="7110" width="9000" height="8595">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="34.1.0">
+   <PACK Name="addonpack" Version="41.0.0">
    </PACK>
    <NODE systemname="Skeleton (Kinect2 Microsoft)" filename="%VVVV%\packs\dx11\nodes\plugins\kinect2\VVVV.DX11.Nodes.Kinect2.dll" nodename="Skeleton (Kinect2 Microsoft)" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="2355" top="1650" width="100" height="100">
@@ -538,4 +538,30 @@
    </LINK>
    <LINK srcnodeid="49" srcpinname="Output" dstnodeid="18" dstpinname="XYZ">
    </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="51">
+   <BOUNDS type="Box" left="8145" top="13020" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8145" top="13020" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Skeleton Count|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Skeleton Count" dstnodeid="51" dstpinname="Y Input Value" hiddenwhenlocked="1">
+   </LINK>
+   <PACK Name="dx11" Version="1.4">
+   </PACK>
+   <PACK Name="mp.dx" Version="3.0.0.0">
+   </PACK>
+   <PACK Name="mp.essentials" Version="3.0.0.0">
+   </PACK>
+   <PACK Name="Notuiv" Version="0.3.9.0">
+   </PACK>
+   <PACK Name="vvvv-Message" Version="2.9.10">
+   </PACK>
    </PATCH>

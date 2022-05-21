@@ -245,21 +245,20 @@
     <Compile Include="RWTextureArray2D.cs" />
     <Compile Include="StringShaderNode.cs" />
     <Compile Include="TempTargetAndArray.cs" />
-    <Compile Include="TextureFaceTrackerNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libfacedetect.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DX11Utils.Native\DX11Utils.Native.vcxproj">
       <Project>{fe77b6f8-1cb6-46d8-8bdd-09b87cf6cc77}</Project>
       <Name>DX11Utils.Native</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="libfacedetect.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

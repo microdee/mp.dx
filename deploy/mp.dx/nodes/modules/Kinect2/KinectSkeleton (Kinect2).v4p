@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta41.dtd" >
-   <PATCH nodename="C:\projects\10d_space\fuga_gt\vvvv_beta_41\packs\mp.dx\nodes\modules\Kinect2\KinectSkeleton (Kinect2).v4p" systemname="KinectSkeleton (Kinect2)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\KinectSkeleton (Kinect2).v4p" scrollx="165" scrolly="0">
+   <PATCH nodename="C:\projects\10d_space\fuga_gt\vvvv_beta_41\packs\mp.dx\nodes\modules\Kinect2\KinectSkeleton (Kinect2).v4p" systemname="KinectSkeleton (Kinect2)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\Kinect2\KinectSkeleton (Kinect2).v4p" scrollx="192" scrolly="0">
    <BOUNDS type="Window" left="39360" top="3045" width="6900" height="7800">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
@@ -66,22 +66,8 @@
    </NODE>
    <LINK srcnodeid="15" srcpinname="Output Node" dstnodeid="159" dstpinname="Kinect Runtime">
    </LINK>
-   <NODE systemname="GetSlice (Node)" nodename="GetSlice (Node)" componentmode="Hidden" id="163">
-   <BOUNDS type="Node" left="2010" top="2355" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Index" visible="1">
-   </PIN>
-   <PIN pinname="Input Node" visible="1">
-   </PIN>
-   <PIN pinname="Output Node" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="13" srcpinname="From Index" dstnodeid="163" dstpinname="Index">
-   </LINK>
-   <LINK srcnodeid="159" srcpinname="Transform Out" dstnodeid="163" dstpinname="Input Node">
-   </LINK>
    <NODE systemname="GetSlice (Node)" nodename="GetSlice (Node)" componentmode="Hidden" id="164">
-   <BOUNDS type="Node" left="3195" top="2370" width="100" height="100">
+   <BOUNDS type="Node" left="2331" top="3306" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Index" visible="1" slicecount="24" values="0,1,20,2,20,4,5,6,7,7,20,8,9,10,11,11,0,12,13,14,0,16,17,18">
    </PIN>
@@ -93,22 +79,6 @@
    <LINK srcnodeid="159" srcpinname="Transform Out" dstnodeid="164" dstpinname="Input Node">
    </LINK>
    <LINK srcnodeid="13" srcpinname="To Index" dstnodeid="164" dstpinname="Index">
-   </LINK>
-   <NODE systemname="Subtract (Transform)" filename="..\..\..\..\mp.essentials\nodes\modules\transform\Subtract (Transform).v4p" nodename="Subtract (Transform)" componentmode="Hidden" id="165">
-   <BOUNDS type="Node" left="2415" top="3495" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Source" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Operand" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Transform Out" visible="1">
-   </PIN>
-   <PIN pinname="Flip Priority" slicecount="1" values="0">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="163" srcpinname="Output Node" dstnodeid="165" dstpinname="Operand">
-   </LINK>
-   <LINK srcnodeid="164" srcpinname="Output Node" dstnodeid="165" dstpinname="Source">
    </LINK>
    <NODE systemname="Human (Skeleton Hierarchy)" filename="Human (Skeleton Hierarchy).v4p" componentmode="Hidden" id="170" nodename="Human (Skeleton Hierarchy).v4p">
    <BOUNDS type="Node" left="885" top="2790" width="100" height="100">
@@ -136,16 +106,6 @@
    <PIN pinname="Output String" visible="1">
    </PIN>
    </NODE>
-   <NODE systemname="GetSlice (Node)" nodename="GetSlice (Node)" componentmode="Hidden" id="173">
-   <BOUNDS type="Node" left="1905" top="5085" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Input Node" visible="1">
-   </PIN>
-   <PIN pinname="Output Node" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="159" srcpinname="Transform Out" dstnodeid="173" dstpinname="Input Node">
-   </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="175" systemname="IOBox (Node)">
    <BOUNDS type="Box" left="1650" top="510" width="795" height="240">
    </BOUNDS>
@@ -205,9 +165,13 @@
    </PIN>
    <PIN pinname="Animation Transform Bin Size" visible="1">
    </PIN>
-   <PIN pinname="Animation Transform" visible="1">
+   <PIN pinname="Animation Transform" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Skeleton Out" visible="1">
+   </PIN>
+   <PIN pinname="Operation Mode" slicecount="1" visible="1" values="Override">
+   </PIN>
+   <PIN pinname="Base Transform" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="13" srcpinname="To Name" dstnodeid="179" dstpinname="Joint Name">
@@ -217,8 +181,6 @@
    <LINK srcnodeid="13" srcpinname="BinSize" dstnodeid="179" dstpinname="Joint Name Bin Size" hiddenwhenlocked="1">
    </LINK>
    <LINK srcnodeid="13" srcpinname="BinSize" dstnodeid="179" dstpinname="Animation Transform Bin Size" hiddenwhenlocked="1">
-   </LINK>
-   <LINK srcnodeid="165" srcpinname="Transform Out" dstnodeid="179" dstpinname="Animation Transform">
    </LINK>
    <NODE systemname="SetJoint (Skeleton V2)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="SetJoint (Skeleton V2)" componentmode="Hidden" id="180">
    <BOUNDS type="Node" left="1440" top="5955" width="100" height="100">
@@ -239,10 +201,12 @@
    </PIN>
    <PIN pinname="Skeleton Out" visible="1">
    </PIN>
+   <PIN pinname="Operation Mode" visible="1">
+   </PIN>
+   <PIN pinname="Base Transform" visible="1" slicecount="1" values="||">
+   </PIN>
    </NODE>
    <LINK srcnodeid="172" srcpinname="Output String" dstnodeid="180" dstpinname="Joint Name">
-   </LINK>
-   <LINK srcnodeid="173" srcpinname="Output Node" dstnodeid="180" dstpinname="Animation Transform">
    </LINK>
    <LINK srcnodeid="179" srcpinname="Skeleton Out" dstnodeid="180" dstpinname="Skeleton">
    </LINK>
@@ -275,5 +239,47 @@
    <LINK srcnodeid="177" srcpinname="Skeleton" dstnodeid="181" dstpinname="Input">
    </LINK>
    <LINK srcnodeid="181" srcpinname="Output" dstnodeid="179" dstpinname="Skeleton">
+   </LINK>
+   <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="182">
+   <BOUNDS type="Box" left="3344" top="4352" width="1392" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3344" top="4352" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input Enum" slicecount="1" visible="1" values="Override">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="Absolute">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Output Enum" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="182" srcpinname="Output Enum" dstnodeid="179" dstpinname="Operation Mode">
+   </LINK>
+   <LINK srcnodeid="182" srcpinname="Output Enum" dstnodeid="180" dstpinname="Operation Mode">
+   </LINK>
+   <LINK srcnodeid="164" srcpinname="Output Node" dstnodeid="179" dstpinname="Base Transform">
+   </LINK>
+   <NODE systemname="GetSpread (Transform)" nodename="GetSpread (Transform)" componentmode="Hidden" id="173" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll">
+   <BOUNDS type="Node" left="1905" top="5085" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input Node" visible="1">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Input Bin Size" slicecount="1" values="25">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="159" srcpinname="Transform Out" dstnodeid="173" dstpinname="Input Node">
+   </LINK>
+   <LINK srcnodeid="159" srcpinname="Transform Out" dstnodeid="173" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="173" srcpinname="Output" dstnodeid="180" dstpinname="Base Transform">
    </LINK>
    </PATCH>

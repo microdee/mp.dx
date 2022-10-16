@@ -24,7 +24,7 @@
    <PIN pinname="Output String" slicecount="1" visible="0" values="||">
    </PIN>
    </NODE>
-   <NODE systemname="HeightShadows (DX11.TextureFX)" filename="D:\local\lib\md.ecosystem\packs\mp.dx\deploy\mp.dx\nodes\texture11\HeightShadows.tfx" nodename="HeightShadows (DX11.TextureFX)" componentmode="Hidden" id="9">
+   <NODE systemname="HeightShadows (DX11.TextureFX)" filename="D:\local\lib\md.ecosystem\packs\mp.dx\output\mp.dx\nodes\texture11\HeightShadows.tfx" nodename="HeightShadows (DX11.TextureFX)" componentmode="Hidden" id="9">
    <BOUNDS type="Node" left="2910" top="8115" width="1950" height="270">
    </BOUNDS>
    <PIN pinname="Texture Out" visible="1">

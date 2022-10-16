@@ -77,17 +77,17 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(ProjectDir)\libs\NV_ShadowLib3\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)\libs\NV_ShadowLib3\lib\$(Platform);$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)\deploy\mp.dx\nodes\plugins</OutDir>
+    <OutDir>$(SolutionDir)\output\mp.dx\nodes\plugins</OutDir>
     <IntDir>$(SolutionDir)\intermediate\$(Configuration)\$(PlatformShortName)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\deploy\mp.dx\nodes\plugins</OutDir>
+    <OutDir>$(SolutionDir)\output\mp.dx\nodes\plugins</OutDir>
     <IntDir>$(SolutionDir)\intermediate\$(Configuration)\$(PlatformShortName)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\deploy\mp.dx\nodes\plugins</OutDir>
+    <OutDir>$(SolutionDir)\output\mp.dx\nodes\plugins</OutDir>
     <IntDir>$(SolutionDir)\intermediate\$(Configuration)\$(PlatformShortName)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -95,7 +95,7 @@
     <IncludePath>$(ProjectDir)\libs\NV_ShadowLib3\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)\libs\NV_ShadowLib3\lib\$(Platform);$(LibraryPath)</LibraryPath>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
-    <OutDir>$(SolutionDir)\deploy\mp.dx\nodes\plugins</OutDir>
+    <OutDir>$(SolutionDir)\output\mp.dx\nodes\plugins</OutDir>
     <IntDir>$(SolutionDir)\intermediate\$(Configuration)\$(PlatformShortName)</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

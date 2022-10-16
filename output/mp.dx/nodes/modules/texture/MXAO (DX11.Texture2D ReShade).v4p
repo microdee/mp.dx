@@ -1,8 +1,8 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta42.dtd" >
-   <PATCH nodename="C:\projects\people\olga\bme\vvvv\vvvv\packs\mp.dx\nodes\modules\texture\MXAO (DX11.Texture2D ReShade).v4p" systemname="MXAO (DX11.Texture2D ReShade)" filename="D:\local\lib\md.ecosystem\packs\mp.dx\deploy\mp.dx\nodes\modules\texture\MXAO (DX11.Texture2D ReShade).v4p" scrollx="1395" scrolly="285">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
+   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\texture\MXAO (DX11.Texture2D ReShade).v4p" systemname="MXAO (DX11.Texture2D ReShade)" filename="D:\local\lib\md.ecosystem\packs\mp.dx\output\mp.dx\nodes\modules\texture\MXAO (DX11.Texture2D ReShade).v4p" scrollx="1395" scrolly="285">
    <BOUNDS type="Window" left="-18825" top="3960" width="16845" height="9975">
    </BOUNDS>
-   <PACK Name="dx11" Version="1.4">
+   <PACK Name="dx11" Version="1.3.1.1">
    </PACK>
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
@@ -10,7 +10,7 @@
    </PACK>
    <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
    </PACK>
-   <PACK Name="addonpack" Version="42.0.0">
+   <PACK Name="addonpack" Version="38.1.0">
    </PACK>
    <NODE systemname="Renderer (DX11 MRT)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11 MRT)" componentmode="Hidden" id="3">
    <BOUNDS type="Node" left="3420" top="6540" width="100" height="100">
@@ -261,7 +261,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="9540" top="1395" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -347,7 +347,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="10800" top="2070" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -517,7 +517,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="15330" top="1035" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="2">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="12">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -581,7 +581,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="18270" top="2190" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.2">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.26">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -1756,6 +1756,4 @@
    </NODE>
    <LINK srcnodeid="256" srcpinname="Y Output Value" dstnodeid="38" dstpinname="RESHADE_DEPTH_INPUT_IS_REVERSED">
    </LINK>
-   <PACK Name="mp.essentials" Version="3.0.0.0">
-   </PACK>
    </PATCH>

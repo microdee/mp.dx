@@ -1,12 +1,12 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.1.dtd" >
-   <PATCH nodename="D:\local\lib\md.ecosystem\packs\mp.dx\deploy\mp.dx\girlpower\_nodes.v4p" systemname="Nodes" filename="D:\local\vvvv-gp\packs\mp.dx\girlpower\Nodes.v4p" scrollx="0" scrolly="-360" locked="0">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta42.dtd" >
+   <PATCH nodename="C:\projects\people\olga\bme\Nuke.VVVV\src\mp.dx\output\mp.dx\girlpower\_nodes.v4p" systemname="Nodes" filename="D:\local\vvvv-gp\packs\mp.dx\girlpower\Nodes.v4p" scrollx="0" scrolly="-360" locked="0">
    <BOUNDS type="Window" left="2760" top="1065" width="22395" height="22200">
    </BOUNDS>
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
    <PACK Name="vvvv-Message" Version="2.9.10">
    </PACK>
-   <PACK Name="addonpack" Version="38.1.0">
+   <PACK Name="addonpack" Version="42.0.0">
    </PACK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="5">
    <BOUNDS type="Node" left="8295" top="855" width="1110" height="270">
@@ -684,12 +684,6 @@
    <BOUNDS type="Box" left="960" top="16050">
    </BOUNDS>
    </NODE>
-   <NODE systemname="SSLAO (DX11.Texture2D DepthNorm)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\SSLAO (DX11.Texture2D DepthNorm).v4p" nodename="SSLAO (DX11.Texture2D DepthNorm)" componentmode="Hidden" id="103">
-   <BOUNDS type="Node" left="960" top="16590" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="960" top="16590">
-   </BOUNDS>
-   </NODE>
    <NODE systemname="ToneMapping (DX11.Texture2D)" filename="%VVVV%\packs\mp.dx\nodes\modules\texture\ToneMapping (DX11.Texture2D).v4p" nodename="ToneMapping (DX11.Texture2D)" componentmode="Hidden" id="105">
    <BOUNDS type="Node" left="960" top="17655" width="100" height="100">
    </BOUNDS>
@@ -832,7 +826,7 @@
    <BOUNDS type="Box" left="12975" top="11850">
    </BOUNDS>
    </NODE>
-   <PACK Name="dx11" Version="1.3.1.1">
+   <PACK Name="dx11" Version="1.4">
    </PACK>
    <NODE nodename="IOBox (String)" systemname="IOBox (String)" componentmode="InABox" id="127">
    <BOUNDS type="Node" left="17115" top="7755" width="600" height="270">
@@ -930,36 +924,6 @@
    <BOUNDS type="Box" left="17070" top="13470" width="3000" height="3000">
    </BOUNDS>
    </NODE>
-   <NODE systemname="FaceTracker (DX11.Texture 2d)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="FaceTracker (DX11.Texture 2d)" componentmode="Hidden" id="140">
-   <BOUNDS type="Node" left="17085" top="14010" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="17085" top="14010" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Output" visible="1">
-   </PIN>
-   </NODE>
-   <NODE systemname="FaceTrackerContext (FaceTracker Split)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="FaceTrackerContext (FaceTracker Split)" componentmode="Hidden" id="141">
-   <BOUNDS type="Node" left="17085" top="14550" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="17085" top="14550" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1">
-   </PIN>
-   <PIN pinname="Faces" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="140" srcpinname="Output" dstnodeid="141" dstpinname="Input">
-   </LINK>
-   <NODE systemname="DetectedFace (FaceTracker Split)" filename="%VVVV%\packs\mp.dx\nodes\plugins\DX11Utils.dll" nodename="DetectedFace (FaceTracker Split)" componentmode="Hidden" id="142">
-   <BOUNDS type="Node" left="18285" top="15090" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="18285" top="15090" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="Input" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="141" srcpinname="Faces" dstnodeid="142" dstpinname="Input">
-   </LINK>
    <NODE systemname="StandardGeomLayout (DX11.Geometry)" filename="%VVVV%\packs\mp.dx\nodes\modules\geometry\StandardGeomLayout (DX11.Geometry).v4p" nodename="StandardGeomLayout (DX11.Geometry)" componentmode="Hidden" id="84">
    <BOUNDS type="Node" left="990" top="10335" width="100" height="100">
    </BOUNDS>

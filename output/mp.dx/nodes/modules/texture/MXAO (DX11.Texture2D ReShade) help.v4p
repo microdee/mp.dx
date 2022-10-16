@@ -711,7 +711,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="1110" top="5295" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" visible="1" values="..\..\..\..\..\..\lib\md.ecosystem\packs\mp.dx\deploy\mp.dx\girlpower\assets\head.OBJ">
+   <PIN pinname="Input String" slicecount="1" visible="1" values="..\..\..\..\..\..\lib\md.ecosystem\packs\mp.dx\output\mp.dx\girlpower\assets\head.OBJ">
    </PIN>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>

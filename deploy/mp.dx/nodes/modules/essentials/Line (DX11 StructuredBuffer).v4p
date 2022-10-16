@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta37.dtd" >
-   <PATCH nodename="D:\local\vvvv-gp\packs\mp.dx\nodes\modules\essentials\Line (DX11 StructuredBuffer).v4p" systemname="Line (DX11 StructuredBuffer)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 StructuredBuffer).v4p" scrollx="0" scrolly="-360">
-   <BOUNDS type="Window" left="7245" top="-13815" width="14385" height="11625">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta42.dtd" >
+   <PATCH nodename="C:\projects\people\olga\bme\vvvv\vvvv\packs\mp.dx\nodes\modules\essentials\Line (DX11 StructuredBuffer).v4p" systemname="Line (DX11 StructuredBuffer)" filename="C:\vvvv\libs\mcropack\packs\mp.dx\nodes\modules\essentials\Line (DX11 StructuredBuffer).v4p" scrollx="45" scrolly="7155">
+   <BOUNDS type="Window" left="22035" top="18345" width="14385" height="11625">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="36.0.0">
+   <PACK Name="addonpack" Version="42.0.0">
    </PACK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="57" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="1410" top="1215" width="795" height="240">
@@ -366,6 +366,10 @@
    <PIN pinname="TrBuf" visible="1">
    </PIN>
    <PIN pinname="TexTrBuf" visible="1">
+   </PIN>
+   <PIN pinname="RevealFrom" visible="1">
+   </PIN>
+   <PIN pinname="RevealTo" visible="1">
    </PIN>
    </NODE>
    <NODE systemname="NullGeometry (DX11.Drawer)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="NullGeometry (DX11.Drawer)" componentmode="Hidden" id="22">
@@ -1032,8 +1036,46 @@
    </LINK>
    <LINK srcnodeid="53" srcpinname="Output" dstnodeid="28" dstpinname="Input 2">
    </LINK>
-   <PACK Name="dx11" Version="1.3.1.1">
+   <PACK Name="dx11" Version="1.4">
    </PACK>
    <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
+   </PACK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="77">
+   <BOUNDS type="Box" left="7890" top="16785" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7890" top="16785" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="RevealFrom">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="76">
+   <BOUNDS type="Box" left="8955" top="16665" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8955" top="16665" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="RevealTo">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="77" srcpinname="Y Output Value" dstnodeid="23" dstpinname="RevealFrom">
+   </LINK>
+   <LINK srcnodeid="76" srcpinname="Y Output Value" dstnodeid="23" dstpinname="RevealTo">
+   </LINK>
+   <PACK Name="mp.essentials" Version="3.0.0.0">
    </PACK>
    </PATCH>

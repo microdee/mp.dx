@@ -37,6 +37,8 @@ cbuffer cbPerObj : register( b1 )
 	float Width = 0.2;
 	float Center = 0.5;
 	float MaxExtend = 0.5;
+	float RevealFrom = 0;
+	float RevealTo = 1;
 	//float CullThr = 1;
 };
 
@@ -155,6 +157,8 @@ void Gs(lineadj GSIn input[4], inout TriangleStream<GsOut>GSOut)
 
 float4 PS(GsOut In): SV_Target
 {
+	clip(In.TexCd.x - RevealFrom);
+	clip(1-In.TexCd.x - 1 + RevealTo);
     float4 col = texture2d.SampleLevel(g_samLinear,float3(In.TexCd.xy, In.id),0);
 	col *= ColBuf[In.id];
     return col;

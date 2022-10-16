@@ -1,10 +1,10 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta38.dtd" >
-   <PATCH nodename="D:\vvvv\app\vvvv-vpm\packs\mp.dx\nodes\modules\assimp\SkeletonSimple (Assimp).v4p" systemname="SkeletonSimple (Assimp)" filename="C:\vvvv\libs\mcropack\nodes\Modules\SkeletonSimple (Assimp).v4p" scrollx="0" scrolly="1320">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta42.dtd" >
+   <PATCH nodename="C:\projects\people\olga\bme\vvvv\vvvv\packs\mp.dx\nodes\modules\assimp\SkeletonSimple (Assimp).v4p" systemname="SkeletonSimple (Assimp)" filename="C:\vvvv\libs\mcropack\nodes\Modules\SkeletonSimple (Assimp).v4p" scrollx="0" scrolly="3960">
    <BOUNDS type="Window" left="39705" top="3675" width="18240" height="13035">
    </BOUNDS>
    <PACK Name="VVVV.Packs" Version="0.2.0">
    </PACK>
-   <PACK Name="addonpack" Version="38.0.0">
+   <PACK Name="addonpack" Version="42.0.0">
    </PACK>
    <NODE systemname="Translate (Transform Vector)" nodename="Translate (Transform Vector)" componentmode="Hidden" id="9">
    <BOUNDS type="Node" left="4260" top="8295" width="100" height="100">
@@ -367,6 +367,8 @@
    </PIN>
    <PIN pinname="Node Name" visible="1">
    </PIN>
+   <PIN pinname="Channels" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="84" srcpinname="PositionXYZ" dstnodeid="9" dstpinname="XYZ">
    </LINK>
@@ -379,8 +381,6 @@
    <LINK srcnodeid="84" srcpinname="RotationXYZW" dstnodeid="1" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="84" srcpinname="Node Name" dstnodeid="24" dstpinname="Input String">
-   </LINK>
-   <LINK srcnodeid="42" srcpinname="Output Node" dstnodeid="84" dstpinname="Channels">
    </LINK>
    <NODE systemname="Animation (Assimp)" filename="%VVVV%\packs\dx11\nodes\plugins\assimp\VVVV.DX11.Nodes.Assimp.dll" nodename="Animation (Assimp)" componentmode="Hidden" id="88">
    <BOUNDS type="Node" left="5685" top="3180" width="100" height="100">
@@ -730,14 +730,14 @@
    </LINK>
    <PACK Name="KeyboardUI" Version="1.1.1">
    </PACK>
-   <PACK Name="dx11" Version="1.3.1">
+   <PACK Name="dx11" Version="1.4">
    </PACK>
    <PACK Name="vvvv-ZeroMQ" Version="0.5.7">
    </PACK>
    <NODE systemname="ResetNode (VVVV)" filename="%VVVV%\packs\mp.essentials\nodes\modules\vvvv\ResetNode (VVVV).v4p" nodename="ResetNode (VVVV)" componentmode="Hidden" id="135">
    <BOUNDS type="Node" left="2385" top="5460" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Id" visible="1" slicecount="1" values="134">
+   <PIN pinname="Id" visible="1" slicecount="1" values="0">
    </PIN>
    <PIN pinname="Reset" visible="1">
    </PIN>
@@ -764,32 +764,44 @@
    </NODE>
    <LINK srcnodeid="136" srcpinname="Y Output Value" dstnodeid="135" dstpinname="Reset">
    </LINK>
-   <NODE systemname="V1ToV2 (Skeleton)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="V1ToV2 (Skeleton)" componentmode="Hidden" id="134">
-   <BOUNDS type="Node" left="1740" top="4680" width="100" height="100">
+   <PACK Name="mp.essentials" Version="3.0.0.0">
+   </PACK>
+   <NODE systemname="Count (Value)" nodename="Count (Value)" componentmode="Hidden" id="137">
+   <BOUNDS type="Node" left="5085" top="6750" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="1740" top="4680" width="3000" height="3000">
-   </BOUNDS>
-   <PIN pinname="ID" visible="1" pintype="Output">
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Count" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="67" srcpinname="Y Output Value" dstnodeid="134" dstpinname="Copy">
+   <NODE systemname="GetSpread (Node)" filename="%VVVV%\packs\mp.essentials\nodes\modules\vvvv\GetSpread (Node).v4p" nodename="GetSpread (Node)" componentmode="Hidden" id="139">
+   <BOUNDS type="Node" left="3945" top="6960" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input Node" visible="1">
+   </PIN>
+   <PIN pinname="Count" visible="1">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="42" srcpinname="Output Node" dstnodeid="139" dstpinname="Input Node">
    </LINK>
-   <LINK srcnodeid="108" srcpinname="Skeleton" dstnodeid="134" dstpinname="V1 Skeleton">
+   <LINK srcnodeid="110" srcpinname="Output" dstnodeid="137" dstpinname="Input">
    </LINK>
-   <LINK srcnodeid="134" srcpinname="Skeleton" dstnodeid="114" dstpinname="Input">
+   <LINK srcnodeid="137" srcpinname="Count" dstnodeid="139" dstpinname="Count">
    </LINK>
-   <LINK srcnodeid="134" srcpinname="Skeleton" dstnodeid="128" dstpinname="Input Node">
-   </LINK>
-   <LINK srcnodeid="134" srcpinname="ID" dstnodeid="135" dstpinname="Id">
+   <LINK srcnodeid="139" srcpinname="Output Node" dstnodeid="84" dstpinname="Channels">
    </LINK>
    <NODE systemname="SetJoint (Skeleton V2)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="SetJoint (Skeleton V2)" componentmode="Hidden" id="115">
    <BOUNDS type="Node" left="1590" top="13170" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="1590" top="13170" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Skeleton" visible="1" slicecount="1" values="||">
+   <PIN pinname="Skeleton" visible="1" slicecount="750" values=",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,">
    </PIN>
    <PIN pinname="ID" visible="1" pintype="Output">
+   </PIN>
+   <PIN pinname="Joint Name Bin Size" slicecount="1" visible="1" values="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="72" srcpinname="Output" dstnodeid="115" dstpinname="Base Transform Bin Size">
@@ -811,5 +823,25 @@
    <LINK srcnodeid="114" srcpinname="Output" dstnodeid="115" dstpinname="Skeleton">
    </LINK>
    <LINK srcnodeid="115" srcpinname="ID" dstnodeid="116" dstpinname="Node ID">
+   </LINK>
+   <LINK srcnodeid="72" srcpinname="Output" dstnodeid="115" dstpinname="Joint Name Bin Size">
+   </LINK>
+   <NODE systemname="V1ToV2 (Skeleton)" filename="%VVVV%\packs\mp.essentials\nodes\plugins\mp.essentials.dll" nodename="V1ToV2 (Skeleton)" componentmode="Hidden" id="134">
+   <BOUNDS type="Node" left="1740" top="4680" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1740" top="4680" width="3000" height="3000">
+   </BOUNDS>
+   <PIN pinname="ID" visible="1" pintype="Output">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="67" srcpinname="Y Output Value" dstnodeid="134" dstpinname="Copy">
+   </LINK>
+   <LINK srcnodeid="108" srcpinname="Skeleton" dstnodeid="134" dstpinname="V1 Skeleton">
+   </LINK>
+   <LINK srcnodeid="134" srcpinname="Skeleton" dstnodeid="114" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="134" srcpinname="Skeleton" dstnodeid="128" dstpinname="Input Node">
+   </LINK>
+   <LINK srcnodeid="134" srcpinname="ID" dstnodeid="135" dstpinname="Id">
    </LINK>
    </PATCH>
